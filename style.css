@@ -1,0 +1,26 @@
+@font-face {
+    font-family: "inter";
+    src: url(./assets/fonts/Inter/Inter-VariableFont_opsz\,wght.ttf);
+}
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "inter";
+}
+
+.content-width {
+    display: flex;
+    width: 1440px;
+    margin: 0 auto;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: calc(1440px - 232px);
+}
+
+
+
+

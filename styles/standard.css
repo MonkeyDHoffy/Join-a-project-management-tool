@@ -1,0 +1,64 @@
+.d-none {
+    display: none;
+}
+
+button {
+    border: unset;
+    cursor: pointer;
+}
+
+.button-general {
+    border-radius: 10px;
+}
+
+.button-summary {
+    border-radius: 30px;
+}
+
+.content-width {
+    width: 1440px;
+    margin: 0 auto;
+}
+
+.vl {
+    width: 0px;
+    height: 59px;
+    gap: 0px;
+    opacity: 0px;
+    border: 2px solid #29ABE2;
+    border-radius: 2px;
+}
+
+.font-size-20px {
+    font-size: 20px;
+}
+
+.font-size-27-px {
+    font-size: 27px;
+}
+
+.font-size-61px {
+    font-size: 61px;
+}
+
+.font-size-16px {
+    font-size: 16px;
+}
+
+.font-size-47px {
+    font-size: 47px;
+}
+
+.color-2A3647 {
+    color: #2A3647;
+}
+
+.flex-box {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
