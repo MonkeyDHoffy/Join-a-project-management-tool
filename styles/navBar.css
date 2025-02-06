@@ -1,0 +1,135 @@
+body,
+html {
+  font-family: "Inter", serif;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+button {
+  font-family: "Inter", serif;
+}
+button:hover {
+  cursor: pointer;
+}
+.content_wrapper {
+  display: flex;
+  flex-grow: 1;
+}
+
+.logo {
+  padding-bottom: 128px;
+}
+
+.content_left {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #2a3647;
+  width: 232px;
+  height: 100vh;
+  flex-grow: 1;
+  padding-top: 64px;
+  padding-bottom: 64px;
+  box-shadow: 0px 0px 4px 0px #0000001a;
+}
+
+.nav_btn {
+  width: 232px;
+  color: #cdcdcd;
+  padding: 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  img {
+    padding-left: 60px;
+    display: flex;
+    margin-right: 4px;
+  }
+}
+
+.nav_btn:hover {
+  color: white;
+  background-color: rgb(26, 34, 46);
+  cursor: pointer;
+}
+
+.navBar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 80%;
+}
+
+.paddingleft {
+  padding-left: 116px;
+}
+
+.content_right {
+  background-color: rgb(246, 248, 250);
+  width: calc(100% - 232px);
+  height: 100vh;
+  float: right;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  height: 80px;
+  width: 100%;
+  margin-bottom: 60px;
+
+  p {
+    font-size: larger;
+    font-weight: bolder;
+    padding: 16px 16px 16px 128px;
+    margin: 0;
+  }
+}
+
+.question-mark {
+  border: none;
+  background-color: transparent;
+}
+
+.question-mark-img {
+  width: 32px;
+  height: 32px;
+  margin-right: 16px;
+}
+
+.question-mark:hover {
+  cursor: pointer;
+  scale: 1.1;
+}
+
+.header_btn_and_pic {
+  padding: 16px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.profile_picture {
+  border: 3px solid rgb(43, 54, 71);
+  /* background-color: rgb(246, 248, 250); */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.tasks_section {
+  padding: 0 8px;
+  background-color: rgb(246, 248, 250);
+  height: calc(100vh - 140px);
+
+  h1 {
+    margin: 0;
+    font-size: 64px;
+  }
+}
