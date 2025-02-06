@@ -15,11 +15,6 @@ button {
     border-radius: 30px;
 }
 
-.content-width {
-    width: 1440px;
-    margin: 0 auto;
-}
-
 .vl {
     width: 0px;
     height: 59px;
@@ -70,11 +65,6 @@ button {
 
 a {
     text-decoration: none;
-}
-
-.margin-top-350 {
-    margin-top: 350px;
-    padding: 0 !important;
 }
 
 .gap-16 {
