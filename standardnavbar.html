@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
     <link rel="stylesheet" href="./styles/navBar.css">
+    <link rel="stylesheet" href="./styles/standard.css">
+    <link rel="stylesheet" href="./style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -15,70 +17,58 @@
 
 <body>
 
-    <section class="content">
+        <div class="content-width">
 
-
-        <section class="content_wrapper">
-
-            <div class="content_left">
-                <div>
-                    <div id="joinLogo" class="logo"><img src="./assets/img/Logo.png" alt=""></div>
-                </div>
-
-                <section class="navBar">
-                    <div id="navSummary" class="nav_btn nav_summary"><img src="./assets/img/navBar/summary.svg"
-                            alt="">Summary</div>
-
-
-                    <div id="navAddTask" class="nav_btn nav_add_task"><img src="./assets/img/navBar/add_task.svg"
-                            alt="">Add Task</div>
-
-
-                    <div id="navBoard" class="nav_btn nav_board"><img src="./assets/img/navBar/board.svg" alt="">Board
-                    </div>
-
-
-                    <div id="navContacts" class="nav_btn nav_contacts"><img src="./assets/img/navBar/contacts.svg"
-                            alt="">Contacts</div>
-
-
-                </section>
-
-                <div class="navBar">
+                <div class="content_left">
                     <div>
-                        <div id="privacypolicy" class="nav_btn paddingleft">Privacy Policy</div>
-                        <div id="legalnotice" class="nav_btn paddingleft">legal notice</div>
+                        <div class="logo"><img src="./assets/img/Logo.png" alt=""></div>
                     </div>
+
+                    <section class="navBar">
+                        <a href="./summary.html"><button class="nav_btn nav_summary active" disabled="true"><span><img
+                                        src="./assets/img/navBar/summary.svg" alt="">Summary</span></button></a>
+
+                        <a href="./add_task.html"><button class="nav_btn nav_add_task"><span><img
+                                        src="./assets/img/navBar/add_task.svg" alt="">Add Task</span></button></a>
+
+                        <a href="./board.html"><button class="nav_btn nav_board"><span><img
+                                        src="./assets/img/navBar/board.svg" alt="">Board</span></button></a>
+
+                        <a href="./contacts.html"><button class="nav_btn nav_contacts"><span><img
+                                        src="./assets/img/navBar/contacts.svg" alt="">Contacts</span></button></a>
+
+                    </section>
+
+                    <div class="navBar gap-16 margin-top-350">
+                        <a class="nav-link flex-center" href="">Privacy Policy</a>
+                        <a class="nav-link flex-center" href="">legal notice</a>
+
+                    </div>
+
                 </div>
 
-            </div>
 
-            <div class="content_right">
-                <div class="header">
-                    <p>Kanban Project Management Tool</p>
-                    <div class="header_btn_and_pic"><button class="question-mark"><img id="helpBtn"
-                                class="question-mark-img" src="./assets/img/navBar/help.svg" alt=""></button>
-                        <div><img id="profilePicture" class="profile_picture" src="./assets/img/dog-705820_640.jpg"
-                                alt="">
+
+                <div class="content-wrapper">
+
+                    <div class="header">
+                        <p>Kanban Project Management Tool</p>
+                        <div class="header_btn_and_pic"><button class="question-mark"><img class="question-mark-img"
+                                    src="" alt=""></button>
+                            <div><img class="profile_picture" src="" alt="">
+                            </div>
                         </div>
                     </div>
+                    <!-- Hier kommt der Code hin! -->
                 </div>
+        </div>
 
 
 
 
 
-            </div>
 
 
-
-
-        </section>
-
-
-
-
-    </section>
 
 </body>
 
