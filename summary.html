@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./styles/standard.css">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./styles/summary.css">
-    <link rel="stylesheet" href="./styles/side-bar.css">
+    <link rel="stylesheet" href="./styles/navBar.css">
     <title>Join</title>
 </head>
 
@@ -16,44 +16,40 @@
     <div class="content-width">
         <div class="content_left">
             <div>
-                <div class="logo"><img src="./img/Logo.png" alt=""></div>
+                <div class="logo"><img src="./assets/img/Logo.png" alt=""></div>
             </div>
 
             <section class="navBar">
-                <div class="nav_btn nav_summary"><img src="./img/navBar/summary.svg" alt="">Summary</div>
+                <a href="./summary.html"><button class="nav_btn nav_summary active" disabled="true"><span><img src="./assets/img/navBar/summary.svg" alt="">Summary</span></button></a>
 
+                <a href="./add_task.html"><button class="nav_btn nav_add_task" ><span><img src="./assets/img/navBar/add_task.svg" alt="">Add Task</span></button></a>
 
-                <div class="nav_btn nav_add_task"><img src="./img/navBar/add_task.svg" alt="">Add Task</div>
+                <a href="./board.html"><button class="nav_btn nav_board" ><span><img src="./assets/img/navBar/board.svg" alt="">Board</span></button></a>
 
-
-                <div class="nav_btn nav_board"><img src="./img/navBar/board.svg" alt="">Board</div>
-
-
-                <div class="nav_btn nav_contacts"><img src="./img/navBar/contacts.svg" alt="">Contacts</div>
-
+                <a href="./contacts.html"><button class="nav_btn nav_contacts" ><span><img src="./assets/img/navBar/contacts.svg" alt="">Contacts</span></button></a>
 
             </section>
 
-            <div class="navBar">
-                <div>
-                    <div class="nav_btn paddingleft">Privacy Policy</div>
-                    <div class="nav_btn paddingleft">legal notice</div>
-                </div>
+            <div class="navBar gap-16 margin-top-350">             
+                    <a class="nav-link flex-center" href="">Privacy Policy</a>
+                    <a class="nav-link flex-center" href="">legal notice</a>
+               
             </div>
 
         </div>
 
-        <div class="content_right">
-            <div class="header">
-                <p>Kanban Project Management Tool</p>
-                <div class="header_btn_and_pic"><button class="question-mark"><img class="question-mark-img" src=""
-                            alt=""></button>
-                    <div><img class="profile_picture" src="" alt="">
-                    </div>
-                </div>
-            </div>
+        
 
         <div class="content-wrapper">
+
+                <div class="header">
+                    <p>Kanban Project Management Tool</p>
+                    <div class="header_btn_and_pic"><button class="question-mark"><img class="question-mark-img" src=""
+                                alt=""></button>
+                        <div><img class="profile_picture" src="" alt="">
+                        </div>
+                    </div>
+                </div>
             <div class="summary-wrapper">
                 <div class="headline">
                     <h1 class="font-size-61px">Join 360</h1>
@@ -132,7 +128,7 @@
                         <h2 class="user-name" id="userName">Sofia Müller</h2>
                     </div>
                 </div>
-            </div>
+            
         </div>
     </div>
 </body>
