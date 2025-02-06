@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
+    <link rel="stylesheet" href="./styles/addtask.css">
     <link rel="stylesheet" href="./styles/navBar.css">
     <link rel="stylesheet" href="./styles/standard.css">
     <link rel="stylesheet" href="./style.css">
@@ -24,10 +25,10 @@
             </div>
 
             <section class="navBar">
-                <a href="./summary.html"><button class="nav_btn nav_summary active" disabled="true"><span><img
+                <a href="./summary.html"><button class="nav_btn nav_summary " disabled="true"><span><img
                                 src="./assets/img/navBar/summary.svg" alt="">Summary</span></button></a>
 
-                <a href="./add_task.html"><button class="nav_btn nav_add_task"><span><img
+                <a href="./add_task.html"><button class="nav_btn nav_add_task active"><span><img
                                 src="./assets/img/navBar/add_task.svg" alt="">Add Task</span></button></a>
 
                 <a href="./board.html"><button class="nav_btn nav_board"><span><img src="./assets/img/navBar/board.svg"
@@ -38,7 +39,7 @@
 
             </section>
 
-            <div class="navBar gap-16 margin-top-350">
+            <div class="judicial-links gap-16">
                 <a class="nav-link flex-center" href="">Privacy Policy</a>
                 <a class="nav-link flex-center" href="">legal notice</a>
 
@@ -52,64 +53,107 @@
 
             <div class="header">
                 <p>Kanban Project Management Tool</p>
-                <div class="header_btn_and_pic"><button class="question-mark"><img class="question-mark-img" src=""
-                            alt=""></button>
+                <div class="header_btn_and_pic"><button class="question-mark"><img class="question-mark-img"
+                            src="./assets/img/navBar/help.svg" alt=""></button>
                     <div><img class="profile_picture" src="" alt="">
                     </div>
                 </div>
             </div>
-            <div class="addTask_header">
-                <h1>Add Task</h1>
-            </div>
 
-            <div class="AddTask_wrapper">
+            <div class="content-right">
+                <div class="addTask-header">
+                    <h1>Add Task</h1>
+                </div>
 
-                <div class="addTask_left">
-                    <div clas="task_title">
-                        <label for="">Title<p>*</p></label>
-                        <input type="text">
+                <div class="addTask-wrapper">
+
+                    <div class="addTask-left">
+                        <div class="addTask-section addTask-title">
+                            <label style="display: flex;" for="">
+                                <p>Title</p>
+                                <p style="color: red;">*</p>
+                            </label>
+                            <input placeholder="enter a title" type="text">
+                        </div>
+
+                        <div class="addTask-section addTask-description">
+                            <label for="">
+                                <p>Description</p>
+                            </label>
+                            <textarea class="description-area"></textarea>
+
+                        </div>
+
+                        <div class=" addTask-section addTask-assignedTo">
+                            <label for="">
+                                <p>Assigned to</p>
+                            </label>
+                            <select class="select-user" name="users" id="assigned-users">
+                                <div>
+                                    <option value="volvo">Volvo</option>
+                                    <option value="saab">Saab</option>
+                                    <option value="mercedes">Mercedes</option>
+                                    <option value="audi">Audi</option>
+                                </div>
+                            </select>
+                        </div>
+
+
+
                     </div>
 
-                    <div class="task_description">
-                        <label for="">Description</label>
-                        <input type="text">
+
+                    <div class="addTask-right">
+
+                        <div class="addTask-section task-date">
+                            <label style="display: flex;" for="">
+                                <p>Due date</p>
+                                <p style="color: red;">*</p>
+                            </label>
+                            <input type="date" style="color: #ccc;">
+                        </div>
+
+                        <div class="addTask-section addTask-prio">
+                            <label for="">Prio</label>
+                            <div class="prio-btn"><button class="urgent">1</button><button
+                                    class="medium">2</button><button class="low">3</button></div>
+                        </div>
+
+                        <div class="addTask-section addTask-category">
+                            <label for="">Category</label>
+                            <input type="text">
+                        </div>
+
+                        <div class="addTask-subtasks">
+                            <label for="">Subtasks</label>
+                            <div class="subtasks-btn"><input type="text"><button>+</button></div>
+                        </div>
+
+
 
                     </div>
 
-                    <div class="task_assignedTo">
-                        <label for="">Assigned to</label>
-                        <input type="text">
-                    </div>
+
 
 
 
                 </div>
 
-
-                <div class="addTask_right">
-
-                    <div class="task_date">
-                        <label for=""></label>
-                        <input type="date">
-                    </div>
-
+                <div class=" addTask-footer">
+                    <div><span style="color:red">*</span><span>This field is required</span></div>
+                    <div class="display-flex"><button>Clear</button><button class="createTask-button">Create Task<img
+                                src="" alt="">
+                        </button></div>
 
                 </div>
 
 
 
-
-
-
             </div>
-
-
-
 
 
         </div>
 
-        <!-- Hier kommt der Code hin! -->
     </div>
     </div>
 

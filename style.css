@@ -14,7 +14,12 @@
 }
 
 .content-wrapper {
+  background-color: rgb(246, 247, 248);
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+
+.cotent-right {
+  background-color: rgb(246, 248, 250);
 }
