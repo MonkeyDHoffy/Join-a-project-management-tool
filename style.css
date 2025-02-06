@@ -11,13 +11,10 @@
 
 .content-width {
   display: flex;
-  width: 1440px;
-  margin: 0 auto;
 }
 
 .content-wrapper {
-  background: #f6f8fa;
   display: flex;
   flex-direction: column;
-  width: calc(1440px - 232px);
+  width: 100%;
 }
