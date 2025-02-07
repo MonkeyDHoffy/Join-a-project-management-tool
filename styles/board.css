@@ -110,7 +110,7 @@
 }
 
 .board-wrapper {
-    padding: 64px;
+    padding: 8px 64px;
     height: 100%;
     width: 100%;
     display: flex;
@@ -120,4 +120,18 @@
 .board-field {
     max-width: 244px;
     flex-grow: 1;
+}
+
+.board-card {
+    padding: 16px;
+    border: 1px solid #2A3647;
+    border-radius: 24px;
+    max-width: 252px;
+    max-height: 225px;
+    min-height: 177px;
+    flex-grow: 1;
+}
+
+.board-card:active {
+    transform: rotate(5deg);
 }
