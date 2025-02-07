@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./scripts/board.js"></script>
     <title>Join</title>
     <link rel="stylesheet" href="./styles/navBar.css">
     <link rel="stylesheet" href="./styles/standard.css">
@@ -16,7 +17,7 @@
         rel="stylesheet">
 </head>
 
-<body>
+<body onload="renderTasks()">
 
     <div class="content-width">
 
@@ -102,36 +103,9 @@
                             </div>
                         </div>
                     </div>
-                    <div draggable="true" id="inProgressField" class="in-progress-field board-field">
-                        <div class="board-card">
-                            <div class="board-card-title">
-                                <h3>Card title</h3>
-                            </div>
-                            <div class="board-card-description">
-                                <p>Card description</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div draggable="true" id="awaitFeedbackField" class="await-feedback-field board-field">
-                        <div class="board-card">
-                            <div class="board-card-title">
-                                <h3>Card title</h3>
-                            </div>
-                            <div class="board-card-description">
-                                <p>Card description</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div draggable="true" id="doneField" class="done-field board-field">
-                        <div class="board-card">
-                            <div class="board-card-title">
-                                <h3>Card title</h3>
-                            </div>
-                            <div class="board-card-description">
-                                <p>Card description</p>
-                            </div>
-                        </div>
-                    </div>
+                    <div draggable="true" id="inProgressField" class="in-progress-field board-field"></div>
+                    <div draggable="true" id="awaitFeedbackField" class="await-feedback-field board-field"></div>
+                    <div draggable="true" id="doneField" class="done-field board-field"></div>
                 </div>
                 <!-- Hier kommt der Code hin! -->
 
