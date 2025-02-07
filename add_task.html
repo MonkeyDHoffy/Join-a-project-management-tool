@@ -14,9 +14,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Moul&family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Press+Start+2P&family=Sniglet:wght@400;800&family=Varela+Round&display=swap"
         rel="stylesheet">
+    <script src="./scripts/add_task.js"></script>
 </head>
 
-<body>
+<body onload="addTaskInit()">
     <div class="content-width">
 
         <div class="content_left">
@@ -89,12 +90,12 @@
                                 <p>Assigned to</p>
                             </label>
                             <select class="select-user" name="users" id="assigned-users">
-                                <div>
-                                    <option value="volvo">Volvo</option>
-                                    <option value="saab">Saab</option>
-                                    <option value="mercedes">Mercedes</option>
-                                    <option value="audi">Audi</option>
-                                </div>
+
+                                <option value="volvo">Volvo</option>
+                                <option value="saab">Saab</option>
+                                <option value="mercedes">Mercedes</option>
+                                <option value="audi">Audi</option>
+
                             </select>
                         </div>
 
@@ -115,8 +116,15 @@
 
                         <div class="addTask-section addTask-prio">
                             <label for="">Prio</label>
-                            <div class="prio-btn"><button class="urgent">1</button><button
-                                    class="medium">2</button><button class="low">3</button></div>
+                            <div class="prio-buttons">
+                                <button onclick="changeUrgentBtn()" id="urgent-btn"
+                                    class="urgent prio-btn-urgent">Urgent <img id="urgent-img" src="" alt=""></button>
+                                <button onclick="changeMediumBtn()" id="medium-btn"
+                                    class="medium prio-btn-medium">Medium
+                                    <img id="medium-img" src="" alt=""></button>
+                                <button onclick="changeLowBtn()" id="low-btn" class="prio-btn-low">Low <img id="low-img"
+                                        src="" alt=""></button>
+                            </div>
                         </div>
 
                         <div class="addTask-section addTask-category">
