@@ -3,7 +3,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 55px;
 }
 
@@ -80,18 +80,9 @@
     outline: none;
 }
 
-.column-titles {
-    padding: 0 64px;
-    display: flex;
-    justify-content: space-between;
-    justify-self: flex-end;
-}
-
 .flex-title {
     display: flex;
     justify-content: space-between;
-    flex-grow: 1;
-    max-width: 244px;
 }
 
 .btn-title {
@@ -115,18 +106,24 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    gap: 26px;
 }
 
-.board-field {
-    max-width: 244px;
-    flex-grow: 1;
+.board-wrapper > * {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.board-title-field-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .board-card {
     padding: 16px;
     border: 1px solid #2A3647;
     border-radius: 24px;
-    max-width: 252px;
     max-height: 225px;
     min-height: 177px;
     flex-grow: 1;
