@@ -5,6 +5,7 @@
 button {
   border: unset;
   cursor: pointer;
+  background-color: unset;
 }
 
 .button-general {
