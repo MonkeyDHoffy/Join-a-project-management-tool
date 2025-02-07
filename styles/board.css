@@ -3,7 +3,8 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
+    gap: 55px;
 }
 
 .board-header-title {
@@ -53,13 +54,13 @@
 
 .find-task {
     height: 48px;
-    max-width: 312px;
+    width: 312px;
     padding: 8px 16px;
     border: 1px solid #C9CDD3;
     border-radius: 10px;
     background-color: white;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .find-task input {
@@ -72,4 +73,34 @@
 
 .find-task input:focus {
     outline: none;
+}
+
+.column-titles {
+    padding: 0 64px;
+    display: flex;
+    justify-content: space-between;
+    justify-self: flex-end;
+    gap: 40px;
+}
+
+.flex-title {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+
+}
+
+.btn-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 24px;
+    width: 24px;
+    border: 2px solid #2A3647;
+    border-radius: 8px;
+}
+
+.btn-title:hover {
+    color: #29ABE2;
+    border-color: #29ABE2;
 }
