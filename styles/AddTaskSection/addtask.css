@@ -137,6 +137,16 @@
   }
 }
 
+.subtasks-btn input:focus {
+  outline: none;
+}
+
+.subtasks-btn input:focus {
+  border: 1px solid #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
 .addTask-subtasks {
   width: 440px;
   margin-bottom: 20px;
