@@ -8,7 +8,7 @@ function taskCardTemplate(element) {
 }
 
 function noTasksTemplate(i) {
-    return `<div class="no-tasks">
+    return `<div draggable="false" class="no-tasks">
                             <span>No tasks ${taskStatus[i]}</span>
                         </div>`
 }
