@@ -8,3 +8,9 @@ function taskCardTemplate(element) {
                                 </div>
                             </div>`
 }
+
+function noTasksTemplate(i) {
+    return `<div class="no-tasks">
+                            <span>No tasks ${taskStatus[i]}</span>
+                        </div>`
+}

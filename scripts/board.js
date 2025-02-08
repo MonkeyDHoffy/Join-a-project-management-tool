@@ -70,11 +70,7 @@ function renderDone() {
     }
 }
 
-function noTasksTemplate(i) {
-    return `<div class="no-tasks">
-                            <span>No tasks ${taskStatus[i]}</span>
-                        </div>`
-}
+
 
 function startDrag(id) {
     currentDragedElement = id;
@@ -84,4 +80,14 @@ function drop(status) {
     let task = tasks.find(task => task.id === currentDragedElement);
     task.status = status;
     updateHTML();
+}
+
+function searchTask() {
+    let searchInput = document.getElementById('findTaskInput').value.toLowerCase();
+    let boardCards = Array.from(document.querySelectorAll(".board-card"));
+    boardCards.forEach(div => {div.style.display = 'none';});
+    let filteredCards = boardCards.filter(div => 
+        div.querySelector("h3")?.textContent.trim().includes(searchInput));
+    filteredCards.forEach(div => {div.style.display = 'block';});
+
 }
