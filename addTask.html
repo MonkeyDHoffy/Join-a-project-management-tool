@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
-    <link rel="stylesheet" href="./styles/addtask.css">
+    <link rel="stylesheet" href="./styles/AddTaskSection/addtask.css">
     <link rel="stylesheet" href="./styles/navBar.css">
     <link rel="stylesheet" href="./styles/standard.css">
+    <link rel="stylesheet" href="./styles/AddTaskSection/addTaskContactsList.css">
     <link rel="stylesheet" href="./style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +16,7 @@
         href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Moul&family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Press+Start+2P&family=Sniglet:wght@400;800&family=Varela+Round&display=swap"
         rel="stylesheet">
     <script src="./scripts/add_task.js"></script>
+    <script src="./scripts/AddTaskScripts/addTaskContactsList.js"></script>
 </head>
 
 <body onload="addTaskInit()">
@@ -89,14 +91,31 @@
                             <label for="">
                                 <p>Assigned to</p>
                             </label>
-                            <select class="select-user" name="users" id="assigned-users">
-
-                                <option value="volvo">Volvo</option>
-                                <option value="saab">Saab</option>
-                                <option value="mercedes">Mercedes</option>
-                                <option value="audi">Audi</option>
-
-                            </select>
+                            <div id="assigned-to-input">
+                                <input type="text" id="assigned-to-field" placeholder="Select contacts to assign"
+                                    onclick="toggleDropdown()" readonly>
+                                <div class="dropdown-content" id="dropdown-content">
+                                    <div class="dropdown-item">
+                                        <div class="addTask-profilepicture">VV</div>
+                                        <label>
+                                            <p>Viktor Vaal</p><input type="checkbox" name="users" value="user1">
+                                        </label>
+                                    </div>
+                                    <div class="dropdown-item">
+                                        <div class="addTask-profilepicture">JH</div>
+                                        <label>
+                                            <p>Jannik Hoff</p><input type="checkbox" name="users" value="user1">
+                                        </label>
+                                    </div>
+                                    <div class="dropdown-item">
+                                        <div class="addTask-profilepicture">DH</div>
+                                        <label>
+                                            <p>Dany Hudson</p><input type="checkbox" name="users" value="user1">
+                                        </label>
+                                    </div>
+                                    <!-- Add more users as needed -->
+                                </div>
+                            </div>
                         </div>
 
 
