@@ -68,7 +68,7 @@
 }
 
 .dropdown-item:hover {
-  background-color: #f0f0f0;
+  background-color: #e0dfe4;
 }
 
 .addTask-profilepicture {
@@ -79,4 +79,26 @@
   height: 42px;
   border-radius: 50%;
   background-color: #29abe2;
+  border: 1px solid white;
+}
+
+.input-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 5px;
+  pointer-events: none;
+}
+
+.custom-checkbox {
+  cursor: pointer;
+}
+
+.checked {
+  background-color: #2a3647 !important;
+  p {
+    color: #fff;
+  }
 }

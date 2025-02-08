@@ -66,12 +66,12 @@ span {
   background-color: rgb(26, 34, 46) !important;
   cursor: default !important;
   span {
-  transform: scale(1) !important; 
+    transform: scale(1) !important;
   }
 }
 
 .nav_btn:hover {
-  background: #2A3D59;
+  background: #2a3d59;
   cursor: pointer;
 }
 
@@ -85,7 +85,7 @@ span {
   align-items: center;
   width: 100%;
   padding-bottom: 80%;
-  gap: 15px;
+  /* gap: 15px; */
 }
 
 .judicial-links {
@@ -105,7 +105,7 @@ span {
 
 .nav-link:hover {
   font-weight: bold;
-  color: #29ABE2;
+  color: #29abe2;
   transform: scale(1.05);
 }
 

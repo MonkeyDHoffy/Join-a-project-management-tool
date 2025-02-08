@@ -93,24 +93,35 @@
                             </label>
                             <div id="assigned-to-input">
                                 <input type="text" id="assigned-to-field" placeholder="Select contacts to assign"
-                                    onclick="toggleDropdown()" readonly>
+                                    onclick="toggleDropdown(); toggleAssignToIconSrc();">
+                                <img id="input-icon-assign-to" src="./assets/svg/addTasksSvg/arrow_drop_down.svg"
+                                    alt="Icon" class="input-icon">
                                 <div class="dropdown-content" id="dropdown-content">
-                                    <div class="dropdown-item">
+                                    <div onclick="checkIt(0)" class="dropdown-item">
                                         <div class="addTask-profilepicture">VV</div>
-                                        <label>
-                                            <p>Viktor Vaal</p><input type="checkbox" name="users" value="user1">
+                                        <label class="custom-checkbox">
+                                            <p>Viktor Vaal</p>
+                                            <img class="cstm-checkbox" src="./assets/svg/addTasksSvg/Checkbutton.svg"
+                                                alt="">
+
                                         </label>
                                     </div>
-                                    <div class="dropdown-item">
+                                    <div onclick="checkIt(1)" class="dropdown-item">
                                         <div class="addTask-profilepicture">JH</div>
-                                        <label>
-                                            <p>Jannik Hoff</p><input type="checkbox" name="users" value="user1">
+                                        <label class="custom-checkbox">
+
+                                            <p>Jannik Hoff</p>
+                                            <img class="cstm-checkbox" src="./assets/svg/addTasksSvg/Checkbutton.svg"
+                                                alt="">
                                         </label>
                                     </div>
-                                    <div class="dropdown-item">
+                                    <div onclick="checkIt(2)" class="dropdown-item">
                                         <div class="addTask-profilepicture">DH</div>
-                                        <label>
-                                            <p>Dany Hudson</p><input type="checkbox" name="users" value="user1">
+                                        <label class="custom-checkbox">
+
+                                            <p>Dany Hudson</p>
+                                            <img class="cstm-checkbox" src="./assets/svg/addTasksSvg/Checkbutton.svg"
+                                                alt="">
                                         </label>
                                     </div>
                                     <!-- Add more users as needed -->
@@ -159,7 +170,8 @@
                             <label for="">
                                 <p>Subtasks</p>
                             </label>
-                            <div class="addTask-section"><input type="text"></div>
+                            <div class="addTask-section"><input type="text" placeholder="hi">
+                            </div>
                         </div>
                     </div>
 
