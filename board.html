@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./scripts/board.js"></script>
+    <script src="./scripts/boardTemplate.js"></script>
     <title>Join</title>
     <link rel="stylesheet" href="./styles/navBar.css">
     <link rel="stylesheet" href="./styles/standard.css">
@@ -17,7 +18,7 @@
         rel="stylesheet">
 </head>
 
-<body onload="renderTasks()">
+<body onload="updateHTML()">
 
     <div class="content-width">
 
@@ -88,36 +89,27 @@
                             <h3>To-Do</h3>
                             <button class="add-to-do btn-title">+</button>
                         </div>
-                        <div draggable="true" id="toDoField" class="to-do-field board-field">
-                            <div class="board-card">
-                                <div class="board-card-title">
-                                    <h3>Card title</h3>
-                                </div>
-                                <div class="board-card-description">
-                                    <p>Card description</p>
-                                </div>
-                            </div>
-                        </div>
+                        <div ondrop="drop('toDo')" ondragover="allowDrop(event)" draggable="true" id="toDo" class="to-do-field board-field"></div>
                     </div>
                     <div class="board-title-field-wrapper">
                         <div class="to-do-title flex-title">
                             <h3>In progress</h3>
                             <button class="add-in-progress btn-title">+</button>
                         </div>
-                        <div draggable="true" id="inProgressField" class="in-progress-field board-field"></div>
+                        <div ondrop="drop('inProgress')" ondragover="allowDrop(event)" draggable="true" id="inProgress" class="in-progress-field board-field"></div>
                     </div>
                     <div class="board-title-field-wrapper">
                         <div class="to-do-title flex-title">
                             <h3>Await feedback</h3>
                             <button class="add-await-feedback btn-title">+</button>
                         </div>
-                        <div draggable="true" id="awaitFeedbackField" class="await-feedback-field board-field"></div>
+                        <div ondrop="drop('awaitFeedback')" ondragover="allowDrop(event)" draggable="true"id="awaitFeedback" class="await-feedback-field board-field"></div>
                     </div>
                     <div class="board-title-field-wrapper">
                         <div class="to-do-title flex-title">
                             <h3>Done</h3>
                         </div>
-                        <div draggable="true" id="doneField" class="done-field board-field"></div>
+                        <div ondrop="drop('done')" ondragover="allowDrop(event)" draggable="true" id="done" class="done-field board-field"></div>
                     </div>
                 </div>
                 <!-- Hier kommt der Code hin! -->

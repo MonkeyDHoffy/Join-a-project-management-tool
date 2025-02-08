@@ -11,6 +11,7 @@
 
 .content-width {
   display: flex;
+  height: 100vh;
 }
 
 .content-wrapper {
@@ -22,4 +23,5 @@
 
 .cotent-right {
   background-color: rgb(246, 248, 250);
+  height: 100%;
 }
