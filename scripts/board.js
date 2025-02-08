@@ -15,9 +15,7 @@ let tasks = [{
 ];
 let currentDragedElement;
 
-function allowDrop(ev) {
-    ev.preventDefault();
-}
+
 
 function updateHTML() {
     renderToDo();
@@ -70,7 +68,9 @@ function renderDone() {
     }
 }
 
-
+function allowDrop(ev) {
+    ev.preventDefault();
+}
 
 function startDrag(id) {
     currentDragedElement = id;
@@ -82,12 +82,17 @@ function drop(status) {
     updateHTML();
 }
 
+/**
+ * Filters and displays task cards on the board based on user input.
+ * Hides all board cards initially and then selectively shows cards
+ * whose titles include the search input text, ignoring case.
+ */
+
 function searchTask() {
     let searchInput = document.getElementById('findTaskInput').value.toLowerCase();
     let boardCards = Array.from(document.querySelectorAll(".board-card"));
     boardCards.forEach(div => {div.style.display = 'none';});
     let filteredCards = boardCards.filter(div => 
-        div.querySelector("h3")?.textContent.trim().includes(searchInput));
+        div.querySelector("h3")?.textContent.toLowerCase().trim().includes(searchInput));
     filteredCards.forEach(div => {div.style.display = 'block';});
-
 }

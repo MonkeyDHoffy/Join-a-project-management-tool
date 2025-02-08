@@ -67,8 +67,8 @@
                     <div class="board-header-title">
                         <h2>Board</h2>
                         <div class="search-and-add-task">
-                            <form onkeyup="searchTask()" class="find-task" id="findTask">
-                                <input minlength="3" class="find-task-input" id="findTaskInput" type="text" placeholder="Find Task">
+                            <form onkeyup="searchTask()" onsubmit="return false" class="find-task" id="findTask">
+                                <input class="find-task-input" id="findTaskInput" type="text" placeholder="Find Task">
                                 <button class="search-btn"><img src="./assets/img/search.png" alt=""></button>
                             </form>
                             <button id="addTask" class="add-task">Add Task <img src="./assets/img/add.png"
