@@ -9,6 +9,6 @@ let tasks = [{
 }, {
     'id': 2,
     'title': 'Einkaufen',
-    'status': 'awaitFeedback'
+    'status': 'done'
 },
 ];
