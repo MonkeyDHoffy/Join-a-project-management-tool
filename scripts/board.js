@@ -77,7 +77,7 @@ function drop(status) {
 
 function searchTask() {
     let searchInput = document.getElementById('findTaskInput').value.toLowerCase();
-    let boardCards = Array.from(document.querySelectorAll(".board-card"));
+    let boardCards = Array.from(document.getElementsByClassName("board-card"));
     boardCards.forEach(div => {div.style.display = 'none';});
     let filteredCards = boardCards.filter(div => 
         div.querySelector("h3")?.textContent.toLowerCase().trim().includes(searchInput));
