@@ -2,6 +2,10 @@
   display: none;
 }
 
+.overflow-y-auto{
+  overflow-y: auto;
+}
+
 button {
   border: unset;
   cursor: pointer;
