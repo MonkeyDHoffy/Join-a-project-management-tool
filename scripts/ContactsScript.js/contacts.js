@@ -52,14 +52,15 @@ function getOverlayTemplate() {
              
               <div class="content-overlay-left">
                   <img src="./assets/img/Logo.png" alt="">
-                  <p>Edit contact</p>
+                  <p>Add contact</p>
+                  <span>Tasks are better with a team</span>
                   <div class="blue-line"></div>
               </div>
 
           
               <div class="content-overlay-right">
                   <div class="contact-avatar">
-                      <div class="avatar-circle">TW</div>
+                      <div class="avatar-circle"><img src="./assets/img/person.png" alt=""></div>
                   </div>
 
                   <div class="input-group">
@@ -74,7 +75,7 @@ function getOverlayTemplate() {
 
                       <div class="button-group">
                           <button class="delete-btn-overlay">Delete</button>
-                          <button class="save-btn-overlay">Save ✓</button>
+                          <button class="save-btn-overlay">Create contact ✓</button>
                       </div>
                   </div>
               </div>
