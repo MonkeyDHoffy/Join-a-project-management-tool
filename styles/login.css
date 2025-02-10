@@ -21,6 +21,22 @@ body {
 
 
 }
+/*   :::::::   content wrapper   :::::::   */
+.login-content-box {
+    background-color: #d8eef8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1440px;
+    height: 100vh;
+    min-height: 80vh;
+    /*background-color: #F6F7F8;*/
+    padding: 48px 0;
+    position: relative;
+    overflow: hidden;
+}
 
 /*   :::::::   animationen   :::::::   */
 @keyframes fade-out {
@@ -98,18 +114,17 @@ body {
 .p1-logo-box {
     position: fixed;
     height: 100vh;
-    width: 100vw;
+    width: 100%;
+    max-width: 1440px;
     display: flex;
     justify-content: center;
     align-items: center;
     background: transparent;
-    z-index: 3;
+    z-index: 800;
 }
-.p1-logo-box.hidden {
-    z-index: -1; 
-}
+
 .p1-logo {
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform-origin: top left;
@@ -123,7 +138,7 @@ body {
     animation-duration: 1s;
     animation-delay: 2s;
     transition-timing-function: ease-in-out;
-    z-index: 4;
+    z-index: 999;
 }
 
 .backdrop {
@@ -141,21 +156,6 @@ body {
 }
 
 /*   :::::::   page 'Login'   :::::::   */
-.login-content-box {
-    background-color: #d8eef8;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100vh;
-    min-height: 80vh;
-    /*background-color: #F6F7F8;*/
-    padding: 48px 0;
-    position: relative;
-    overflow: hidden;
-}
-
 .login-content {
     background-color: rgb(214, 243, 186);
     display: flex;
