@@ -11,3 +11,51 @@
     font-weight: 700;
 }
 
+.back-arrow {
+    position: sticky;
+    top: 152.5px;
+    right: 0;
+    padding-right: 64px;
+    display: flex;
+    justify-content: end;
+    transform: translateY(-25px);
+}
+
+h3 {
+    font-size: 27px;
+}
+
+h4 {
+    font-size: 20px;
+}
+
+.help-content {
+    width: 100%;
+    padding: 0px 64px 0 64px;
+}
+
+.li-text {
+    position: relative;
+    left: 35px;
+    top: -7px;
+}
+
+ol {
+    padding-left: 30px;
+}
+
+.help-list li {
+    margin-top: 10px;
+}
+
+.help-list li::marker {
+    font-weight: bold;
+    font-size: 27px;
+    padding-left: 35px;
+}
+
+.help-footer {
+    height: 96px;
+    display: flex;
+    align-items: center;
+}
