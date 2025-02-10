@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+  //in contacts.html, the contacts are sorted alphabetically and a letter divider is added to separate contacts by the first letter of their name in the div with class "contacts-list"
   let contactsList = document.querySelector(".contacts-list");
   let contactItems = Array.from(
     contactsList.getElementsByClassName("contact-item")
