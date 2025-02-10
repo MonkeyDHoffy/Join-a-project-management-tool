@@ -21,6 +21,7 @@ body {
 
 
 }
+
 /*   :::::::   content wrapper   :::::::   */
 .signup-content-box {
     background-color: #d8eef8;
@@ -39,15 +40,15 @@ body {
 }
 
 /*   :::::::   'not a user' login   :::::::   */
-.nau-sign-up-box {
+.signup-message-box {
     width: 100%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     padding: 0 48px;
     position: relative;
-    bottom: 80px;    
-   /*   :::::::   
+    bottom: 80px;
+    /*   :::::::   
     z-index: 1;*/
 }
 
@@ -124,11 +125,11 @@ body {
     align-items: center;
     flex-direction: column;
     width: 652px;
-    height: 449px;
+    height: 630px;
     min-height: 449px;
     background-color: rgb(255, 255, 255);
     border-radius: 30px;
-    
+
 }
 
 /*   :::::::   'Login' headline   :::::::   */
@@ -227,9 +228,9 @@ input#password:hover {
 }
 
 .signup {
-    width: 110px;
+    width: 124px;
     height: 40px;
-    padding: 8px 24px 18px 24px;
+    padding: 8px 16px 18px 16px;
     border: none;
     border-radius: 8px;
     background-color: #2A3647;
@@ -239,7 +240,12 @@ input#password:hover {
     font-weight: 500;
     cursor: pointer;
 
-} 
+}
+
+.signup:hover {
+    background-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
 
 .text-sgnp {
     width: 110px;
@@ -268,7 +274,9 @@ input#password:hover {
     font-size: 20px;
     font-weight: 500;
     cursor: pointer;
-}/* */
+}
+
+/* */
 
 /*   :::::::   Privacy Policy and Legal notice  :::::::   */
 .prvt-polce-legl-note-box {
@@ -279,7 +287,7 @@ input#password:hover {
     height: 48px;
     position: relative;
     top: 80px;
-    
+
 
 }
 
