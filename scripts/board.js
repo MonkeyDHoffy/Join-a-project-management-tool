@@ -61,6 +61,8 @@ function allowDrop(ev) {
 
 function startDrag(id) {
     currentDragedElement = id;
+    let card = document.getElementsByClassName("board-card");
+    card[id].style.transform = "rotate(0deg)";
 }
 
 function drop(status) {

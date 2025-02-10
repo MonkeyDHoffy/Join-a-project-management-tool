@@ -101,8 +101,8 @@
 }
 
 .board-wrapper {
-    padding: 0 64px;
-    height: calc(100% - 232px);
+    padding: 0 64px 24px 64px;
+    height: calc(100% - 328px);
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -125,7 +125,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 16px;
 }
 
 .board-card {

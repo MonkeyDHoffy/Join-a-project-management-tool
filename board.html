@@ -55,15 +55,16 @@
 
         <div class="content-wrapper">
 
-            <div class="header">
-                <p>Kanban Project Management Tool</p>
-                <div class="header_btn_and_pic"><button class="question-mark"><img class="question-mark-img"
-                            src="./assets/img/navBar/help.svg" alt=""></button>
-                    <div><img class="profile_picture" src="" alt="">
+           
+            <div class="content-right">
+                <div class="header">
+                    <p>Kanban Project Management Tool</p>
+                    <div class="header_btn_and_pic"><button class="question-mark"><img class="question-mark-img"
+                                src="./assets/img/navBar/help.svg" alt=""></button>
+                        <div><img class="profile_picture" src="" alt="">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="content-right">
                 <div class="board-header">
                     <div class="board-header-title">
                         <h2>Board</h2>
@@ -90,27 +91,27 @@
                             <h3>To-Do</h3>
                             <button class="add-to-do btn-title">+</button>
                         </div>
-                        <div ondrop="drop('toDo')" ondragover="allowDrop(event)" draggable="true" id="toDo" class="to-do-field board-field"></div>
+                        <div ondrop="drop('toDo')" ondragover="allowDrop(event)" draggable="true" id="toDo" class="to-do-field board-field overflow-y-auto"></div>
                     </div>
                     <div class="board-title-field-wrapper">
                         <div class="to-do-title flex-title">
                             <h3>In progress</h3>
                             <button class="add-in-progress btn-title">+</button>
                         </div>
-                        <div ondrop="drop('inProgress')" ondragover="allowDrop(event)" draggable="true" id="inProgress" class="in-progress-field board-field"></div>
+                        <div ondrop="drop('inProgress')" ondragover="allowDrop(event)" draggable="true" id="inProgress" class="in-progress-field board-field overflow-y-auto"></div>
                     </div>
                     <div class="board-title-field-wrapper">
                         <div class="to-do-title flex-title">
                             <h3>Await feedback</h3>
                             <button class="add-await-feedback btn-title">+</button>
                         </div>
-                        <div ondrop="drop('awaitFeedback')" ondragover="allowDrop(event)" draggable="true"id="awaitFeedback" class="await-feedback-field board-field"></div>
+                        <div ondrop="drop('awaitFeedback')" ondragover="allowDrop(event)" draggable="true"id="awaitFeedback" class="await-feedback-field board-field overflow-y-auto"></div>
                     </div>
                     <div class="board-title-field-wrapper">
                         <div class="to-do-title flex-title">
                             <h3>Done</h3>
                         </div>
-                        <div ondrop="drop('done')" ondragover="allowDrop(event)" draggable="true" id="done" class="done-field board-field"></div>
+                        <div ondrop="drop('done')" ondragover="allowDrop(event)" draggable="true" id="done" class="done-field board-field overflow-y-auto"></div>
                     </div>
                 </div>
                 <!-- Hier kommt der Code hin! -->
