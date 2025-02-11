@@ -40,18 +40,17 @@ body {
 }
 
 /*   :::::::   'not a user' login   :::::::   */
-.signup-message-box {
+.signup-logo-box {
     width: 100%;
     display: flex;
-    justify-content: flex-end;
     align-items: center;
     padding: 0 48px;
-    position: relative;
     bottom: 80px;
     /*   :::::::   
     z-index: 1;*/
 }
 
+/*
 .nau-sign-up {
     display: flex;
     justify-content: flex-end;
@@ -61,7 +60,7 @@ body {
     margin-right: 40px;
     padding: 8px;
     gap: 16px;
-}
+} 
 
 .nau-sign-up button {
     width: 80px;
@@ -75,7 +74,7 @@ body {
     font-size: 12px;
     font-weight: 300;
     cursor: pointer;
-}
+}*/
 
 .nau-sign-up button:hover,
 .login:hover,
@@ -86,7 +85,8 @@ body {
 
 
 /*   :::::::   logo und animation   :::::::   */
-.p1-logo-box {
+
+/*.p1-logo-box {
     position: fixed;
     height: 100vh;
     width: 100%;
@@ -96,7 +96,7 @@ body {
     align-items: center;
     background: transparent;
     z-index: 800;
-}
+} 
 
 .p1-logo {
     position: absolute;
@@ -114,7 +114,7 @@ body {
     animation-delay: 2s;
     transition-timing-function: ease-in-out;
     z-index: 999;
-}
+}*/
 
 
 /*   :::::::   page 'Login'   :::::::   */
@@ -132,7 +132,7 @@ body {
 
 }
 
-/*   :::::::   'Login' headline   :::::::   */
+/*   :::::::   'signup' headline   :::::::   */
 .sgnp-h1 {
     margin-bottom: 48px;
     width: 315px;
@@ -160,7 +160,7 @@ body {
     line-height: 73.2px;
 }
 
-/*   :::::::   login form   :::::::   */
+/*   :::::::   signup form   :::::::   */
 .sgnp-form {
     display: flex;
     justify-content: center;
@@ -177,6 +177,8 @@ body {
     gap: 16px;
 }
 
+
+/**/
 .sgnp-form form input {
     width: 422px;
     height: 48px;
@@ -262,6 +264,26 @@ input#password:hover {
 
 }
 
+.confirm-priv-polce {
+    width: 100%;
+    display: flex;
+
+}
+.check-priv-polce {
+    width: 20px !important;
+    height: 20px !important;
+    margin-right: 10px !important;
+}
+
+
+
+/*
+.confirm-priv-polce {
+    width: 20px;
+    height: 20px;
+}
+
+
 .guest-login {
     width: 180px;
     height: 40px;
@@ -274,24 +296,25 @@ input#password:hover {
     font-size: 20px;
     font-weight: 500;
     cursor: pointer;
-}
+}*/
 
-/* */
+
 
 /*   :::::::   Privacy Policy and Legal notice  :::::::   */
-.prvt-polce-legl-note-box {
+.priv-polce-legl-note-box {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 48px;
-    position: relative;
-    top: 80px;
+   /* position: relative; 
+    top: 80px;*/
 
+    margin-top: 80px;
 
 }
 
-.prvt-polce-legl-note {
+.priv-polce-legl-note {
     display: flex;
     justify-content: center;
     align-items: center;
