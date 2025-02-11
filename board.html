@@ -7,6 +7,8 @@
     <script src="./scripts/board.js"></script>
     <script src="./scripts/boardTemplate.js"></script>
     <script src="./scripts/script.js"></script>
+    <script src="./scripts/AddTaskScripts/add_task.js"></script>
+    <script src="./scripts/AddTaskScripts/addTaskContactsList.js"></script>
     <title>Join</title>
     <link rel="stylesheet" href="./styles/navBar.css">
     <link rel="stylesheet" href="./styles/standard.css">
@@ -21,7 +23,7 @@
         rel="stylesheet">
 </head>
 
-<body onload="updateHTML()">
+<body onload="updateHTML(); addTaskInit()">
 
     <div class="content-width">
 
@@ -37,8 +39,8 @@
                 <a href="./add_task.html"><button class="nav_btn nav_add_task"><span><img
                                 src="./assets/img/navBar/add_task.svg" alt="">Add Task</span></button></a>
 
-                <a class="active" href="./board.html"><button class="nav_btn nav_board active" disabled="true"><span><img
-                                src="./assets/img/navBar/board.svg" alt="">Board</span></button></a>
+                <a class="active" href="./board.html"><button class="nav_btn nav_board active"
+                        disabled="true"><span><img src="./assets/img/navBar/board.svg" alt="">Board</span></button></a>
 
                 <a href="./contacts.html"><button class="nav_btn nav_contacts"><span><img
                                 src="./assets/img/navBar/contacts.svg" alt="">Contacts</span></button></a>
@@ -60,16 +62,16 @@
 
         <div class="content-wrapper">
 
-           
-            <div class="content-right">
-                <div class="header">
-                    <p>Kanban Project Management Tool</p>
-                    <div class="header_btn_and_pic"> <a class="question-mark" href="./hilfe.html"><img class="question-mark-img"
-                        src="./assets/img/navBar/help.png" alt=""></a>
-                        <div><img class="profile_picture" src="" alt="">
-                        </div>
+            <div class="header">
+                <p>Kanban Project Management Tool</p>
+                <div class="header_btn_and_pic"> <a class="question-mark" href="./hilfe.html"><img
+                            class="question-mark-img" src="./assets/img/navBar/help.png" alt=""></a>
+                    <div><img class="profile_picture" src="" alt="">
                     </div>
                 </div>
+            </div>
+            <div class="content-right">
+
                 <div class="board-header">
                     <div class="board-header-title">
                         <h2>Board</h2>
@@ -96,27 +98,31 @@
                             <h3>To-Do</h3>
                             <button class="add-to-do btn-title">+</button>
                         </div>
-                        <div ondrop="drop('toDo')" ondragover="allowDrop(event)" draggable="true" id="toDo" class="to-do-field board-field overflow-y-auto"></div>
+                        <div ondrop="drop('toDo')" ondragover="allowDrop(event)" draggable="true" id="toDo"
+                            class="to-do-field board-field overflow-y-auto"></div>
                     </div>
                     <div class="board-title-field-wrapper">
                         <div class="to-do-title flex-title">
                             <h3>In progress</h3>
                             <button class="add-in-progress btn-title">+</button>
                         </div>
-                        <div ondrop="drop('inProgress')" ondragover="allowDrop(event)" draggable="true" id="inProgress" class="in-progress-field board-field overflow-y-auto"></div>
+                        <div ondrop="drop('inProgress')" ondragover="allowDrop(event)" draggable="true" id="inProgress"
+                            class="in-progress-field board-field overflow-y-auto"></div>
                     </div>
                     <div class="board-title-field-wrapper">
                         <div class="to-do-title flex-title">
                             <h3>Await feedback</h3>
                             <button class="add-await-feedback btn-title">+</button>
                         </div>
-                        <div ondrop="drop('awaitFeedback')" ondragover="allowDrop(event)" draggable="true"id="awaitFeedback" class="await-feedback-field board-field overflow-y-auto"></div>
+                        <div ondrop="drop('awaitFeedback')" ondragover="allowDrop(event)" draggable="true"
+                            id="awaitFeedback" class="await-feedback-field board-field overflow-y-auto"></div>
                     </div>
                     <div class="board-title-field-wrapper">
                         <div class="to-do-title flex-title">
                             <h3>Done</h3>
                         </div>
-                        <div ondrop="drop('done')" ondragover="allowDrop(event)" draggable="true" id="done" class="done-field board-field overflow-y-auto"></div>
+                        <div ondrop="drop('done')" ondragover="allowDrop(event)" draggable="true" id="done"
+                            class="done-field board-field overflow-y-auto"></div>
                     </div>
                 </div>
             </div>
@@ -125,112 +131,114 @@
 
     <div class="add-task-overlay">
         <div class="add-task-overlay-content">
-            <div class="addTask-header">
-                <h1>Add Task</h1>
-            </div>
-            <div class="addTask-wrapper">
+            <div class="addTask-header-and-input">
+                <div class="addTask-header">
+                    <h1>Add Task</h1>
+                </div>
+                <div class="addTask-wrapper">
 
-                <div class="addTask-left">
-                    <div class="addTask-section addTask-title">
-                        <label style="display: flex;" for="">
-                            <p>Title</p>
-                            <p style="color: red;">*</p>
-                        </label>
-                        <input placeholder="enter a title" type="text">
-                    </div>
+                    <div class="addTask-left">
+                        <div class="addTask-section addTask-title">
+                            <label style="display: flex;" for="">
+                                <p>Title</p>
+                                <p style="color: red;">*</p>
+                            </label>
+                            <input placeholder="enter a title" type="text">
+                        </div>
 
-                    <div class="addTask-section addTask-description">
-                        <label for="">
-                            <p>Description</p>
-                        </label>
-                        <textarea class="description-area"></textarea>
+                        <div class="addTask-section addTask-description">
+                            <label for="">
+                                <p>Description</p>
+                            </label>
+                            <textarea class="description-area"></textarea>
 
-                    </div>
+                        </div>
 
-                    <div class=" addTask-section addTask-assignedTo">
-                        <label for="">
-                            <p>Assigned to</p>
-                        </label>
-                        <div id="assigned-to-input">
-                            <input type="text" id="assigned-to-field" placeholder="Select contacts to assign"
-                                onclick="toggleDropdown(); toggleAssignToIconSrc();">
-                            <img id="input-icon-assign-to" src="./assets/svg/addTasksSvg/arrow_drop_down.svg"
-                                alt="Icon" class="input-icon">
-                            <div class="dropdown-content" id="dropdown-content">
-                                <div onclick="checkIt(0)" class="dropdown-item">
-                                    <div class="addTask-profilepicture">VV</div>
-                                    <label class="custom-checkbox">
-                                        <p>Viktor Vaal</p>
-                                        <img class="cstm-checkbox" src="./assets/svg/addTasksSvg/Checkbutton.svg"
-                                            alt="">
+                        <div class=" addTask-section addTask-assignedTo">
+                            <label for="">
+                                <p>Assigned to</p>
+                            </label>
+                            <div id="assigned-to-input">
+                                <input type="text" id="assigned-to-field" placeholder="Select contacts to assign"
+                                    onclick="toggleDropdown(); toggleAssignToIconSrc();">
+                                <img id="input-icon-assign-to" src="./assets/svg/addTasksSvg/arrow_drop_down.svg"
+                                    alt="Icon" class="input-icon">
+                                <div class="dropdown-content" id="dropdown-content">
+                                    <div onclick="checkIt(0)" class="dropdown-item">
+                                        <div class="addTask-profilepicture">VV</div>
+                                        <label class="custom-checkbox">
+                                            <p>Viktor Vaal</p>
+                                            <img class="cstm-checkbox" src="./assets/svg/addTasksSvg/Checkbutton.svg"
+                                                alt="">
 
-                                    </label>
+                                        </label>
+                                    </div>
+                                    <div onclick="checkIt(1)" class="dropdown-item">
+                                        <div class="addTask-profilepicture">JH</div>
+                                        <label class="custom-checkbox">
+
+                                            <p>Jannik Hoff</p>
+                                            <img class="cstm-checkbox" src="./assets/svg/addTasksSvg/Checkbutton.svg"
+                                                alt="">
+                                        </label>
+                                    </div>
+                                    <div onclick="checkIt(2)" class="dropdown-item">
+                                        <div class="addTask-profilepicture">DH</div>
+                                        <label class="custom-checkbox">
+
+                                            <p>Dany Hudson</p>
+                                            <img class="cstm-checkbox" src="./assets/svg/addTasksSvg/Checkbutton.svg"
+                                                alt="">
+                                        </label>
+                                    </div>
+                                    <!-- Add more users as needed -->
                                 </div>
-                                <div onclick="checkIt(1)" class="dropdown-item">
-                                    <div class="addTask-profilepicture">JH</div>
-                                    <label class="custom-checkbox">
-
-                                        <p>Jannik Hoff</p>
-                                        <img class="cstm-checkbox" src="./assets/svg/addTasksSvg/Checkbutton.svg"
-                                            alt="">
-                                    </label>
-                                </div>
-                                <div onclick="checkIt(2)" class="dropdown-item">
-                                    <div class="addTask-profilepicture">DH</div>
-                                    <label class="custom-checkbox">
-
-                                        <p>Dany Hudson</p>
-                                        <img class="cstm-checkbox" src="./assets/svg/addTasksSvg/Checkbutton.svg"
-                                            alt="">
-                                    </label>
-                                </div>
-                                <!-- Add more users as needed -->
                             </div>
                         </div>
+
+
+
                     </div>
 
 
+                    <div class="addTask-right">
 
-                </div>
-
-
-                <div class="addTask-right">
-
-                    <div class="addTask-section task-date">
-                        <label style="display: flex;" for="">
-                            <p>Due date</p>
-                            <p style="color: red;">*</p>
-                        </label>
-                        <input type="date" style="color: #ccc;">
-                    </div>
-
-                    <div class="addTask-section addTask-prio">
-                        <label for="">
-                            <p>Prio</p>
-                        </label>
-                        <div class="prio-buttons">
-                            <button onclick="changeUrgentBtn()" id="urgent-btn"
-                                class="urgent prio-btn-urgent">Urgent <img id="urgent-img" src="" alt=""></button>
-                            <button onclick="changeMediumBtn()" id="medium-btn"
-                                class="medium prio-btn-medium">Medium
-                                <img id="medium-img" src="" alt=""></button>
-                            <button onclick="changeLowBtn()" id="low-btn" class="prio-btn-low">Low <img id="low-img"
-                                    src="" alt=""></button>
+                        <div class="addTask-section task-date">
+                            <label style="display: flex;" for="">
+                                <p>Due date</p>
+                                <p style="color: red;">*</p>
+                            </label>
+                            <input type="date" style="color: #ccc;">
                         </div>
-                    </div>
 
-                    <div class="addTask-section addTask-category">
-                        <label for="">
-                            <p>Category</p>
-                        </label>
-                        <input type="text">
-                    </div>
+                        <div class="addTask-section addTask-prio">
+                            <label for="">
+                                <p>Prio</p>
+                            </label>
+                            <div class="prio-buttons">
+                                <button onclick="changeUrgentBtn()" id="urgent-btn"
+                                    class="urgent prio-btn-urgent">Urgent <img id="urgent-img" src="" alt=""></button>
+                                <button onclick="changeMediumBtn()" id="medium-btn"
+                                    class="medium prio-btn-medium">Medium
+                                    <img id="medium-img" src="" alt=""></button>
+                                <button onclick="changeLowBtn()" id="low-btn" class="prio-btn-low">Low <img id="low-img"
+                                        src="" alt=""></button>
+                            </div>
+                        </div>
 
-                    <div class="addTask-subtasks">
-                        <label for="">
-                            <p>Subtasks</p>
-                        </label>
-                        <div class="addTask-section"><input type="text" placeholder="hi">
+                        <div class="addTask-section addTask-category">
+                            <label for="">
+                                <p>Category</p>
+                            </label>
+                            <input type="text">
+                        </div>
+
+                        <div class="addTask-subtasks">
+                            <label for="">
+                                <p>Subtasks</p>
+                            </label>
+                            <div class="addTask-section"><input type="text" placeholder="hi">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -245,6 +253,7 @@
                     </button></div>
 
             </div>
+
         </div>
     </div>
 

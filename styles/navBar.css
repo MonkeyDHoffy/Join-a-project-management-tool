@@ -127,7 +127,6 @@ span {
 
 .header {
   padding: 20px 40px 20px 116px;
-  z-index: 3;
   display: flex;
   justify-content: space-between;
   align-items: center;
