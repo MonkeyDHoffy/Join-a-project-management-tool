@@ -59,6 +59,7 @@ span {
 }
 
 .active {
+  pointer-events: none;
   background-color: rgb(26, 34, 46);
 }
 
@@ -97,10 +98,14 @@ span {
   justify-content: end;
 }
 
+.judicial-links-container {
+  padding: 8px 60px;
+  width: 100%;
+}
+
 .nav-link {
   align-self: flex-start;
   color: #cdcdcd;
-  padding-left: 60px;
 }
 
 .nav-link:hover {
