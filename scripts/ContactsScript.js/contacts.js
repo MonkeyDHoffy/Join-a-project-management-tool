@@ -120,7 +120,7 @@ function hideOverlay() {
 function renderContact() {
   let contactItem = document.getElementById("contact-information");
   contactItem.innerHTML = "";
-  contactItem.innerHTML += ` <div class="pic-and-name">
+  contactItem.innerHTML += ` <div class="slider"><div class="pic-and-name">
                                 <div class="contact-avatar">
                                     <div class="avatar-circle">TW</div>
                                 </div>
@@ -175,6 +175,7 @@ function renderContact() {
                                     <p>+49 123 456 789</p>
                                     <br style="height:15px;">
                                 </div>
+                            </div>
                             </div>`;
 }
 
