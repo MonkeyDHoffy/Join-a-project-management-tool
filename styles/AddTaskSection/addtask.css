@@ -4,9 +4,11 @@
   flex-direction: column;
   gap: 32px;
 }
+
 .addTask-header {
   width: 100%;
   display: flex;
+
   h1 {
     padding-left: 32px;
     font-weight: 700;
@@ -65,7 +67,7 @@
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 20px;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
@@ -74,6 +76,15 @@
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
   outline: none;
 }
+
+.input [type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+
+[type="date"]::-webkit-calendar-picker-indicator {
+  background: #fff url(./calendar.png) 97% 50% no-repeat
+}
+
 .description-area {
   height: 136px;
   width: 440px;
@@ -127,9 +138,11 @@
   display: flex;
   border: 1px solid #ccc;
   border-radius: 5px;
+
   input {
     border: none;
   }
+
   button {
     border-radius: 5px;
     background-color: white;
@@ -168,8 +181,8 @@
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.addTask-subtasks:focus {
-}
+.addTask-subtasks:focus {}
+
 .description-area {
   height: 136px;
   gap: 4px;
@@ -179,6 +192,7 @@
   max-height: 136px;
   resize: none;
 }
+
 .prio-buttons {
   display: flex;
   gap: 20px;

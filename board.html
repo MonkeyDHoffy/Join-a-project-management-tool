@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="./styles/standard.css">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./styles/board.css">
+    <link rel="stylesheet" href="./styles/AddTaskSection/addtask.css">
+    <link rel="stylesheet" href="./styles/AddTaskSection/addTaskContactsList.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -117,12 +119,134 @@
                         <div ondrop="drop('done')" ondragover="allowDrop(event)" draggable="true" id="done" class="done-field board-field overflow-y-auto"></div>
                     </div>
                 </div>
-                <!-- Hier kommt der Code hin! -->
-
             </div>
         </div>
     </div>
 
+    <div class="add-task-overlay">
+        <div class="add-task-overlay-content">
+            <div class="addTask-header">
+                <h1>Add Task</h1>
+            </div>
+            <div class="addTask-wrapper">
+
+                <div class="addTask-left">
+                    <div class="addTask-section addTask-title">
+                        <label style="display: flex;" for="">
+                            <p>Title</p>
+                            <p style="color: red;">*</p>
+                        </label>
+                        <input placeholder="enter a title" type="text">
+                    </div>
+
+                    <div class="addTask-section addTask-description">
+                        <label for="">
+                            <p>Description</p>
+                        </label>
+                        <textarea class="description-area"></textarea>
+
+                    </div>
+
+                    <div class=" addTask-section addTask-assignedTo">
+                        <label for="">
+                            <p>Assigned to</p>
+                        </label>
+                        <div id="assigned-to-input">
+                            <input type="text" id="assigned-to-field" placeholder="Select contacts to assign"
+                                onclick="toggleDropdown(); toggleAssignToIconSrc();">
+                            <img id="input-icon-assign-to" src="./assets/svg/addTasksSvg/arrow_drop_down.svg"
+                                alt="Icon" class="input-icon">
+                            <div class="dropdown-content" id="dropdown-content">
+                                <div onclick="checkIt(0)" class="dropdown-item">
+                                    <div class="addTask-profilepicture">VV</div>
+                                    <label class="custom-checkbox">
+                                        <p>Viktor Vaal</p>
+                                        <img class="cstm-checkbox" src="./assets/svg/addTasksSvg/Checkbutton.svg"
+                                            alt="">
+
+                                    </label>
+                                </div>
+                                <div onclick="checkIt(1)" class="dropdown-item">
+                                    <div class="addTask-profilepicture">JH</div>
+                                    <label class="custom-checkbox">
+
+                                        <p>Jannik Hoff</p>
+                                        <img class="cstm-checkbox" src="./assets/svg/addTasksSvg/Checkbutton.svg"
+                                            alt="">
+                                    </label>
+                                </div>
+                                <div onclick="checkIt(2)" class="dropdown-item">
+                                    <div class="addTask-profilepicture">DH</div>
+                                    <label class="custom-checkbox">
+
+                                        <p>Dany Hudson</p>
+                                        <img class="cstm-checkbox" src="./assets/svg/addTasksSvg/Checkbutton.svg"
+                                            alt="">
+                                    </label>
+                                </div>
+                                <!-- Add more users as needed -->
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+                <div class="addTask-right">
+
+                    <div class="addTask-section task-date">
+                        <label style="display: flex;" for="">
+                            <p>Due date</p>
+                            <p style="color: red;">*</p>
+                        </label>
+                        <input type="date" style="color: #ccc;">
+                    </div>
+
+                    <div class="addTask-section addTask-prio">
+                        <label for="">
+                            <p>Prio</p>
+                        </label>
+                        <div class="prio-buttons">
+                            <button onclick="changeUrgentBtn()" id="urgent-btn"
+                                class="urgent prio-btn-urgent">Urgent <img id="urgent-img" src="" alt=""></button>
+                            <button onclick="changeMediumBtn()" id="medium-btn"
+                                class="medium prio-btn-medium">Medium
+                                <img id="medium-img" src="" alt=""></button>
+                            <button onclick="changeLowBtn()" id="low-btn" class="prio-btn-low">Low <img id="low-img"
+                                    src="" alt=""></button>
+                        </div>
+                    </div>
+
+                    <div class="addTask-section addTask-category">
+                        <label for="">
+                            <p>Category</p>
+                        </label>
+                        <input type="text">
+                    </div>
+
+                    <div class="addTask-subtasks">
+                        <label for="">
+                            <p>Subtasks</p>
+                        </label>
+                        <div class="addTask-section"><input type="text" placeholder="hi">
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="addTask-footer">
+                <div><span style="color:red">*</span><span>This field is required</span></div>
+                <div class="display-flex clear-create"><button class="clear-btn">Clear <img
+                            src="./assets/svg/addTasksSvg/clear.svg" alt=""></button><button
+                        class="createTask-button">Create Task<img src="./assets/svg/addTasksSvg/cross.svg" alt="">
+                    </button></div>
+
+            </div>
+        </div>
+    </div>
 
 
 
