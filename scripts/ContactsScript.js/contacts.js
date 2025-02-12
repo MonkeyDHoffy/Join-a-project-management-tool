@@ -53,7 +53,7 @@ function getOverlayTemplate() {
               <div class="content-overlay-left">
                   <img src="./assets/img/Logo.png" alt="">
                   <p>Add contact</p>
-                  <span>Tasks are better with a team</span>
+                  <span>Tasks are better with a team!</span>
                   <div class="blue-line"></div>
               </div>
 
@@ -97,12 +97,7 @@ function getOverlayTemplate() {
 function showOverlay() {
   let overlayContainer = document.getElementById("overlay-container");
   overlayContainer.innerHTML = getOverlayTemplate();
-
-  // Füge die Klasse "show" hinzu, um das Overlay anzuzeigen
-  setTimeout(() => {
-    document.querySelector(".add-contact-overlay").classList.add("show");
-    document.querySelector(".dark-background").style.display = "block";
-  }, 10);
+  document.querySelector(".dark-background").style.display = "block";
 }
 
 // Funktion zum Ausblenden des Overlays
@@ -113,7 +108,7 @@ function hideOverlay() {
     setTimeout(() => {
       overlay.remove();
       document.querySelector(".dark-background").style.display = "none";
-    }, 300); // Wartezeit für die Animation
+    }, 300);
   }
 }
 
