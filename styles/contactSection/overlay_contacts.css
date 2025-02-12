@@ -63,14 +63,17 @@
 }
 
 .close-icon {
+  z-index: 7;
   width: 60px;
   height: 60px;
   padding: 8px;
 }
 
 .close-icon:hover {
-  scale: 1.5;
+  scale: 1;
+  background-color: #ccc;
   cursor: pointer;
+  border-radius: 50%;
 }
 .content-overlay-left {
   width: 453px;
