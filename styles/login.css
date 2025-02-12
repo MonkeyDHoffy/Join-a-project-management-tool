@@ -21,6 +21,7 @@ body {
 
 
 }
+
 /*   :::::::   content wrapper   :::::::   */
 .login-content-box {
     background-color: #d8eef8;
@@ -72,8 +73,8 @@ body {
     align-items: center;
     padding: 0 48px;
     position: relative;
-    bottom: 80px;    
-   /*   :::::::   
+    bottom: 80px;
+    /*   :::::::   
     z-index: 1;*/
 }
 
@@ -142,7 +143,6 @@ body {
     animation-duration: 1s;
     animation-delay: 2s;
     animation-timing-function: ease-in-out;
-   /* transition-timing-function: ease-in-out;*/
     z-index: 999;
 }
 
@@ -172,7 +172,7 @@ body {
     min-height: 449px;
     background-color: rgb(255, 255, 255);
     border-radius: 30px;
-    
+
 }
 
 /*   :::::::   'Login' headline   :::::::   */
@@ -296,7 +296,7 @@ input#password {
     height: 48px;
     position: relative;
     top: 80px;
-    
+
 
 }
 
@@ -324,4 +324,24 @@ input#password {
 
 .d-none {
     display: none;
+}
+
+/*   :::::::   media query  :::::::   */
+
+@media screen and (width < 428px) {
+
+    .backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 1);
+        z-index: 0;
+    }
+
+    .p1-logo img {
+        content: none;
+        background: url('../assets/svg/logo.svg') no-repeat;
+    }
 }
