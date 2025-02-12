@@ -10,7 +10,6 @@ function toggleDropdown() {
 }
 
 // Close the dropdown if the user clicks outside of it
-// Close the dropdown if the user clicks outside of it
 window.onclick = function (event) {
   if (
     !event.target.matches("#assigned-to-field") &&
@@ -43,38 +42,43 @@ function toggleAssignToIconSrc() {
 }
 
 //Custom-Checkbox-----------------------------------------------------------------------------------
-function checkIt(id) {
-  const item = document.getElementsByClassName("dropdown-item")[id];
-  const img = item.querySelector(".cstm-checkbox");
-  const checkedSrc = "./assets/svg/addTasksSvg/checked.svg"; // Path to your custom checked image
-  const uncheckedSrc = "./assets/svg/addTasksSvg/Checkbutton.svg"; // Path to your custom unchecked image
+function checkIt(name) {
+  let container = document.getElementById("dropdown-content");
+  let dropdownItems = container.getElementsByClassName("dropdown-item");
 
-  if (img.src.endsWith("Checkbutton.svg")) {
-    img.src = checkedSrc;
-    item.classList.add("checked");
-  } else {
-    img.src = uncheckedSrc;
-    item.classList.remove("checked");
+  for (let i = 0; i < dropdownItems.length; i++) {
+    let item = dropdownItems[i];
+    let itemName = item.querySelector("p").textContent;
+
+    if (itemName === name) {
+      let img = item.querySelector(".cstm-checkbox");
+      let checkedSrc = "./assets/svg/addTasksSvg/checked.svg";
+      let uncheckedSrc = "./assets/svg/addTasksSvg/Checkbutton.svg";
+
+      if (img.src.endsWith("Checkbutton.svg")) {
+        img.src = checkedSrc;
+        item.classList.add("checked");
+      } else {
+        img.src = uncheckedSrc;
+        item.classList.remove("checked");
+      }
+      break; // Stop after finding the correct item
+    }
   }
 }
 
 //Create Task Button validation ---------------------------------------------------------------------
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Get references to the title input, date input, and create task button
   let titleInput = document.querySelector(".addTask-title input");
   let dateInput = document.querySelector(".task-date input");
   let createTaskButton = document.querySelector(".createTask-button");
 
-  // Function to check if both inputs are filled
   function validateInputs() {
     // Check if both title and date inputs are not empty
-    // trim() doesn't count spaces as input, so it will return false if the input is only spaces
     if (titleInput.value.trim() !== "" && dateInput.value.trim() !== "") {
-      // Enable the create task button
       createTaskButton.disabled = false;
     } else {
-      // Disable the create task button
       createTaskButton.disabled = true;
     }
   }
@@ -87,32 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
   validateInputs();
 });
 
-// Search Functionality-------------------------------------------------------------------------------
-
-document.addEventListener("DOMContentLoaded", function () {
-  let assignedToField = document.getElementById("assigned-to-field");
-  let dropdownContent = document.getElementById("dropdown-content");
-  let dropdownItems = dropdownContent.getElementsByClassName("dropdown-item");
-
-  // Function to filter dropdown items based on search input
-  function filterDropdownItems() {
-    let filter = assignedToField.value.toLowerCase();
-    for (let i = 0; i < dropdownItems.length; i++) {
-      let item = dropdownItems[i];
-      let name = item.querySelector("p").textContent.toLowerCase();
-      if (name.includes(filter)) {
-        item.style.display = "";
-      } else {
-        item.style.display = "none";
-      }
-    }
-  }
-
-  // Add event listener to the assigned-to-field input to filter dropdown items on input change
-  assignedToField.addEventListener("input", filterDropdownItems);
-});
-
-// Alphabetische Sortierung der Dropdown-Liste---------------------------------------------------------
+// Search Functionality and Alphabetical Sorting------------------------------------------------------
 
 document.addEventListener("DOMContentLoaded", function () {
   let assignedToField = document.getElementById("assigned-to-field");
@@ -121,59 +100,40 @@ document.addEventListener("DOMContentLoaded", function () {
     dropdownContent.getElementsByClassName("dropdown-item")
   );
 
-  // Function to filter dropdown items based on search input
-  function filterDropdownItems() {
-    let filter = assignedToField.value.toLowerCase();
-    for (let i = 0; i < dropdownItems.length; i++) {
-      let item = dropdownItems[i];
-      let name = item.querySelector("p").textContent.toLowerCase();
-      if (name.includes(filter)) {
-        item.style.display = "";
-      } else {
-        item.style.display = "none";
-      }
-    }
-  }
-
-  //alphabetische Sortierung der Dropdown-Liste---------------------------------------
-
-  // Function to sort dropdown items alphabetically and add letter dividers
+  // Function to sort dropdown items
   function sortDropdownItems() {
-    // Sort the dropdown items alphabetically by the text content of the <p> element
     dropdownItems.sort((a, b) => {
-      let nameA = a.querySelector("p").textContent.toLowerCase();
-      let nameB = b.querySelector("p").textContent.toLowerCase();
+      const nameA = a.querySelector("p").textContent.toUpperCase();
+      const nameB = b.querySelector("p").textContent.toUpperCase();
       return nameA.localeCompare(nameB);
     });
 
-    // Clear the current dropdown content
-    dropdownContent.innerHTML = "";
+    // Remove all existing elements from the container
+    while (dropdownContent.firstChild) {
+      dropdownContent.removeChild(dropdownContent.firstChild);
+    }
 
-    // Track the current starting letter
-    let currentLetter = "";
+    // Add the sorted elements back to the container
+    dropdownItems.forEach((item) => dropdownContent.appendChild(item));
+  }
 
-    // Append sorted items to the dropdown content with letter dividers
+  // Function to filter dropdown items based on search input
+  function filterDropdownItems() {
+    let filter = assignedToField.value.toLowerCase();
     dropdownItems.forEach((item) => {
-      let name = item.querySelector("p").textContent;
-      let firstLetter = name.charAt(0).toUpperCase();
-
-      // If the first letter has changed, add a new letter divider
-      if (firstLetter !== currentLetter) {
-        currentLetter = firstLetter;
-        let letterDivider = document.createElement("div");
-        letterDivider.className = "letter-divider";
-        letterDivider.innerHTML = `<p class="current-letter">${currentLetter}</p>`;
-        dropdownContent.appendChild(letterDivider);
-      }
-
-      // Append the item to the dropdown content
-      dropdownContent.appendChild(item);
+      let name = item.querySelector("p").textContent.toLowerCase();
+      item.style.display = name.includes(filter) ? "" : "none";
     });
   }
 
-  // Add event listener to the assigned-to-field input to filter dropdown items on input change
+  // Event listener for search input
   assignedToField.addEventListener("input", filterDropdownItems);
 
-  // Initial sorting of dropdown items
+  // Sort dropdown items initially
   sortDropdownItems();
+
+  // Re-sort when dropdown is opened
+  document
+    .getElementById("assigned-to-field")
+    .addEventListener("click", sortDropdownItems);
 });

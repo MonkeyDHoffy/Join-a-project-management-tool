@@ -35,7 +35,7 @@
   animation: slideInFromRight 0.3s forwards;
 }
 
-.add-contact-overlay.hide {
+.hide {
   animation: slideOutToRight 0.3s forwards;
 }
 
@@ -52,7 +52,6 @@
 }
 .content-overlay-wrapper {
   display: flex;
-  width: 1212px;
   height: 492px;
 
   border-radius: 30px;
@@ -64,14 +63,17 @@
 }
 
 .close-icon {
+  z-index: 7;
   width: 60px;
   height: 60px;
   padding: 8px;
 }
 
 .close-icon:hover {
-  scale: 1.5;
+  scale: 1;
+  background-color: #ccc;
   cursor: pointer;
+  border-radius: 50%;
 }
 .content-overlay-left {
   width: 453px;
@@ -95,7 +97,10 @@
   }
 
   span {
-    padding-left: 20px;
+    font-weight: 400;
+    font-size: 27px;
+    line-height: 32.4px;
+    letter-spacing: 0%;
   }
 }
 
@@ -103,15 +108,17 @@
   width: 90px;
   border-top: 3px solid #29abe2;
   padding-left: 30px;
+  margin-top: 14px;
 }
 
 .content-overlay-right {
+  position: relative;
+  left: 35px;
   width: calc(100% - 453px);
-  margin-left: 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .input-group {
