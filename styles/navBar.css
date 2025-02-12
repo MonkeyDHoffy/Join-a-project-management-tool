@@ -126,7 +126,7 @@ span {
 }
 
 .header {
-  z-index: 3;
+
   padding: 20px 40px 20px 116px;
   display: flex;
   justify-content: space-between;

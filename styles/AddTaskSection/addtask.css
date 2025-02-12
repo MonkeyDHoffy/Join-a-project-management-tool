@@ -33,7 +33,6 @@
 }
 
 .addTask-right {
-  border-left: solid 1px #c9cdd3;
   width: 50%;
   padding-left: 32px;
 }
@@ -170,6 +169,11 @@
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
+}
+
+.add-task-vl {
+  width: 1px;
+  background-color: #D1D1D1;
 }
 
 .addTask-subtasks input {
