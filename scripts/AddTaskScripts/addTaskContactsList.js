@@ -1,32 +1,4 @@
 /**
- * Toggles the display of the dropdown content.
- * If the dropdown is currently visible, it hides it.
- * If the dropdown is currently hidden, it shows it.
- */
-function toggleDropdown() {
-  let dropdown = document.getElementById("dropdown-content");
-  dropdown.style.display =
-    dropdown.style.display === "block" ? "none" : "block";
-}
-
-// Close the dropdown if the user clicks outside of it
-// Close the dropdown if the user clicks outside of it
-window.onclick = function (event) {
-  if (
-    !event.target.matches("#assigned-to-field") &&
-    !event.target.closest(".dropdown-content")
-  ) {
-    let dropdowns = document.getElementsByClassName("dropdown-content");
-    for (let i = 0; i < dropdowns.length; i++) {
-      let openDropdown = dropdowns[i];
-      if (openDropdown.style.display === "block") {
-        openDropdown.style.display = "none";
-      }
-    }
-  }
-};
-
-/**
  * Toggles the source of the "assign to" icon between a dropdown arrow and an upward arrow.
  * Changes the icon's source based on its current state.
  */
@@ -44,10 +16,10 @@ function toggleAssignToIconSrc() {
 
 //Custom-Checkbox-----------------------------------------------------------------------------------
 function checkIt(id) {
-  const item = document.getElementsByClassName("dropdown-item")[id];
-  const img = item.querySelector(".cstm-checkbox");
-  const checkedSrc = "./assets/svg/addTasksSvg/checked.svg"; // Path to your custom checked image
-  const uncheckedSrc = "./assets/svg/addTasksSvg/Checkbutton.svg"; // Path to your custom unchecked image
+  let item = document.getElementsByClassName("dropdown-item")[id];
+  let img = item.querySelector(".cstm-checkbox");
+  let checkedSrc = "./assets/svg/addTasksSvg/checked.svg"; // Path to your custom checked image
+  let uncheckedSrc = "./assets/svg/addTasksSvg/Checkbutton.svg"; // Path to your custom unchecked image
 
   if (img.src.endsWith("Checkbutton.svg")) {
     img.src = checkedSrc;
@@ -112,6 +84,36 @@ document.addEventListener("DOMContentLoaded", function () {
   assignedToField.addEventListener("input", filterDropdownItems);
 });
 
+// Dropdown-Liste-------------------------------------------------------------------------------------
+
+/**
+ * Toggles the display of the dropdown content.
+ * If the dropdown is currently visible, it hides it.
+ * If the dropdown is currently hidden, it shows it.
+ */
+function toggleDropdown() {
+  let dropdown = document.getElementById("dropdown-content");
+  dropdown.style.display =
+    dropdown.style.display === "block" ? "none" : "block";
+}
+
+// Close the dropdown if the user clicks outside of it
+// Close the dropdown if the user clicks outside of it
+window.onclick = function (event) {
+  if (
+    !event.target.matches("#assigned-to-field") &&
+    !event.target.closest(".dropdown-content")
+  ) {
+    let dropdowns = document.getElementsByClassName("dropdown-content");
+    for (let i = 0; i < dropdowns.length; i++) {
+      let openDropdown = dropdowns[i];
+      if (openDropdown.style.display === "block") {
+        openDropdown.style.display = "none";
+      }
+    }
+  }
+};
+
 // Alphabetische Sortierung der Dropdown-Liste---------------------------------------------------------
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -150,7 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
     dropdownContent.innerHTML = "";
 
     // Track the current starting letter
-    let currentLetter = "";
+    // let currentLetter = "";
 
     // Append sorted items to the dropdown content with letter dividers
     dropdownItems.forEach((item) => {
@@ -158,13 +160,13 @@ document.addEventListener("DOMContentLoaded", function () {
       let firstLetter = name.charAt(0).toUpperCase();
 
       // If the first letter has changed, add a new letter divider
-      if (firstLetter !== currentLetter) {
-        currentLetter = firstLetter;
-        let letterDivider = document.createElement("div");
-        letterDivider.className = "letter-divider";
-        letterDivider.innerHTML = `<p class="current-letter">${currentLetter}</p>`;
-        dropdownContent.appendChild(letterDivider);
-      }
+      // if (firstLetter !== currentLetter) {
+      //   currentLetter = firstLetter;
+      //   let letterDivider = document.createElement("div");
+      //   letterDivider.className = "letter-divider";
+      //   letterDivider.innerHTML = `<p class="current-letter">${currentLetter}</p>`;
+      //   dropdownContent.appendChild(letterDivider);
+      // }
 
       // Append the item to the dropdown content
       dropdownContent.appendChild(item);
@@ -172,6 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Add event listener to the assigned-to-field input to filter dropdown items on input change
+  //same like an onclick event...if the input field is clicked, the dropdown list will be shown
   assignedToField.addEventListener("input", filterDropdownItems);
 
   // Initial sorting of dropdown items
