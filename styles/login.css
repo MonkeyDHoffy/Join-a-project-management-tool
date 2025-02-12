@@ -141,7 +141,8 @@ body {
     animation: shrink-move forwards;
     animation-duration: 1s;
     animation-delay: 2s;
-    transition-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+   /* transition-timing-function: ease-in-out;*/
     z-index: 999;
 }
 
