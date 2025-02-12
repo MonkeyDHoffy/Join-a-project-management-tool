@@ -42,18 +42,28 @@ function toggleAssignToIconSrc() {
 }
 
 //Custom-Checkbox-----------------------------------------------------------------------------------
-function checkIt(id) {
-  let item = document.getElementsByClassName("dropdown-item")[id];
-  let img = item.querySelector(".cstm-checkbox");
-  let checkedSrc = "./assets/svg/addTasksSvg/checked.svg"; // Path to your custom checked image
-  let uncheckedSrc = "./assets/svg/addTasksSvg/Checkbutton.svg"; // Path to your custom unchecked image
+function checkIt(name) {
+  let container = document.getElementById("dropdown-content");
+  let dropdownItems = container.getElementsByClassName("dropdown-item");
 
-  if (img.src.endsWith("Checkbutton.svg")) {
-    img.src = checkedSrc;
-    item.classList.add("checked");
-  } else {
-    img.src = uncheckedSrc;
-    item.classList.remove("checked");
+  for (let i = 0; i < dropdownItems.length; i++) {
+    let item = dropdownItems[i];
+    let itemName = item.querySelector("p").textContent;
+
+    if (itemName === name) {
+      let img = item.querySelector(".cstm-checkbox");
+      let checkedSrc = "./assets/svg/addTasksSvg/checked.svg";
+      let uncheckedSrc = "./assets/svg/addTasksSvg/Checkbutton.svg";
+
+      if (img.src.endsWith("Checkbutton.svg")) {
+        img.src = checkedSrc;
+        item.classList.add("checked");
+      } else {
+        img.src = uncheckedSrc;
+        item.classList.remove("checked");
+      }
+      break; // Stop after finding the correct item
+    }
   }
 }
 
@@ -81,27 +91,49 @@ document.addEventListener("DOMContentLoaded", function () {
   validateInputs();
 });
 
-// Search Functionality-------------------------------------------------------------------------------
+// Search Functionality and Alphabetical Sorting------------------------------------------------------
 
 document.addEventListener("DOMContentLoaded", function () {
   let assignedToField = document.getElementById("assigned-to-field");
   let dropdownContent = document.getElementById("dropdown-content");
-  let dropdownItems = dropdownContent.getElementsByClassName("dropdown-item");
+  let dropdownItems = Array.from(
+    dropdownContent.getElementsByClassName("dropdown-item")
+  );
+
+  // Function to sort dropdown items
+  function sortDropdownItems() {
+    dropdownItems.sort((a, b) => {
+      const nameA = a.querySelector("p").textContent.toUpperCase();
+      const nameB = b.querySelector("p").textContent.toUpperCase();
+      return nameA.localeCompare(nameB);
+    });
+
+    // Remove all existing elements from the container
+    while (dropdownContent.firstChild) {
+      dropdownContent.removeChild(dropdownContent.firstChild);
+    }
+
+    // Add the sorted elements back to the container
+    dropdownItems.forEach((item) => dropdownContent.appendChild(item));
+  }
 
   // Function to filter dropdown items based on search input
   function filterDropdownItems() {
     let filter = assignedToField.value.toLowerCase();
-    for (let i = 0; i < dropdownItems.length; i++) {
-      let item = dropdownItems[i];
+    dropdownItems.forEach((item) => {
       let name = item.querySelector("p").textContent.toLowerCase();
-      if (name.includes(filter)) {
-        item.style.display = "";
-      } else {
-        item.style.display = "none";
-      }
-    }
+      item.style.display = name.includes(filter) ? "" : "none";
+    });
   }
 
-  // Add event listener to the assigned-to-field input to filter dropdown items on input change
+  // Event listener for search input
   assignedToField.addEventListener("input", filterDropdownItems);
+
+  // Sort dropdown items initially
+  sortDropdownItems();
+
+  // Re-sort when dropdown is opened
+  document
+    .getElementById("assigned-to-field")
+    .addEventListener("click", sortDropdownItems);
 });
