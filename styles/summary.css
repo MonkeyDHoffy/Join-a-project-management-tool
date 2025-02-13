@@ -1,141 +1,141 @@
 .summary-wrapper {
-    height: calc(100vh - 96px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 64px;
-    gap: 40px;
+  height: calc(100vh - 96px);
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  margin-top: 55px;
+  padding-left: 64px;
+  gap: 40px;
 }
 
 .headline {
-    display: flex;
-    gap: 30px;
-    align-items: center;
+  display: flex;
+  gap: 30px;
+  align-items: center;
 }
 
 .summary-overview {
-    width: 560px;
-    height: 562px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  width: 560px;
+  height: 562px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .summary-overview button {
-    box-shadow: 0px 0px 4px 0px #0000001A;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 30px;
-    flex-grow: 1;
+  box-shadow: 0px 0px 4px 0px #0000001a;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  flex-grow: 1;
 }
 
 .to-do-done {
-    display: flex;
-    justify-content: space-between;
-    gap: 28px;
+  display: flex;
+  justify-content: space-between;
+  gap: 28px;
 }
 
 .to-do-done button {
-    padding: 38px 50px;
-    max-width: 264px;
-    max-height: 168px;
+  padding: 38px 50px;
+  max-width: 264px;
+  max-height: 168px;
 }
 
 .summary-overview button:hover {
-    background-color: #2A3647;
-    transform: scale(1.1);
-    transition: all ease-in-out 0.08s;
-    color: white;
+  background-color: #2a3647;
+  transform: scale(1.1);
+  transition: all ease-in-out 0.08s;
+  color: white;
 }
 
 .btn-text {
-    height: 101px;
+  height: 101px;
 }
 
 svg {
-    transition: all ease-in-out 0.08s;
+  transition: all ease-in-out 0.08s;
 }
 
 .to-do:hover circle {
-    fill: white;
+  fill: white;
 }
 
-.to-do:hover path{
-    fill: #2A3647;
+.to-do:hover path {
+  fill: #2a3647;
 }
 
 .checked:hover circle {
-    fill: white;
+  fill: white;
 }
 
-.checked:hover path{
-    stroke: #2A3647;
+.checked:hover path {
+  stroke: #2a3647;
 }
 
 h2 {
-    font-size: 64px;
+  font-size: 64px;
 }
 
 .vl-gray {
-    height: 102.02px;
-    border: 1px solid #D1D1D1
+  height: 102.02px;
+  border: 1px solid #d1d1d1;
 }
 
 .important-info {
-    display: flex;
+  display: flex;
 }
 
 .important-info button {
-    height: 168px;
-    padding: 28px 50px;
-    display: flex;
-    gap: 61px;
+  height: 168px;
+  padding: 28px 50px;
+  display: flex;
+  gap: 61px;
 }
 
 .urgent-tasks {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-
+  display: flex;
+  align-items: center;
+  gap: 18px;
 }
 
 .urgent-tasks img {
-    height: 60px;
+  height: 60px;
 }
 
 .upcoming-deadline {
-    display: flex;
-    flex-direction: column;
-    gap: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
 }
 
 .deadline-date {
-    font-size: 21px;
-    font-weight: 700;
+  font-size: 21px;
+  font-weight: 700;
 }
 
 .board-overview {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .board-overview button {
-    max-width: 168px;
-    max-height: 168px;
-    padding: 25px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 13px;
+  max-width: 168px;
+  max-height: 168px;
+  padding: 25px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
 }
 
 .greeting {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 
 .user-name {
-    color: #29ABE2;
+  color: #29abe2;
 }
