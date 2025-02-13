@@ -148,7 +148,7 @@ input#email {
     padding: 5px 16px;
 }
 
-input#password {
+input#password1, input#password2 {
     background-image: url('../assets/svg/lock.svg');
     background-size: 20px 16px;
     background-repeat: no-repeat;
