@@ -33,7 +33,6 @@ body {
     max-width: 1440px;
     height: 100vh;
     min-height: 80vh;
-    /*background-color: #F6F7F8;*/
     padding: 48px 0;
     position: relative;
     overflow: hidden;
@@ -45,7 +44,9 @@ body {
     display: flex;
     align-items: center;
     padding: 0 48px;
-    bottom: 80px;
+    bottom: 316px;
+    /*:::::*/
+    position: relative;
     /*   :::::::   
     z-index: 1;*/
 }
@@ -61,7 +62,6 @@ body {
 
 /*   :::::::   page 'Login'   :::::::   */
 .signup-content {
-    background-color: rgb(214, 243, 186);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -71,6 +71,8 @@ body {
     min-height: 449px;
     background-color: rgb(255, 255, 255);
     border-radius: 30px;
+
+    position: absolute;
 
 }
 
