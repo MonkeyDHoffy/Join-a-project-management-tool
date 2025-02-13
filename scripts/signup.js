@@ -10,7 +10,10 @@ function showSignUpMsg() {
 
 
     console.log('showSignUpMsg is called');
-
+    setTimeout(() => {
+        window.location.href = "./index.html";
+    }, 2000);
+    
    
 
 }
