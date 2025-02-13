@@ -80,7 +80,7 @@ function getOverlayTemplate() {
   
                         <div class="button-group">
                             <button class="delete-btn-overlay">Delete</button>
-                            <button class="save-btn-overlay">Create contact ✓</button>
+                            <button onclick="hideOverlay()" class="create-btn-overlay">Create contact ✓</button>
                         </div>
                     </div>
                 </div>
@@ -103,6 +103,11 @@ function showOverlay() {
   let overlayContainer = document.getElementById("overlay-container");
   overlayContainer.innerHTML = getOverlayTemplate();
   document.querySelector(".dark-background").style.display = "block";
+
+  let saveButton = overlayContainer.querySelector(".create-btn-overlay");
+  saveButton.addEventListener("click", (event) => {
+    showNotification("Contact successfully created", event);
+  });
 }
 
 // Funktion zum Ausblenden des Overlays
@@ -115,6 +120,28 @@ function hideOverlay() {
       document.querySelector(".dark-background").style.display = "none";
     }, 300);
   }
+}
+
+function showNotification(message, event) {
+  let notification = document.createElement("div");
+  notification.className = "click-notification";
+  notification.textContent = message;
+  document.body.appendChild(notification);
+
+  // Position the notification near the cursor
+  notification.style.left = `${event.clientX + 10}px`;
+  notification.style.top = `${event.clientY + 10}px`;
+
+  setTimeout(() => {
+    notification.classList.add("show");
+  }, 100);
+
+  setTimeout(() => {
+    notification.classList.remove("show");
+    setTimeout(() => {
+      notification.remove();
+    }, 500);
+  }, 2000);
 }
 
 function renderContact() {

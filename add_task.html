@@ -16,8 +16,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Moul&family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Press+Start+2P&family=Sniglet:wght@400;800&family=Varela+Round&display=swap"
         rel="stylesheet">
+
     <script src="./scripts/AddTaskScripts/add_task.js"></script>
     <script src="./scripts/AddTaskScripts/addTaskContactsList.js"></script>
+
 </head>
 
 
@@ -183,14 +185,14 @@
 
 
                         </div>
-                       
+
                     </div>
                     <div class="addTask-footer">
                         <div><span style="color:red">*</span><span>This field is required</span></div>
                         <div class="display-flex clear-create"><button class="clear-btn">Clear <img
                                     src="./assets/svg/addTasksSvg/clear.svg" alt=""></button><button
-                                class="createTask-button">Create Task<img src="./assets/svg/addTasksSvg/cross.svg"
-                                    alt="">
+                                onclick="taskCreated(event)" class="createTask-button">Create Task<img
+                                    src="./assets/svg/addTasksSvg/cross.svg" alt="">
                             </button></div>
 
                     </div>

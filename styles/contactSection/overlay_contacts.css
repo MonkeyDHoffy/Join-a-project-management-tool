@@ -158,7 +158,8 @@ button:hover {
   border: 1px solid black;
 }
 
-.save-btn-overlay {
+.save-btn-overlay,
+.create-btn-overlay {
   padding: 10px 15px;
   margin: 10px 5px;
   border: none;
@@ -193,4 +194,21 @@ button:hover {
   outline: none;
   border-color: #29abe2;
   box-shadow: 0 0 5px rgba(41, 171, 226, 0.5);
+}
+
+.click-notification {
+  z-index: 2000;
+  position: fixed;
+  background-color: #2a3647;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
+}
+
+.click-notification.show {
+  opacity: 1;
 }
