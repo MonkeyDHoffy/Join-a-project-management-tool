@@ -209,7 +209,7 @@ input#password:hover {
     cursor: pointer;
 
 }
-
+/*   :::::::   custom checkbox privacy policy   :::::::   */
 .confirm-priv-pol {
     display: flex;
     align-items: center;
@@ -265,27 +265,34 @@ input#password:hover {
 
 
 
-/*
-.confirm-priv-polce {
-    width: 20px;
-    height: 20px;
+
+.signup-msg {
+    width: 320px;
+    height: 40px;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 8px;
+    background-color: #2A3647;
+    color: rgb(255, 255, 255);
+    font-size: 1em;
+    font-weight: 500;
+    /*animation: name | duration | timing-function | delay | iteration-count | direction | fill-mode; */
+    animation: move 0.6s ease-in 0.16s 1 forwards;
+    z-index: 999;
+    position: absolute;
+    bottom: -50%;
+    text-align: center;
 }
 
+@keyframes move {
+    0% {
+        bottom: -50%;
+    }
 
-.guest-login {
-    width: 180px;
-    height: 40px;
-    padding: 8px 24px 18px 24px;
-    border: 1px solid #2A3647;
-    border-radius: 8px;
-    background-color: rgb(255, 255, 255);
-    gap: 10px;
-    color: #2A3647;
-    font-size: 20px;
-    font-weight: 500;
-    cursor: pointer;
-}*/
-
+    100% {
+        bottom: 48%;
+    }
+}
 
 
 /*   :::::::   Privacy Policy and Legal notice  :::::::   */
@@ -322,6 +329,21 @@ input#password:hover {
 
 .priv-legal:hover {
     text-shadow: 1px 1px 2px #00000040;
+}
+
+.backdrop-box {
+    width: 100vw;
+    height: 100vh;
+}
+
+.backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 0;
 }
 
 .d-none {
