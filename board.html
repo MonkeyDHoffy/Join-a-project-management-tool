@@ -130,14 +130,14 @@
         </div>
     </div>
 
-    <div id="addTaskOverlay" class="add-task-overlay d-none">
+    <div id="addTaskOverlay" class="add-task-overlay d-none" onclick="closeOverlayOutside(event)">
         
     </div>
     <div id="addTaskOverlayContent" class="add-task-overlay-content">
         <div class="addTask-header-and-input">
             <div class="addTask-header">
                 <h1>Add Task</h1>
-                <div onclick="closeAddTaskOverlay()" id="closeBtn" class="close-btn"><img src="./assets/img/close-btn.png" alt=""></div>
+                <div onclick="closeAddTaskOverlay(event)" id="closeBtn" class="close-btn"><img src="./assets/img/close-btn.png" alt=""></div>
             </div>
             <div class="addTask-wrapper">
 

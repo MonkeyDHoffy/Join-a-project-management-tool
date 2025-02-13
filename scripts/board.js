@@ -87,6 +87,7 @@ function openAddTaskOverlay() {
     let addTaskOverlayRef = document.getElementById("addTaskOverlay");
     let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
     addTaskOverlayRef.classList.remove("d-none");
+    addTaskOverlayRef.style.pointerEvents = "all";
     setTimeout(() => {
         addTaskOverlayRef.classList.add("active");
         addTaskOverlayContentRef.style.left = "calc(50% - 482px)";
@@ -94,7 +95,7 @@ function openAddTaskOverlay() {
 
 }
 
-function closeAddTaskOverlay() {
+function closeAddTaskOverlay(event) {
     let addTaskOverlayRef = document.getElementById("addTaskOverlay");
     let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
     addTaskOverlayRef.classList.remove("active");
@@ -102,9 +103,17 @@ function closeAddTaskOverlay() {
     setTimeout(() => {
         addTaskOverlayRef.classList.add("d-none");
     }, 400);
-
-
 }
 
-// top: calc(50% - 435px);
-//     left: calc(50% - 482px);
+function closeOverlayOutside(event) {
+    let addTaskOverlayRef = document.getElementById("addTaskOverlay");
+    let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
+        if (event.target == addTaskOverlayRef) {
+            addTaskOverlayRef.classList.remove("active");
+            addTaskOverlayRef.style.pointerEvents = "none";
+            addTaskOverlayContentRef.style.left = "100%";
+            setTimeout(() => {
+                addTaskOverlayRef.classList.add("d-none");
+            }, 400);
+    }
+  }
