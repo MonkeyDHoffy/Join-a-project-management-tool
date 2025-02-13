@@ -1,8 +1,5 @@
 let taskStatus = ["to do", "in-progress", "await feedback", "done"]
-
 let currentDragedElement;
-
-
 
 function updateHTML() {
     renderToDo();
@@ -80,8 +77,43 @@ function drop(status) {
 function searchTask() {
     let searchInput = document.getElementById('findTaskInput').value.toLowerCase();
     let boardCards = Array.from(document.getElementsByClassName("board-card"));
-    boardCards.forEach(div => {div.style.display = 'none';});
-    let filteredCards = boardCards.filter(div => 
+    boardCards.forEach(div => { div.style.display = 'none'; });
+    let filteredCards = boardCards.filter(div =>
         div.querySelector("h3")?.textContent.toLowerCase().trim().includes(searchInput));
-    filteredCards.forEach(div => {div.style.display = 'block';});
+    filteredCards.forEach(div => { div.style.display = 'block'; });
 }
+
+function openAddTaskOverlay() {
+    let addTaskOverlayRef = document.getElementById("addTaskOverlay");
+    let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
+    addTaskOverlayRef.classList.remove("d-none");
+    addTaskOverlayRef.style.pointerEvents = "all";
+    setTimeout(() => {
+        addTaskOverlayRef.classList.add("active");
+        addTaskOverlayContentRef.style.left = "calc(50% - 482px)";
+    }, 50);
+
+}
+
+function closeAddTaskOverlay(event) {
+    let addTaskOverlayRef = document.getElementById("addTaskOverlay");
+    let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
+    addTaskOverlayRef.classList.remove("active");
+    addTaskOverlayContentRef.style.left = "100%";
+    setTimeout(() => {
+        addTaskOverlayRef.classList.add("d-none");
+    }, 400);
+}
+
+function closeOverlayOutside(event) {
+    let addTaskOverlayRef = document.getElementById("addTaskOverlay");
+    let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
+        if (event.target == addTaskOverlayRef) {
+            addTaskOverlayRef.classList.remove("active");
+            addTaskOverlayRef.style.pointerEvents = "none";
+            addTaskOverlayContentRef.style.left = "100%";
+            setTimeout(() => {
+                addTaskOverlayRef.classList.add("d-none");
+            }, 400);
+    }
+  }

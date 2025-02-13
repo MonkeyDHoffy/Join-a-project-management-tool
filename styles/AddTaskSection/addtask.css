@@ -1,4 +1,13 @@
-.content-right {
+.content-right-wrapper {
+  height: 100%;
+  max-width: 1116px;
+  padding: 110px 96px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.add-task-header-and-wrapper {
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -9,12 +18,11 @@
   display: flex;
 
   h1 {
-    padding-left: 32px;
     font-weight: 700;
     font-size: 61px;
     line-height: 73.2px;
-    margin-top: 55px;
-    padding-left: 64px;
+
+
   }
 }
 
@@ -24,18 +32,27 @@
 
 .addTask-wrapper {
   display: flex;
-  width: 1000px;
-  padding-left: 64px;
+  width: 100%;
+  justify-content: space-between;
+  gap: 35px;
 }
 
 .addTask-left {
-  width: 50%;
-  padding-right: 32px;
+  width: calc(50% - 35px);
+  height: 376px;
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .addTask-right {
-  width: 50%;
-  padding-left: 32px;
+  width: calc(50% - 35px);
+  height: 416px;
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 /* .addTask-title {
@@ -49,8 +66,9 @@
 } */
 
 .addTask-section {
-  width: 440px;
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .addTask-section p {
@@ -87,14 +105,14 @@
 
 .description-area {
   height: 136px;
-  width: 440px;
+  width: 100%;
   gap: 4px;
   border-radius: 5px;
   border: 1px solid #d1d1d1;
-  max-width: 440px;
   max-height: 136px;
   resize: none;
 }
+
 
 .addTask-section textarea:focus {
   border-color: #007bff;
@@ -122,16 +140,15 @@
 }
 
 .addTask-footer {
-  width: 990px;
   display: flex;
   justify-content: space-between;
-  margin-top: 16px;
-  padding-left: 64px;
 }
 
 .addTask-subtasks {
   width: 100%;
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .subtasks-btn {
@@ -159,11 +176,6 @@
   outline: none;
 }
 
-.addTask-subtasks {
-  width: 440px;
-  margin-bottom: 20px;
-}
-
 .addTask-subtasks p {
   color: #333;
   font-family: Inter;
@@ -182,22 +194,13 @@
   padding: 10px;
 
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 20px;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.addTask-subtasks:focus {
-}
+.addTask-subtasks:focus {}
 
-.description-area {
-  height: 136px;
-  gap: 4px;
-  border-radius: 5px;
-  border: 1px solid #d1d1d1;
-  max-width: 440px;
-  max-height: 136px;
-  resize: none;
-}
+
 
 .prio-buttons {
   display: flex;
