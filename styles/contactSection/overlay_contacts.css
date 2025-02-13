@@ -188,3 +188,9 @@ button:hover {
   top: -36px;
   right: 15px;
 }
+
+.contact-form input:focus {
+  outline: none;
+  border-color: #29abe2;
+  box-shadow: 0 0 5px rgba(41, 171, 226, 0.5);
+}
