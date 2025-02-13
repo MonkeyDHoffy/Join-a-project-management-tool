@@ -7,6 +7,10 @@
     gap: 55px;
 }
 
+body {
+    overflow: hidden;
+}
+
 .board-header-title {
     padding: 0 64px;
     display: flex;
@@ -156,7 +160,7 @@
 }
 
 .add-task-overlay {
-    background-color: rgba(0, 0, 0, 0.2);
+    overflow: hidden;
     position: absolute;
     top: 0;
     right: 0;
@@ -166,21 +170,69 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: transparent;
+    transition: background-color 0.5s ease-in-out;}
+
+.add-task-overlay.active {
+    background-color: rgba(0, 0, 0, 0.2); /* Zielwert */
 }
 
 .add-task-overlay-content {
+    position: absolute;
+    top: calc(50% - 435px);
+    left: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     height: 870px;
     background-color: white;
     border-radius: 30px;
     box-shadow: 0px 0px 4px 0px #0000001A;
     padding: 64px 74px;
+    transition: all 0.2s ease-in-out;
 }
+
+.addTask-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.addTask-header-and-input {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.close-btn {
+    position: relative;
+    right: -20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    animation-timing-function: ease-out;
+    animation-duration: 1000ms;
+}
+
+.close-btn:hover {
+    cursor: pointer;
+    background-color: #d9d9d93f;
+
+}
+
+.close-btn:hover img {
+    transform: scale(1.05);
+}
+
+
+
 
 .input [type="date"]::-webkit-inner-spin-button {
     display: none;
-  }
-  
-  [type="date"]::-webkit-calendar-picker-indicator {
+}
+
+[type="date"]::-webkit-calendar-picker-indicator {
     background: #fff url(./AddTaskSection/calendar.png) 97% 50% no-repeat
-    
-  }
+}

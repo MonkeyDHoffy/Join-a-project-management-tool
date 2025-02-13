@@ -2,8 +2,7 @@
   height: calc(100vh - 96px);
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  margin-top: 55px;
+  justify-content: center;
   padding-left: 64px;
   gap: 40px;
 }
