@@ -47,50 +47,55 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function getOverlayTemplate() {
   return `
-      <section class="add-contact-overlay">
-          <div class="content-overlay-wrapper">
-             
-              <div class="content-overlay-left">
-                  <img src="./assets/img/Logo.png" alt="">
-                  <p>Add contact</p>
-                  <span>Tasks are better with a team!</span>
-                  <div class="blue-line"></div>
-              </div>
-
-          
-              <div class="content-overlay-right">
-                  <div class="contact-avatar">
-                      <div class="avatar-circle"><img src="./assets/img/person.png" alt=""></div>
-                  </div>
-
-                  <div class="input-group">
-                      <div class="contact-form">
-                          <label for=""></label>
-                          <input type="text" placeholder="enter name" class="contact-input">
-                          <label for=""></label>
-                          <input type="email" placeholder="enter email" class="contact-input">
-                          <label for=""></label>
-                          <input type="tel" placeholder="enter number" class="contact-input">
-                      </div>
-
-                      <div class="button-group">
-                          <button class="delete-btn-overlay">Delete</button>
-                          <button class="save-btn-overlay">Create contact ✓</button>
-                      </div>
-                  </div>
-              </div>
-
-              <svg class="close-icon" onclick="hideOverlay()"  viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <mask id="mask0_71720_5515" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="4" y="4" width="24" height="24">
-                      <rect x="4" y="4" width="24" height="24" fill="#D9D9D9" />
-                  </mask>
-                  <g mask="url(#mask0_71720_5515)">
-                      <path d="M16 17.4L11.1 22.3C10.9167 22.4834 10.6834 22.575 10.4 22.575C10.1167 22.575 9.88338 22.4834 9.70005 22.3C9.51672 22.1167 9.42505 21.8834 9.42505 21.6C9.42505 21.3167 9.51672 21.0834 9.70005 20.9L14.6 16L9.70005 11.1C9.51672 10.9167 9.42505 10.6834 9.42505 10.4C9.42505 10.1167 9.51672 9.88338 9.70005 9.70005C9.88338 9.51672 10.1167 9.42505 10.4 9.42505C10.6834 9.42505 10.9167 9.51672 11.1 9.70005L16 14.6L20.9 9.70005C21.0834 9.51672 21.3167 9.42505 21.6 9.42505C21.8834 9.42505 22.1167 9.51672 22.3 9.70005C22.4834 9.88338 22.575 10.1167 22.575 10.4C22.575 10.6834 22.4834 10.9167 22.3 11.1L17.4 16L22.3 20.9C22.4834 21.0834 22.575 21.3167 22.575 21.6C22.575 21.8834 22.4834 22.1167 22.3 22.3C22.1167 22.4834 21.8834 22.575 21.6 22.575C21.3167 22.575 21.0834 22.4834 20.9 22.3L16 17.4Z" fill="#2A3647" />
-                  </g>
-              </svg>
-          </div>
-      </section>
-  `;
+        <section class="add-contact-overlay">
+            <div class="content-overlay-wrapper">
+               
+                <div class="content-overlay-left">
+                    <img src="./assets/img/Logo.png" alt="">
+                    <p>Add contact</p>
+                    <span>Tasks are better with a team!</span>
+                    <div class="blue-line"></div>
+                </div>
+  
+            
+                <div class="content-overlay-right">
+                    <div class="contact-avatar">
+                        <div class="avatar-circle"><img src="./assets/img/person.png" alt=""></div>
+                    </div>
+  
+                    <div class="input-group">
+                        <div class="contact-form">
+                            <label for="name"></label>
+                            <input type="text" id="name" placeholder="enter name" class="contact-input">
+                            <img class="input-icon" src="./assets/img/contacts_imgs/person.png" alt="Name Icon">
+  
+                            <label for="email"></label>
+                            <input type="email" id="email" placeholder="enter email" class="contact-input">
+                            <img class="input-icon" src="./assets/img/contacts_imgs/mail.png" alt="Email Icon">
+  
+                            <label for="phone"></label>
+                            <input type="tel" id="phone" placeholder="enter number" class="contact-input">
+                            <img class="input-icon" src="./assets/img/contacts_imgs/call.png" alt="Phone Icon">
+                        </div>
+  
+                        <div class="button-group">
+                            <button class="delete-btn-overlay">Delete</button>
+                            <button class="save-btn-overlay">Create contact ✓</button>
+                        </div>
+                    </div>
+                </div>
+  
+                <svg class="close-icon" onclick="hideOverlay()"  viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <mask id="mask0_71720_5515" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="4" y="4" width="24" height="24">
+                        <rect x="4" y="4" width="24" height="24" fill="#D9D9D9" />
+                    </mask>
+                    <g mask="url(#mask0_71720_5515)">
+                        <path d="M16 17.4L11.1 22.3C10.9167 22.4834 10.6834 22.575 10.4 22.575C10.1167 22.575 9.88338 22.4834 9.70005 22.3C9.51672 22.1167 9.42505 21.8834 9.42505 21.6C9.42505 21.3167 9.51672 21.0834 9.70005 20.9L14.6 16L9.70005 11.1C9.51672 10.9167 9.42505 10.6834 9.42505 10.4C9.42505 10.1167 9.51672 9.88338 9.70005 9.70005C9.88338 9.51672 10.1167 9.42505 10.4 9.42505C10.6834 9.42505 10.9167 9.51672 11.1 9.70005L16 14.6L20.9 9.70005C21.0834 9.51672 21.3167 9.42505 21.6 9.42505C21.8834 9.42505 22.1167 9.51672 22.3 9.70005C22.4834 9.88338 22.575 10.1167 22.575 10.4C22.575 10.6834 22.4834 10.9167 22.3 11.1L17.4 16L22.3 20.9C22.4834 21.0834 22.575 21.3167 22.575 21.6C22.575 21.8834 22.4834 22.1167 22.3 22.3C22.1167 22.4834 21.8834 22.575 21.6 22.575C21.3167 22.575 21.0834 22.4834 20.9 22.3L16 17.4Z" fill="#2A3647" />
+                    </g>
+                </svg>
+            </div>
+        </section>
+    `;
 }
 
 // Funktion zum Anzeigen des Overlays
@@ -183,51 +188,56 @@ function renderEditOverlay() {
   let overlayContainer = document.getElementById("overlay-container");
   document.querySelector(".dark-background").style.display = "block";
   overlayContainer.innerHTML = `  <section class="add-contact-overlay">
-            <div class="content-overlay-wrapper">
-
-                <div class="content-overlay-left">
-                    <img src="./assets/img/Logo.png" alt="">
-                    <p>Edit contact</p>
-
-                    <div class="blue-line"></div>
-                </div>
-
-
-                <div class="content-overlay-right">
-                    <div class="contact-avatar">
-                        <div class="avatar-circle"><img src="./assets/img/person.png" alt=""></div>
-                    </div>
-
-                    <div class="input-group">
-                        <div class="contact-form">
-                            <label for=""></label>
-                            <input type="text" placeholder="enter name" class="contact-input">
-                            <label for=""></label>
-                            <input type="email" placeholder="enter email" class="contact-input">
-                            <label for=""></label>
-                            <input type="tel" placeholder="enter number" class="contact-input">
-                        </div>
-
-                        <div class="button-group">
-                            <button id="delte-btn-overlay" class="delete-btn-overlay">Delete</button>
-                            <button id="save-btn-overlay" class="save-btn-overlay">Save ✓</button>
-                        </div>
-                    </div>
-                </div>
-
-                <svg class="close-icon" onclick="hideOverlay()" viewBox="0 0 32 32" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <mask id="mask0_71720_5515" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="4" y="4"
-                        width="24" height="24">
-                        <rect x="4" y="4" width="24" height="24" fill="#D9D9D9" />
-                    </mask>
-                    <g mask="url(#mask0_71720_5515)">
-                        <path
-                            d="M16 17.4L11.1 22.3C10.9167 22.4834 10.6834 22.575 10.4 22.575C10.1167 22.575 9.88338 22.4834 9.70005 22.3C9.51672 22.1167 9.42505 21.8834 9.42505 21.6C9.42505 21.3167 9.51672 21.0834 9.70005 20.9L14.6 16L9.70005 11.1C9.51672 10.9167 9.42505 10.6834 9.42505 10.4C9.42505 10.1167 9.51672 9.88338 9.70005 9.70005C9.88338 9.51672 10.1167 9.42505 10.4 9.42505C10.6834 9.42505 10.9167 9.51672 11.1 9.70005L16 14.6L20.9 9.70005C21.0834 9.51672 21.3167 9.42505 21.6 9.42505C21.8834 9.42505 22.1167 9.51672 22.3 9.70005C22.4834 9.88338 22.575 10.1167 22.575 10.4C22.575 10.6834 22.4834 10.9167 22.3 11.1L17.4 16L22.3 20.9C22.4834 21.0834 22.575 21.3167 22.575 21.6C22.575 21.8834 22.4834 22.1167 22.3 22.3C22.1167 22.4834 21.8834 22.575 21.6 22.575C21.3167 22.575 21.0834 22.4834 20.9 22.3L16 17.4Z"
-                            fill="#2A3647" />
-                    </g>
-                </svg>
-            </div>
-        </section>
-`;
+              <div class="content-overlay-wrapper">
+  
+                  <div class="content-overlay-left">
+                      <img src="./assets/img/Logo.png" alt="">
+                      <p>Edit contact</p>
+  
+                      <div class="blue-line"></div>
+                  </div>
+  
+  
+                  <div class="content-overlay-right">
+                      <div class="contact-avatar">
+                          <div class="avatar-circle"><img src="./assets/img/person.png" alt=""></div>
+                      </div>
+  
+                      <div class="input-group">
+                          <div class="contact-form">
+                              <label for="name"></label>
+                              <input type="text" id="name" placeholder="enter name" class="contact-input">
+                              <img class="input-icon" src="./assets/img/contacts_imgs/person.png" alt="Name Icon">
+  
+                              <label for="email"></label>
+                              <input type="email" id="email" placeholder="enter email" class="contact-input">
+                               <img class="input-icon" src="./assets/img/contacts_imgs/mail.png" alt="Email Icon">
+  
+                              <label for="phone"></label>
+                              <input type="tel" id="phone" placeholder="enter number" class="contact-input">
+                               <img class="input-icon" src="./assets/img/contacts_imgs/call.png" alt="Phone Icon">
+                          </div>
+  
+                          <div class="button-group">
+                              <button id="delte-btn-overlay" class="delete-btn-overlay">Delete</button>
+                              <button id="save-btn-overlay" class="save-btn-overlay">Save ✓</button>
+                          </div>
+                      </div>
+                  </div>
+  
+                  <svg class="close-icon" onclick="hideOverlay()" viewBox="0 0 32 32" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <mask id="mask0_71720_5515" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="4" y="4"
+                          width="24" height="24">
+                          <rect x="4" y="4" width="24" height="24" fill="#D9D9D9" />
+                      </mask>
+                      <g mask="url(#mask0_71720_5515)">
+                          <path
+                              d="M16 17.4L11.1 22.3C10.9167 22.4834 10.6834 22.575 10.4 22.575C10.1167 22.575 9.88338 22.4834 9.70005 22.3C9.51672 22.1167 9.42505 21.8834 9.42505 21.6C9.42505 21.3167 9.51672 21.0834 9.70005 20.9L14.6 16L9.70005 11.1C9.51672 10.9167 9.42505 10.6834 9.42505 10.4C9.42505 10.1167 9.51672 9.88338 9.70005 9.70005C9.88338 9.51672 10.1167 9.42505 10.4 9.42505C10.6834 9.42505 10.9167 9.51672 11.1 9.70005L16 14.6L20.9 9.70005C21.0834 9.51672 21.3167 9.42505 21.6 9.42505C21.8834 9.42505 22.1167 9.51672 22.3 9.70005C22.4834 9.88338 22.575 10.1167 22.575 10.4C22.575 10.6834 22.4834 10.9167 22.3 11.1L17.4 16L22.3 20.9C22.4834 21.0834 22.575 21.3167 22.575 21.6C22.575 21.8834 22.4834 22.1167 22.3 22.3C22.1167 22.4834 21.8834 22.575 21.6 22.575C21.3167 22.575 21.0834 22.4834 20.9 22.3L16 17.4Z"
+                              fill="#2A3647" />
+                      </g>
+                  </svg>
+              </div>
+          </section>
+  `;
 }
