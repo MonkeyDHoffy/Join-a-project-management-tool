@@ -1,7 +1,5 @@
 function taskCardTemplate(element) {
-    return ` <div ondragstart="startDrag(${element.id})" draggable="true" class="board-card">
-                                    <div class="category">
-                                    <span>${element.category}</span>                          
+  return ` <div onclick="renderTaskCardOverlay()" ondragstart="startDrag(${element.id})" draggable="true" class="board-card">                              
                                     <h3>${element.title}</h3>                            
                                 <div class="board-card-description">
                                     <p>${element.description}</p>
@@ -9,11 +7,11 @@ function taskCardTemplate(element) {
                                 <div class="board-card-description">
                                     <p>${element.description}</p>
                                 </div>
-                            </div>`
+                            </div>`;
 }
 
 function noTasksTemplate(i) {
-    return `<div draggable="false" class="no-tasks" diabled="true">
+  return `<div draggable="false" class="no-tasks">
                             <span>No tasks ${taskStatus[i]}</span>
-                        </div>`
+                        </div>`;
 }
