@@ -81,8 +81,8 @@
                                 <input class="find-task-input" id="findTaskInput" type="text" placeholder="Find Task">
                                 <button class="search-btn"><img src="./assets/img/search.png" alt=""></button>
                             </form>
-                            <button onclick="openAddTaskOverlay()" id="addTask" class="add-task">Add Task <img src="./assets/img/add.png"
-                                    alt=""></button>
+                            <button onclick="openAddTaskOverlay()" id="addTask" class="add-task">Add Task <img
+                                    src="./assets/img/add.png" alt=""></button>
                         </div>
                     </div>
 
@@ -131,13 +131,14 @@
     </div>
 
     <div id="addTaskOverlay" class="add-task-overlay d-none" onclick="closeOverlayOutside(event)">
-        
+
     </div>
     <div id="addTaskOverlayContent" class="add-task-overlay-content">
         <div class="addTask-header-and-input">
             <div class="addTask-header">
                 <h1>Add Task</h1>
-                <div onclick="closeAddTaskOverlay(event)" id="closeBtn" class="close-btn"><img src="./assets/img/close-btn.png" alt=""></div>
+                <div onclick="closeAddTaskOverlay(event)" id="closeBtn" class="close-btn"><img
+                        src="./assets/img/close-btn.png" alt=""></div>
             </div>
             <div class="addTask-wrapper">
 
@@ -165,8 +166,8 @@
                         <div id="assigned-to-input">
                             <input type="text" id="assigned-to-field" value="Select contacts to assign"
                                 onclick="toggleDropdown(); toggleAssignToIconSrc();">
-                            <img  id="input-icon-assign-to" src="./assets/svg/addTasksSvg/arrow_drop_down.svg"
-                                alt="Icon" class="input-icon add-task-input-field">
+                            <img id="input-icon-assign-to" src="./assets/svg/addTasksSvg/arrow_drop_down.svg" alt="Icon"
+                                class="input-icon add-task-input-field">
                             <div class="dropdown-content" id="dropdown-content">
                                 <div onclick="checkIt(0)" class="dropdown-item">
                                     <div class="addTask-profilepicture">VV</div>
@@ -221,10 +222,9 @@
                             <p>Prio</p>
                         </label>
                         <div class="prio-buttons">
-                            <button onclick="changeUrgentBtn()" id="urgent-btn"
-                                class="urgent prio-btn-urgent">Urgent <img id="urgent-img" src="" alt=""></button>
-                            <button onclick="changeMediumBtn()" id="medium-btn"
-                                class="medium prio-btn-medium">Medium
+                            <button onclick="changeUrgentBtn()" id="urgent-btn" class="urgent prio-btn-urgent">Urgent
+                                <img id="urgent-img" src="" alt=""></button>
+                            <button onclick="changeMediumBtn()" id="medium-btn" class="medium prio-btn-medium">Medium
                                 <img id="medium-img" src="" alt=""></button>
                             <button onclick="changeLowBtn()" id="low-btn" class="prio-btn-low">Low <img id="low-img"
                                     src="" alt=""></button>
@@ -242,7 +242,8 @@
                         <label for="">
                             <p>Subtasks</p>
                         </label>
-                        <div class="addTask-section"><input class="add-task-input-field" type="text" placeholder="Add new subtask">
+                        <div class="addTask-section"><input class="add-task-input-field" type="text"
+                                placeholder="Add new subtask">
                         </div>
                     </div>
                 </div>
@@ -252,15 +253,20 @@
         </div>
         <div class="addTask-footer">
             <div><span style="color:red">*</span><span>This field is required</span></div>
-            <div onclick="closeAddTaskOverlay(event)" class="display-flex clear-create"><button class="clear-btn">Cancel <img
-                        src="./assets/svg/addTasksSvg/clear.svg" alt=""></button><button
-                    class="createTask-button">Create Task<img src="./assets/svg/addTasksSvg/cross.svg" alt="">
+            <div onclick="closeAddTaskOverlay(event)" class="display-flex clear-create"><button class="clear-btn">Cancel
+                    <img src="./assets/svg/addTasksSvg/clear.svg" alt=""></button><button
+                    onclick="showTaskNotification()" class="createTask-button">Create Task<img
+                        src="./assets/svg/addTasksSvg/cross.svg" alt="">
                 </button></div>
 
         </div>
 
     </div>
 
+
+    <div class="click-notification-add-task">
+        <p>Task added to board </p> <img src="./assets/img/navBar/board.svg" alt="">
+    </div>
 
 
 
