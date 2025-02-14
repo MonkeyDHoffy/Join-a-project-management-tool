@@ -58,8 +58,6 @@ function allowDrop(ev) {
 
 function startDrag(id) {
     currentDragedElement = id;
-    let card = document.getElementsByClassName("board-card");
-    card[id].style.transform = "rotate(0deg)";
 }
 
 function drop(status) {
@@ -84,6 +82,7 @@ function searchTask() {
 }
 
 function openAddTaskOverlay() {
+    
     let addTaskOverlayRef = document.getElementById("addTaskOverlay");
     let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
     addTaskOverlayRef.classList.remove("d-none");
@@ -92,7 +91,7 @@ function openAddTaskOverlay() {
         addTaskOverlayRef.classList.add("active");
         addTaskOverlayContentRef.style.left = "calc(50% - 482px)";
     }, 50);
-
+    changeMediumBtn();
 }
 
 function closeAddTaskOverlay(event) {
@@ -109,12 +108,16 @@ function closeAddTaskOverlay(event) {
 function closeOverlayOutside(event) {
     let addTaskOverlayRef = document.getElementById("addTaskOverlay");
     let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
-        if (event.target == addTaskOverlayRef) {
-            addTaskOverlayRef.classList.remove("active");
-            addTaskOverlayRef.style.pointerEvents = "none";
-            addTaskOverlayContentRef.style.left = "100%";
-            setTimeout(() => {
-                addTaskOverlayRef.classList.add("d-none");
-            }, 400);
+    if (event.target == addTaskOverlayRef) {
+        addTaskOverlayRef.classList.remove("active");
+        addTaskOverlayRef.style.pointerEvents = "none";
+        addTaskOverlayContentRef.style.left = "100%";
+        setTimeout(() => {
+            addTaskOverlayRef.classList.add("d-none");
+        }, 400);
     }
-  }
+}
+
+function clearInputFields() {
+    let 
+}

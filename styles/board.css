@@ -126,6 +126,7 @@ body {
 }
 
 .board-field {
+    overflow: visible;
     height: 100%;
     display: flex;
     flex-direction: column;

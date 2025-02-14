@@ -24,7 +24,7 @@
         rel="stylesheet">
 </head>
 
-<body onload="updateHTML(); addTaskInit(); registerUser()">
+<body onload="updateHTML(); addTaskInit()">
 
     <div class="content-width">
 
@@ -147,14 +147,14 @@
                             <p>Title</p>
                             <p style="color: red;">*</p>
                         </label>
-                        <input placeholder="enter a title" type="text">
+                        <input class="add-task-input-field" placeholder="enter a title" type="text">
                     </div>
 
                     <div class="addTask-section addTask-description">
                         <label for="">
                             <p>Description</p>
                         </label>
-                        <textarea class="description-area"></textarea>
+                        <textarea value="hallo" class="description-area add-task-input-field"></textarea>
 
                     </div>
 
@@ -163,10 +163,10 @@
                             <p>Assigned to</p>
                         </label>
                         <div id="assigned-to-input">
-                            <input type="text" id="assigned-to-field" placeholder="Select contacts to assign"
+                            <input type="text" id="assigned-to-field" value="Select contacts to assign"
                                 onclick="toggleDropdown(); toggleAssignToIconSrc();">
-                            <img id="input-icon-assign-to" src="./assets/svg/addTasksSvg/arrow_drop_down.svg"
-                                alt="Icon" class="input-icon">
+                            <img  id="input-icon-assign-to" src="./assets/svg/addTasksSvg/arrow_drop_down.svg"
+                                alt="Icon" class="input-icon add-task-input-field">
                             <div class="dropdown-content" id="dropdown-content">
                                 <div onclick="checkIt(0)" class="dropdown-item">
                                     <div class="addTask-profilepicture">VV</div>
@@ -213,7 +213,7 @@
                             <p>Due date</p>
                             <p style="color: red;">*</p>
                         </label>
-                        <input type="date" style="color: #ccc;">
+                        <input class="add-task-input-field" type="date" style="color: #ccc;">
                     </div>
 
                     <div class="addTask-section addTask-prio">
@@ -235,14 +235,14 @@
                         <label for="">
                             <p>Category</p>
                         </label>
-                        <input type="text">
+                        <input type="text" value="Select task category">
                     </div>
 
                     <div class="addTask-subtasks">
                         <label for="">
                             <p>Subtasks</p>
                         </label>
-                        <div class="addTask-section"><input type="text" placeholder="hi">
+                        <div class="addTask-section"><input class="add-task-input-field" type="text" placeholder="Add new subtask">
                         </div>
                     </div>
                 </div>
@@ -252,7 +252,7 @@
         </div>
         <div class="addTask-footer">
             <div><span style="color:red">*</span><span>This field is required</span></div>
-            <div class="display-flex clear-create"><button class="clear-btn">Clear <img
+            <div onclick="closeAddTaskOverlay(event)" class="display-flex clear-create"><button class="clear-btn">Cancel <img
                         src="./assets/svg/addTasksSvg/clear.svg" alt=""></button><button
                     class="createTask-button">Create Task<img src="./assets/svg/addTasksSvg/cross.svg" alt="">
                 </button></div>
