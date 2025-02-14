@@ -105,7 +105,8 @@
                                         <input class="add-task-input-field" type="text" id="assigned-to-field"
                                             value="Select contacts to assign"
                                             onclick="toggleDropdown(); toggleAssignToIconSrc();">
-                                        <div onclick="toggleDropdown(); toggleAssignToIconSrc();" class="input-icon-assign-to-container">
+                                        <div onclick="toggleDropdown(); toggleAssignToIconSrc();"
+                                            class="input-icon-assign-to-container">
                                             <img id="input-icon-assign-to"
                                                 src="./assets/svg/addTasksSvg/arrow_drop_down.svg" alt="Icon"
                                                 class="input-icon">
@@ -227,7 +228,7 @@
                             <div><span style="color:red">*</span><span>This field is required</span></div>
                             <div class="display-flex clear-create"><button onclick="clearInputFields()"
                                     class="clear-btn">Clear <img src="./assets/svg/addTasksSvg/clear.svg"
-                                        alt=""></button><button onclick="taskCreated(event)"
+                                        alt=""></button><button onclick="showTaskNotification()"
                                     class="createTask-button">Create Task<img src="./assets/svg/addTasksSvg/cross.svg"
                                         alt="">
                                 </button></div>
@@ -240,7 +241,9 @@
     </div>
 
 
-
+    <div class="click-notification-add-task">
+        <p>Task added to board </p> <img src="./assets/img/navBar/board.svg" alt="">
+    </div>
 
 
 </body>

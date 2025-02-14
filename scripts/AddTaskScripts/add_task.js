@@ -130,12 +130,13 @@ function toggleLowActive() {
 }
 
 function clearInputFields() {
-  let inputFieldsRef = Array.from(document.getElementsByClassName("add-task-input-field"));
-  inputFieldsRef.forEach(inputField => {
+  let inputFieldsRef = Array.from(
+    document.getElementsByClassName("add-task-input-field")
+  );
+  inputFieldsRef.forEach((inputField) => {
     inputField.value = "";
   });
   changeMediumBtn();
-
 }
 
 function toggleCategoryIconSrc() {
@@ -147,5 +148,16 @@ function toggleCategoryIconSrc() {
     icon.src = src2;
   } else {
     icon.src = src1;
+  }
+}
+
+function showTaskNotification() {
+  let notification = document.querySelector(".click-notification-add-task");
+  if (notification) {
+    notification.classList.add("show");
+
+    setTimeout(() => {
+      notification.classList.remove("show");
+    }, 2000);
   }
 }
