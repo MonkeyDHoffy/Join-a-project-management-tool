@@ -24,13 +24,18 @@
 }
 
 .badge {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #007bff;
   color: white;
   padding: 5px 10px;
   border-radius: 6px;
   font-size: 14px;
   font-weight: bold;
+  width: 164px;
+  height: 36px;
+  border-radius: 8px;
 }
 
 h2 {
