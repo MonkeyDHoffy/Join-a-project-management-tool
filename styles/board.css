@@ -1,241 +1,284 @@
 .board-header {
-    height: 232px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 55px;
+  height: 232px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 55px;
 }
 
 body {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .board-header-title {
-    padding: 0 64px;
-    display: flex;
-    justify-content: space-between;
-    justify-self: center;
-    align-items: center;
+  padding: 0 64px;
+  display: flex;
+  justify-content: space-between;
+  justify-self: center;
+  align-items: center;
 }
 
 .board-header-title h2 {
-    font-size: 61px;
+  font-size: 61px;
 }
 
 .search-and-add-task {
-    display: flex;
-    gap: 32px;
+  display: flex;
+  gap: 32px;
 }
 
 .add-task {
-    width: 160px;
-    font-size: 21px;
-    background-color: #2A3647;
-    color: white;
-    border-radius: 10px;
-    padding: 8px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    transition: all 0.1s ease-in-out;
+  width: 160px;
+  font-size: 21px;
+  background-color: #2a3647;
+  color: white;
+  border-radius: 10px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.1s ease-in-out;
 }
 
 .add-task:hover {
-    background-color: #29ABE2;
-    box-shadow: 0px 4px 4px 0px #00000040;
+  background-color: #29abe2;
+  box-shadow: 0px 4px 4px 0px #00000040;
 }
 
 .add-task img {
-    height: 18.5px;
+  height: 18.5px;
 }
 
 .search-btn {
-    border-left: #C9CDD3 solid 1px;
-    padding-left: 20px;
+  border-left: #c9cdd3 solid 1px;
+  padding-left: 20px;
 }
 
 .find-task {
-    transition: border-color 0.1s ease-out;
-    height: 48px;
-    width: 312px;
-    padding: 8px 16px;
-    border: 1px solid #C9CDD3;
-    border-radius: 10px;
-    background-color: white;
-    display: flex;
-    justify-content: space-between;
+  transition: border-color 0.1s ease-out;
+  height: 48px;
+  width: 312px;
+  padding: 8px 16px;
+  border: 1px solid #c9cdd3;
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
 }
 
 .find-task:focus-within {
-    border: 1px solid #29ABE2
+  border: 1px solid #29abe2;
 }
 
 .find-task input {
-    border: none;
+  border: none;
 }
 
 .find-task input::placeholder {
-    color: #C9CDD3;
+  color: #c9cdd3;
 }
 
 .find-task input:focus {
-    outline: none;
+  outline: none;
 }
 
 .flex-title {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .btn-title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 24px;
-    width: 24px;
-    border: 2px solid #2A3647;
-    border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 24px;
+  width: 24px;
+  border: 2px solid #2a3647;
+  border-radius: 8px;
 }
 
 .btn-title:hover {
-    color: #29ABE2;
-    border-color: #29ABE2;
+  color: #29abe2;
+  border-color: #29abe2;
 }
 
 .board-wrapper {
-    padding: 0 64px 24px 64px;
-    height: calc(100% - 328px);
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    gap: 26px;
+  padding: 0 64px 24px 64px;
+  height: calc(100% - 328px);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 26px;
 }
 
-.board-wrapper>* {
-    flex: 1 1 0;
-    min-width: 0;
+.board-wrapper > * {
+  flex: 1 1 0;
+  min-width: 0;
 }
 
 .board-title-field-wrapper {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .board-field {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+  overflow: visible;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .board-card {
-    padding: 16px;
-    border: 1px solid #2A3647;
-    border-radius: 24px;
-    max-height: 225px;
-    min-height: 177px;
-    flex-grow: 1;
-    box-shadow: 0px 0px 10px 3px #00000014;
-
+  padding: 16px;
+  border: 1px solid #2a3647;
+  border-radius: 24px;
+  max-height: 225px;
+  min-height: 177px;
+  flex-grow: 1;
+  box-shadow: 0px 0px 10px 3px #00000014;
 }
 
 .board-card:active {
-    transform: rotate(5deg);
+  transform: rotate(5deg);
 }
 
 .no-tasks {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 48px;
-    background-color: rgb(231, 231, 231);
-    color: #A8A8A8;
-    border-radius: 10px;
-    border: 1px dotted #A8A8A8;
-    box-shadow: 0px 0px 4px 0px #00000029;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  background-color: rgb(231, 231, 231);
+  color: #a8a8a8;
+  border-radius: 10px;
+  border: 1px dotted #a8a8a8;
+  box-shadow: 0px 0px 4px 0px #00000029;
 }
 
 .add-task-overlay {
-    pointer-events: all;
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-    transition: background-color 0.5s ease-in-out;
+  pointer-events: all;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  transition: background-color 0.5s ease-in-out;
 }
 
 .add-task-overlay:hover {
-    background-color: rgba(0, 0, 0, 0.2) !important;
+  background-color: rgba(0, 0, 0, 0.2) !important;
 }
 
 .add-task-overlay.active {
-    background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .add-task-overlay-content {
-    position: absolute;
-    top: calc(50% - 435px);
-    left: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 870px;
-    background-color: white;
-    border-radius: 30px;
-    box-shadow: 0px 0px 4px 0px #0000001A;
-    padding: 64px 74px;
-    transition: all 0.2s ease-in-out;
+  position: absolute;
+  top: calc(50% - 435px);
+  left: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 870px;
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 0px 0px 4px 0px #0000001a;
+  padding: 64px 74px;
+  transition: all 0.2s ease-in-out;
 }
 
 .addTask-header {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .addTask-header-and-input {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
 .close-btn {
-    position: relative;
-    right: -20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    animation-timing-function: ease-out;
-    animation-duration: 1000ms;
+  position: relative;
+  right: -20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  animation-timing-function: ease-out;
+  animation-duration: 1000ms;
 }
 
 .close-btn:hover {
-    cursor: pointer;
-    background-color: #d9d9d93f;
-
+  cursor: pointer;
+  background-color: #d9d9d93f;
 }
 
 .close-btn:hover img {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .input [type="date"]::-webkit-inner-spin-button {
-    display: none;
+  display: none;
 }
 
 [type="date"]::-webkit-calendar-picker-indicator {
-    background: #fff url(./AddTaskSection/calendar.png) 97% 50% no-repeat
+  background: #fff url(./AddTaskSection/calendar.png) 97% 50% no-repeat;
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(900%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOutToBottom {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.click-notification-add-task {
+  gap: 16px;
+  width: 326px;
+  height: 74px;
+  position: fixed;
+  bottom: 50%;
+  left: 50%;
+  display: none;
+  background-color: #2a3647;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.click-notification-add-task.show {
+  display: flex;
+  animation: slideInFromBottom 0.5s ease-out forwards;
+  opacity: 1;
 }

@@ -1,6 +1,7 @@
 // Initialize the task creation form by setting the icons
 function addTaskInit() {
   setIcons();
+  changeMediumBtn();
 }
 
 let priority = [];
@@ -126,4 +127,37 @@ function toggleLowActive() {
   let lowBtn = document.getElementById("low-btn");
   lowBtn.classList.remove("low-btn-active");
   lowBtn.classList.add("prio-btn-low");
+}
+
+function clearInputFields() {
+  let inputFieldsRef = Array.from(
+    document.getElementsByClassName("add-task-input-field")
+  );
+  inputFieldsRef.forEach((inputField) => {
+    inputField.value = "";
+  });
+  changeMediumBtn();
+}
+
+function toggleCategoryIconSrc() {
+  let icon = document.getElementById("input-icon-category");
+  let src1 = "./assets/svg/addTasksSvg/arrow_drop_down.svg";
+  let src2 = "./assets/svg/addTasksSvg/arrow_drop_up.svg";
+
+  if (icon.src.endsWith("arrow_drop_down.svg")) {
+    icon.src = src2;
+  } else {
+    icon.src = src1;
+  }
+}
+
+function showTaskNotification() {
+  let notification = document.querySelector(".click-notification-add-task");
+  if (notification) {
+    notification.classList.add("show");
+
+    setTimeout(() => {
+      notification.classList.remove("show");
+    }, 2000);
+  }
 }

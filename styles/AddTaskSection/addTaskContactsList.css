@@ -82,14 +82,22 @@
   border: 1px solid white;
 }
 
-.input-icon {
+.input-icon-assign-to-container {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 50%;
-  right: 10px;
+  right: 4%;
   transform: translateY(-50%);
-  width: 8px;
-  height: 5px;
-  pointer-events: none;
+}
+
+.input-icon-assign-to-container:hover {
+  background-color: #D9D9D9;
+  cursor: pointer;
 }
 
 .custom-checkbox {
