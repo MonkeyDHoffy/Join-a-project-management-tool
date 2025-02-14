@@ -144,11 +144,11 @@ function clearInputFields() {
   changeMediumBtn();
 }
 
+
 function toggleCategoryIconSrc() {
   let icon = document.getElementById("input-icon-category");
   let src1 = "./assets/svg/addTasksSvg/arrow_drop_down.svg";
   let src2 = "./assets/svg/addTasksSvg/arrow_drop_up.svg";
-
   if (icon.src.endsWith("arrow_drop_down.svg")) {
     icon.src = src2;
   } else {
@@ -161,7 +161,6 @@ function showTaskNotification() {
   if (notification) {
     clearInputFields();
     notification.classList.add("show");
-
     setTimeout(() => {
       notification.classList.remove("show");
     }, 2000);

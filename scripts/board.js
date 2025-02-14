@@ -1,6 +1,7 @@
 let taskStatus = ["to do", "in-progress", "await feedback", "done"];
 let currentDragedElement;
 
+//-- render all tasks on the board
 function updateHTML() {
   renderToDo();
   renderInProgress();
@@ -56,6 +57,7 @@ function renderDone() {
   }
 }
 
+//-- drag and drop
 function allowDrop(ev) {
   ev.preventDefault();
 }
@@ -85,17 +87,14 @@ function searchTask() {
     div.style.display = "none";
   });
   let filteredCards = boardCards.filter((div) =>
-    div
-      .querySelector("h3")
-      ?.textContent.toLowerCase()
-      .trim()
-      .includes(searchInput)
+    div.querySelector("h3")?.textContent.toLowerCase().trim().includes(searchInput)
   );
   filteredCards.forEach((div) => {
     div.style.display = "block";
   });
 }
 
+//-- add task overlay 
 function openAddTaskOverlay() {
   let addTaskOverlayRef = document.getElementById("addTaskOverlay");
   let addTaskOverlayContentRef = document.getElementById(
@@ -110,7 +109,13 @@ function openAddTaskOverlay() {
   changeMediumBtn();
 }
 
-function closeAddTaskOverlay(event) {
+
+/**
+ * Closes the add task overlay.
+ * Removes the active class, sets the content to move out of view to the right, and sets the pointer events to none.
+ * Then, after a delay of 400ms, adds the d-none class to hide the overlay.
+ */
+function closeAddTaskOverlay() {
   let addTaskOverlayRef = document.getElementById("addTaskOverlay");
   let addTaskOverlayContentRef = document.getElementById(
     "addTaskOverlayContent"
@@ -123,6 +128,10 @@ function closeAddTaskOverlay(event) {
   }, 400);
 }
 
+/**
+ * Closes the add task overlay if the user clicks outside of it.
+ * @param {Event} event - The event that triggered this function.
+ */
 function closeOverlayOutside(event) {
   let addTaskOverlayRef = document.getElementById("addTaskOverlay");
   let addTaskOverlayContentRef = document.getElementById(
@@ -138,6 +147,12 @@ function closeOverlayOutside(event) {
   }
 }
 
+/**
+ * Clears the values of all input fields with the class "add-task-input-field".
+ * Sets their "required" attribute to "false".
+ * Invokes the changeMediumBtn function after clearing the inputs.
+ */
+
 function clearInputFields() {
     let inputFieldsRef = Array.from(
       document.getElementsByClassName("add-task-input-field")
@@ -149,12 +164,15 @@ function clearInputFields() {
     changeMediumBtn();
   }
 
+/**
+ * Shows the notification for adding a task and clears all input fields.
+ * The notification is removed after 2000ms.
+ */
 function showTaskNotification() {
   let notification = document.querySelector(".click-notification-add-task");
   if (notification) {
     clearInputFields();
     notification.classList.add("show");
-
     setTimeout(() => {
       notification.classList.remove("show");
     }, 2000);

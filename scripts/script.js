@@ -1,7 +1,16 @@
 let tasks = [{
     'id': 0,
+    'category': 'user story',
     'title': 'Putzen',
-    'status': 'toDo'
+    'status': 'toDo',
+    'assignedTo': 'daniela',
+    'date': '01.01.2023',
+    'description': 'Haus putzen',
+    'priority': 'high',
+    'subtasks': [
+        'hof kehren',
+        'badezimmer putzen'
+    ]
 }, {
     'id': 1,
     'title': 'Kochen',

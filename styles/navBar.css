@@ -66,6 +66,7 @@ span {
 .active:hover {
   background-color: rgb(26, 34, 46) !important;
   cursor: default !important;
+
   span {
     transform: scale(1) !important;
   }
@@ -86,7 +87,6 @@ span {
   align-items: center;
   width: 100%;
   padding-bottom: 80%;
-  /* gap: 15px; */
 }
 
 .judicial-links {
@@ -126,7 +126,6 @@ span {
 }
 
 .header {
-
   padding: 20px 40px 20px 116px;
   display: flex;
   justify-content: space-between;
