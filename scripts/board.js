@@ -100,6 +100,7 @@ function closeAddTaskOverlay(event) {
     let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
     addTaskOverlayRef.classList.remove("active");
     addTaskOverlayContentRef.style.left = "100%";
+    addTaskOverlayRef.style.pointerEvents = "none";
     setTimeout(() => {
         addTaskOverlayRef.classList.add("d-none");
     }, 400);
