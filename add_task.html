@@ -86,7 +86,11 @@
                                         <p>Title</p>
                                         <p style="color: red;">*</p>
                                     </label>
-                                    <input class="add-task-input-field" placeholder="enter a title" type="text">
+                                    <input onclick="addRequiredTitle(this)" oninput="addRequiredTitle(this)"
+                                        class="add-task-input-field" placeholder="Enter a title" type="text">
+                                    <div class="required-text">
+                                        <span id="requiredTitle" class="d-none">This field is required</span>
+                                    </div>
                                 </div>
 
                                 <div class="addTask-section addTask-description">
@@ -102,8 +106,8 @@
                                         <p>Assigned to</p>
                                     </label>
                                     <div id="assigned-to-input">
-                                        <input class="add-task-input-field" type="text" id="assigned-to-field"
-                                            value="Select contacts to assign"
+                                        <input class="add-task-input-field placeholder-color" type="text"
+                                            id="assigned-to-field" placeholder="Select contacts to assign"
                                             onclick="toggleDropdown(); toggleAssignToIconSrc();">
                                         <div onclick="toggleDropdown(); toggleAssignToIconSrc();"
                                             class="input-icon-assign-to-container">
@@ -151,7 +155,12 @@
                                         <p>Due date</p>
                                         <p style="color: red;">*</p>
                                     </label>
-                                    <input class="add-task-input-field" type="date" style="color: #ccc;">
+                                    <input id="dueDateInputField" onclick="addRequiredDate(this)"
+                                        oninput="addRequiredDate(this)" class="add-task-input-field" type="date"
+                                        style="color: #ccc;">
+                                    <div class="required-text">
+                                        <span id="requiredDate" class="d-none">This field is required</span>
+                                    </div>
                                 </div>
 
                                 <div class="addTask-section addTask-prio">
@@ -175,8 +184,8 @@
                                         <p>Category</p>
                                     </label>
                                     <div class="category-input">
-                                        <input value="Select task category" type="text" readonly
-                                            onclick="toggleCategoryIconSrc()">
+                                        <input class="placeholder-color" placeholder="Select task category" type="text"
+                                            readonly onclick="toggleCategoryIconSrc()">
                                         <div class="input-icon-category-container">
                                             <img id="input-icon-category"
                                                 src="./assets/svg/addTasksSvg/arrow_drop_down.svg" alt="Icon"
@@ -224,16 +233,17 @@
                             </div>
 
                         </div>
-                        <div class="addTask-footer">
-                            <div><span style="color:red">*</span><span>This field is required</span></div>
-                            <div class="display-flex clear-create"><button onclick="clearInputFields()"
-                                    class="clear-btn">Clear <img src="./assets/svg/addTasksSvg/clear.svg"
-                                        alt=""></button><button onclick="showTaskNotification()"
-                                    class="createTask-button">Create Task<img src="./assets/svg/addTasksSvg/cross.svg"
-                                        alt="">
-                                </button></div>
 
-                        </div>
+                    </div>
+                    <div class="addTask-footer">
+                        <div><span style="color:red">*</span><span>This field is required</span></div>
+                        <div class="display-flex clear-create"><button onclick="clearInputFields()"
+                                class="clear-btn">Clear <img src="./assets/svg/addTasksSvg/clear.svg"
+                                    alt=""></button><button onclick="showTaskNotification()"
+                                class="createTask-button">Create Task<img src="./assets/svg/addTasksSvg/cross.svg"
+                                    alt="">
+                            </button></div>
+
                     </div>
                 </div>
             </div>

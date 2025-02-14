@@ -7,7 +7,7 @@
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
   background-color: #fff;
 }
@@ -89,10 +89,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  top: 50%;
-  right: 4%;
-  transform: translateY(-50%);
+  position: relative;
+  top: -50%;
+  left: 90%;
 }
 
 .input-icon-assign-to-container:hover {

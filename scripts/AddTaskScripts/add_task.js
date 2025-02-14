@@ -130,20 +130,25 @@ function toggleLowActive() {
 }
 
 function clearInputFields() {
+  let requiredTitleRef = document.getElementById("requiredTitle");
+  let requiredDateRef = document.getElementById("requiredDate");
+  requiredTitleRef.classList.add("d-none");
+  requiredDateRef.classList.add("d-none");
   let inputFieldsRef = Array.from(
     document.getElementsByClassName("add-task-input-field")
   );
   inputFieldsRef.forEach((inputField) => {
     inputField.value = "";
+    inputField.classList.remove("invalid");
   });
   changeMediumBtn();
 }
+
 
 function toggleCategoryIconSrc() {
   let icon = document.getElementById("input-icon-category");
   let src1 = "./assets/svg/addTasksSvg/arrow_drop_down.svg";
   let src2 = "./assets/svg/addTasksSvg/arrow_drop_up.svg";
-
   if (icon.src.endsWith("arrow_drop_down.svg")) {
     icon.src = src2;
   } else {
@@ -154,10 +159,32 @@ function toggleCategoryIconSrc() {
 function showTaskNotification() {
   let notification = document.querySelector(".click-notification-add-task");
   if (notification) {
+    clearInputFields();
     notification.classList.add("show");
-
     setTimeout(() => {
       notification.classList.remove("show");
     }, 2000);
+  }
+}
+
+function addRequiredTitle(element) {
+  let requiredTextTitle = document.getElementById("requiredTitle");
+  element.setAttribute("required", "true");
+  if (element.value == "") {
+    requiredTextTitle.classList.remove("d-none");
+    element.classList.add("invalid");
+  } else{
+    requiredTextTitle.classList.add("d-none");
+  }
+}
+
+function addRequiredDate(element) {
+  let requiredTextDate = document.getElementById("requiredDate");
+  element.setAttribute("required", "true");
+  if (element.value == "") {
+    requiredTextDate.classList.remove("d-none");
+    element.classList.add("invalid");
+  } else{
+    requiredTextDate.classList.add("d-none");
   }
 }
