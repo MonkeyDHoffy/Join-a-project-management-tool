@@ -1,6 +1,6 @@
 function taskCardOverlayTemplate() {
   return `
-      <div class="task-card">
+      <div class="task-card slide-in">
         <div class="badge">User Story</div>
         <h2>Kochwelt Page & Recipe Recommender</h2>
         <div class="card-description">
