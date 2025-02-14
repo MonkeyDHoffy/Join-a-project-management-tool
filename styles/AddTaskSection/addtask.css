@@ -21,8 +21,6 @@
     font-weight: 700;
     font-size: 61px;
     line-height: 73.2px;
-
-
   }
 }
 
@@ -206,9 +204,8 @@ textarea {
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.addTask-subtasks:focus {}
-
-
+.addTask-subtasks:focus {
+}
 
 .prio-buttons {
   display: flex;
@@ -378,5 +375,49 @@ textarea {
 
 .input-icon-category-container:hover {
   cursor: pointer;
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(900%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOutToBottom {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.click-notification-add-task {
+  gap: 16px;
+  width: 326px;
+  height: 74px;
+  position: fixed;
+  bottom: 50%;
+  left: 50%;
+  display: none;
+  background-color: #2a3647;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.click-notification-add-task.show {
+  display: flex;
+  animation: slideInFromBottom 0.5s ease-out forwards;
+  opacity: 1;
 }
