@@ -161,3 +161,23 @@ function showTaskNotification() {
     }, 2000);
   }
 }
+
+function addRequiredTitle(element) {
+  let requiredTextTitle = document.getElementById("requiredTitle");
+  element.setAttribute("required", "true");
+  if (element.value == "") {
+    requiredTextTitle.classList.remove("d-none");
+  } else{
+    requiredTextTitle.classList.add("d-none");
+  }
+}
+
+function addRequiredDate(element) {
+  let requiredTextDate = document.getElementById("requiredDate");
+  element.setAttribute("required", "true");
+  if (element.value == "") {
+    requiredTextDate.classList.remove("d-none");
+  } else{
+    requiredTextDate.classList.add("d-none");
+  }
+}

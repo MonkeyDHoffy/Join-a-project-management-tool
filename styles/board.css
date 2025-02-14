@@ -222,6 +222,10 @@ body {
   animation-duration: 1000ms;
 }
 
+.assigned-to-input-field::placeholder {
+    color: black;
+}
+
 .close-btn:hover {
   cursor: pointer;
   background-color: #d9d9d93f;

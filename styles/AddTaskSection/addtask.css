@@ -37,7 +37,6 @@
 
 .addTask-left {
   width: calc(50% - 35px);
-  height: 376px;
   display: flex;
   flex: auto;
   flex-direction: column;
@@ -82,11 +81,23 @@ input {
   letter-spacing: 0%;
 }
 
+.required-text {
+  height: 12px;
+  display: flex;
+  align-items: flex-start;
+  transform: translateY(-7px);
+}
+
+.required-text span {
+  color: red;
+  font-size: 12px;
+}
+
 .addTask-section input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 20px;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
@@ -110,7 +121,7 @@ input {
   height: 136px;
   width: 100%;
   gap: 4px;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 1px solid #d1d1d1;
   max-height: 136px;
   resize: none;
@@ -198,8 +209,7 @@ textarea {
 .addTask-subtasks input {
   width: 100%;
   padding: 10px;
-
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 20px;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
@@ -371,6 +381,18 @@ textarea {
   position: relative;
   top: -50%;
   left: 90%;
+}
+
+input:invalid {
+  border-color: red;
+}
+
+.valid:valid {
+  border-color: #007bff;
+}
+
+.placeholder-color::placeholder {
+  color: black;
 }
 
 .input-icon-category-container:hover {

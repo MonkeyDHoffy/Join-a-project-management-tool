@@ -85,19 +85,13 @@
                                     src="./assets/img/add.png" alt=""></button>
                         </div>
                     </div>
-
-
-                    <!-- 
-                        
-                        -->
-
                 </div>
 
                 <div class="board-wrapper">
                     <div class="board-title-field-wrapper">
                         <div class="to-do-title flex-title">
                             <h3>To-Do</h3>
-                            <button class="add-to-do btn-title">+</button>
+                            <button onclick="openAddTaskOverlay()" class="add-to-do btn-title">+</button>
                         </div>
                         <div ondrop="drop('toDo')" ondragover="allowDrop(event)" draggable="true" id="toDo"
                             class="to-do-field board-field overflow-y-auto"></div>
@@ -105,7 +99,7 @@
                     <div class="board-title-field-wrapper">
                         <div class="to-do-title flex-title">
                             <h3>In progress</h3>
-                            <button class="add-in-progress btn-title">+</button>
+                            <button onclick="openAddTaskOverlay()" class="add-in-progress btn-title">+</button>
                         </div>
                         <div ondrop="drop('inProgress')" ondragover="allowDrop(event)" draggable="true" id="inProgress"
                             class="in-progress-field board-field overflow-y-auto"></div>
@@ -113,7 +107,7 @@
                     <div class="board-title-field-wrapper">
                         <div class="to-do-title flex-title">
                             <h3>Await feedback</h3>
-                            <button class="add-await-feedback btn-title">+</button>
+                            <button onclick="openAddTaskOverlay()" class="add-await-feedback btn-title">+</button>
                         </div>
                         <div ondrop="drop('awaitFeedback')" ondragover="allowDrop(event)" draggable="true"
                             id="awaitFeedback" class="await-feedback-field board-field overflow-y-auto"></div>
@@ -148,7 +142,10 @@
                             <p>Title</p>
                             <p style="color: red;">*</p>
                         </label>
-                        <input class="add-task-input-field" placeholder="enter a title" type="text">
+                        <input onkeyup="addRequiredTitle(this)" onclick="addRequiredTitle(this)" class="add-task-input-field" placeholder="Enter a title" type="text">
+                        <div class="required-text">
+                            <span id="requiredTitle" class="d-none">This field is required</span>
+                        </div>
                     </div>
 
                     <div class="addTask-section addTask-description">
@@ -164,7 +161,7 @@
                             <p>Assigned to</p>
                         </label>
                         <div id="assigned-to-input">
-                            <input type="text" id="assigned-to-field" value="Select contacts to assign"
+                            <input type="text" class="placeholder-color" id="assigned-to-field" placeholder="Select contacts to assign"
                                 onclick="toggleDropdown(); toggleAssignToIconSrc();">
                                 <div onclick="toggleDropdown(); toggleAssignToIconSrc();" class="input-icon-assign-to-container">
                                     <img id="input-icon-assign-to"
@@ -217,7 +214,10 @@
                             <p>Due date</p>
                             <p style="color: red;">*</p>
                         </label>
-                        <input class="add-task-input-field" type="date" style="color: #ccc;">
+                        <input onmousemove="addRequiredDate(this)" onclick="addRequiredDate(this)" class="add-task-input-field" type="date" style="color: #ccc;">
+                        <div  class="required-text">
+                            <span id="requiredDate" class="d-none">This field is required</span>
+                        </div>
                     </div>
 
                     <div class="addTask-section addTask-prio">
@@ -239,7 +239,7 @@
                             <p>Category</p>
                         </label>
                         <div class="category-input">
-                            <input value="Select task category" type="text" readonly
+                            <input class="placeholder-color" placeholder="Select task category" type="text" readonly
                                 onclick="toggleCategoryIconSrc()">
                             <div class="input-icon-category-container">
                                 <img id="input-icon-category"
