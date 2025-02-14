@@ -383,7 +383,7 @@ textarea {
   left: 90%;
 }
 
-input:invalid {
+.invalid:invalid {
   border-color: red;
 }
 

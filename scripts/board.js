@@ -139,12 +139,20 @@ function closeOverlayOutside(event) {
 }
 
 function clearInputFields() {
-  let;
-}
+    let inputFieldsRef = Array.from(
+      document.getElementsByClassName("add-task-input-field")
+    );
+    inputFieldsRef.forEach((inputField) => {
+      inputField.value = "";
+      inputField.setAttribute("required", "false");
+    });
+    changeMediumBtn();
+  }
 
 function showTaskNotification() {
   let notification = document.querySelector(".click-notification-add-task");
   if (notification) {
+    clearInputFields();
     notification.classList.add("show");
 
     setTimeout(() => {

@@ -130,11 +130,16 @@ function toggleLowActive() {
 }
 
 function clearInputFields() {
+  let requiredTitleRef = document.getElementById("requiredTitle");
+  let requiredDateRef = document.getElementById("requiredDate");
+  requiredTitleRef.classList.add("d-none");
+  requiredDateRef.classList.add("d-none");
   let inputFieldsRef = Array.from(
     document.getElementsByClassName("add-task-input-field")
   );
   inputFieldsRef.forEach((inputField) => {
     inputField.value = "";
+    inputField.classList.remove("invalid");
   });
   changeMediumBtn();
 }
@@ -154,6 +159,7 @@ function toggleCategoryIconSrc() {
 function showTaskNotification() {
   let notification = document.querySelector(".click-notification-add-task");
   if (notification) {
+    clearInputFields();
     notification.classList.add("show");
 
     setTimeout(() => {
@@ -167,6 +173,7 @@ function addRequiredTitle(element) {
   element.setAttribute("required", "true");
   if (element.value == "") {
     requiredTextTitle.classList.remove("d-none");
+    element.classList.add("invalid");
   } else{
     requiredTextTitle.classList.add("d-none");
   }
@@ -177,6 +184,7 @@ function addRequiredDate(element) {
   element.setAttribute("required", "true");
   if (element.value == "") {
     requiredTextDate.classList.remove("d-none");
+    element.classList.add("invalid");
   } else{
     requiredTextDate.classList.add("d-none");
   }

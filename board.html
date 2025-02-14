@@ -142,7 +142,7 @@
                             <p>Title</p>
                             <p style="color: red;">*</p>
                         </label>
-                        <input onkeyup="addRequiredTitle(this)" onclick="addRequiredTitle(this)" class="add-task-input-field" placeholder="Enter a title" type="text">
+                        <input  onclick="addRequiredTitle(this)" oninput="addRequiredTitle(this)" class="add-task-input-field" placeholder="Enter a title" type="text">
                         <div class="required-text">
                             <span id="requiredTitle" class="d-none">This field is required</span>
                         </div>
@@ -214,7 +214,7 @@
                             <p>Due date</p>
                             <p style="color: red;">*</p>
                         </label>
-                        <input onmousemove="addRequiredDate(this)" onclick="addRequiredDate(this)" class="add-task-input-field" type="date" style="color: #ccc;">
+                        <input id="dueDateInputField" onclick="addRequiredDate(this)"  oninput="addRequiredDate(this)" class="add-task-input-field" type="date" style="color: #ccc;">
                         <div  class="required-text">
                             <span id="requiredDate" class="d-none">This field is required</span>
                         </div>
@@ -291,7 +291,7 @@
         </div>
         <div class="addTask-footer">
             <div><span style="color:red">*</span><span>This field is required</span></div>
-            <div onclick="closeAddTaskOverlay(event)" class="display-flex clear-create"><button class="clear-btn">Cancel
+            <div onclick="closeAddTaskOverlay(event)" class="display-flex clear-create"><button onclick="clearInputFields()" class="clear-btn">Cancel
                     <img src="./assets/svg/addTasksSvg/clear.svg" alt=""></button><button
                     onclick="showTaskNotification()" class="createTask-button">Create Task<img
                         src="./assets/svg/addTasksSvg/cross.svg" alt="">
