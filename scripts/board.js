@@ -97,9 +97,7 @@ function searchTask() {
 //-- add task overlay 
 function openAddTaskOverlay() {
   let addTaskOverlayRef = document.getElementById("addTaskOverlay");
-  let addTaskOverlayContentRef = document.getElementById(
-    "addTaskOverlayContent"
-  );
+  let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
   addTaskOverlayRef.classList.remove("d-none");
   addTaskOverlayRef.style.pointerEvents = "all";
   setTimeout(() => {
@@ -117,9 +115,7 @@ function openAddTaskOverlay() {
  */
 function closeAddTaskOverlay() {
   let addTaskOverlayRef = document.getElementById("addTaskOverlay");
-  let addTaskOverlayContentRef = document.getElementById(
-    "addTaskOverlayContent"
-  );
+  let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
   addTaskOverlayRef.classList.remove("active");
   addTaskOverlayContentRef.style.left = "100%";
   addTaskOverlayRef.style.pointerEvents = "none";
