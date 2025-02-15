@@ -259,6 +259,21 @@ input#password {
     gap: 20px;
 }
 
+#error {
+    width: 422px;
+    color: red;
+    font-size: 0.7em;
+    margin-block-start: -10px;
+    
+}
+.error-highlight {
+    border-color: red;
+}
+
+#loginForm {
+    width: 422px;
+}
+
 .login {
     width: 110px;
     height: 40px;
