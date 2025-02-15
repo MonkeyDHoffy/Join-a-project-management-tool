@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./styles/login.css">
     <title>page 1 animation sandbox</title>
+    <script defer src="./scripts/login.js"></script>
 </head>
 
-<body>
+<body onload="init()">
 
     <div class="login-content-box" id="loginContentBox">
         <div class="nau-sign-up-box">
@@ -21,11 +22,13 @@
                 <h1>Login</h1>
             </div>
             <div class="login-form">
-                <form>
-                    <input type="email" placeholder="Email" id="email" required>
-                    <input type="password" placeholder="Password" id="password" required>
+                
+                <form id="loginForm">
+                    <input type="email" placeholder="Email" id="email">
+                    <input type="password" placeholder="Password" id="password">
+                    <span id="error"></span>
                     <div class="login-button-box">
-                        <button class="login">Login</button> <button class="guest-login">Guest Login</button>
+                        <button class="login" type="submit">Login</button> <button class="guest-login">Guest Login</button>
                     </div>
                 </form>
             </div>
