@@ -26,6 +26,10 @@
                 <form id="loginForm" novalidate>
                     <input type="email" placeholder="Email" id="email" >
                     <input type="password" placeholder="Password" id="password">
+                    <div class="pw-wrapper">
+                        <input type="password" placeholder="Password" id="password2">
+                        <input type="checkbox" id="showPassword" onclick="showPassword()">
+                    </div>
                     <span id="error"></span>
                     <div class="login-button-box">
                         <button class="login" type="submit">Login</button> <button class="guest-login">Guest Login</button>
