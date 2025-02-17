@@ -38,3 +38,33 @@ function validatePassword(messages) {
         password.classList.add('error-highlight');
     }
 }
+
+function passwordFocus() {
+    let passwordInput = document.getElementById('password');
+    let iconPW = document.querySelector('.pw-wrapper button img');
+    
+    passwordInput.addEventListener('focus', () => {
+    
+      iconPW.src = '../assets/svg/eye.svg';
+    });
+
+    
+}
+
+
+/*
+// Add an event listener to the button for the click event
+document.querySelector('.pw-wrapper button').addEventListener('click', () => {
+  // Toggle the type attribute of the input field
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+    icon.src = '../assets/svg/eye-slash.svg';
+  } else {
+    passwordInput.type = 'password';
+    icon.src = '../assets/svg/eye.svg';
+  }
+});
+
+
+
+*/
