@@ -221,7 +221,8 @@ body {
     gap: 16px;
 }
 
-.login-form form input {
+/* .login-form form input */
+.login-form form input#email {
     width: 422px;
     height: 48px;
     color: rgba(0, 0, 0, 0.3);
@@ -250,6 +251,35 @@ input#password {
     padding: 5px 16px;
 }
 
+.pw-wrapper input#password2 {
+    border: none;
+}
+
+.pw-wrapper input#password2:active {
+    border: none;
+}
+
+.pw-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 422px;
+    height: 48px;
+    padding: 5px 16px;
+    color: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+}
+
+.pw-wrapper button {
+    cursor: pointer;
+    opacity: 30;
+    position: relative;
+    border: none;
+
+}
+
+
 .login-button-box {
     display: flex;
     justify-content: center;
@@ -263,8 +293,9 @@ input#password {
     color: red;
     font-size: 0.7em;
     margin-block-start: -10px;
-    
+
 }
+
 .error-highlight {
     border-color: red !important;
 }
