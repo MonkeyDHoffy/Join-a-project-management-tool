@@ -118,6 +118,8 @@ input {
 }
 
 .description-area {
+  font-size: 20px;
+  padding: 18px 16px;
   height: 136px;
   width: 100%;
   gap: 4px;
