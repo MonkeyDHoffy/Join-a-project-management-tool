@@ -41,6 +41,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initial sorting of contact items
   sortContactItems();
+
+  // Add event listener to dark background to hide overlay on click
+  document
+    .querySelector(".dark-background")
+    .addEventListener("click", hideOverlay);
+
+  // Add event listener to close overlay when clicking outside of .content-overlay-wrapper
+  document.addEventListener("click", function (event) {
+    let overlayWrapper = document.querySelector(".content-overlay-wrapper");
+    if (
+      overlayWrapper &&
+      !overlayWrapper.contains(event.target) &&
+      !event.target.closest(".add-new-contact") &&
+      !event.target.closest(".edit-btn")
+    ) {
+      hideOverlay();
+    }
+  });
 });
 
 //-----------------------------Render--Overlay------------------------------------------------------------------------------
