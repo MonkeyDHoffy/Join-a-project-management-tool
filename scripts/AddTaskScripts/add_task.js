@@ -201,21 +201,20 @@ function renderSubtaskList() {
   if (subtaskInput.value.trim() !== "") {
     subtaskList.innerHTML += subtaskListTemplate(subtaskInput);
     subtaskInput.value = "";
+    // Trigger the input event listener to toggle subtask buttons/wird noch durch normales onload ersetzt
+    subtaskInput.dispatchEvent(new Event("input"));
   }
 }
 
-function deleteSubtaskItem(subtaskValue) {
-  let subtaskItem = document.querySelector(
-    `.item-${subtaskValue}`
-  ).parentElement;
-  subtaskItem.remove();
+function deleteSubtaskItem(element) {
+  element.parentElement.parentElement.remove();
 }
 
 function subtaskListTemplate(subtaskInput) {
   return `<div class="subtask-item-field">
   <li id="subtask-item" class="item-${subtaskInput.value}">${subtaskInput.value}</li>
   
-     <div class="btn-section"><img onclick="editSubtaskItem('${subtaskInput.value}')" class="edit-subtask-item-btn" src="./assets/svg/contacts_svg/edit.svg" alt=""><img onclick="deleteSubtaskItem('${subtaskInput.value}')" class="delete-subtask-item-btn"
+     <div class="btn-section"><img onclick="editSubtaskItem('${subtaskInput.value}')" class="edit-subtask-item-btn" src="./assets/svg/contacts_svg/edit.svg" alt=""><img onclick="deleteSubtaskItem(this)" class="delete-subtask-item-btn"
             src="./assets/svg/contacts_svg/delete.svg" alt=""></div>
     </div>
 `;
@@ -247,30 +246,24 @@ function deleteSubInputValue() {
 
 // Diese Funktion bestätigt die Bearbeitung eines Subtasks
 function confirmSubEdit() {
-  // Den neuen Wert aus dem Eingabefeld holen
   let subtaskEditInput = document.getElementById("subtask-edit-input");
   let newValue = subtaskEditInput.value.trim();
-  // Wenn der neue Wert nicht leer ist, den Subtask aktualisieren
   if (newValue !== "") {
-    // Das Subtask-Element finden und aktualisieren
     let subtaskItem = document.querySelector(
       `.item-${subtaskEditInput.dataset.oldValue}`
     );
     subtaskItem.innerHTML = newValue;
     subtaskItem.classList.remove(`item-${subtaskEditInput.dataset.oldValue}`);
     subtaskItem.classList.add(`item-${newValue}`);
-    // Die deleteSubtaskItem-Funktion weiterhin funktionsfähig halten
     let deleteButton = subtaskItem.parentElement.querySelector(
       ".delete-subtask-item-btn"
     );
-    deleteButton.setAttribute("onclick", `deleteSubtaskItem('${newValue}')`);
-    // Die editSubtaskItem-Funktion weiterhin funktionsfähig halten
+    deleteButton.setAttribute("onclick", `deleteSubtaskItem(this)`);
     let editButton = subtaskItem.parentElement.querySelector(
       ".edit-subtask-item-btn"
     );
     editButton.setAttribute("onclick", `editSubtaskItem('${newValue}')`);
   }
-  // Die Bearbeitungsansicht ausblenden
   cancelEditSubtaskItem();
 }
 
