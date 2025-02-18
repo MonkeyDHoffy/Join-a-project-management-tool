@@ -280,10 +280,10 @@ body {
 
 #error {
     width: 422px;
+    height: 16px;
     color: red;
     font-size: 0.7em;
     margin-block-start: -10px;
-
 }
 
 .error-highlight {
