@@ -485,8 +485,25 @@ textarea {
 }
 
 .subtask-item-field {
+  border-radius: 5px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+
+  .btn-section {
+    display: none;
+  }
+}
+
+.subtask-item-field:hover {
+  background-color: #ccc;
+  .btn-section {
+    display: block;
+  }
+}
+
+.subtask-item-field:hover img {
+  cursor: pointer;
 }
 
 .edit-subtask-item {
