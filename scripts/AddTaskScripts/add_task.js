@@ -204,11 +204,18 @@ function renderSubtaskList() {
   }
 }
 
+function deleteSubtaskItem(subtaskValue) {
+  let subtaskItem = document.querySelector(
+    `.item-${subtaskValue}`
+  ).parentElement;
+  subtaskItem.remove();
+}
+
 function subtaskListTemplate(subtaskInput) {
   return `<div class="subtask-item-field">
   <li id="subtask-item" class="item-${subtaskInput.value}">${subtaskInput.value}</li>
   
-     <div class="btn-section"><img onclick="editSubtaskItem('${subtaskInput.value}')" class="edit-subtask-item-btn" src="./assets/svg/contacts_svg/edit.svg" alt=""><img class="delete-subtask-item-btn"
+     <div class="btn-section"><img onclick="editSubtaskItem('${subtaskInput.value}')" class="edit-subtask-item-btn" src="./assets/svg/contacts_svg/edit.svg" alt=""><img onclick="deleteSubtaskItem('${subtaskInput.value}')" class="delete-subtask-item-btn"
             src="./assets/svg/contacts_svg/delete.svg" alt=""></div>
     </div>
 `;
@@ -218,12 +225,53 @@ function editSubtaskItem(subtaskValue) {
   document.querySelector(".subtask-list").style.display = "none";
   let editField = document.getElementById("edit-subtask-item-field");
   editField.style.display = "block";
-  editField.querySelector("input").value = subtaskValue;
+  let subtaskEditInput = editField.querySelector("input");
+  subtaskEditInput.value = subtaskValue;
+  subtaskEditInput.dataset.oldValue = subtaskValue;
+  // oldValue is used to store the old value of the subtask item, so we can compare it with the new value
+  // .dataset is used to store custom data attributes in the DOM, so we can access them later !!!!
 }
 
 function cancelEditSubtaskItem() {
   document.querySelector(".subtask-list").style.display = "block";
   document.getElementById("edit-subtask-item-field").style.display = "none";
+}
+
+function deleteSubInputValue() {
+  let subtaskEditInput = document.getElementById("subtask-edit-input");
+  if (subtaskEditInput) {
+    subtaskEditInput.value = "";
+  }
+  document.getElementById("subtask-edit-input").focus();
+}
+
+// Diese Funktion bestätigt die Bearbeitung eines Subtasks
+function confirmSubEdit() {
+  // Den neuen Wert aus dem Eingabefeld holen
+  let subtaskEditInput = document.getElementById("subtask-edit-input");
+  let newValue = subtaskEditInput.value.trim();
+  // Wenn der neue Wert nicht leer ist, den Subtask aktualisieren
+  if (newValue !== "") {
+    // Das Subtask-Element finden und aktualisieren
+    let subtaskItem = document.querySelector(
+      `.item-${subtaskEditInput.dataset.oldValue}`
+    );
+    subtaskItem.innerHTML = newValue;
+    subtaskItem.classList.remove(`item-${subtaskEditInput.dataset.oldValue}`);
+    subtaskItem.classList.add(`item-${newValue}`);
+    // Die deleteSubtaskItem-Funktion weiterhin funktionsfähig halten
+    let deleteButton = subtaskItem.parentElement.querySelector(
+      ".delete-subtask-item-btn"
+    );
+    deleteButton.setAttribute("onclick", `deleteSubtaskItem('${newValue}')`);
+    // Die editSubtaskItem-Funktion weiterhin funktionsfähig halten
+    let editButton = subtaskItem.parentElement.querySelector(
+      ".edit-subtask-item-btn"
+    );
+    editButton.setAttribute("onclick", `editSubtaskItem('${newValue}')`);
+  }
+  // Die Bearbeitungsansicht ausblenden
+  cancelEditSubtaskItem();
 }
 
 document.addEventListener("DOMContentLoaded", function () {

@@ -472,6 +472,11 @@ textarea {
   right: -87%;
 }
 
+.cancel-check-btn img:hover {
+  cursor: pointer;
+  scale: 1.1;
+}
+
 .subtask-check {
   border-left: 1px solid #d1d1d1;
 }
@@ -512,4 +517,21 @@ textarea {
   width: 100%;
   height: 64px;
   border: 2px dashed #46a82e;
+}
+
+.edit-subtask-item-field {
+  display: flex;
+}
+
+.edit-subtask-item-field input {
+}
+.edit-subtask-btns {
+  position: relative;
+  top: -57%;
+  right: -87%;
+}
+
+.edit-subtask-btns img:hover {
+  cursor: pointer;
+  scale: 1.1;
 }
