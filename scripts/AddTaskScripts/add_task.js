@@ -144,7 +144,6 @@ function clearInputFields() {
   changeMediumBtn();
 }
 
-
 function toggleCategoryIconSrc() {
   let icon = document.getElementById("input-icon-category");
   let src1 = "./assets/svg/addTasksSvg/arrow_drop_down.svg";
@@ -173,7 +172,7 @@ function addRequiredTitle(element) {
   if (element.value == "") {
     requiredTextTitle.classList.remove("d-none");
     element.classList.add("invalid");
-  } else{
+  } else {
     requiredTextTitle.classList.add("d-none");
   }
 }
@@ -184,7 +183,28 @@ function addRequiredDate(element) {
   if (element.value == "") {
     requiredTextDate.classList.remove("d-none");
     element.classList.add("invalid");
-  } else{
+  } else {
     requiredTextDate.classList.add("d-none");
   }
 }
+
+function focusSubtaskInput() {
+  document.querySelector(".addTask-subtasks input").focus();
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Add event listener to toggle subtask buttons based on input value
+  document
+    .querySelector(".addTask-subtasks input")
+    .addEventListener("input", function () {
+      let subtaskAdd = document.querySelector(".subtask-add");
+      let cancelCheckBtn = document.querySelector(".cancel-check-btn");
+      if (this.value.trim() !== "") {
+        subtaskAdd.style.display = "none";
+        cancelCheckBtn.style.display = "block";
+      } else {
+        subtaskAdd.style.display = "block";
+        cancelCheckBtn.style.display = "none";
+      }
+    });
+});

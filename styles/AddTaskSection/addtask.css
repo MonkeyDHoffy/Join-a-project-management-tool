@@ -443,3 +443,30 @@ textarea {
   animation: slideInFromBottom 0.5s ease-out forwards;
   opacity: 1;
 }
+
+.subtask-add {
+  width: 14px;
+  height: 14px;
+  position: relative;
+  top: -50%;
+  right: -94%;
+}
+
+.subtask-add:hover {
+  cursor: pointer;
+}
+
+.subtask-section {
+}
+
+.cancel-check-btn {
+  display: none;
+  width: 51px;
+  position: relative;
+  top: -47%;
+  right: -87%;
+}
+
+.subtask-check {
+  border-left: 1px solid #d1d1d1;
+}
