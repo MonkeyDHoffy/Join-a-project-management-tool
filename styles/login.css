@@ -249,7 +249,26 @@ body {
     padding: 0 16px 0 0;
 }
 
+#pw-icon {
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+ /* .eye_slash_small {
+    width: 20px;
+    height: 20px;
+} */
+
+/*   :::::::   login button   :::::::    */
 
 .login-button-box {
     display: flex;
