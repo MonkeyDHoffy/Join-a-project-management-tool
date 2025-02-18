@@ -221,63 +221,34 @@ body {
     gap: 16px;
 }
 
-/* .login-form form input */
-.login-form form input#email {
+.email-wrapper, .pw-wrapper {
     width: 422px;
     height: 48px;
     color: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 6px;
-}
-
-input#email {
-    background-image: url('../assets/svg/mail.svg');
-    background-size: 20px 16px;
-    background-repeat: no-repeat;
-    background-position: calc(100% - 20px) center;
-    padding: 5px 16px;
-}
-
-input#email:hover,
-input#password:hover {
-    border-color: #007bff;
-}
-
-input#password {
-    background-image: url('../assets/svg/lock.svg');
-    background-size: 20px 16px;
-    background-repeat: no-repeat;
-    background-position: calc(100% - 20px) center;
-    padding: 5px 16px;
-}
-
-.pw-wrapper input#password2 {
-    border: none;
-}
-
-.pw-wrapper input#password2:active {
-    border: none;
-}
-
-.pw-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 422px;
-    height: 48px;
     padding: 5px 16px;
-    color: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 6px;
 }
 
-.pw-wrapper button {
-    cursor: pointer;
-    opacity: 30;
-    position: relative;
+
+.email-wrapper:hover,
+.pw-wrapper:hover {
+    border-color: #007bff;
+}
+
+.email-wrapper input,
+.pw-wrapper input {
+    width: 100%;
+    height: 100%;
     border: none;
-
+    font-size: 1em;
+    outline: none;
+    padding: 0 16px 0 0;
 }
+
 
 
 .login-button-box {
