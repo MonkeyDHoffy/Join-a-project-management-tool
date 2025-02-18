@@ -480,12 +480,13 @@ textarea {
   width: 100%;
   height: 64px;
   border: 2px dashed #054483;
-  overflow-y: scroll;
+  overflow-y: auto;
   word-break: break-word;
 }
 
 .subtask-item-field {
   border-radius: 5px;
+  height: 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;

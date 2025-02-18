@@ -208,15 +208,17 @@ function subtaskListTemplate(subtaskInput) {
   return `<div class="subtask-item-field">
   <li id="subtask-item" class="item-${subtaskInput.value}">${subtaskInput.value}</li>
   
-     <div class="btn-section"><img onclick="editSubtaskItem()" class="edit-subtask-item-btn" src="./assets/svg/contacts_svg/edit.svg" alt=""><img class="delete-subtask-item-btn"
+     <div class="btn-section"><img onclick="editSubtaskItem('${subtaskInput.value}')" class="edit-subtask-item-btn" src="./assets/svg/contacts_svg/edit.svg" alt=""><img class="delete-subtask-item-btn"
             src="./assets/svg/contacts_svg/delete.svg" alt=""></div>
     </div>
 `;
 }
 
-function editSubtaskItem() {
+function editSubtaskItem(subtaskValue) {
   document.querySelector(".subtask-list").style.display = "none";
-  document.getElementById("edit-subtask-item-field").style.display = "block";
+  let editField = document.getElementById("edit-subtask-item-field");
+  editField.style.display = "block";
+  editField.querySelector("input").value = subtaskValue;
 }
 
 function cancelEditSubtaskItem() {
