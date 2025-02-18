@@ -19,6 +19,7 @@
         rel="stylesheet">
     <script src="./scripts/ContactsScript.js/contacts.js"></script>
     <script src="./scripts/ContactsScript.js/contacts_template.js"></script>
+    <script src="./scripts/script.js"></script>
 </head>
 
 <body onload="getContacts()">
@@ -85,150 +86,11 @@
 
 
                         <div class="contacts-list">
-                            <!-- <div class="contact-item" onclick="renderContact()">
-                                <div class="contact-profile-picture">JH</div>
-                                <div class="contact-details">
-                                    <p class="contact-name">Jannik Hoff</p>
-                                    <p class="contact-email">hooooff@example.com</p>
-                                </div>
-                            </div>
-                            <div class="contact-item" onclick="renderContact()">
-                                <div class="contact-profile-picture">DH</div>
-                                <div class="contact-details">
-                                    <p class="contact-name">Dany Hudson</p>
-                                    <p class="contact-email">danny@example.com</p>
-                                </div>
-                            </div>
-                            <div class="contact-item" onclick="renderContact()">
-                                <div class="contact-profile-picture">VV</div>
-                                <div class="contact-details">
-                                    <p class="contact-name">Viktor Vaal</p>
-                                    <p class="contact-email">vaaaaal@example.com</p>
-                                </div>
-                            </div>
-                            <div class="contact-item" onclick="renderContact()">
-                                <div class="contact-profile-picture">AB</div>
-                                <div class="contact-details">
-                                    <p class="contact-name">Alice Brown</p>
-                                    <p class="contact-email">alice@example.com</p>
-                                </div>
-                            </div>
-                            <div class="contact-item" onclick="renderContact()">
-                                <div class="contact-profile-picture">CM</div>
-                                <div class="contact-details">
-                                    <p class="contact-name">Chris Miller</p>
-                                    <p class="contact-email">chris@example.com</p>
-                                </div>
-                            </div>
-                            <div class="contact-item" onclick="renderContact()">
-                                <div class="contact-profile-picture">ER</div>
-                                <div class="contact-details">
-                                    <p class="contact-name">Emma Roberts</p>
-                                    <p class="contact-email">emma@example.com</p>
-                                </div>
-                            </div>
-                            <div class="contact-item" onclick="renderContact()">
-                                <div class="contact-profile-picture">TP</div>
-                                <div class="contact-details">
-                                    <p class="contact-name">Tom Parker</p>
-                                    <p class="contact-email">tom@example.com</p>
-                                </div>
-                            </div>
-                            <div class="contact-item" onclick="renderContact()">
-                                <div class="contact-profile-picture">LK</div>
-                                <div class="contact-details">
-                                    <p class="contact-name">Linda King</p>
-                                    <p class="contact-email">linda@example.com</p>
-                                </div>
-                            </div>
-                            <div class="contact-item" onclick="renderContact()">
-                                <div class="contact-profile-picture">MW</div>
-                                <div class="contact-details">
-                                    <p class="contact-name">Michael White</p>
-                                    <p class="contact-email">michael@example.com</p>
-                                </div>
-                            </div>
-                            <div class="contact-item" onclick="renderContact()">
-                                <div class="contact-profile-picture">NS</div>
-                                <div class="contact-details">
-                                    <p class="contact-name">Nancy Scott</p>
-                                    <p class="contact-email">nancy@example.com</p>
-                                </div>
-                            </div>
-                            <div class="contact-item" onclick="renderContact()">
-                                <div class="contact-profile-picture">JR</div>
-                                <div class="contact-details">
-                                    <p class="contact-name">James Rodriguez</p>
-                                    <p class="contact-email">james@example.com</p>
-                                </div>
-                            </div>
-                            <div class="contact-item" onclick="renderContact()">
-                                <div class="contact-profile-picture">SO</div>
-                                <div class="contact-details">
-                                    <p class="contact-name">Sarah Olsen</p>
-                                    <p class="contact-email">sarah@example.com</p>
-                                </div>
-                            </div>
-                            <div class="contact-item" onclick="renderContact()">
-                                <div class="contact-profile-picture">BG</div>
-                                <div class="contact-details">
-                                    <p class="contact-name">Brian Green</p>
-                                    <p class="contact-email">brian@example.com</p>
-                                </div>
-                            </div>
-                            <div class="contact-item" onclick="renderContact()">
-                                <div class="contact-profile-picture">CT</div>
-                                <div class="contact-details">
-                                    <p class="contact-name">Catherine Turner</p>
-                                    <p class="contact-email">catherine@example.com</p>
-                                </div>
-                            </div>
-                            <div class="contact-item" onclick="renderContact()">
-                                <div class="contact-profile-picture">DW</div>
-                                <div class="contact-details">
-                                    <p class="contact-name">Daniel Wright</p>
-                                    <p class="contact-email">daniel@example.com</p>
-                                </div>
-                            </div>
-                            <div class="contact-item" onclick="renderContact()">
-                                <div class="contact-profile-picture">EV</div>
-                                <div class="contact-details">
-                                    <p class="contact-name">Eva Vanstone</p>
-                                    <p class="contact-email">eva@example.com</p>
-                                </div>
-                            </div>
-                            <div class="contact-item" onclick="renderContact()">
-                                <div class="contact-profile-picture">RM</div>
-                                <div class="contact-details">
-                                    <p class="contact-name">Robert Miles</p>
-                                    <p class="contact-email">robert@example.com</p>
-                                </div>
-                            </div>
-                            <div class="contact-item" onclick="renderContact()">
-                                <div class="contact-profile-picture">FA</div>
-                                <div class="contact-details">
-                                    <p class="contact-name">Fiona Adams</p>
-                                    <p class="contact-email">fiona@example.com</p>
-                                </div>
-                            </div>
-                            <div class="contact-item" onclick="renderContact()">
-                                <div class="contact-profile-picture">GP</div>
-                                <div class="contact-details">
-                                    <p class="contact-name">George Peterson</p>
-                                    <p class="contact-email">george@example.com</p>
-                                </div>
-                            </div> -->
-
 
                         </div>
-
-
-
                     </div>
 
-
                     <div class="contacts-content-right">
-
 
                         <div class="contacts-heading-right">
                             <div class="bigContacts">Contacts</div>
@@ -236,36 +98,19 @@
                             <div class="betterwith">Better with team</div>
                         </div>
 
-
                         <section id="contact-information" class="contact-information">
 
-
-
-
                         </section>
-
 
                         <div class="notification-space">
                             <div class="click-notification">
                                 <p>Contact successfully created</p>
                             </div>
                         </div>
-
                     </div>
-
-
                 </div>
-
-
-
             </div>
         </div>
-
-
-
-
-
-
 
         <div id="overlay-container"></div>
         <div class="dark-background" onclick="hideOverlay()"></div>

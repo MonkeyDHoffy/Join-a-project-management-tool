@@ -40,22 +40,24 @@
 }
 
 .dark-background {
-  transition: opacity 0.5s ease-in-out;
+  transition: background-color 0.5s ease;
   display: none;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
   z-index: 4;
 }
+
+.active {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 .content-overlay-wrapper {
   display: flex;
   height: 492px;
-
   border-radius: 30px;
-
   background: white;
   border-radius: 10px;
   overflow: hidden;

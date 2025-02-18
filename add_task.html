@@ -223,18 +223,35 @@
                                         <label for="">
                                             <p>Subtasks</p>
                                         </label>
-                                        <div class="addTask-sectio subtask-section"><input class="add-task-input-field"
-                                                type="text" placeholder="Select new subtask"><img class="subtask-add"
+                                        <div class="addTask-sectio subtask-section"><input
+                                                onclick="cancelEditSubtaskItem();" class="add-task-input-field"
+                                                type="text" placeholder="Add new subtask"><img class="subtask-add"
                                                 src="./assets/img/addTask/add.svg" alt="" onclick="focusSubtaskInput()">
                                             <div class="cancel-check-btn"><img src="./assets/img/addTask/cross.svg"
                                                     alt=""><img class="subtask-check"
-                                                    src="./assets/img/addTask/check.svg" alt=""></div>
+                                                    src="./assets/img/addTask/check.svg" alt=""
+                                                    onclick="renderSubtaskList()"></div>
+
                                         </div>
+
+
+                                        <section class="subtask-list"></section>
+                                        <section id="edit-subtask-item-field" class="edit-subtask-item">
+                                            <input value="lalalala" type="text" name="" id="">
+                                            <div><img src="" alt=""><img src="" alt=""></div>
+                                        </section>
+
                                     </div>
+
+
+
+
                                 </div>
 
 
+
                             </div>
+
 
                         </div>
 
@@ -258,7 +275,6 @@
     <div class="click-notification-add-task">
         <p>Task added to board </p> <img src="./assets/img/navBar/board.svg" alt="">
     </div>
-
 
 </body>
 
