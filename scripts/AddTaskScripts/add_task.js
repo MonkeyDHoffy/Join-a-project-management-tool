@@ -188,8 +188,34 @@ function addRequiredDate(element) {
   }
 }
 
+//Subtask functions-----------------------------------------------------------------------------
+
 function focusSubtaskInput() {
   document.querySelector(".addTask-subtasks input").focus();
+}
+
+function renderSubtaskList() {
+  let subtaskInput = document.querySelector(".addTask-subtasks input");
+  let subtaskList = document.querySelector(".subtask-list");
+  if (subtaskInput.value.trim() !== "") {
+    subtaskList.innerHTML += subtaskListTemplate(subtaskInput);
+    subtaskInput.value = "";
+  }
+}
+
+function subtaskListTemplate(subtaskInput) {
+  return `<div class="subtask-item-field">
+  <li id="subtask-item" class="item-${subtaskInput.value}">${subtaskInput.value}</li>
+  
+     <div><img onclick="editSubtaskItem()" class="edit-subtask-item-btn" src="./assets/svg/contacts_svg/edit.svg" alt=""><img class="delete-subtask-item"
+            src="./assets/svg/contacts_svg/delete.svg" alt=""></div>
+    </div>
+`;
+}
+
+function editSubtaskItem() {
+  document.querySelector(".subtask-list").style.display = "none";
+  document.getElementById("edit-subtask-item-field").style.display = "block";
 }
 
 document.addEventListener("DOMContentLoaded", function () {

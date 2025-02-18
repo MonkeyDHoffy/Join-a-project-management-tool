@@ -159,6 +159,8 @@ textarea {
 }
 
 .addTask-footer {
+  position: relative;
+  top: 8%;
   display: flex;
   justify-content: space-between;
 }
@@ -451,7 +453,7 @@ textarea {
   height: 14px;
   position: relative;
   top: -50%;
-  right: -94%;
+  right: -91%;
 }
 
 .subtask-add:hover {
@@ -464,11 +466,32 @@ textarea {
 .cancel-check-btn {
   display: none;
   width: 51px;
+  height: 14px;
   position: relative;
-  top: -47%;
+  top: -57%;
   right: -87%;
 }
 
 .subtask-check {
   border-left: 1px solid #d1d1d1;
+}
+
+.subtask-list {
+  width: 100%;
+  height: 64px;
+  border: 2px dashed #054483;
+  overflow-y: scroll;
+  word-break: break-word;
+}
+
+.subtask-item-field {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-subtask-item {
+  display: none;
+  width: 100%;
+  height: 64px;
+  border: 2px dashed #46a82e;
 }
