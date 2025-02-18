@@ -130,9 +130,7 @@ function closeAddTaskOverlay() {
  */
 function closeOverlayOutside(event) {
   let addTaskOverlayRef = document.getElementById("addTaskOverlay");
-  let addTaskOverlayContentRef = document.getElementById(
-    "addTaskOverlayContent"
-  );
+  let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
   if (event.target == addTaskOverlayRef) {
     addTaskOverlayRef.classList.remove("active");
     addTaskOverlayRef.style.pointerEvents = "none";

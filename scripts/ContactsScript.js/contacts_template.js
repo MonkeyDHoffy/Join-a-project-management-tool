@@ -88,7 +88,7 @@ function getOverlayTemplate() {
                                                           fill="#2A3647" />
                                                   </g>
                                               </svg>
-                                              <button onclick="deleteContact()">Delete</button>
+                                              <button onclick="deleteContact(${id})">Delete</button>
                                           </div>
                                       </div>
                                   </div>
@@ -113,7 +113,7 @@ function getOverlayTemplate() {
                               </div>`;
   }
 
-  function renderEditOverlay() {
+  function renderEditOverlay(id) {
     let overlayContainer = document.getElementById("overlay-container");
     document.querySelector(".dark-background").style.display = "block";
     overlayContainer.innerHTML = `  <section class="add-contact-overlay">
@@ -135,21 +135,21 @@ function getOverlayTemplate() {
                         <div class="input-group">
                             <div class="contact-form">
                                 <label for="name"></label>
-                                <input type="text" id="name" placeholder="enter name" class="contact-input">
+                                <input type="text" id="name" placeholder="enter name" class="contact-input" value="${contacts[id].name}">
                                 <img class="input-icon" src="./assets/img/contacts_imgs/person.png" alt="Name Icon">
     
                                 <label for="email"></label>
-                                <input type="email" id="email" placeholder="enter email" class="contact-input">
+                                <input type="email" id="email" placeholder="enter email" class="contact-input" value="${contacts[id].email}">
                                  <img class="input-icon" src="./assets/img/contacts_imgs/mail.png" alt="Email Icon">
     
                                 <label for="phone"></label>
-                                <input type="tel" id="phone" placeholder="enter number" class="contact-input">
+                                <input type="tel" id="phone" placeholder="enter number" class="contact-input" value="${contacts[id].phone}">
                                  <img class="input-icon" src="./assets/img/contacts_imgs/call.png" alt="Phone Icon">
                             </div>
     
                             <div class="button-group">
-                                <button id="delte-btn-overlay" class="delete-btn-overlay">Delete</button>
-                                <button id="save-btn-overlay" class="save-btn-overlay">Save ✓</button>
+                                <button onclick="deleteContact(${id})" id="delte-btn-overlay" class="delete-btn-overlay">Delete</button>
+                                <button onclick="editContact(${id})" id="save-btn-overlay" class="save-btn-overlay">Save ✓</button>
                             </div>
                         </div>
                     </div>

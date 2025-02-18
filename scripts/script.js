@@ -26,29 +26,56 @@ let tasks = [{
 }
 ];
 const BASE_URL = "https://remotestorage-f4b14-default-rtdb.europe-west1.firebasedatabase.app/";
-
-
-
-function regsterUser() {
-    let name = "daniela";
-    let email = "daniela@example.com";
-    let passwort = "ertezrz";
-
-    let user = {
-        'name': name,
-        'email': email,
-        'passwort': passwort
-    };
-    putData("tasks", user);
+let data;
+async function getData(path = "",) {
+    try {
+        let response = await fetch(BASE_URL + path + ".json");
+        let responseToJson = await response.json();
+        return responseToJson;
+    } catch (error) {
+        console.error(error);
+    }
 }
-async function putData(path, data) {
-    let response = await fetch(BASE_URL + path + ".json", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data)
-    });
-    let responseToJson = await response.json();
-    return responseToJson;
+
+async function putData(path = "", data = "") {
+    try {
+        let response = await fetch(BASE_URL + path + ".json", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        });
+        let responseToJson = await response.json();
+        console.log(responseToJson);
+    } catch (error) {
+        console.error(error);
+    }
+
 }
+
+
+
+// function regsterUser() {
+//     let name = "daniela";
+//     let email = "daniela@example.com";
+//     let passwort = "ertezrz";
+
+//     let user = {
+//         'name': name,
+//         'email': email,
+//         'passwort': passwort
+//     };
+//     putData("tasks", user);
+// }
+// async function putData(path, data) {
+//     let response = await fetch(BASE_URL + path + ".json", {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify(data)
+//     });
+//     let responseToJson = await response.json();
+//     return responseToJson;
+// }
