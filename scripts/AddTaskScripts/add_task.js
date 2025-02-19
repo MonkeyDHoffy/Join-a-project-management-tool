@@ -267,6 +267,13 @@ function confirmSubEdit() {
   cancelEditSubtaskItem();
 }
 
+function cancelSubInput() {
+  let subtaskInput = document.querySelector(".addTask-subtasks input");
+  subtaskInput.value = "";
+  subtaskInput.dispatchEvent(new Event("input")); // btn toggling to the original state
+  document.querySelector(".addTask-subtasks input").focus();
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   // Add event listener to toggle subtask buttons based on input value
   document
