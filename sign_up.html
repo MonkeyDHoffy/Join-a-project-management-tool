@@ -24,12 +24,34 @@
                 <h1>Sign Up</h1>
             </div>
             <div class="sgnp-form">
-                <form>
+                <form id="signupForm" novalidate>
 
-                    <input type="text" placeholder="Name" id="signupName">
-                    <input type="email" placeholder="Email" id="email">
-                    <input type="password" placeholder="Password" id="password1">
-                    <input type="password" placeholder="Password" id="password2">
+                    <div class="name-wrapper">
+                        <input type="text" placeholder="Name" id="signupName">
+                        <span><img src="../assets/svg/person.svg" alt=""></span>
+                    </div>
+
+                    <div class="email-wrapper">
+                        <input type="email" placeholder="Email" id="email">
+                        <span><img src="../assets/svg/mail.svg" alt=""></span>
+                    </div>
+
+
+
+                    <div class="pw-wrapper">
+                        <input type="password" placeholder="Password" id="password">
+                        <button type="button" disabled id="pw-icon" onclick="togglePassword()"><img
+                                src="../assets/svg/lock.svg" alt=""></button>
+                    </div>
+
+
+                    <div class="pw-wrapper">
+                        <input type="password" placeholder="Password" id="passwordRepeat">
+                        <button type="button" disabled id="pw-icon" onclick="togglePassword()"><img
+                                src="../assets/svg/lock.svg" alt=""></button>
+                    </div>
+
+
                     <div class="sgnp-button-box">
                         <div class="confirm-priv-pol">
                             <input type="checkbox" class="chb-priv-pol" id="chbPrivPol">
@@ -52,8 +74,8 @@
         </div>
 
     </div>
-    
-        <div class="backdrop d-none" id="backdrop"></div>
+
+    <div class="backdrop d-none" id="backdrop"></div>
 
     <script src="./scripts/signup.js"></script>
 
