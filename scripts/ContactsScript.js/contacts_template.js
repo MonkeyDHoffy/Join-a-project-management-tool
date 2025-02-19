@@ -1,6 +1,6 @@
 function getOverlayTemplate() {
     return `
-          <section class="add-contact-overlay">
+          <section onclick="hideOverlayOnOutsideClick(event)" class="add-contact-overlay">
               <div class="content-overlay-wrapper">
                  
                   <div class="content-overlay-left">
@@ -115,8 +115,8 @@ function getOverlayTemplate() {
 
   function renderEditOverlay(id) {
     let overlayContainer = document.getElementById("overlay-container");
-    document.querySelector(".dark-background").style.display = "block";
-    overlayContainer.innerHTML = `  <section class="add-contact-overlay">
+    showOverlay();
+    overlayContainer.innerHTML = `  <section onclick="hideOverlayOnOutsideClick(event)" class="add-contact-overlay">
                 <div class="content-overlay-wrapper">
     
                     <div class="content-overlay-left">

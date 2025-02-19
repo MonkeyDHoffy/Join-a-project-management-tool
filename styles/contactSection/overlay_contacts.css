@@ -50,7 +50,7 @@
   z-index: 4;
 }
 
-.active {
+.overlay-open {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
