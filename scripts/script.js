@@ -51,7 +51,6 @@ async function putData(path = "", data = "") {
     } catch (error) {
         console.error(error);
     }
-
 }
 
 

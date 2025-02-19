@@ -1,9 +1,10 @@
 let contacts = [];
 let currentId = 0;
+let currentLetter = "";
 
 async function getContacts() {
-  contacts = Object.values(await getData("contacts/")); 
-  console.log(contacts);  
+  contacts = Object.values(await getData("contacts/"));
+  console.log(contacts);
   contacts.sort((a, b) => a.name.localeCompare(b.name));
   displayContacts();
 }
@@ -51,71 +52,50 @@ async function deleteContact(id) {
 }
 
 function displayContacts() {
-  //in contacts.html, the contacts are sorted alphabetically and a letter divider is added to separate contacts by the first letter of their name in the div with class "contacts-list"
   let contactsList = document.querySelector(".contacts-list");
-
-  // Clear the current contacts list
   contactsList.innerHTML = "";
-
-  // Track the current starting letter
-  let currentLetter = "";
-
-  // Append sorted items to the contacts list with letter dividers
   contacts.forEach((contact) => {
-
     let name = contact.name;
-    let email = contact.email;
     let firstLetter = name.charAt(0).toUpperCase();
-
-    // If the first letter has changed, add a new letter divider
     if (firstLetter !== currentLetter) {
-      currentLetter = firstLetter;
-      let letterDivider = document.createElement("div");
-      letterDivider.className = "letter-divider";
-      letterDivider.innerHTML = `<p class="current-letter-b">${currentLetter}</p><hr>`;
-      contactsList.appendChild(letterDivider);
+      addLetterDivider(firstLetter, contactsList);
     }
-
-    // Append the item to the contacts list
     contactsList.innerHTML += contactTemplate(contact, currentId);
     currentId++;
   });
   currentId = 0;
 }
 
-// Add event listener to dark background to hide overlay on click
-// document.querySelector(".dark-background").addEventListener("click", hideOverlay);
+function addLetterDivider(firstLetter, contactsList) {
+  currentLetter = firstLetter;
+  let letterDivider = document.createElement("div");
+  letterDivider.className = "letter-divider";
+  letterDivider.innerHTML = `<p class="current-letter-b">${currentLetter}</p><hr>`;
+  contactsList.appendChild(letterDivider);
+}
 
-// Add event listener to close overlay when clicking outside of .content-overlay-wrapper
-document.addEventListener("click", function (event) {
+function hideOverlayOnOutsideClick(event) {
   let overlayWrapper = document.querySelector(".content-overlay-wrapper");
-  if (
-    overlayWrapper &&
-    !overlayWrapper.contains(event.target) &&
-    !event.target.closest(".add-new-contact") &&
-    !event.target.closest(".edit-btn")
-  ) {
+  if (overlayWrapper && !overlayWrapper.contains(event.target) && !event.target.closest(".add-new-contact") && !event.target.closest(".edit-btn")) {
     hideOverlay();
   }
-});
+};
 
-// Funktion zum Anzeigen des Overlays
 function showOverlay() {
   let overlayContainer = document.getElementById("overlay-container");
   overlayContainer.innerHTML = getOverlayTemplate();
   document.querySelector(".dark-background").style.display = "block";
   setTimeout(() => {
-    document.querySelector(".dark-background").classList.add("active");
+    document.querySelector(".dark-background").classList.add("overlay-open");
   }, 10);
 }
 
-// Funktion zum Ausblenden des Overlays
 function hideOverlay() {
   let overlay = document.querySelector(".add-contact-overlay");
   let darkBackground = document.querySelector(".dark-background");
   if (overlay) {
     overlay.classList.add("hide");
-    darkBackground.classList.remove("active");
+    darkBackground.classList.remove("overlay-open");
     setTimeout(() => {
       overlay.remove();
       darkBackground.style.display = "none";
@@ -127,7 +107,6 @@ function showClickNotification() {
   let notification = document.querySelector(".click-notification");
   if (notification) {
     notification.classList.add("show");
-
     setTimeout(() => {
       notification.classList.remove("show");
     }, 2000);
