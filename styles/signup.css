@@ -121,6 +121,51 @@ body {
     gap: 16px;
 }
 
+/*   :::::::   email und pw   :::::::   */
+.name-wrapper, .email-wrapper, .pw-wrapper {
+    width: 422px;
+    height: 48px;
+    color: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 16px;
+}
+
+
+.email-wrapper:hover,
+.pw-wrapper:hover,
+.name-wrapper:hover {
+    border-color: #007bff;
+}
+
+.email-wrapper input,
+.pw-wrapper input,
+.name-wrapper input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-size: 1em;
+    outline: none;
+    padding: 0 16px 0 0;
+}
+
+#pw-icon {
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+.cursor-pointer {
+    cursor: pointer;
+}
 
 /**/
 .sgnp-form form input {
@@ -131,39 +176,6 @@ body {
     border-radius: 6px;
 }
 
-
-input#signupName {
-    background-image: url('../assets/svg/person.svg');
-    background-size: 20px 16px;
-    background-repeat: no-repeat;
-    background-position: calc(100% - 20px) center;
-    padding: 5px 16px;
-}
-
-input#email {
-    background-image: url('../assets/svg/mail.svg');
-    background-size: 20px 16px;
-    background-repeat: no-repeat;
-    background-position: calc(100% - 20px) center;
-    padding: 5px 16px;
-}
-
-input#password1, input#password2 {
-    background-image: url('../assets/svg/lock.svg');
-    background-size: 20px 16px;
-    background-repeat: no-repeat;
-    background-position: calc(100% - 20px) center;
-    padding: 5px 16px;
-}
-
-
-input#signupName,
-input#email:hover,
-input#password:hover {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    cursor: pointer;
-}
 
 .sgnp-button-box {
     display: flex;
@@ -264,8 +276,6 @@ input#password:hover {
 }
 
 
-
-
 .signup-msg {
     width: 320px;
     height: 40px;
@@ -349,3 +359,4 @@ input#password:hover {
 .d-none {
     display: none;
 }
+
