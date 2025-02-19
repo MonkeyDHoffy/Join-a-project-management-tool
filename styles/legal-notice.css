@@ -1,5 +1,8 @@
 .legal-notice-wrapper {
     padding: 64px 64px ;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;   
 }
 
 .lega-notice-headline {
