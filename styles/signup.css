@@ -122,7 +122,9 @@ body {
 }
 
 /*   :::::::   email und pw   :::::::   */
-.name-wrapper, .email-wrapper, .pw-wrapper {
+.name-wrapper,
+.email-wrapper,
+.pw-wrapper {
     width: 422px;
     height: 48px;
     color: rgba(0, 0, 0, 0.3);
@@ -161,21 +163,11 @@ body {
     justify-content: center;
     align-items: center;
 
-
 }
+
 .cursor-pointer {
     cursor: pointer;
 }
-
-/**/
-.sgnp-form form input {
-    width: 422px;
-    height: 48px;
-    color: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 6px;
-}
-
 
 .sgnp-button-box {
     display: flex;
@@ -221,6 +213,23 @@ body {
     cursor: pointer;
 
 }
+
+#error,
+#errorPrivPol {
+    width: 422px;
+    height: 16px;
+    color: red;
+    font-size: 0.7em;
+    margin-block-start: -10px;
+}
+
+#errorPrivPol {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
 /*   :::::::   custom checkbox privacy policy   :::::::   */
 .confirm-priv-pol {
     display: flex;
@@ -254,14 +263,14 @@ body {
 }
 
 .confirm-priv-pol label:hover::before,
-.confirm-priv-pol input[type="checkbox"]:hover + label::before,
-.confirm-priv-pol input[type="checkbox"]:focus + label::before {
+.confirm-priv-pol input[type="checkbox"]:hover+label::before,
+.confirm-priv-pol input[type="checkbox"]:focus+label::before {
     box-shadow: 0px 4px 4px 0px #00000040;
     background: #EDF2FA;
 
 }
 
-.confirm-priv-pol input[type="checkbox"]:checked+label::before {   
+.confirm-priv-pol input[type="checkbox"]:checked+label::before {
     content: url('../assets/svg/box-checked.svg');
     width: 1em;
     height: 1em;
@@ -337,6 +346,10 @@ body {
     background: transparent;
 }
 
+.priv-polce-link {
+    padding-left: 4px;
+}
+
 .priv-legal:hover {
     text-shadow: 1px 1px 2px #00000040;
 }
@@ -359,4 +372,3 @@ body {
 .d-none {
     display: none;
 }
-
