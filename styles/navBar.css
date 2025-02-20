@@ -190,6 +190,13 @@ span {
 }
 
 @media (max-width: 768px) {
+  .content_left {
+    display: none;
+  }
+
+  .content_right {
+    width: 100%;
+  }
   .mobile-nav-section {
     display: block;
     position: fixed;
