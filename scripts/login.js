@@ -18,6 +18,7 @@ function validateForm() {
         }
     })
 }
+
 function validateEmail(messages) {
     let email = document.getElementById('email');
     if (email.value === '' || email.value == null || email.value.includes('@') === false) {
