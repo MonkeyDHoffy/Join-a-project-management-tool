@@ -9,12 +9,14 @@ function showSignUpMsg() {
 
     const signUpMsg = document.getElementById('signUpMsg');
     const backdrop = document.getElementById('backdrop');
+    const chbPrivPol = document.getElementById('chbPrivPol');
 
 
     if (chbPrivPol.checked === true) {
 
         signUpMsg.classList.remove('d-none');
         backdrop.classList.remove('d-none');
+        errorPrivPol.classList.add('d-none');
 
         setTimeout(() => {
             window.location.href = "./index.html";
@@ -22,15 +24,16 @@ function showSignUpMsg() {
 
 
     } else {
-        showErrorPrivPol(chbPrivPol);
+        showErrorPrivPol(errorPrivPol);
     }
 
 }
 
-function showErrorPrivPol(chbPrivPol) {
-    chbPrivPol = document.getElementById('chbPrivPol');
-    const errorPrivPol = document.getElementById('errorPrivPol');
+function showErrorPrivPol(errorPrivPol) {
+    
+    errorPrivPol = document.getElementById('errorPrivPol');
     errorPrivPol.innerHTML = 'Please accept the Privacy Policy';
+
 
 }
 
