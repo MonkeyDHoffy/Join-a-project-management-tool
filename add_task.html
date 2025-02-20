@@ -17,14 +17,18 @@
         href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Moul&family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Press+Start+2P&family=Sniglet:wght@400;800&family=Varela+Round&display=swap"
         rel="stylesheet">
 
-    <script src="./scripts/AddTaskScripts/add_task.js"></script>
-    <script src="./scripts/AddTaskScripts/addTaskContactsList.js"></script>
 
+
+
+    <script src="scripts/script.js"></script>
+    <script src="./scripts/ContactsScript.js/contacts.js"></script>
+    <script src="./scripts/AddTaskScripts/addTaskContactsList.js"></script>
+    <script src="./scripts/AddTaskScripts/add_task.js"></script>
 </head>
 
 
 
-<body onload="addTaskInit()">
+<body onload="addTaskInit(); getAssignedContacts();">
     <div class="content-width">
 
         <div class="content_left">
@@ -108,42 +112,25 @@
                                     <div id="assigned-to-input">
                                         <input class="add-task-input-field placeholder-color" type="text"
                                             id="assigned-to-field" placeholder="Select contacts to assign"
-                                            onclick="toggleDropdown(); toggleAssignToIconSrc();">
-                                        <div onclick="toggleDropdown(); toggleAssignToIconSrc();"
+                                            onclick="toggleDropdown(); toggleAssignToIconSrc();   renderAssignedContacts();">
+                                        <div onclick="toggleDropdown(); toggleAssignToIconSrc(); renderAssignedContacts();"
                                             class="input-icon-assign-to-container">
                                             <img id="input-icon-assign-to"
                                                 src="./assets/svg/addTasksSvg/arrow_drop_down.svg" alt="Icon"
                                                 class="input-icon">
                                         </div>
                                         <div class="dropdown-content" id="dropdown-content">
-                                            <div onclick="checkIt('Viktor Vaal')" class="dropdown-item">
-                                                <div class="addTask-profilepicture">VV</div>
-                                                <label class="custom-checkbox">
-                                                    <p>Viktor Vaal</p>
-                                                    <img class="cstm-checkbox"
-                                                        src="./assets/svg/addTasksSvg/Checkbutton.svg" alt="">
-                                                </label>
-                                            </div>
-                                            <div onclick="checkIt('Jannik Hoff')" class="dropdown-item">
-                                                <div class="addTask-profilepicture">JH</div>
-                                                <label class="custom-checkbox">
-                                                    <p>Jannik Hoff</p>
-                                                    <img class="cstm-checkbox"
-                                                        src="./assets/svg/addTasksSvg/Checkbutton.svg" alt="">
-                                                </label>
-                                            </div>
-                                            <div onclick="checkIt('Dany Hudson')" class="dropdown-item">
-                                                <div class="addTask-profilepicture">DH</div>
-                                                <label class="custom-checkbox">
-                                                    <p>Dany Hudson</p>
-                                                    <img class="cstm-checkbox"
-                                                        src="./assets/svg/addTasksSvg/Checkbutton.svg" alt="">
-                                                </label>
-                                            </div>
-                                            <!-- Add more users as needed -->
+
                                         </div>
                                     </div>
+
+                                    <section id="assigned-circles-section" class="assigned-circles-section">
+                                        <div class="addTask-profilepicture">HI</div>
+                                    </section>
+
                                 </div>
+
+
                             </div>
 
                             <div class="add-task-vl"></div>
