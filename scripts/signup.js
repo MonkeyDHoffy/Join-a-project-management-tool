@@ -1,55 +1,71 @@
 
 function init() {
     validateForm();
-    passwordFocus()
+    passwordFocus(document.getElementById('password'));
+    passwordFocus(document.getElementById('passwordRepeat'));
 };
 
 
 function showSignUpMsg() {
-
     const signUpMsg = document.getElementById('signUpMsg');
     const backdrop = document.getElementById('backdrop');
     const chbPrivPol = document.getElementById('chbPrivPol');
 
+    toggleErrorPrivPol();
 
     if (chbPrivPol.checked === true) {
-
         signUpMsg.classList.remove('d-none');
         backdrop.classList.remove('d-none');
-        errorPrivPol.classList.add('d-none');
-
+    
         setTimeout(() => {
             window.location.href = "./index.html";
         }, 2000);
 
-
-    } else {
-        showErrorPrivPol(errorPrivPol);
     }
 
 }
 
-function showErrorPrivPol(errorPrivPol) {
-    
-    errorPrivPol = document.getElementById('errorPrivPol');
-    errorPrivPol.innerHTML = 'Please accept the Privacy Policy';
+function toggleErrorPrivPol() {
+    const errorPrivPol = document.getElementById('errorPrivPol');
+    const chbPrivPol = document.getElementById('chbPrivPol');
 
-
+    if (chbPrivPol.checked === false) {
+        errorPrivPol.innerHTML = 'Please accept the privacy policy';
+        errorPrivPol.classList.remove('d-none');
+    } else {
+        errorPrivPol.innerHTML = '';
+        errorPrivPol.classList.add('d-none');
+    }
 }
+
 
 function validateForm() {
     let errorElement = document.getElementById('error');
     let form = document.getElementById('signupForm');
     form.addEventListener('submit', (e) => {
-        let messages = []
+        let messages = [];
         validateEmail(messages);
-        validatePassword(messages);
+        validatePassword(password, messages);
+        validatePassword(passwordRepeat, messages);
+        comparePasswords(password, passwordRepeat, messages)
+        
         if (messages.length > 0) {
             e.preventDefault()
             errorElement.innerHTML = messages.join(', ')
         }
+        showSignUpMsg();
     })
 }
+
+function comparePasswords(password, passwordRepeat, messages) {
+    password = document.getElementById('password');
+    passwordRepeat = document.getElementById('passwordRepeat');
+
+    if (password.value !== passwordRepeat.value) {
+        messages.push('Passwords do not match');
+    }
+}
+
 
 function validateEmail(messages) {
     let email = document.getElementById('email');
@@ -59,26 +75,37 @@ function validateEmail(messages) {
     }
 }
 
-function validatePassword(messages) {
-    let password = document.getElementById('password');
-    if (password.value === '' || password.value == null) {
+function validatePassword(inputElementPW, messages) {
+    //let password = document.getElementById('password');
+    if (inputElementPW.value === '' || password.value == null) {
         messages.push('Please enter a password')
-        password.classList.add('error-highlight');
+        inputElementPW.classList.add('error-highlight');
     }
 
-    if (password === 'password') {
+    if (inputElementPW.value === 'password') {
         messages.push('Password cannot be password')
-        password.classList.add('error-highlight');
+        inputElementPW.classList.add('error-highlight');
     }
 }
 
-function passwordFocus() {
-    let passwordInput = document.getElementById('password');
+
+function passwordFocus(passwordInput) {
+
     let iconPW = document.querySelector('.pw-wrapper button img');
     let iconPWButton = document.querySelector('.pw-wrapper button');
 
     reAppearLockIcon(passwordInput, iconPW, iconPWButton);
 }
+
+
+
+// function passwordFocus() {
+//     let passwordInput = document.getElementById('password');
+//     let iconPW = document.querySelector('.pw-wrapper button img');
+//     let iconPWButton = document.querySelector('.pw-wrapper button');
+
+//     reAppearLockIcon(passwordInput, iconPW, iconPWButton);
+// }
 
 
 function reAppearLockIcon(passwordInput, iconPW, iconPWButton) {
