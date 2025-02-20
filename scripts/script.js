@@ -23,8 +23,16 @@ let tasks = [{
     'id': 3,
     'title': 'Rasen mähen',
     'status': 'awaitFeedback'
-}
+}];
+
+const colors = [
+    "--orange", "--pink", "--purple", "--violet", "--cyan", "--green",
+    "--peach", "--blue", "--lime", "--yellow", "--gold", "--coral",
+    "--red", "--magenta", "--light-orange"
 ];
+
+let colorIndex = 0;
+
 const BASE_URL = "https://remotestorage-f4b14-default-rtdb.europe-west1.firebasedatabase.app/";
 let data;
 async function getData(path = "",) {
@@ -53,6 +61,13 @@ async function putData(path = "", data = "") {
     }
 }
 
+function applyRandomColorToClass(className) {
+    const elements = document.querySelectorAll(`.${className}`);
+    elements.forEach(element => {
+        element.style.backgroundColor = `var(${colors[colorIndex]})`;
+        colorIndex = (colorIndex + 1) % colors.length;
+    });
+}
 
 
 // function regsterUser() {

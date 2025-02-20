@@ -55,8 +55,7 @@ function displayContacts() {
   let contactsList = document.querySelector(".contacts-list");
   contactsList.innerHTML = "";
   contacts.forEach((contact) => {
-    let name = contact.name;
-    let firstLetter = name.charAt(0).toUpperCase();
+    let firstLetter = contact.name.charAt(0).toUpperCase();
     if (firstLetter !== currentLetter) {
       addLetterDivider(firstLetter, contactsList);
     }
@@ -64,6 +63,7 @@ function displayContacts() {
     currentId++;
   });
   currentId = 0;
+  applyRandomColorToClass("contact-profile-picture");
 }
 
 function addLetterDivider(firstLetter, contactsList) {

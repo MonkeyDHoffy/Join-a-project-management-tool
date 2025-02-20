@@ -24,3 +24,22 @@
 .content-right {
   height: 100%;
 }
+
+
+:root {
+  --orange: #FF7A00;
+  --pink: #FF5EB3;
+  --purple: #6E52FF;
+  --violet: #9327FF;
+  --cyan: #00BEE8;
+  --green: #1FD7C1;
+  --peach: #FF745E;
+  --blue: #0038FF;
+  --lime: #C3FF2B;
+  --yellow: #FFE62B;
+  --gold: #FFC701;
+  --coral: #FFBB2B;
+  --red: #FF4646;
+  --magenta: #FC71FF;
+  --light-orange: #FFBB2B;
+}
