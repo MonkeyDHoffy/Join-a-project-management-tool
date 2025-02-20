@@ -2,21 +2,23 @@
 
 function init() {
     validateForm();
-    passwordFocus()
+    passwordFocus();
 };
 
 function validateForm() {
     let errorElement = document.getElementById('error');
     let form = document.getElementById('loginForm');
     form.addEventListener('submit', (e) => {
-        let messages = []
+        let messages = [];
         validateEmail(messages);
         validatePassword(messages);
         if (messages.length > 0) {
             e.preventDefault()
             errorElement.innerHTML = messages.join(', ')
         }
+        
     })
+    
 }
 
 function validateEmail(messages) {
