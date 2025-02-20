@@ -154,7 +154,7 @@ body {
     padding: 0 16px 0 0;
 }
 
-#pw-icon {
+#pwIcon, #repPwIcon {
     width: 24px;
     height: 24px;
     border: none;
