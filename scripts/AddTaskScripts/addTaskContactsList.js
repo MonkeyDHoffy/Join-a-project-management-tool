@@ -46,16 +46,13 @@ function toggleAssignToIconSrc() {
 function checkIt(name) {
   let container = document.getElementById("dropdown-content");
   let dropdownItems = container.getElementsByClassName("dropdown-item");
-
   for (let i = 0; i < dropdownItems.length; i++) {
     let item = dropdownItems[i];
     let itemName = item.querySelector("p").textContent;
-
     if (itemName === name) {
       let img = item.querySelector(".cstm-checkbox");
       let checkedSrc = "./assets/svg/addTasksSvg/checked.svg";
       let uncheckedSrc = "./assets/svg/addTasksSvg/Checkbutton.svg";
-
       if (img.src.endsWith("Checkbutton.svg")) {
         img.src = checkedSrc;
         item.classList.add("checked");
@@ -74,21 +71,15 @@ document.addEventListener("DOMContentLoaded", function () {
   let titleInput = document.querySelector(".addTask-title input");
   let dateInput = document.querySelector(".task-date input");
   let createTaskButton = document.querySelector(".createTask-button");
-
   function validateInputs() {
-    // Check if both title and date inputs are not empty
     if (titleInput.value.trim() !== "" && dateInput.value.trim() !== "") {
       createTaskButton.disabled = false;
     } else {
       createTaskButton.disabled = true;
     }
   }
-
-  // Add event listeners to the title and date inputs to validate on input change
   titleInput.addEventListener("input", validateInputs);
   dateInput.addEventListener("input", validateInputs);
-
-  // Initial validation check when the page loads
   validateInputs();
 });
 
@@ -97,9 +88,6 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   let assignedToField = document.getElementById("assigned-to-field");
   let dropdownContent = document.getElementById("dropdown-content");
-  let dropdownItems = Array.from(
-    dropdownContent.getElementsByClassName("dropdown-item")
-  );
 
   // Function to sort dropdown items
   function sortDropdownItems() {
@@ -108,13 +96,9 @@ document.addEventListener("DOMContentLoaded", function () {
       const nameB = b.querySelector("p").textContent.toUpperCase();
       return nameA.localeCompare(nameB);
     });
-
-    // Remove all existing elements from the container
     while (dropdownContent.firstChild) {
       dropdownContent.removeChild(dropdownContent.firstChild);
     }
-
-    // Add the sorted elements back to the container
     dropdownItems.forEach((item) => dropdownContent.appendChild(item));
   }
 
@@ -127,21 +111,19 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Event listener for search input
   assignedToField.addEventListener("input", filterDropdownItems);
-
-  // Sort dropdown items initially
-  sortDropdownItems();
-
-  // Re-sort when dropdown is opened
   document
     .getElementById("assigned-to-field")
-    .addEventListener("click", sortDropdownItems);
+    .addEventListener("click", async function () {
+      await renderAssignedContacts();
+      sortDropdownItems();
+    });
 });
 
 // Assigne to field  connection to contacts----------------------------------------------------------------------------
 
 let assignedContacts = [];
+let dropdownItems = [];
 
 async function getAssignedContacts() {
   assignedContacts = Object.values(await getData("contacts/"));
@@ -154,22 +136,30 @@ async function renderAssignedContacts() {
   let assignedContactsList = document.getElementById("dropdown-content");
   assignedContactsList.innerHTML = "";
   for (let index = 0; index < assignedContacts.length; index++) {
-    assignedContactsList.innerHTML += `
+    assignedContactsList.innerHTML += assignedContactsTemplate(index);
+  }
+  // Update dropdownItems after rendering
+  dropdownItems = Array.from(
+    assignedContactsList.getElementsByClassName("dropdown-item")
+  );
+}
+
+function assignedContactsTemplate(index) {
+  return `
         <div onclick="checkIt('${
           assignedContacts[index].name
         }')" class="dropdown-item">
           <div style="background-color:${
             assignedContacts[index].color
           }" class="addTask-profilepicture">${assignedContacts[index].name
-      .split(" ")
-      .map((word) => word[0])
-      .join("")
-      .toUpperCase()}</div>
+    .split(" ")
+    .map((word) => word[0])
+    .join("")
+    .toUpperCase()}</div>
           <label class="custom-checkbox">
             <p>${assignedContacts[index].name}</p>
             <img class="cstm-checkbox" src="./assets/svg/addTasksSvg/Checkbutton.svg" alt="">
           </label>
         </div>
     `;
-  }
 }
