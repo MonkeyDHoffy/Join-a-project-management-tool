@@ -39,14 +39,14 @@
 
                     <div class="pw-wrapper">
                         <input type="password" placeholder="Password" id="password">
-                        <button type="button" disabled id="pw-icon" onclick="togglePassword()"><img
+                        <button type="button" disabled id="pwIcon" onclick="togglePassword()"><img
                                 src="../assets/svg/lock.svg" alt=""></button>
                     </div>
 
 
                     <div class="pw-wrapper">
                         <input type="password" placeholder="Password" id="passwordRepeat">
-                        <button type="button" disabled id="pw-icon" onclick="togglePassword()"><img
+                        <button type="button" disabled id="repPwIcon" onclick="togglePassword()"><img
                                 src="../assets/svg/lock.svg" alt=""></button>
                     </div>
                     <span id="error"></span>
@@ -55,13 +55,13 @@
                     <div class="sgnp-button-box">
 
                         <div class="confirm-priv-pol">
-                            <input type="checkbox" class="chb-priv-pol" id="chbPrivPol">
+                            <input type="checkbox" class="chb-priv-pol" id="chbPrivPol" onclick="toggleErrorPrivPol()">
                             <label for="chbPrivPol">I agree to the <a href="#" class="priv-polce-link"> Privacy
                                     policy</a></label>
                                     
                         </div>
-                        <span id="errorPrivPol"></span>
-                        <button type="submit"  class="signup" onclick="showSignUpMsg(); return false">Sign up</button>
+                        <span id="errorPrivPol"></span> <!--onclick="showSignUpMsg(); return false" -->
+                        <button type="submit"  class="signup" >Sign up</button>
                         <div class="signup-msg  d-none" id="signUpMsg">You have successesfully signed up</div>
                     </div>
                 </form>
