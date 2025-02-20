@@ -3,6 +3,7 @@
  * If the dropdown is currently visible, it hides it.
  * If the dropdown is currently hidden, it shows it.
  */
+
 function toggleDropdown() {
   let dropdown = document.getElementById("dropdown-content");
   dropdown.style.display =
@@ -137,3 +138,38 @@ document.addEventListener("DOMContentLoaded", function () {
     .getElementById("assigned-to-field")
     .addEventListener("click", sortDropdownItems);
 });
+
+// Assigne to field  connection to contacts----------------------------------------------------------------------------
+
+let assignedContacts = [];
+
+async function getAssignedContacts() {
+  assignedContacts = Object.values(await getData("contacts/"));
+  console.log(assignedContacts);
+  assignedContacts.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+async function renderAssignedContacts() {
+  await getAssignedContacts();
+  let assignedContactsList = document.getElementById("dropdown-content");
+  assignedContactsList.innerHTML = "";
+  for (let index = 0; index < assignedContacts.length; index++) {
+    assignedContactsList.innerHTML += `
+        <div onclick="checkIt('${
+          assignedContacts[index].name
+        }')" class="dropdown-item">
+          <div style="background-color:${
+            assignedContacts[index].color
+          }" class="addTask-profilepicture">${assignedContacts[index].name
+      .split(" ")
+      .map((word) => word[0])
+      .join("")
+      .toUpperCase()}</div>
+          <label class="custom-checkbox">
+            <p>${assignedContacts[index].name}</p>
+            <img class="cstm-checkbox" src="./assets/svg/addTasksSvg/Checkbutton.svg" alt="">
+          </label>
+        </div>
+    `;
+  }
+}
