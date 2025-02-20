@@ -3,6 +3,7 @@ html {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
+  overflow-x: hidden; /* Prevent horizontal scrollbar */
 }
 
 button {
@@ -181,5 +182,85 @@ span {
   h1 {
     margin: 0;
     font-size: 64px;
+  }
+}
+
+.mobile-nav-section {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .content_left {
+    display: none;
+  }
+
+  .content_right {
+    width: 100%;
+  }
+  .mobile-nav-section {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #2a3647;
+    box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .mobile-navBar {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .mobile_nav_btn {
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    width: 80px;
+    color: #cdcdcd;
+  }
+
+  .mobile_nav_btn span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .mobile_nav_btn img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .mobile_nav_btn:hover {
+    background: #2a3d59;
+    border-radius: 16px;
+  }
+
+  .mobile_nav_btn.active {
+    background-color: rgb(26, 34, 46);
+  }
+
+  .mobile_nav_btn.active:hover {
+    background-color: rgb(26, 34, 46) !important;
+  }
+
+  .active {
+    border-radius: 16px;
+    pointer-events: none;
+    background-color: rgb(26, 34, 46);
+  }
+
+  .active:hover {
+    background-color: rgb(26, 34, 46) !important;
+    cursor: default !important;
+
+    span {
+      transform: scale(1) !important;
+    }
   }
 }
