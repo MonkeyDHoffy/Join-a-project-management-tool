@@ -50,6 +50,10 @@ async function deleteContact(id) {
 
 function displayContacts() {
   let contactsList = document.querySelector(".contacts-list");
+  if (!contactsList) {
+    console.error("Element with class 'contacts-list' not found.");
+    return;
+  }
   contactsList.innerHTML = "";
   contacts.forEach((contact) => {
     let firstLetter = contact.name.charAt(0).toUpperCase();
@@ -73,10 +77,15 @@ function addLetterDivider(firstLetter, contactsList) {
 
 function hideOverlayOnOutsideClick(event) {
   let overlayWrapper = document.querySelector(".content-overlay-wrapper");
-  if (overlayWrapper && !overlayWrapper.contains(event.target) && !event.target.closest(".add-new-contact") && !event.target.closest(".edit-btn")) {
+  if (
+    overlayWrapper &&
+    !overlayWrapper.contains(event.target) &&
+    !event.target.closest(".add-new-contact") &&
+    !event.target.closest(".edit-btn")
+  ) {
     hideOverlay();
   }
-};
+}
 
 function showOverlay() {
   let overlayContainer = document.getElementById("overlay-container");
