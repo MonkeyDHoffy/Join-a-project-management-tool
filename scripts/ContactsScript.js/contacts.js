@@ -1,10 +1,10 @@
 let contacts = [];
 let currentId = 0;
+let colorId = 0;
 let currentLetter = "";
 
 async function getContacts() {
   contacts = Object.values(await getData("contacts/"));
-  console.log(contacts);
   contacts.sort((a, b) => a.name.localeCompare(b.name));
   displayContacts();
 }
@@ -13,11 +13,7 @@ async function createContact() {
   let contactName = document.getElementById("name").value;
   let contactEmail = document.getElementById("email").value;
   let contactPhone = document.getElementById("phone").value;
-  let contact = {
-    name: contactName,
-    email: contactEmail,
-    phone: contactPhone,
-  };
+  let contact = {name: contactName, email: contactEmail, phone: contactPhone, color: `var(${colors[Math.floor(Math.random() * colors.length)]})`};
   contacts.push(contact);
   await putData("contacts/", contacts);
   hideOverlay();
@@ -33,6 +29,7 @@ async function editContact(id) {
     name: contactName,
     email: contactEmail,
     phone: contactPhone,
+    color: contacts[id].color
   };
   contacts[id] = editedContact;
   await putData("contacts/", contacts);
@@ -60,10 +57,10 @@ function displayContacts() {
       addLetterDivider(firstLetter, contactsList);
     }
     contactsList.innerHTML += contactTemplate(contact, currentId);
+    // applyRandomColorToClass(color);
     currentId++;
   });
   currentId = 0;
-  applyRandomColorToClass("contact-profile-picture");
 }
 
 function addLetterDivider(firstLetter, contactsList) {

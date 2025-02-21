@@ -31,8 +31,6 @@ const colors = [
     "--red", "--magenta", "--light-orange"
 ];
 
-let colorIndex = 0;
-
 const BASE_URL = "https://remotestorage-f4b14-default-rtdb.europe-west1.firebasedatabase.app/";
 let data;
 async function getData(path = "",) {
@@ -60,15 +58,6 @@ async function putData(path = "", data = "") {
         console.error(error);
     }
 }
-
-function applyRandomColorToClass(className) {
-    const elements = document.querySelectorAll(`.${className}`);
-    elements.forEach(element => {
-        element.style.backgroundColor = `var(${colors[colorIndex]})`;
-        colorIndex = (colorIndex + 1) % colors.length;
-    });
-}
-
 
 // function regsterUser() {
 //     let name = "daniela";

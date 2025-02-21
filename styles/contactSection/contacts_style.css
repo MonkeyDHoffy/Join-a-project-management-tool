@@ -164,6 +164,9 @@
   padding-left: 64px;
 }
 
+.name-and-edit h2 {
+  font-size: 47px;
+}
 .edit-delete-btn {
   display: flex;
   align-items: center;

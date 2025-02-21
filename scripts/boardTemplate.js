@@ -11,7 +11,7 @@ function taskCardTemplate(element) {
 }
 
 function noTasksTemplate(i) {
-  return `<div draggable="false" class="no-tasks">
+  return `<div draggable="false" class="no-tasks" disabled>
                             <span>No tasks ${taskStatus[i]}</span>
                         </div>`;
 }
