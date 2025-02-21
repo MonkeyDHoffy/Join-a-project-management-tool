@@ -89,23 +89,26 @@ function validatePassword(inputElementPW, messages) {
 }
 
 
-function passwordFocus(passwordInput) {
+// function passwordFocus(passwordInput) {
 
-    let iconPW = document.querySelector('.pw-wrapper button img');
-    let iconPWButton = document.querySelector('.pw-wrapper button');
-
-    reAppearLockIcon(passwordInput, iconPW, iconPWButton);
-}
-
-
-
-// function passwordFocus() {
-//     let passwordInput = document.getElementById('password');
 //     let iconPW = document.querySelector('.pw-wrapper button img');
 //     let iconPWButton = document.querySelector('.pw-wrapper button');
 
 //     reAppearLockIcon(passwordInput, iconPW, iconPWButton);
-// }
+//}
+
+
+
+function passwordFocus() {
+    let passwordInput = document.getElementById('password');
+    let repPasswordInput = document.getElementById('repeatPassword');
+    let iconPW = document.querySelector('.pw-wrapper button img');
+    let IconRepPw = document.querySelector('.rep-pw-wrapper button img');
+    let iconPWButton = document.querySelector('.pw-wrapper button');
+    let IconRepPwButton = document.querySelector('.rep-pw-wrapper button');
+
+    reAppearLockIcon(passwordInput, repPasswordInput, iconPW, IconRepPw, iconPWButton, IconRepPwButton);
+}
 
 
 function reAppearLockIcon(passwordInput, iconPW, iconPWButton) {
