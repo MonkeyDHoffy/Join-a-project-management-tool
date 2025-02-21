@@ -35,7 +35,6 @@ async function editContact(id) {
   await putData("contacts/", contacts);
   hideOverlay();
   await getContacts();
-  showClickNotification();
 }
 
 async function deleteContact(id) {

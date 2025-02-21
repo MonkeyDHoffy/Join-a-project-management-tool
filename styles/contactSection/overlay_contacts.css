@@ -166,13 +166,18 @@ button:hover {
   box-shadow: 0px 4px 4px 0px #00000040;
 }
 
+.delete-btn-overlay:hover {
+  border: 1px solid #29ABE2;
+  color: #29ABE2;
+}
+
 .create-btn-overlay:hover {
   background-color: #29abe2;
   box-shadow: 0px 4px 4px 0px #00000040;
 }
 
 .cancel-btn-overlay:hover {
-  border: 2px solid #29ABE2;
+  border: 1px solid #29ABE2;
   color: #29ABE2;
 }
 
@@ -195,7 +200,7 @@ button:hover {
   cursor: pointer;
   background: white;
   color: black;
-  border: 2px solid black;
+  border: 1px solid black;
 }
 
 .cancel-btn-overlay img {
@@ -203,23 +208,38 @@ button:hover {
   width: 14px;
 }
 
-
-
 .delete-btn-overlay {
-  padding: 10px 15px;
-  margin: 10px 5px;
-  border: none;
-  border-radius: 10px;
-  font-size: 16px;
+  padding: 15px 24px;
+  border-radius: 8px;
+  font-size: 21px;
   cursor: pointer;
   background: white;
   color: black;
   border: 1px solid black;
 }
 
+.save-btn-overlay:hover {
+  background-color: #29abe2;
+  box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.save-btn-overlay {
+  padding: 16px;
+  border: none;
+  border-radius: 10px;
+  font-size: 21px;
+  cursor: pointer;
+  background: #1e2a3a;
+  color: white;
+  font-weight: 700;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  transition: all 100ms ease-in-out;
+}
 
 
-.save-btn-overlay,
+
 .create-btn-overlay {
   padding: 16px;
   border: none;

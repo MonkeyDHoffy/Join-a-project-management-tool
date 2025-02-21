@@ -142,6 +142,7 @@ function clearInputFields() {
     inputField.classList.remove("invalid");
   });
   changeMediumBtn();
+  validateInputs();
 }
 
 function toggleCategoryIconSrc() {

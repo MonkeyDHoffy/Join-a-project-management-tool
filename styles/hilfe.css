@@ -1,9 +1,13 @@
+.help-content-wrapper {
+    padding: 64px 64px;
+}
+
 .help-header {
-    height: 152.5px;
+
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    padding: 0 64px;
+
 }
 
 .help-header h1 {
@@ -15,7 +19,6 @@
     position: sticky;
     top: 152.5px;
     right: 0;
-    padding-right: 64px;
     display: flex;
     justify-content: end;
     transform: translateY(-25px);
@@ -31,7 +34,6 @@ h4 {
 
 .help-content {
     width: 100%;
-    padding: 0px 64px 0 64px;
 }
 
 .li-text {

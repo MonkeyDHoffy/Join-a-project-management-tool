@@ -59,6 +59,14 @@ function renderDone() {
 
 //-- drag and drop
 function allowDrop(ev) {
+  // Exaktes Element unter der Maus holen
+  const hoveredElement = document.elementFromPoint(ev.clientX, ev.clientY);
+
+  // Falls das Element der Platzhalter ist, kein Drop erlauben
+  if (hoveredElement && hoveredElement.classList.contains("no-tasks")) {
+    return; // Event nicht preventen -> Drop wird nicht erlaubt
+  }
+
   ev.preventDefault();
 }
 

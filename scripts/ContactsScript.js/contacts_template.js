@@ -55,7 +55,7 @@ function getOverlayTemplate() {
       `;
 }
 
-function renderContact(id,) {
+function renderContact(id) {
     let contactItem = document.getElementById("contact-information");
     contactItem.innerHTML = "";
     contactItem.innerHTML += ` <div class="slider"><div class="pic-and-name">
@@ -92,7 +92,7 @@ function renderContact(id,) {
                                                           fill="#2A3647" />
                                                   </g>
                                               </svg>
-                                              <button onclick="deleteContact(${id})">Delete</button>
+                                              <button class="delete-btn-overlay:hover" onclick="deleteContact(${id})">Delete</button>
                                           </div>
                                       </div>
                                   </div>
@@ -133,7 +133,7 @@ function renderEditOverlay(id) {
     
                     <div class="content-overlay-right">
                         <div class="contact-avatar">
-                            <div class="avatar-circle"><img src="./assets/img/person.png" alt=""></div>
+                            <div style="background-color:${contacts[id].color};" class="avatar-circle">${contacts[id].name.split(' ').map(word => word[0]).join('').toUpperCase()}</div>
                         </div>
     
                         <div class="input-and-close-wrapper"> 
@@ -163,7 +163,7 @@ function renderEditOverlay(id) {
     
                             <div class="button-group">
                                 <button onclick="deleteContact(${id})" id="delte-btn-overlay" class="delete-btn-overlay">Delete</button>
-                                <button onclick="editContact(${id})" id="save-btn-overlay" class="save-btn-overlay">Save ✓</button>
+                                <button onclick="editContact(${id})" id="save-btn-overlay" class="save-btn-overlay">Save <img src="./assets/img/check.png" alt=""></button>
                             </div>
                         </div>
                     </div>

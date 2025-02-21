@@ -95,7 +95,7 @@
                             <h3>To-Do</h3>
                             <button onclick="openAddTaskOverlay()" class="add-to-do btn-title">+</button>
                         </div>
-                        <div ondrop="drop('toDo')" ondragover="allowDrop(event)" draggable="true" id="toDo"
+                        <div ondrop="drop('toDo', event)" ondragover="allowDrop(event)" draggable="true" id="toDo"
                             class="to-do-field board-field overflow-y-auto"></div>
                     </div>
                     <div class="board-title-field-wrapper">
@@ -103,7 +103,7 @@
                             <h3>In progress</h3>
                             <button onclick="openAddTaskOverlay()" class="add-in-progress btn-title">+</button>
                         </div>
-                        <div ondrop="drop('inProgress')" ondragover="allowDrop(event)" draggable="true" id="inProgress"
+                        <div ondrop="drop('inProgress', event)" ondragover="allowDrop(event)" draggable="true" id="inProgress"
                             class="in-progress-field board-field overflow-y-auto"></div>
                     </div>
                     <div class="board-title-field-wrapper">
@@ -111,14 +111,14 @@
                             <h3>Await feedback</h3>
                             <button onclick="openAddTaskOverlay()" class="add-await-feedback btn-title">+</button>
                         </div>
-                        <div ondrop="drop('awaitFeedback')" ondragover="allowDrop(event)" draggable="true"
+                        <div ondrop="drop('awaitFeedback', event)" ondragover="allowDrop(event)" draggable="true"
                             id="awaitFeedback" class="await-feedback-field board-field overflow-y-auto"></div>
                     </div>
                     <div class="board-title-field-wrapper">
                         <div class="to-do-title flex-title">
                             <h3>Done</h3>
                         </div>
-                        <div ondrop="drop('done')" ondragover="allowDrop(event)" draggable="true" id="done"
+                        <div ondrop="drop('done', event)" ondragover="allowDrop(event)" draggable="true" id="done"
                             class="done-field board-field overflow-y-auto"></div>
                     </div>
                 </div>
