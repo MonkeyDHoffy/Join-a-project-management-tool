@@ -106,7 +106,7 @@ body {
 
 .board-wrapper {
   padding: 0 64px 24px 64px;
-  height: calc(100% - 328px);
+  height: 100%;
   width: 100%;
   display: flex;
   justify-content: space-between;
