@@ -202,6 +202,13 @@ body {
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
+
+.signup:disabled {
+    background-color: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+
+}
+
 .text-sgnp {
     width: 110px;
     height: 40px;
@@ -225,6 +232,11 @@ body {
     font-size: 0.7em;
     margin-block-start: -10px;
 }
+
+.error-highlight {
+    border-color: red !important;
+}
+
 
 #errorPrivPol {
     display: flex;

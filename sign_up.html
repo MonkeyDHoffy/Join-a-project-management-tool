@@ -39,14 +39,14 @@
 
                     <div class="pw-wrapper">
                         <input type="password" placeholder="Password" id="password">
-                        <button type="button" disabled id="pwIcon" onclick="togglePassword()"><img
+                        <button type="button" disabled id="pwIcon" onclick="togglePasswordVisibility(this)"><img
                                 src="../assets/svg/lock.svg" alt=""></button>
                     </div>
 
 
                     <div class="rep-pw-wrapper">
                         <input type="password" placeholder="Password" id="repeatPassword">
-                        <button type="button" disabled id="repPwIcon" onclick="togglePassword()"><img
+                        <button type="button" disabled id="repPwIcon" onclick="togglePasswordVisibility(this)"><img
                                 src="../assets/svg/lock.svg" alt=""></button>
                     </div>
                     <span id="error"></span>
@@ -61,7 +61,7 @@
                                     
                         </div>
                         <span id="errorPrivPol"></span> <!--onclick="showSignUpMsg(); return false" -->
-                        <button type="submit"  class="signup" >Sign up</button>
+                        <button type="submit"  class="signup" disabled >Sign up</button>
                         <div class="signup-msg  d-none" id="signUpMsg">You have successesfully signed up</div>
                     </div>
                 </form>

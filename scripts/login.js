@@ -86,15 +86,19 @@ function togglePassword() {
 }
 
 
-/*
+// function checkFormValidity() {
+//     const email = document.getElementById('email');
+//     const password = document.getElementById('password');
+//     const chbPrivPol = document.getElementById('chbPrivPol');
+//     const submitBtn = document.getElementById('submitBtn');
 
-function passwordFocus() {
-    let passwordInput = document.getElementById('password');
-    let iconPW = document.querySelector('.pw-wrapper button img');
+//     const isEmailValid = email.value !== '' && email.value.includes('@');
+//     const isPasswordValid = password.value !== '' && password.value !== 'password';
+//     const isPrivPolChecked = chbPrivPol.checked;
 
-    passwordInput.addEventListener('focus', () => iconPW.src = '../assets/svg/eye.svg');
-    passwordInput.addEventListener('blur', () => iconPW.src = '../assets/svg/lock.svg');
-    passwordInput.addEventListener('input', () => iconPW.src = passwordInput.value === '' ? '../assets/svg/lock.svg' : '../assets/svg/eye.svg');
-}
-
-*/
+//     if (isEmailValid && isPasswordValid && isPrivPolChecked) {
+//         submitBtn.disabled = false;
+//     } else {
+//         submitBtn.disabled = true;
+//     }
+// }
