@@ -63,10 +63,7 @@ function allowDrop(ev) {
 }
 
 function startDrag(id) {
-  if (id !== null) {
     currentDragedElement = id;
-  }
-
 }
 
 function drop(status) {
