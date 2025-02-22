@@ -1,5 +1,5 @@
 let taskStatus = ["to do", "in-progress", "await feedback", "done"];
-let currentDragedElement;
+let currentDragedElement = null;
 
 //-- render all tasks on the board
 function updateHTML() {
@@ -59,25 +59,23 @@ function renderDone() {
 
 //-- drag and drop
 function allowDrop(ev) {
-  // Exaktes Element unter der Maus holen
-  const hoveredElement = document.elementFromPoint(ev.clientX, ev.clientY);
-
-  // Falls das Element der Platzhalter ist, kein Drop erlauben
-  if (hoveredElement && hoveredElement.classList.contains("no-tasks")) {
-    return; // Event nicht preventen -> Drop wird nicht erlaubt
-  }
-
   ev.preventDefault();
 }
 
 function startDrag(id) {
-  currentDragedElement = id;
+  if (id !== null) {
+    currentDragedElement = id;
+  }
+
 }
 
 function drop(status) {
-  let task = tasks.find((task) => task.id === currentDragedElement);
-  task.status = status;
-  updateHTML();
+  if (currentDragedElement !== null) {
+    let task = tasks.find((task) => task.id === currentDragedElement);
+    task.status = status;
+    updateHTML();
+  }
+  currentDragedElement = null;
 }
 
 /**
@@ -156,15 +154,15 @@ function closeOverlayOutside(event) {
  */
 
 function clearInputFields() {
-    let inputFieldsRef = Array.from(
-      document.getElementsByClassName("add-task-input-field")
-    );
-    inputFieldsRef.forEach((inputField) => {
-      inputField.value = "";
-      inputField.setAttribute("required", "false");
-    });
-    changeMediumBtn();
-  }
+  let inputFieldsRef = Array.from(
+    document.getElementsByClassName("add-task-input-field")
+  );
+  inputFieldsRef.forEach((inputField) => {
+    inputField.value = "";
+    inputField.setAttribute("required", "false");
+  });
+  changeMediumBtn();
+}
 
 /**
  * Shows the notification for adding a task and clears all input fields.
