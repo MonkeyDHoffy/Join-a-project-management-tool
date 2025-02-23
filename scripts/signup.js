@@ -2,6 +2,8 @@
 function init() {
     validateForm();
     passwordFocus();
+    checkFormValidity();
+
 };
 
 
@@ -41,8 +43,13 @@ function toggleErrorPrivPol() {
 function validateForm() {
     let errorElement = document.getElementById('error');
     let form = document.getElementById('signupForm');
+    let messages = [];
+
     form.addEventListener('input', (e) => {
-        let messages = [];
+        messages = [];
+        let password = document.getElementById('password');
+        let repeatPassword = document.getElementById('repeatPassword');
+        
         validateName(messages);
         validateEmail(messages);
         validatePassword(password, messages);
@@ -52,18 +59,37 @@ function validateForm() {
         if (messages.length > 0) {
             e.preventDefault()
             errorElement.innerHTML = messages.join(', ')
+        } else {
+            errorElement.innerHTML = '';
+            showSignUpMsg();
         }
-        showSignUpMsg();
+        //showSignUpMsg();
     })
 }
 
 function comparePasswords(password, repeatPassword, messages) {
-    password = document.getElementById('password');
-    repeatPassword = document.getElementById('repeatPassword');
+   // password = document.getElementById('password');
+    //repeatPassword = document.getElementById('repeatPassword');
 
     if (password.value !== repeatPassword.value) {
-        messages.push('Passwords do not match');
+        if (!messages.includes('Passwords do not match')) {
+            messages.push('Passwords do not match');
+        }
+        password.classList.add('error-highlight');
+        repeatPassword.classList.add('error-highlight');
+    } else {
+        removeErrorMessageAndHighlight(password, messages, 'Passwords do not match');
+        removeErrorMessageAndHighlight(repeatPassword, messages, 'Passwords do not match');
     }
+}
+
+function removeErrorMessageAndHighlight(inputElement, messages, errorMessage) {
+
+    let index = messages.indexOf(errorMessage);
+    if (index > -1) {
+        messages.splice(index, 1);
+    }
+    inputElement.classList.remove('error-highlight');
 }
 
 
@@ -72,6 +98,8 @@ function validateName(messages) {
     if (signupName.value === '' || signupName.value == null) {
         messages.push('Please enter your name')
         signupName.classList.add('error-highlight');
+    } else {
+        removeErrorMessageAndHighlight(signupName, messages, 'Please enter your name')
     }
 }
 
@@ -81,6 +109,8 @@ function validateEmail(messages) {
     if (email.value === '' || email.value == null || email.value.includes('@') === false) {
         messages.push('Please enter a valid Email')
         email.classList.add('error-highlight');
+    } else {
+        removeErrorMessageAndHighlight(email, messages, 'Please enter a valid Email')
     }
 }
 
@@ -90,6 +120,8 @@ function validatePassword(inputElementPW, messages) {
             messages.push('Please enter a password');
         }
         inputElementPW.classList.add('error-highlight');
+    } else {
+        removeErrorMessageAndHighlight(inputElementPW, messages, 'Please enter a password');
     }
 
     if (inputElementPW.value === 'password') {
@@ -97,6 +129,8 @@ function validatePassword(inputElementPW, messages) {
             messages.push('Password cannot be password');
         }
         inputElementPW.classList.add('error-highlight');
+    } else {
+        removeErrorMessageAndHighlight(inputElementPW, messages, 'Password cannot be password');
     }
 }
 
