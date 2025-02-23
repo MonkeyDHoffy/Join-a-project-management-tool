@@ -1,8 +1,7 @@
 
 function init() {
     validateForm();
-    passwordFocus(document.getElementById('password'));
-    passwordFocus(document.getElementById('passwordRepeat'));
+    passwordFocus();
 };
 
 
@@ -16,7 +15,7 @@ function showSignUpMsg() {
     if (chbPrivPol.checked === true) {
         signUpMsg.classList.remove('d-none');
         backdrop.classList.remove('d-none');
-    
+
         setTimeout(() => {
             window.location.href = "./index.html";
         }, 2000);
@@ -42,13 +41,14 @@ function toggleErrorPrivPol() {
 function validateForm() {
     let errorElement = document.getElementById('error');
     let form = document.getElementById('signupForm');
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('input', (e) => {
         let messages = [];
+        validateName(messages);
         validateEmail(messages);
         validatePassword(password, messages);
-        validatePassword(passwordRepeat, messages);
-        comparePasswords(password, passwordRepeat, messages)
-        
+        validatePassword(repeatPassword, messages);
+        comparePasswords(password, repeatPassword, messages)
+
         if (messages.length > 0) {
             e.preventDefault()
             errorElement.innerHTML = messages.join(', ')
@@ -57,12 +57,21 @@ function validateForm() {
     })
 }
 
-function comparePasswords(password, passwordRepeat, messages) {
+function comparePasswords(password, repeatPassword, messages) {
     password = document.getElementById('password');
-    passwordRepeat = document.getElementById('passwordRepeat');
+    repeatPassword = document.getElementById('repeatPassword');
 
-    if (password.value !== passwordRepeat.value) {
+    if (password.value !== repeatPassword.value) {
         messages.push('Passwords do not match');
+    }
+}
+
+
+function validateName(messages) {
+    let signupName = document.getElementById('signupName');
+    if (signupName.value === '' || signupName.value == null) {
+        messages.push('Please enter your name')
+        signupName.classList.add('error-highlight');
     }
 }
 
@@ -76,44 +85,36 @@ function validateEmail(messages) {
 }
 
 function validatePassword(inputElementPW, messages) {
-    //let password = document.getElementById('password');
-    if (inputElementPW.value === '' || password.value == null) {
-        messages.push('Please enter a password')
+    if (inputElementPW.value === '' || inputElementPW.value == null) {
+        if (!messages.includes('Please enter a password')) {
+            messages.push('Please enter a password');
+        }
         inputElementPW.classList.add('error-highlight');
     }
 
     if (inputElementPW.value === 'password') {
-        messages.push('Password cannot be password')
+        if (!messages.includes('Password cannot be password')) {
+            messages.push('Password cannot be password');
+        }
         inputElementPW.classList.add('error-highlight');
     }
 }
 
-
-// function passwordFocus(passwordInput) {
-
-//     let iconPW = document.querySelector('.pw-wrapper button img');
-//     let iconPWButton = document.querySelector('.pw-wrapper button');
-
-//     reAppearLockIcon(passwordInput, iconPW, iconPWButton);
-//}
-
-
-
 function passwordFocus() {
-    let passwordInput = document.getElementById('password');
-    let repPasswordInput = document.getElementById('repeatPassword');
-    let iconPW = document.querySelector('.pw-wrapper button img');
-    let IconRepPw = document.querySelector('.rep-pw-wrapper button img');
-    let iconPWButton = document.querySelector('.pw-wrapper button');
-    let IconRepPwButton = document.querySelector('.rep-pw-wrapper button');
-
-    reAppearLockIcon(passwordInput, repPasswordInput, iconPW, IconRepPw, iconPWButton, IconRepPwButton);
+    setupPasswordField('password', '.pw-wrapper button img', '.pw-wrapper button');
+    setupPasswordField('repeatPassword', '.rep-pw-wrapper button img', '.rep-pw-wrapper button');
 }
 
+function setupPasswordField(passwordInputId, iconSelector, buttonSelector) {
+    let passwordInput = document.getElementById(passwordInputId);
+    let iconPW = document.querySelector(iconSelector);
+    let iconPWButton = document.querySelector(buttonSelector);
+
+    reAppearLockIcon(passwordInput, iconPW, iconPWButton);
+}
 
 function reAppearLockIcon(passwordInput, iconPW, iconPWButton) {
     passwordInput.addEventListener('input', () => {
-
         if (passwordInput.value === '') {
             iconPW.src = '../assets/svg/lock.svg';
             iconPW.classList.remove('cursor-pointer');
@@ -127,21 +128,37 @@ function reAppearLockIcon(passwordInput, iconPW, iconPWButton) {
 }
 
 
-function togglePassword() {
-    let passwordInput = document.getElementById('password');
-    let iconPW = document.querySelector('.pw-wrapper button img');
+function togglePasswordVisibility(button) {
+
+    let passwordInput = button.previousElementSibling;
+    let pwIcon = button.querySelector('img');
 
     if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
-        iconPW.src = '../assets/svg/eye_slash.svg';
-        iconPW.classList.add('cursor-pointer');
-        //iconPW.classList.add('eye_slash_small');  
-
+        pwIcon.src = '../assets/svg/eye_slash.svg';
+        pwIcon.classList.add('cursor-pointer');
     } else {
         passwordInput.type = 'password';
-        iconPW.src = '../assets/svg/eye.svg';
-        iconPW.classList.add('cursor-pointer');
-
+        pwIcon.src = '../assets/svg/eye.svg';
+        pwIcon.classList.add('cursor-pointer');
     }
 }
 
+function checkFormValidity() {
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+    const repeatPassword = document.getElementById('repeatPassword');
+    const chbPrivPol = document.getElementById('chbPrivPol');
+    const submitBtn = document.getElementById('submitBtn');
+
+    const emailIsValid = email.value !== '' && email.value.includes('@');
+    const passwordIsValid = password.value !== '' && password.value !== 'password';
+    const repeatPasswordIsValid = repeatPassword.value !== '' && repeatPassword.value !== 'password';
+    const privPolIsChecked = chbPrivPol.checked;
+
+    if (emailIsValid && passwordIsValid && repeatPasswordIsValid && privPolIsChecked) {
+        submitBtn.disabled = false;
+    } else {
+        submitBtn.disabled = true;
+    }
+}

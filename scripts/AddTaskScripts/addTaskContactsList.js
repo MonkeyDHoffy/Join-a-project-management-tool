@@ -42,8 +42,8 @@ function toggleAssignToIconSrc() {
   }
 }
 
-//Custom-Checkbox-----------------------------------------------------------------------------------
-function checkIt(name) {
+//Custom-Checkbox-----------------------------------------------------------------------------------Baustelle!!!
+function checkIt(name, index) {
   let container = document.getElementById("dropdown-content");
   let dropdownItems = container.getElementsByClassName("dropdown-item");
   for (let i = 0; i < dropdownItems.length; i++) {
@@ -56,13 +56,18 @@ function checkIt(name) {
       if (img.src.endsWith("Checkbutton.svg")) {
         img.src = checkedSrc;
         item.classList.add("checked");
+        selectedContacts.push({ name, index });
       } else {
         img.src = uncheckedSrc;
         item.classList.remove("checked");
+        selectedContacts = selectedContacts.filter(
+          (contact) => contact.name !== name
+        );
       }
       break; // Stop after finding the correct item
     }
   }
+  console.log(selectedContacts);
 }
 
 //Create Task Button validation ---------------------------------------------------------------------
@@ -124,6 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 let assignedContacts = [];
 let dropdownItems = [];
+let selectedContacts = [];
 
 async function getAssignedContacts() {
   assignedContacts = Object.values(await getData("contacts/"));
@@ -142,13 +148,25 @@ async function renderAssignedContacts() {
   dropdownItems = Array.from(
     assignedContactsList.getElementsByClassName("dropdown-item")
   );
+  // Restore selected state
+  selectedContacts.forEach((contact) => {
+    let item = dropdownItems.find(
+      (dropdownItem) =>
+        dropdownItem.querySelector("p").textContent === contact.name
+    );
+    if (item) {
+      let img = item.querySelector(".cstm-checkbox");
+      img.src = "./assets/svg/addTasksSvg/checked.svg";
+      item.classList.add("checked");
+    }
+  });
 }
 
 function assignedContactsTemplate(index) {
   return `
         <div onclick="checkIt('${
           assignedContacts[index].name
-        }')" class="dropdown-item">
+        }', ${index})" class="dropdown-item">
           <div style="background-color:${
             assignedContacts[index].color
           }" class="addTask-profilepicture">${assignedContacts[index].name
