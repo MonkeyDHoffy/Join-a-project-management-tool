@@ -28,7 +28,7 @@
 
 
 
-<body onload="addTaskInit(); getAssignedContacts();">
+<body onload="addTaskInit(); getAssignedContacts(); renderAssignedContacts();">
     <div class="content-width">
 
         <div class="content_left">
@@ -112,8 +112,8 @@
                                     <div id="assigned-to-input">
                                         <input class="add-task-input-field placeholder-color" type="text"
                                             id="assigned-to-field" placeholder="Select contacts to assign"
-                                            onclick="toggleDropdown(); toggleAssignToIconSrc();   renderAssignedContacts();">
-                                        <div onclick="toggleDropdown(); toggleAssignToIconSrc(); renderAssignedContacts();"
+                                            onclick="toggleDropdown(); toggleAssignToIconSrc(); ">
+                                        <div onclick="toggleDropdown(); toggleAssignToIconSrc();"
                                             class="input-icon-assign-to-container">
                                             <img id="input-icon-assign-to"
                                                 src="./assets/svg/addTasksSvg/arrow_drop_down.svg" alt="Icon"
