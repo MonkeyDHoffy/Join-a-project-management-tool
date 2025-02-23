@@ -1,9 +1,10 @@
+let assignedContacts = [];
+let dropdownItems = [];
+let selectedContacts = [];
+
 /**
  * Toggles the display of the dropdown content.
- * If the dropdown is currently visible, it hides it.
- * If the dropdown is currently hidden, it shows it.
  */
-
 function toggleDropdown() {
   let dropdown = document.getElementById("dropdown-content");
   dropdown.style.display =
@@ -16,15 +17,19 @@ window.onclick = function (event) {
     !event.target.matches("#assigned-to-field") &&
     !event.target.closest(".dropdown-content")
   ) {
-    let dropdowns = document.getElementsByClassName("dropdown-content");
-    for (let i = 0; i < dropdowns.length; i++) {
-      let openDropdown = dropdowns[i];
-      if (openDropdown.style.display === "block") {
-        openDropdown.style.display = "none";
-      }
-    }
+    closeDropdowns();
   }
 };
+
+function closeDropdowns() {
+  let dropdowns = document.getElementsByClassName("dropdown-content");
+  for (let i = 0; i < dropdowns.length; i++) {
+    let openDropdown = dropdowns[i];
+    if (openDropdown.style.display === "block") {
+      openDropdown.style.display = "none";
+    }
+  }
+}
 
 /**
  * Toggles the source of the "assign to" icon between a dropdown arrow and an upward arrow.
@@ -34,15 +39,10 @@ function toggleAssignToIconSrc() {
   let icon = document.getElementById("input-icon-assign-to");
   let src1 = "./assets/svg/addTasksSvg/arrow_drop_down.svg";
   let src2 = "./assets/svg/addTasksSvg/arrow_drop_up.svg";
-
-  if (icon.src.endsWith("arrow_drop_down.svg")) {
-    icon.src = src2;
-  } else {
-    icon.src = src1;
-  }
+  icon.src = icon.src.endsWith("arrow_drop_down.svg") ? src2 : src1;
 }
 
-//Custom-Checkbox-----------------------------------------------------------------------------------Baustelle!!!
+// Custom Checkbox Handling
 function checkIt(name, index) {
   let container = document.getElementById("dropdown-content");
   let dropdownItems = container.getElementsByClassName("dropdown-item");
@@ -50,71 +50,74 @@ function checkIt(name, index) {
     let item = dropdownItems[i];
     let itemName = item.querySelector("p").textContent;
     if (itemName === name) {
-      let img = item.querySelector(".cstm-checkbox");
-      let checkedSrc = "./assets/svg/addTasksSvg/checked.svg";
-      let uncheckedSrc = "./assets/svg/addTasksSvg/Checkbutton.svg";
-      if (img.src.endsWith("Checkbutton.svg")) {
-        img.src = checkedSrc;
-        item.classList.add("checked");
-        selectedContacts.push({ name, index });
-      } else {
-        img.src = uncheckedSrc;
-        item.classList.remove("checked");
-        selectedContacts = selectedContacts.filter(
-          (contact) => contact.name !== name
-        );
-      }
+      toggleCheckbox(item, name, index);
       break; // Stop after finding the correct item
     }
   }
   console.log(selectedContacts);
+  renderUserCircles();
 }
 
-//Create Task Button validation ---------------------------------------------------------------------
+function toggleCheckbox(item, name, index) {
+  let img = item.querySelector(".cstm-checkbox");
+  let checkedSrc = "./assets/svg/addTasksSvg/checked.svg";
+  let uncheckedSrc = "./assets/svg/addTasksSvg/Checkbutton.svg";
+  if (img.src.endsWith("Checkbutton.svg")) {
+    img.src = checkedSrc;
+    item.classList.add("checked");
+    selectedContacts.push({ name, index });
+  } else {
+    img.src = uncheckedSrc;
+    item.classList.remove("checked");
+    selectedContacts = selectedContacts.filter(
+      (contact) => contact.name !== name
+    );
+  }
+}
 
+// Render user circles based on selected contacts
+function renderUserCircles() {
+  let assignedCirclesSection = document.getElementById(
+    "assigned-circles-section"
+  );
+  assignedCirclesSection.innerHTML = "";
+  for (let i = 0; i < selectedContacts.length; i++) {
+    let contact = selectedContacts[i];
+    let assignedContact = assignedContacts.find(
+      (assigned) => assigned.name === contact.name
+    );
+    assignedCirclesSection.innerHTML += `
+      <div style="background-color:${
+        assignedContact.color
+      }; color:white;" class="addTask-profilepicture">${contact.name
+      .split(" ")
+      .map((word) => word[0])
+      .join("")
+      .toUpperCase()}</div>
+    `;
+  }
+}
+
+// Create Task Button Validation
 document.addEventListener("DOMContentLoaded", function () {
   let titleInput = document.querySelector(".addTask-title input");
   let dateInput = document.querySelector(".task-date input");
   let createTaskButton = document.querySelector(".createTask-button");
+
   function validateInputs() {
-    if (titleInput.value.trim() !== "" && dateInput.value.trim() !== "") {
-      createTaskButton.disabled = false;
-    } else {
-      createTaskButton.disabled = true;
-    }
+    createTaskButton.disabled =
+      titleInput.value.trim() === "" || dateInput.value.trim() === "";
   }
+
   titleInput.addEventListener("input", validateInputs);
   dateInput.addEventListener("input", validateInputs);
   validateInputs();
 });
 
-// Search Functionality and Alphabetical Sorting------------------------------------------------------
-
+// Search Functionality and Alphabetical Sorting
 document.addEventListener("DOMContentLoaded", function () {
   let assignedToField = document.getElementById("assigned-to-field");
   let dropdownContent = document.getElementById("dropdown-content");
-
-  // Function to sort dropdown items
-  function sortDropdownItems() {
-    dropdownItems.sort((a, b) => {
-      const nameA = a.querySelector("p").textContent.toUpperCase();
-      const nameB = b.querySelector("p").textContent.toUpperCase();
-      return nameA.localeCompare(nameB);
-    });
-    while (dropdownContent.firstChild) {
-      dropdownContent.removeChild(dropdownContent.firstChild);
-    }
-    dropdownItems.forEach((item) => dropdownContent.appendChild(item));
-  }
-
-  // Function to filter dropdown items based on search input
-  function filterDropdownItems() {
-    let filter = assignedToField.value.toLowerCase();
-    dropdownItems.forEach((item) => {
-      let name = item.querySelector("p").textContent.toLowerCase();
-      item.style.display = name.includes(filter) ? "" : "none";
-    });
-  }
 
   assignedToField.addEventListener("input", filterDropdownItems);
   document
@@ -125,12 +128,29 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// Assigne to field  connection to contacts----------------------------------------------------------------------------
+function sortDropdownItems() {
+  dropdownItems.sort((a, b) => {
+    const nameA = a.querySelector("p").textContent.toUpperCase();
+    const nameB = b.querySelector("p").textContent.toUpperCase();
+    return nameA.localeCompare(nameB);
+  });
+  let dropdownContent = document.getElementById("dropdown-content");
+  while (dropdownContent.firstChild) {
+    dropdownContent.removeChild(dropdownContent.firstChild);
+  }
+  dropdownItems.forEach((item) => dropdownContent.appendChild(item));
+}
 
-let assignedContacts = [];
-let dropdownItems = [];
-let selectedContacts = [];
+function filterDropdownItems() {
+  let assignedToField = document.getElementById("assigned-to-field");
+  let filter = assignedToField.value.toLowerCase();
+  dropdownItems.forEach((item) => {
+    let name = item.querySelector("p").textContent.toLowerCase();
+    item.style.display = name.includes(filter) ? "" : "none";
+  });
+}
 
+// Assign to field connection to contacts
 async function getAssignedContacts() {
   assignedContacts = Object.values(await getData("contacts/"));
   console.log(assignedContacts);
@@ -149,6 +169,10 @@ async function renderAssignedContacts() {
     assignedContactsList.getElementsByClassName("dropdown-item")
   );
   // Restore selected state
+  restoreSelectedState();
+}
+
+function restoreSelectedState() {
   selectedContacts.forEach((contact) => {
     let item = dropdownItems.find(
       (dropdownItem) =>
