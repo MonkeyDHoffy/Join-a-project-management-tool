@@ -1,6 +1,6 @@
 @font-face {
   font-family: "inter";
-  src: url(./assets/fonts/Inter/Inter-VariableFont_opsz\,wght.ttf);
+  src: url(./assets/fonts/Inter/Inter-VariableFont_opsz\wght.ttf);
 }
 
 * {
@@ -25,21 +25,37 @@
   height: 100%;
 }
 
-
 :root {
-  --orange: #FF7A00;
-  --pink: #FF5EB3;
-  --purple: #6E52FF;
-  --violet: #9327FF;
-  --cyan: #00BEE8;
-  --green: #1FD7C1;
-  --peach: #FF745E;
-  --blue: #0038FF;
-  --lime: #C3FF2B;
-  --yellow: #FFE62B;
-  --gold: #FFC701;
-  --coral: #FFBB2B;
-  --red: #FF4646;
-  --magenta: #FC71FF;
-  --light-orange: #FFBB2B;
+  --orange: #ff7a00;
+  --pink: #ff5eb3;
+  --purple: #6e52ff;
+  --violet: #9327ff;
+  --cyan: #00bee8;
+  --green: #1fd7c1;
+  --peach: #ff745e;
+  --blue: #0038ff;
+  --lime: #c3ff2b;
+  --yellow: #ffe62b;
+  --gold: #ffc701;
+  --coral: #ffbb2b;
+  --red: #ff4646;
+  --magenta: #fc71ff;
+  --light-orange: #ffbb2b;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a8a8a8;
+  border-radius: 4px;
+}
+
+/* ::-webkit-scrollbar-button {
+  display: block;
+} */

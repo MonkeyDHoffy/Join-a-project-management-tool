@@ -86,16 +86,23 @@ function renderUserCircles() {
     let assignedContact = assignedContacts.find(
       (assigned) => assigned.name === contact.name
     );
-    assignedCirclesSection.innerHTML += `
-      <div style="background-color:${
-        assignedContact.color
-      }; color:white;" class="addTask-profilepicture">${contact.name
-      .split(" ")
-      .map((word) => word[0])
-      .join("")
-      .toUpperCase()}</div>
-    `;
+    assignedCirclesSection.innerHTML += userCircleTemplate(
+      contact,
+      assignedContact.color
+    );
   }
+}
+
+function userCircleTemplate(contact, color) {
+  return `
+    <div style="background-color:${color}; color:white;" class="addTask-profilepicture">
+      ${contact.name
+        .split(" ")
+        .map((word) => word[0])
+        .join("")
+        .toUpperCase()}
+    </div>
+  `;
 }
 
 // Create Task Button Validation

@@ -39,6 +39,10 @@
   align-items: center;
   padding: 10px;
   cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 1px;
+  font-weight: 400;
+  font-size: 20px;
 
   label {
     flex-grow: 1;
@@ -58,9 +62,9 @@
 }
 
 .dropdown-item img {
-  width: 42px; /* Adjust the size as needed */
-  height: 42px; /* Adjust the size as needed */
-  border-radius: 50%;
+  width: 24;
+  height: 24;
+  border-radius: 3px;
 }
 
 .dropdown-item label {
@@ -132,7 +136,4 @@
   position: relative;
   top: -5px;
   overflow-x: auto;
-}
-
-.user-circle {
 }

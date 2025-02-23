@@ -171,40 +171,15 @@
                                         <p>Category</p>
                                     </label>
                                     <div class="category-input">
-                                        <input class="placeholder-color" placeholder="Select task category" type="text"
-                                            readonly onclick="toggleCategoryIconSrc()">
+                                        <input id="category-field" class="placeholder-color"
+                                            placeholder="Select task category" type="text" readonly>
                                         <div class="input-icon-category-container">
                                             <img id="input-icon-category"
                                                 src="./assets/svg/addTasksSvg/arrow_drop_down.svg" alt="Icon"
                                                 class="input-icon-category">
                                         </div>
-                                        <div class="dropdown-content" id="dropdown-content">
-                                            <div onclick="checkIt('Viktor Vaal')" class="dropdown-item">
-                                                <div class="addTask-profilepicture">VV</div>
-                                                <label class="custom-checkbox">
-                                                    <p>Viktor Vaal</p>
-                                                    <img class="cstm-checkbox"
-                                                        src="./assets/svg/addTasksSvg/Checkbutton.svg" alt="">
-                                                </label>
-                                            </div>
-                                            <div onclick="checkIt('Jannik Hoff')" class="dropdown-item">
-                                                <div class="addTask-profilepicture">JH</div>
-                                                <label class="custom-checkbox">
-                                                    <p>Jannik Hoff</p>
-                                                    <img class="cstm-checkbox"
-                                                        src="./assets/svg/addTasksSvg/Checkbutton.svg" alt="">
-                                                </label>
-                                            </div>
-                                            <div onclick="checkIt('Dany Hudson')" class="dropdown-item">
-                                                <div class="addTask-profilepicture">DH</div>
-                                                <label class="custom-checkbox">
-                                                    <p>Dany Hudson</p>
-                                                    <img class="cstm-checkbox"
-                                                        src="./assets/svg/addTasksSvg/Checkbutton.svg" alt="">
-                                                </label>
-                                            </div>
-                                        </div>
                                     </div>
+                                    <!-- </div> -->
 
                                     <div class="addTask-subtasks">
                                         <label for="">
@@ -233,7 +208,8 @@
                                             <div class="edit-subtask-btns"><img onclick="deleteSubInputValue()"
                                                     src="./assets/svg/contacts_svg/delete.svg" alt=""><img
                                                     onclick="confirmSubEdit()" src="./assets/img/addTask/check.svg"
-                                                    alt=""></div>
+                                                    alt="">
+                                            </div>
                                         </section>
 
                                     </div>
@@ -244,49 +220,45 @@
                                 </div>
 
 
-
                             </div>
 
+                        </div>
+                        <div class="addTask-footer">
+                            <div><span style="color:red">*</span><span>This field is required</span></div>
+                            <div class="display-flex clear-create"><button onclick="clearInputFields()"
+                                    class="clear-btn">Clear
+                                    <img src="./assets/svg/addTasksSvg/clear.svg" alt=""></button><button
+                                    onclick="showTaskNotification()" class="createTask-button">Create Task<img
+                                        src="./assets/svg/addTasksSvg/cross.svg" alt="">
+                                </button></div>
 
                         </div>
-
-                    </div>
-                    <div class="addTask-footer">
-                        <div><span style="color:red">*</span><span>This field is required</span></div>
-                        <div class="display-flex clear-create"><button onclick="clearInputFields()"
-                                class="clear-btn">Clear <img src="./assets/svg/addTasksSvg/clear.svg"
-                                    alt=""></button><button onclick="showTaskNotification()"
-                                class="createTask-button">Create Task<img src="./assets/svg/addTasksSvg/cross.svg"
-                                    alt="">
-                            </button></div>
-
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
-    <div class="click-notification-add-task">
-        <p>Task added to board </p> <img src="./assets/img/navBar/board.svg" alt="">
-    </div>
+        <div class="click-notification-add-task">
+            <p>Task added to board </p> <img src="./assets/img/navBar/board.svg" alt="">
+        </div>
 
-    <section class="mobile-nav-section">
-        <section class="mobile-navBar">
-            <a href="./summary.html"><button class="mobile_nav_btn nav_summary active" disabled="true"><span><img
-                            src="./assets/img/navBar/summary.svg" alt="">Summary</span></button></a>
+        <section class="mobile-nav-section">
+            <section class="mobile-navBar">
+                <a href="./summary.html"><button class="mobile_nav_btn nav_summary active" disabled="true"><span><img
+                                src="./assets/img/navBar/summary.svg" alt="">Summary</span></button></a>
 
-            <a href="./add_task.html"><button class="mobile_nav_btn nav_add_task"><span><img
-                            src="./assets/img/navBar/add_task.svg" alt="">Add Task</span></button></a>
+                <a href="./add_task.html"><button class="mobile_nav_btn nav_add_task"><span><img
+                                src="./assets/img/navBar/add_task.svg" alt="">Add Task</span></button></a>
 
-            <a href="./board.html"><button class="mobile_nav_btn nav_board"><span><img
-                            src="./assets/img/navBar/board.svg" alt="">Board</span></button></a>
+                <a href="./board.html"><button class="mobile_nav_btn nav_board"><span><img
+                                src="./assets/img/navBar/board.svg" alt="">Board</span></button></a>
 
-            <a href="./contacts.html"><button class="mobile_nav_btn nav_contacts"><span><img
-                            src="./assets/img/navBar/contacts.svg" alt="">Contacts</span></button></a>
+                <a href="./contacts.html"><button class="mobile_nav_btn nav_contacts"><span><img
+                                src="./assets/img/navBar/contacts.svg" alt="">Contacts</span></button></a>
 
+            </section>
         </section>
-    </section>
 
 
 </body>
