@@ -69,7 +69,19 @@
                 <p>Kanban Project Management Tool</p>
                 <div class="header_btn_and_pic"> <a class="question-mark" href="./hilfe.html"><img
                             class="question-mark-img" src="./assets/img/navBar/help.png" alt=""></a>
-                    <div><img class="profile_picture" src="" alt="">
+                    <div style="position: relative;">
+                        <img class="profile_picture" src="./assets/img/dog-705820_640.jpg" alt=""
+                            onclick="toggleMenu()">
+                        <section class="menu">
+                            <div class="menu-btns">
+                                <a href="#" class="menu-item">Help</a>
+                                <a href="./legal_notice.html" class="menu-item">Legal Notice</a>
+                                <a href="./datenschutz.html" class="menu-item">Privacy Policy</a>
+                                <a href="./legal_notice.html" class="menu-item">Log out</a>
+                            </div>
+
+                        </section>
+
                     </div>
                 </div>
             </div>
@@ -103,8 +115,8 @@
                             <h3>In progress</h3>
                             <button onclick="openAddTaskOverlay()" class="add-in-progress btn-title">+</button>
                         </div>
-                        <div ondrop="drop('inProgress', event)" ondragover="allowDrop(event)" draggable="true" id="inProgress"
-                            class="in-progress-field board-field"></div>
+                        <div ondrop="drop('inProgress', event)" ondragover="allowDrop(event)" draggable="true"
+                            id="inProgress" class="in-progress-field board-field"></div>
                     </div>
                     <div class="board-title-field-wrapper">
                         <div class="to-do-title flex-title">
@@ -316,23 +328,23 @@
         <div id="dark-background"></div>
 
     </div>
-        <section class="mobile-nav-section">
+    <section class="mobile-nav-section">
 
-            <section class="mobile-navBar">
-                <a href="./summary.html"><button class="mobile_nav_btn nav_summary active" disabled="true"><span><img
-                                src="./assets/img/navBar/summary.svg" alt="">Summary</span></button></a>
+        <section class="mobile-navBar">
+            <a href="./summary.html"><button class="mobile_nav_btn nav_summary active" disabled="true"><span><img
+                            src="./assets/img/navBar/summary.svg" alt="">Summary</span></button></a>
 
-                <a href="./add_task.html"><button class="mobile_nav_btn nav_add_task"><span><img
-                                src="./assets/img/navBar/add_task.svg" alt="">Add Task</span></button></a>
+            <a href="./add_task.html"><button class="mobile_nav_btn nav_add_task"><span><img
+                            src="./assets/img/navBar/add_task.svg" alt="">Add Task</span></button></a>
 
-                <a href="./board.html"><button class="mobile_nav_btn nav_board"><span><img
-                                src="./assets/img/navBar/board.svg" alt="">Board</span></button></a>
+            <a href="./board.html"><button class="mobile_nav_btn nav_board"><span><img
+                            src="./assets/img/navBar/board.svg" alt="">Board</span></button></a>
 
-                <a href="./contacts.html"><button class="mobile_nav_btn nav_contacts"><span><img
-                                src="./assets/img/navBar/contacts.svg" alt="">Contacts</span></button></a>
+            <a href="./contacts.html"><button class="mobile_nav_btn nav_contacts"><span><img
+                            src="./assets/img/navBar/contacts.svg" alt="">Contacts</span></button></a>
 
-            </section>
         </section>
+    </section>
 
 
 </body>
