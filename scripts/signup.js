@@ -55,13 +55,14 @@ function validateForm() {
         validatePassword(password, messages);
         validatePassword(repeatPassword, messages);
         comparePasswords(password, repeatPassword, messages)
+        checkFormValidity();
 
         if (messages.length > 0) {
             e.preventDefault()
             errorElement.innerHTML = messages.join(', ')
         } else {
             errorElement.innerHTML = '';
-            showSignUpMsg();
+            
         }
         //showSignUpMsg();
     })
@@ -71,12 +72,12 @@ function comparePasswords(password, repeatPassword, messages) {
    // password = document.getElementById('password');
     //repeatPassword = document.getElementById('repeatPassword');
 
-    if (password.value !== repeatPassword.value) {
+    if (password.value !== repeatPassword.value || password.value === '' || repeatPassword.value === '') {
         if (!messages.includes('Passwords do not match')) {
             messages.push('Passwords do not match');
         }
-        password.classList.add('error-highlight');
-        repeatPassword.classList.add('error-highlight');
+        password.parentNode.classList.add('error-highlight');
+        repeatPassword.parentNode.classList.add('error-highlight');
     } else {
         removeErrorMessageAndHighlight(password, messages, 'Passwords do not match');
         removeErrorMessageAndHighlight(repeatPassword, messages, 'Passwords do not match');
@@ -89,7 +90,7 @@ function removeErrorMessageAndHighlight(inputElement, messages, errorMessage) {
     if (index > -1) {
         messages.splice(index, 1);
     }
-    inputElement.classList.remove('error-highlight');
+    inputElement.parentNode.classList.remove('error-highlight');
 }
 
 
@@ -97,7 +98,7 @@ function validateName(messages) {
     let signupName = document.getElementById('signupName');
     if (signupName.value === '' || signupName.value == null) {
         messages.push('Please enter your name')
-        signupName.classList.add('error-highlight');
+        signupName.parentNode.classList.add('error-highlight');
     } else {
         removeErrorMessageAndHighlight(signupName, messages, 'Please enter your name')
     }
@@ -108,7 +109,7 @@ function validateEmail(messages) {
     let email = document.getElementById('email');
     if (email.value === '' || email.value == null || email.value.includes('@') === false) {
         messages.push('Please enter a valid Email')
-        email.classList.add('error-highlight');
+        email.parentNode.classList.add('error-highlight');
     } else {
         removeErrorMessageAndHighlight(email, messages, 'Please enter a valid Email')
     }
@@ -119,7 +120,7 @@ function validatePassword(inputElementPW, messages) {
         if (!messages.includes('Please enter a password')) {
             messages.push('Please enter a password');
         }
-        inputElementPW.classList.add('error-highlight');
+        inputElementPW.parentNode.classList.add('error-highlight');
     } else {
         removeErrorMessageAndHighlight(inputElementPW, messages, 'Please enter a password');
     }
@@ -128,7 +129,7 @@ function validatePassword(inputElementPW, messages) {
         if (!messages.includes('Password cannot be password')) {
             messages.push('Password cannot be password');
         }
-        inputElementPW.classList.add('error-highlight');
+        inputElementPW.parentNode.classList.add('error-highlight');
     } else {
         removeErrorMessageAndHighlight(inputElementPW, messages, 'Password cannot be password');
     }
@@ -179,20 +180,25 @@ function togglePasswordVisibility(button) {
 }
 
 function checkFormValidity() {
+    const signupName = document.getElementById('signupName');
     const email = document.getElementById('email');
     const password = document.getElementById('password');
     const repeatPassword = document.getElementById('repeatPassword');
     const chbPrivPol = document.getElementById('chbPrivPol');
     const submitBtn = document.getElementById('submitBtn');
 
+    const signupNameIsValid = signupName.value !== '';
     const emailIsValid = email.value !== '' && email.value.includes('@');
     const passwordIsValid = password.value !== '' && password.value !== 'password';
     const repeatPasswordIsValid = repeatPassword.value !== '' && repeatPassword.value !== 'password';
     const privPolIsChecked = chbPrivPol.checked;
 
-    if (emailIsValid && passwordIsValid && repeatPasswordIsValid && privPolIsChecked) {
+    if (signupNameIsValid && emailIsValid && passwordIsValid && repeatPasswordIsValid && privPolIsChecked) {
         submitBtn.disabled = false;
+        
     } else {
         submitBtn.disabled = true;
     }
+    
 }
+
