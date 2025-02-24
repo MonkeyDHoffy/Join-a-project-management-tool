@@ -14,6 +14,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Moul&family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Press+Start+2P&family=Sniglet:wght@400;800&family=Varela+Round&display=swap"
         rel="stylesheet">
+    <script src="./scripts/script.js"></script>
 </head>
 
 <body>
@@ -59,7 +60,19 @@
             <div class="header">
                 <p>Kanban Project Management Tool</p>
                 <div class="header_btn_and_pic">
-                    <div><img class="profile_picture" src="" alt="">
+                    <div style="position: relative;">
+                        <img class="profile_picture" src="./assets/img/dog-705820_640.jpg" alt=""
+                            onclick="toggleMenu()">
+                        <section class="menu">
+                            <div class="menu-btns">
+                                <a href="./hilfe.html" class="menu-item">Help</a>
+                                <a href="./legal_notice.html" class="menu-item">Legal Notice</a>
+                                <a href="./datenschutz.html" class="menu-item">Privacy Policy</a>
+                                <a href="./legal_notice.html" class="menu-item">Log out</a>
+                            </div>
+
+                        </section>
+
                     </div>
                 </div>
             </div>
