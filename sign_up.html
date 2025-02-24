@@ -25,7 +25,7 @@
                 <h1>Sign Up</h1>
             </div>
             <div class="sgnp-form">
-                <form id="signupForm" novalidate>
+                <form id="signupForm" novalidate onsubmit="return false">
 
                     <div class="name-wrapper">
                         <input type="text" placeholder="Name" id="signupName">
@@ -61,7 +61,7 @@
                                     
                         </div>
                         <span id="errorPrivPol"></span> <!--onclick="showSignUpMsg(); return false" -->
-                        <button type="submit"  class="signup" id="submitBtn" disabled >Sign up</button>
+                        <button type="submit"  class="signup" id="submitBtn" disabled onclick="showSignUpMsg();" >Sign up</button>
                         <div class="signup-msg  d-none" id="signUpMsg">You have successesfully signed up</div>
                     </div>
                 </form>
