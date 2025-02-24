@@ -10,7 +10,8 @@
 .add-task-header-and-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  justify-content: space-evenly;
+  height: 100%;
 }
 
 .addTask-header {
