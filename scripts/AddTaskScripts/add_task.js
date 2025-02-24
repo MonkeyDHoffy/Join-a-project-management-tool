@@ -331,3 +331,14 @@ function setCategory(category) {
   document.getElementById("category-field").value = category;
   toggleCategoryDropdown();
 }
+
+document.addEventListener("click", function (event) {
+  let categoryDropdown = document.querySelector(".category-dropdown");
+  let categoryField = document.getElementById("category-field");
+  let isClickInside =
+    categoryDropdown.contains(event.target) ||
+    categoryField.contains(event.target);
+  if (!isClickInside) {
+    categoryDropdown.style.display = "none";
+  }
+});
