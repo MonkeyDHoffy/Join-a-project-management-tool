@@ -22,7 +22,7 @@
 
     <script src="scripts/script.js"></script>
     <script src="./scripts/ContactsScript.js/contacts.js"></script>
-    <script src="./scripts/AddTaskScripts/addTaskContactsList.js"></script>
+    <script src="./scripts/AddTaskScripts/addTaskContactsList.js" defer></script>
     <script src="./scripts/AddTaskScripts/add_task.js"></script>
 </head>
 
@@ -199,7 +199,7 @@
                                         </div>
 
 
-                                        <section class="subtask-list"></section>
+                                        <section id="subtasksList" class="subtask-list"></section>
 
 
                                         <section id="edit-subtask-item-field" class="edit-subtask-item">
@@ -235,7 +235,7 @@
                         </div>
                         <div class="addTask-footer">
                             <div><span style="color:red">*</span><span>This field is required</span></div>
-                            <div class="display-flex clear-create"><button onclick="clearInputFields()"
+                            <div class="display-flex clear-create"><button onclick="resetAddTaskInputs()"
                                     class="clear-btn">Clear
                                     <img src="./assets/svg/addTasksSvg/clear.svg" alt=""></button><button
                                     onclick="showTaskNotification()" class="createTask-button">Create Task<img

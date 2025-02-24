@@ -1,6 +1,7 @@
 let assignedContacts = [];
 let dropdownItems = [];
 let selectedContacts = [];
+let subtasks = [];
 
 /**
  * Toggles the display of the dropdown content.
@@ -15,7 +16,8 @@ function toggleDropdown() {
 window.onclick = function (event) {
   if (
     !event.target.matches("#assigned-to-field") &&
-    !event.target.closest(".dropdown-content")
+    !event.target.closest(".dropdown-content") &&
+    !event.target.closest(".input-icon-assign-to-container")
   ) {
     closeDropdowns();
   }
@@ -105,17 +107,18 @@ function userCircleTemplate(contact, color) {
   `;
 }
 
+let titleInput = document.querySelector(".addTask-title input");
+let dateInput = document.querySelector(".task-date input");
+
+function validateInputs() {
+  
+  let createTaskButton = document.querySelector(".createTask-button");
+  createTaskButton.disabled = titleInput.value.trim() === "" || dateInput.value.trim() === "";
+}
+
 // Create Task Button Validation
 document.addEventListener("DOMContentLoaded", function () {
-  let titleInput = document.querySelector(".addTask-title input");
-  let dateInput = document.querySelector(".task-date input");
-  let createTaskButton = document.querySelector(".createTask-button");
-
-  function validateInputs() {
-    createTaskButton.disabled =
-      titleInput.value.trim() === "" || dateInput.value.trim() === "";
-  }
-
+  validateInputs();
   titleInput.addEventListener("input", validateInputs);
   dateInput.addEventListener("input", validateInputs);
   validateInputs();
