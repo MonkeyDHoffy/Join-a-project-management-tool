@@ -48,6 +48,9 @@ const colors = [
 const BASE_URL =
   "https://remotestorage-f4b14-default-rtdb.europe-west1.firebasedatabase.app/";
 let data;
+
+let users = [];
+
 async function getData(path = "") {
   try {
     let response = await fetch(BASE_URL + path + ".json");
