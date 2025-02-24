@@ -1,9 +1,11 @@
 
+
+
 function init() {
     validateForm();
     passwordFocus();
     checkFormValidity();
-
+    getUsers();
 };
 
 
@@ -49,7 +51,7 @@ function validateForm() {
         messages = [];
         let password = document.getElementById('password');
         let repeatPassword = document.getElementById('repeatPassword');
-        
+
         validateName(messages);
         validateEmail(messages);
         validatePassword(password, messages);
@@ -62,14 +64,14 @@ function validateForm() {
             errorElement.innerHTML = messages.join(', ')
         } else {
             errorElement.innerHTML = '';
-            
+
         }
         //showSignUpMsg();
     })
 }
 
 function comparePasswords(password, repeatPassword, messages) {
-   // password = document.getElementById('password');
+    // password = document.getElementById('password');
     //repeatPassword = document.getElementById('repeatPassword');
 
     if (password.value !== repeatPassword.value || password.value === '' || repeatPassword.value === '') {
@@ -195,10 +197,33 @@ function checkFormValidity() {
 
     if (signupNameIsValid && emailIsValid && passwordIsValid && repeatPasswordIsValid && privPolIsChecked) {
         submitBtn.disabled = false;
-        
+
     } else {
         submitBtn.disabled = true;
     }
-    
+
 }
 
+async function getUsers() {
+    users = Object.values(await getData("users"))
+    console.log(users);
+
+}
+
+function registerUser() {
+    let user = {
+        'name': document.getElementById('signupName').value,
+        'email': document.getElementById('email').value,
+        'passwort': document.getElementById('password').value
+    };
+
+    if (users.find(user => user.email === document.getElementById('email').value)) {
+        alert('User already exists');
+
+    } else {
+        users.push(user);
+        putData("users", users);
+        showSignUpMsg();
+    }
+
+}
