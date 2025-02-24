@@ -1,19 +1,14 @@
-let priority = "medium";
-
 // Initialize the task creation form by setting the icons
 function addTaskInit() {
   setIcons();
   changeMediumBtn();
 }
 
-<<<<<<< HEAD
-let priority = [];
+let priority = "medium";
 let technicalTask = "Technical Task";
 let UserStory = "User Story";
 let selectedCategory = "";
 
-=======
->>>>>>> 5858b5c46188f269659930cc7b3b56b6dae4ca15
 // Set the initial icons for the priority buttons
 function setIcons() {
   urgentIcon();
@@ -163,7 +158,9 @@ function clearInputFields() {
   let requiredDateRef = document.getElementById("requiredDate");
   requiredTitleRef.classList.add("d-none");
   requiredDateRef.classList.add("d-none");
-  let inputFieldsRef = Array.from(document.getElementsByClassName("add-task-input-field"));
+  let inputFieldsRef = Array.from(
+    document.getElementsByClassName("add-task-input-field")
+  );
   inputFieldsRef.forEach((inputField) => {
     inputField.value = "";
     inputField.classList.remove("invalid");
