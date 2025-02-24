@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./styles/login.css">
-    <title>page 1 with animation and login</title>
+    <script src="./scripts/script.js"></script>
     <script defer src="./scripts/login.js"></script>
+    <title>page 1 with animation and login</title>
 </head>
 
 <body onload="init()">
@@ -24,7 +25,7 @@
             </div>
             <div class="login-form">
 
-                <form id="loginForm" novalidate>
+                <form id="loginForm" novalidate  onsubmit="return false">
                     <div class="email-wrapper">
                         <input type="email" placeholder="Email" id="email">
                         <span><img src="../assets/svg/mail.svg" alt=""></span>
@@ -37,7 +38,8 @@
                     <span id="error"></span>
                     
                     <div class="login-button-box">
-                        <button class="login" type="submit">Login</button> <button class="guest-login">Guest
+                        <button class="login" type="submit" onclick="loginUser()">Login</button>
+                        <button class="guest-login">Guest
                             Login</button>
                     </div>
                 </form>
