@@ -5,6 +5,9 @@ function addTaskInit() {
 }
 
 let priority = [];
+let technicalTask = "Technical Task";
+let UserStory = "User Story";
+let selectedCategory = "";
 
 // Set the initial icons for the priority buttons
 function setIcons() {
@@ -291,3 +294,20 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 });
+
+// Category-Btn--------------------------------------------------
+function toggleCategoryDropdown() {
+  let categoryDropdown = document.querySelector(".category-dropdown");
+  if (categoryDropdown.style.display === "none") {
+    categoryDropdown.style.display = "block";
+  } else {
+    categoryDropdown.style.display = "none";
+  }
+}
+
+function setCategory(category) {
+  selectedCategory = category;
+  console.log(selectedCategory);
+  document.getElementById("category-field").value = category;
+  toggleCategoryDropdown();
+}

@@ -94,6 +94,7 @@ input {
 }
 
 .addTask-section input {
+  z-index: 10;
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -561,4 +562,28 @@ textarea {
 }
 .addTask-assignedTo {
   padding-top: 16px;
+}
+
+.category-dropdown {
+  z-index: 8;
+  display: none;
+  height: 100px;
+  width: 100%;
+  position: relative;
+  top: -55%;
+  background-color: white;
+
+  div {
+    padding-left: 8px;
+    height: 48px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.technicalTask-btn:hover,
+.userStory-btn:hover {
+  cursor: pointer;
+  background-color: #c9cdd3;
 }

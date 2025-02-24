@@ -170,7 +170,7 @@
                                     <label for="">
                                         <p>Category</p>
                                     </label>
-                                    <div class="category-input">
+                                    <div onclick="toggleCategoryDropdown()" class="category-input">
                                         <input id="category-field" class="placeholder-color"
                                             placeholder="Select task category" type="text" readonly>
                                         <div class="input-icon-category-container">
@@ -213,6 +213,16 @@
                                         </section>
 
                                     </div>
+
+                                    <section id="category-dropdown" class="category-dropdown">
+                                        <div onclick="setCategory(technicalTask)"
+                                            class="technicalTask-btn category-btn ">
+                                            <p>Technical Task</p>
+                                        </div>
+                                        <div onclick="setCategory(UserStory)" class="userStory-btn category-btn">
+                                            <p>User Story</p>
+                                        </div>
+                                    </section>
 
 
 
