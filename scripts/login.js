@@ -3,6 +3,7 @@
 function init() {
     validateForm();
     passwordFocus();
+    getUsers();
 };
 
 function validateForm() {
@@ -85,20 +86,18 @@ function togglePassword() {
     }
 }
 
+function loginUser() {
+let registeredUser = users.find(user => user.email === document.getElementById('email').value);
 
-// function checkFormValidity() {
-//     const email = document.getElementById('email');
-//     const password = document.getElementById('password');
-//     const chbPrivPol = document.getElementById('chbPrivPol');
-//     const submitBtn = document.getElementById('submitBtn');
+if (!registeredUser) {
+    alert('User not found');
+    return;
 
-//     const isEmailValid = email.value !== '' && email.value.includes('@');
-//     const isPasswordValid = password.value !== '' && password.value !== 'password';
-//     const isPrivPolChecked = chbPrivPol.checked;
+} else if (registeredUser.password !== document.getElementById('password').value) {
+    alert('Password incorrect');
+    return;
 
-//     if (isEmailValid && isPasswordValid && isPrivPolChecked) {
-//         submitBtn.disabled = false;
-//     } else {
-//         submitBtn.disabled = true;
-//     }
-// }
+} else {
+    window.location.href = 'summary.html';
+}
+}
