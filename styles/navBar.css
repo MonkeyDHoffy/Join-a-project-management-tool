@@ -189,7 +189,7 @@ span {
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1350px) {
   .content_left {
     display: none;
   }
