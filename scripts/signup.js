@@ -204,17 +204,11 @@ function checkFormValidity() {
 
 }
 
-async function getUsers() {
-    users = Object.values(await getData("users"))
-    console.log(users);
-
-}
-
 function registerUser() {
     let user = {
         'name': document.getElementById('signupName').value,
         'email': document.getElementById('email').value,
-        'passwort': document.getElementById('password').value
+        'password': document.getElementById('password').value
     };
 
     if (users.find(user => user.email === document.getElementById('email').value)) {
