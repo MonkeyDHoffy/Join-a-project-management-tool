@@ -77,6 +77,10 @@ async function putData(path = "", data = "") {
   }
 }
 
+async function getUsers() {
+  users = Object.values(await getData("users"))
+}
+
 // function regsterUser() {
 //     let name = "daniela";
 //     let email = "daniela@example.com";
