@@ -1,10 +1,10 @@
+let priority = "medium";
+
 // Initialize the task creation form by setting the icons
 function addTaskInit() {
   setIcons();
   changeMediumBtn();
 }
-
-let priority = [];
 
 // Set the initial icons for the priority buttons
 function setIcons() {
@@ -129,20 +129,37 @@ function toggleLowActive() {
   lowBtn.classList.add("prio-btn-low");
 }
 
+function resetAddTaskInputs() {
+  clearInputFields();
+  changeMediumBtn();
+  clearAssignedContacts();
+  clearSubtasks();
+  // clearCategory();
+  validateInputs();
+}
+
+function clearSubtasks() {
+  subtasks = [];
+  let subtasksListRef = document.getElementById("subtasksList");
+  subtasksListRef.innerHTML = "";
+}
+
+function clearAssignedContacts() {
+  selectedContacts = [];
+  renderAssignedContacts();
+  renderUserCircles();
+}
+
 function clearInputFields() {
   let requiredTitleRef = document.getElementById("requiredTitle");
   let requiredDateRef = document.getElementById("requiredDate");
   requiredTitleRef.classList.add("d-none");
   requiredDateRef.classList.add("d-none");
-  let inputFieldsRef = Array.from(
-    document.getElementsByClassName("add-task-input-field")
-  );
+  let inputFieldsRef = Array.from(document.getElementsByClassName("add-task-input-field"));
   inputFieldsRef.forEach((inputField) => {
     inputField.value = "";
     inputField.classList.remove("invalid");
   });
-  changeMediumBtn();
-  validateInputs();
 }
 
 function toggleCategoryIconSrc() {
@@ -159,7 +176,7 @@ function toggleCategoryIconSrc() {
 function showTaskNotification() {
   let notification = document.querySelector(".click-notification-add-task");
   if (notification) {
-    clearInputFields();
+    resetAddTaskInputs();
     notification.classList.add("show");
     setTimeout(() => {
       notification.classList.remove("show");
@@ -201,6 +218,7 @@ function renderSubtaskList() {
   let subtaskList = document.querySelector(".subtask-list");
   if (subtaskInput.value.trim() !== "") {
     subtaskList.innerHTML += subtaskListTemplate(subtaskInput);
+    subtasks.push(subtaskInput.value);
     subtaskInput.value = "";
     // Trigger the input event listener to toggle subtask buttons/wird noch durch normales onload ersetzt
     subtaskInput.dispatchEvent(new Event("input"));
