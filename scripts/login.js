@@ -17,9 +17,9 @@ function validateForm() {
             e.preventDefault()
             errorElement.innerHTML = messages.join(', ')
         }
-        
+
     })
-    
+
 }
 
 function validateEmail(messages) {
@@ -52,9 +52,9 @@ function passwordFocus() {
 }
 
 
-function reAppearLockIcon(passwordInput, iconPW, iconPWButton) { 
+function reAppearLockIcon(passwordInput, iconPW, iconPWButton) {
     passwordInput.addEventListener('input', () => {
-        
+
         if (passwordInput.value === '') {
             iconPW.src = '../assets/svg/lock.svg';
             iconPW.classList.remove('cursor-pointer');
@@ -65,19 +65,19 @@ function reAppearLockIcon(passwordInput, iconPW, iconPWButton) {
             iconPWButton.disabled = false;
         }
     });
- }
- 
+}
+
 
 function togglePassword() {
     let passwordInput = document.getElementById('password');
     let iconPW = document.querySelector('.pw-wrapper button img');
-    
+
     if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
         iconPW.src = '../assets/svg/eye_slash.svg';
         iconPW.classList.add('cursor-pointer');
         //iconPW.classList.add('eye_slash_small');  
-        
+
     } else {
         passwordInput.type = 'password';
         iconPW.src = '../assets/svg/eye.svg';
@@ -87,17 +87,24 @@ function togglePassword() {
 }
 
 function loginUser() {
-let registeredUser = users.find(user => user.email === document.getElementById('email').value);
+    let registeredUser = users.find(user => user.email === document.getElementById('email').value);
 
-if (!registeredUser) {
-    alert('User not found');
-    return;
+    if (!registeredUser) {
+        alert('User not found');
+        return;
 
-} else if (registeredUser.password !== document.getElementById('password').value) {
-    alert('Password incorrect');
-    return;
+    } else if (registeredUser.password !== document.getElementById('password').value) {
+        alert('Password incorrect');
+        return;
 
-} else {
-    window.location.href = 'summary.html';
+    } else {
+        let userName = encodeURIComponent(registeredUser.name);
+        window.location.href = `summary.html?name=${userName}`;
+    }
 }
+
+function getQueryParamsUserName() {
+    const urlParams = new URLSearchParams(window.location.search);
+    console.log(urlParams.get('name'));
+    return urlParams.get('name');
 }
