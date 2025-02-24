@@ -44,6 +44,19 @@ function toggleAssignToIconSrc() {
   icon.src = icon.src.endsWith("arrow_drop_down.svg") ? src2 : src1;
 }
 
+/**
+ * Toggles the display of the category dropdown content and changes the icon's source.
+ */
+function toggleCategoryDropdown() {
+  let dropdown = document.getElementById("category-dropdown");
+  let icon = document.getElementById("input-icon-category");
+  let src1 = "./assets/svg/addTasksSvg/arrow_drop_down.svg";
+  let src2 = "./assets/svg/addTasksSvg/arrow_drop_up.svg";
+  dropdown.style.display =
+    dropdown.style.display === "block" ? "none" : "block";
+  icon.src = icon.src.endsWith("arrow_drop_down.svg") ? src2 : src1;
+}
+
 // Custom Checkbox Handling
 function checkIt(name, index) {
   let container = document.getElementById("dropdown-content");
@@ -111,9 +124,9 @@ let titleInput = document.querySelector(".addTask-title input");
 let dateInput = document.querySelector(".task-date input");
 
 function validateInputs() {
-  
   let createTaskButton = document.querySelector(".createTask-button");
-  createTaskButton.disabled = titleInput.value.trim() === "" || dateInput.value.trim() === "";
+  createTaskButton.disabled =
+    titleInput.value.trim() === "" || dateInput.value.trim() === "";
 }
 
 // Create Task Button Validation
