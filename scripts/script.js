@@ -44,7 +44,8 @@ const colors = [
   "--magenta",
   "--light-orange",
 ];
-const BASE_URL = "https://remotestorage-f4b14-default-rtdb.europe-west1.firebasedatabase.app/";
+const BASE_URL =
+  "https://remotestorage-f4b14-default-rtdb.europe-west1.firebasedatabase.app/";
 let data;
 let users = [];
 let createdTasks = [];
@@ -76,13 +77,18 @@ async function putData(path = "", data = "") {
   }
 }
 
+// ?????? without this code tasks disappeared in the firebase....?!?!
+async function getTasks() {
+  createdTasks = (await getData("tasks")) || [];
+}
+
 async function getUsers() {
-  users = Object.values(await getData("users"))
+  users = Object.values(await getData("users"));
 }
 
 function displayUserName() {
   const userName = getQueryParamsUserName();
-  const userNameElement = document.getElementById('userName');
+  const userNameElement = document.getElementById("userName");
   userNameElement.textContent = decodeURIComponent(userName);
 }
 
@@ -100,7 +106,6 @@ function toggleMenu() {
   let menu = document.querySelector(".menu");
   menu.style.display = menu.style.display === "block" ? "none" : "block";
 }
-
 
 // document.addEventListener('DOMContentLoaded', function() {
 //   displayUserName();

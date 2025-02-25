@@ -7,7 +7,7 @@ async function init() {
     task.selectedContacts == [""] ? [] : task.selectedContacts;
     task.completedSubtasks == [""] ? [] : task.completedSubtasks;
     task.subtasks == [""] ? [] : task.subtasks;
-  })
+  });
   updateHTML();
 }
 
@@ -17,7 +17,7 @@ async function updateHTML() {
     task.selectedContacts == [] ? [""] : task.selectedContacts;
     task.completedSubtasks == [] ? [""] : task.completedSubtasks;
     task.subtasks == [] ? [""] : task.subtasks;
-  })
+  });
   putData("tasks", createdTasks);
   await getContacts();
   renderToDo();
@@ -34,9 +34,17 @@ function renderToDo() {
   }
   for (let i = 0; i < toDo.length; i++) {
     document.getElementById("toDo").innerHTML += taskCardTemplate(toDo[i]);
-    for (let index = 0; index < createdTasks[i].selectedContacts.length; index++) {
-      let assignedContact = contacts.find((contact) => contact.name === createdTasks[i].selectedContacts[index]);
-      document.getElementsByClassName("board-card-assigned-contacts")[i].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
+    for (
+      let index = 0;
+      index < createdTasks[i].selectedContacts.length;
+      index++
+    ) {
+      let assignedContact = contacts.find(
+        (contact) => contact.name === createdTasks[i].selectedContacts[index]
+      );
+      document.getElementsByClassName("board-card-assigned-contacts")[
+        i
+      ].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
     }
   }
 }
@@ -48,25 +56,47 @@ function renderInProgress() {
     document.getElementById("inProgress").innerHTML += noTasksTemplate(1);
   }
   for (let i = 0; i < inProgress.length; i++) {
-    document.getElementById("inProgress").innerHTML += taskCardTemplate(inProgress[i]);
-    for (let index = 0; index < createdTasks[i].selectedContacts.length; index++) {
-      let assignedContact = contacts.find((contact) => contact.name === createdTasks[i].selectedContacts[index]);
-      document.getElementsByClassName("board-card-assigned-contacts")[i].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
+    document.getElementById("inProgress").innerHTML += taskCardTemplate(
+      inProgress[i]
+    );
+    for (
+      let index = 0;
+      index < createdTasks[i].selectedContacts.length;
+      index++
+    ) {
+      let assignedContact = contacts.find(
+        (contact) => contact.name === createdTasks[i].selectedContacts[index]
+      );
+      document.getElementsByClassName("board-card-assigned-contacts")[
+        i
+      ].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
     }
   }
 }
 
 function renderAwaitFeedback() {
-  let awaitFeedback = createdTasks.filter((task) => task.status === "awaitFeedback");
+  let awaitFeedback = createdTasks.filter(
+    (task) => task.status === "awaitFeedback"
+  );
   document.getElementById("awaitFeedback").innerHTML = "";
   if (awaitFeedback.length === 0) {
     document.getElementById("awaitFeedback").innerHTML += noTasksTemplate(2);
   }
   for (let i = 0; i < awaitFeedback.length; i++) {
-    document.getElementById("awaitFeedback").innerHTML += taskCardTemplate(awaitFeedback[i]);
-    for (let index = 0; index < createdTasks[i].selectedContacts.length; index++) {
-      let assignedContact = contacts.find((contact) => contact.name === createdTasks[i].selectedContacts[index]);
-      document.getElementsByClassName("board-card-assigned-contacts")[i].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
+    document.getElementById("awaitFeedback").innerHTML += taskCardTemplate(
+      awaitFeedback[i]
+    );
+    for (
+      let index = 0;
+      index < createdTasks[i].selectedContacts.length;
+      index++
+    ) {
+      let assignedContact = contacts.find(
+        (contact) => contact.name === createdTasks[i].selectedContacts[index]
+      );
+      document.getElementsByClassName("board-card-assigned-contacts")[
+        i
+      ].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
     }
   }
 }
@@ -79,9 +109,17 @@ function renderDone() {
   }
   for (let i = 0; i < done.length; i++) {
     document.getElementById("done").innerHTML += taskCardTemplate(done[i]);
-    for (let index = 0; index < createdTasks[i].selectedContacts.length; index++) {
-      let assignedContact = contacts.find((contact) => contact.name === createdTasks[i].selectedContacts[index]);
-      document.getElementsByClassName("board-card-assigned-contacts")[i].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
+    for (
+      let index = 0;
+      index < createdTasks[i].selectedContacts.length;
+      index++
+    ) {
+      let assignedContact = contacts.find(
+        (contact) => contact.name === createdTasks[i].selectedContacts[index]
+      );
+      document.getElementsByClassName("board-card-assigned-contacts")[
+        i
+      ].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
     }
   }
 }
@@ -92,7 +130,7 @@ function allowDrop(ev) {
 }
 
 function startDrag(id) {
-    currentDragedElement = id;
+  currentDragedElement = id;
 }
 
 function drop(status) {
@@ -119,17 +157,23 @@ function searchTask() {
     div.style.display = "none";
   });
   let filteredCards = boardCards.filter((div) =>
-    div.querySelector("h3")?.textContent.toLowerCase().trim().includes(searchInput)
+    div
+      .querySelector("h3")
+      ?.textContent.toLowerCase()
+      .trim()
+      .includes(searchInput)
   );
   filteredCards.forEach((div) => {
     div.style.display = "block";
   });
 }
 
-//-- add task overlay 
+//-- add task overlay
 function openAddTaskOverlay() {
   let addTaskOverlayRef = document.getElementById("addTaskOverlay");
-  let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
+  let addTaskOverlayContentRef = document.getElementById(
+    "addTaskOverlayContent"
+  );
   addTaskOverlayRef.classList.remove("d-none");
   addTaskOverlayRef.style.pointerEvents = "all";
   setTimeout(() => {
@@ -139,7 +183,6 @@ function openAddTaskOverlay() {
   changeMediumBtn();
 }
 
-
 /**
  * Closes the add task overlay.
  * Removes the active class, sets the content to move out of view to the right, and sets the pointer events to none.
@@ -147,7 +190,9 @@ function openAddTaskOverlay() {
  */
 function closeAddTaskOverlay() {
   let addTaskOverlayRef = document.getElementById("addTaskOverlay");
-  let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
+  let addTaskOverlayContentRef = document.getElementById(
+    "addTaskOverlayContent"
+  );
   addTaskOverlayRef.classList.remove("active");
   addTaskOverlayContentRef.style.left = "100%";
   addTaskOverlayRef.style.pointerEvents = "none";
@@ -162,7 +207,9 @@ function closeAddTaskOverlay() {
  */
 function closeOverlayOutside(event) {
   let addTaskOverlayRef = document.getElementById("addTaskOverlay");
-  let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
+  let addTaskOverlayContentRef = document.getElementById(
+    "addTaskOverlayContent"
+  );
   if (event.target == addTaskOverlayRef) {
     addTaskOverlayRef.classList.remove("active");
     addTaskOverlayRef.style.pointerEvents = "none";
