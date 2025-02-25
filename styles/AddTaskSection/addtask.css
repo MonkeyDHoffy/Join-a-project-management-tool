@@ -95,7 +95,6 @@ input {
 }
 
 .addTask-section input {
-  z-index: 10;
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
