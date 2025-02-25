@@ -1,7 +1,7 @@
 let taskStatus = ["to do", "in-progress", "await feedback", "done"];
 let currentDragedElement = null;
 
-async function init() {
+async function boardInit() {
   await getTasks();
   createdTasks.forEach((task) => {
     task.selectedContacts == [""] ? [] : task.selectedContacts;
@@ -18,7 +18,7 @@ async function updateHTML() {
     task.completedSubtasks == [] ? [""] : task.completedSubtasks;
     task.subtasks == [] ? [""] : task.subtasks;
   });
-  putData("tasks", createdTasks);
+  // putData("tasks", createdTasks);
   await getContacts();
   renderToDo();
   renderInProgress();

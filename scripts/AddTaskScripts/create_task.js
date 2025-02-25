@@ -114,6 +114,3 @@ async function setItem(key, value) {
     console.error("Error setting item in Firebase:", error);
   }
 }
-
-//tasks werden in firebase gepusht aber irgendwie wieder geleert sobald board.html geöffnet wird -> tasks sind nicht mehr vorhanden
-// hat es was mit updateHTML() zu tun?
