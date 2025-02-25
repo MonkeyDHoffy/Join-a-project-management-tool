@@ -2,7 +2,6 @@ let assignedContacts = [];
 let dropdownItems = [];
 let selectedContacts = [];
 let subtasks = [];
-
 /**
  * Toggles the display of the dropdown content.
  */
