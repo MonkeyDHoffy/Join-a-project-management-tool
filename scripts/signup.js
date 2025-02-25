@@ -48,7 +48,10 @@ function validateForm() {
     let messages = [];
 
     form.addEventListener('input', (e) => {
-        messages = [];
+
+        messages.length = 0;
+        errorElement.innerHTML = '';
+        //messages = [];
         let password = document.getElementById('password');
         let repeatPassword = document.getElementById('repeatPassword');
 
