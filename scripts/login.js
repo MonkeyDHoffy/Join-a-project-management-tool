@@ -4,6 +4,8 @@ function init() {
     validateForm();
     passwordFocus();
     getUsers();
+
+    getQueryParamsUserName();
 };
 
 function validateForm() {
@@ -105,6 +107,13 @@ function loginUser() {
 
 function getQueryParamsUserName() {
     const urlParams = new URLSearchParams(window.location.search);
+    const userName = urlParams.get('name');
     console.log(urlParams.get('name'));
-    return urlParams.get('name');
+    return userName;
 }
+
+function displayUserName() {
+    const userName = getQueryParamsUserName();
+    const userNameElement = document.getElementById('userName');
+    userNameElement.textContent = decodeURIComponent(userName);
+  }

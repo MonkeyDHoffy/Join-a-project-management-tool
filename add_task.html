@@ -24,7 +24,6 @@
     <script src="./scripts/ContactsScript.js/contacts.js"></script>
     <script src="./scripts/AddTaskScripts/addTaskContactsList.js" defer></script>
     <script src="./scripts/AddTaskScripts/add_task.js"></script>
-    <script src="./scripts/AddTaskScripts/create_task.js"></script>
 </head>
 
 
@@ -186,12 +185,13 @@
                                 </div>
 
                                 <div class="addTask-section addTask-category">
-                                    <label for="">
+                                    <label style="display: flex;" for="">
                                         <p>Category</p>
+                                        <p style="color: red;">*</p>
                                     </label>
                                     <div class="category-input" onclick="toggleCategoryDropdown()">
                                         <input id="category-field" class="placeholder-color"
-                                            placeholder="Select task category" type="text" readonly>
+                                            value="Select task category" type="text" readonly>
                                         <div class="input-icon-category-container">
                                             <img id="input-icon-category"
                                                 src="./assets/svg/addTasksSvg/arrow_drop_down.svg" alt="Icon"
@@ -257,7 +257,7 @@
                             <div class="display-flex clear-create"><button onclick="resetAddTaskInputs()"
                                     class="clear-btn">Clear
                                     <img src="./assets/svg/addTasksSvg/clear.svg" alt=""></button><button
-                                    onclick="createTask()" class="createTask-button">Create Task<img
+                                    onclick="showTaskNotification()" class="createTask-button">Create Task<img
                                         src="./assets/svg/addTasksSvg/cross.svg" alt="">
                                 </button></div>
 
