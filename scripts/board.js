@@ -4,9 +4,9 @@ let currentDragedElement = null;
 async function init() {
   await getTasks();
   createdTasks.forEach((task) => {
-    task.selectedContacts = [""] ? [] : task.selectedContacts;
-    task.completedSubtasks = [""] ? [] : task.completedSubtasks;
-    task.subtasks = [""] ? [] : task.subtasks;
+    task.selectedContacts == [""] ? [] : task.selectedContacts;
+    task.completedSubtasks == [""] ? [] : task.completedSubtasks;
+    task.subtasks == [""] ? [] : task.subtasks;
   })
   updateHTML();
 }
@@ -14,9 +14,9 @@ async function init() {
 //-- render all tasks on the board
 async function updateHTML() {
   createdTasks.forEach((task) => {
-    task.selectedContacts = [] ? [""] : task.selectedContacts;
-    task.completedSubtasks = [] ? [""] : task.completedSubtasks;
-    task.subtasks = [] ? [""] : task.subtasks;
+    task.selectedContacts == [] ? [""] : task.selectedContacts;
+    task.completedSubtasks == [] ? [""] : task.completedSubtasks;
+    task.subtasks == [] ? [""] : task.subtasks;
   })
   putData("tasks", createdTasks);
   await getContacts();

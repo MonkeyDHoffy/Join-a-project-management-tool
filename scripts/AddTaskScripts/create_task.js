@@ -22,7 +22,7 @@ function createTask() {
     "status": "toDo",
     "title": title,
     "description": description,
-    "selectedContacts": selectedContacts > 0 ? selectedContacts.map((contact) => contact.name) : [""],
+    "selectedContacts": selectedContacts.length > 0 ? selectedContacts.map((contact) => contact.name) : [""],
     "dueDate": dueDate,
     "priority": priority,
     "selectedCategory": category,
@@ -31,6 +31,7 @@ function createTask() {
   };
   createdTasks.push(newTask);
   selectedSubtasks = [];
+  selectedContacts = [];
   fetchtasks();
   showTaskNotification();
 }

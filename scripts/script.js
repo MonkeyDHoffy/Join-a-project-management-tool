@@ -95,6 +95,6 @@ function toggleMenu() {
 }
 
 
-document.addEventListener('DOMContentLoaded', function() {
-  displayUserName();
-});
+// document.addEventListener('DOMContentLoaded', function() {
+//   displayUserName();
+// });

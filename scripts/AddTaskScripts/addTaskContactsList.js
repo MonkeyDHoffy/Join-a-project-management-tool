@@ -108,7 +108,6 @@ function userCircleTemplate(contact, color) {
 // Create Task Button Validation !!! muss noch optimiert werden !!!!
 
 function validateInputs() {
-  debugger;
   let titleInput = document.querySelector(".addTask-title input");
   let dateInput = document.querySelector(".task-date input");
   let categoryInput = document.getElementById("category-field");
