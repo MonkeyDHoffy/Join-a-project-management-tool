@@ -236,7 +236,7 @@ function deleteSubtaskItem(element) {
 
 function subtaskListTemplate(subtaskInput) {
   return `<div class="subtask-item-field">
-  <li id="subtask-item" class="item-${subtaskInput.value}">${subtaskInput.value}</li>
+  <li class="item-${subtaskInput.value.replace(" ", "-")} subtask-item">${subtaskInput.value}</li>
   
      <div class="btn-section"><img onclick="editSubtaskItem('${subtaskInput.value}')" class="edit-subtask-item-btn" src="./assets/svg/contacts_svg/edit.svg" alt=""><img onclick="deleteSubtaskItem(this)" class="delete-subtask-item-btn"
             src="./assets/svg/contacts_svg/delete.svg" alt=""></div>
@@ -274,7 +274,7 @@ function confirmSubEdit() {
   let newValue = subtaskEditInput.value.trim();
   if (newValue !== "") {
     let subtaskItem = document.querySelector(
-      `.item-${subtaskEditInput.dataset.oldValue}`
+      `.item-${subtaskEditInput.dataset.oldValue.replace(" ", "-")}`
     );
     subtaskItem.innerHTML = newValue;
     subtaskItem.classList.remove(`item-${subtaskEditInput.dataset.oldValue}`);
@@ -332,13 +332,21 @@ function setCategory(category) {
   toggleCategoryDropdown();
 }
 
-document.addEventListener("click", function (event) {
+function closeCategoryDropdown(event) {
   let categoryDropdown = document.querySelector(".category-dropdown");
   let categoryField = document.getElementById("category-field");
-  let isClickInside =
-    categoryDropdown.contains(event.target) ||
-    categoryField.contains(event.target);
-  if (!isClickInside) {
+  if (event.target !== categoryField && event.target !== categoryDropdown) {
     categoryDropdown.style.display = "none";
   }
-});
+};
+
+// document.addEventListener("click", function (event) {
+//   let categoryDropdown = document.querySelector(".category-dropdown");
+//   let categoryField = document.getElementById("category-field");
+//   let isClickInside =
+//     categoryDropdown.contains(event.target) ||
+//     categoryField.contains(event.target);
+//   if (!isClickInside) {
+//     categoryDropdown.style.display = "none";
+//   }
+// });

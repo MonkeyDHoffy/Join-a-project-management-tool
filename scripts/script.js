@@ -1,31 +1,31 @@
-let tasks = [
-  {
-    id: 0,
-    category: "user story",
-    title: "Putzen",
-    status: "toDo",
-    assignedTo: "daniela",
-    date: "01.01.2023",
-    description: "Haus putzen",
-    priority: "high",
-    subtasks: ["hof kehren", "badezimmer putzen"],
-  },
-  {
-    id: 1,
-    title: "Kochen",
-    status: "inProgress",
-  },
-  {
-    id: 2,
-    title: "Einkaufen",
-    status: "awaitFeedback",
-  },
-  {
-    id: 3,
-    title: "Rasen mähen",
-    status: "awaitFeedback",
-  },
-];
+// let tasks = [
+//   {
+//     id: 0,
+//     category: "user story",
+//     title: "Putzen",
+//     status: "toDo",
+//     assignedTo: "daniela",
+//     date: "01.01.2023",
+//     description: "Haus putzen",
+//     priority: "high",
+//     subtasks: ["hof kehren", "badezimmer putzen"],
+//   },
+//   {
+//     id: 1,
+//     title: "Kochen",
+//     status: "inProgress",
+//   },
+//   {
+//     id: 2,
+//     title: "Einkaufen",
+//     status: "awaitFeedback",
+//   },
+//   {
+//     id: 3,
+//     title: "Rasen mähen",
+//     status: "awaitFeedback",
+//   },
+// ];
 
 const colors = [
   "--orange",
@@ -44,12 +44,11 @@ const colors = [
   "--magenta",
   "--light-orange",
 ];
-
-const BASE_URL =
-  "https://remotestorage-f4b14-default-rtdb.europe-west1.firebasedatabase.app/";
+const BASE_URL = "https://remotestorage-f4b14-default-rtdb.europe-west1.firebasedatabase.app/";
 let data;
-
 let users = [];
+let createdTasks = [];
+let contacts = [];
 
 async function getData(path = "") {
   try {
@@ -81,29 +80,14 @@ async function getUsers() {
   users = Object.values(await getData("users"))
 }
 
-// function regsterUser() {
-//     let name = "daniela";
-//     let email = "daniela@example.com";
-//     let passwort = "ertezrz";
+async function getTasks() {
+  createdTasks = Object.values(await getData("tasks"));
+}
 
-//     let user = {
-//         'name': name,
-//         'email': email,
-//         'passwort': passwort
-//     };
-//     putData("tasks", user);
-// }
-// async function putData(path, data) {
-//     let response = await fetch(BASE_URL + path + ".json", {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(data)
-//     });
-//     let responseToJson = await response.json();
-//     return responseToJson;
-// }
+async function getContacts() {
+  contacts = Object.values(await getData("contacts/"));
+  contacts.sort((a, b) => a.name.localeCompare(b.name));
+}
 
 function toggleMenu() {
   let menu = document.querySelector(".menu");
