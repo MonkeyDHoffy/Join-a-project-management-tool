@@ -4,6 +4,7 @@ function init() {
     renderTasksAwaitingFeedback();
     renderToDos();
     renderDone();
+    displayUserName();
 }
 
 function renderTaskAmount() {
