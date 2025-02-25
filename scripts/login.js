@@ -11,24 +11,33 @@ function init() {
 function validateForm() {
     let errorElement = document.getElementById('error');
     let form = document.getElementById('loginForm');
-    form.addEventListener('submit', (e) => {
-        let messages = [];
+    let messages = [];
+
+    form.addEventListener('input', (e) => {
+
+        messages.length = 0;
+        errorElement.innerHTML = '';
+
         validateEmail(messages);
         validatePassword(messages);
         if (messages.length > 0) {
             e.preventDefault()
             errorElement.innerHTML = messages.join(', ')
         }
-
     })
-
 }
 
 function validateEmail(messages) {
     let email = document.getElementById('email');
-    if (email.value === '' || email.value == null || email.value.includes('@') === false) {
-        messages.push('Please enter a valid Email')
-        email.classList.add('error-highlight');
+    let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (email.value === '' || email.value == null || !emailRegex.test(email.value)) {
+        if (!messages.includes('Please enter a valid Email')) {
+            messages.push('Please enter a valid Email');
+        }
+        email.parentNode.classList.add('error-highlight');
+    } else {
+        removeErrorMessageAndHighlight(email, messages, 'Please enter a valid Email');
     }
 }
 
@@ -36,12 +45,14 @@ function validatePassword(messages) {
     let password = document.getElementById('password');
     if (password.value === '' || password.value == null) {
         messages.push('Please enter a password')
-        password.classList.add('error-highlight');
+        password.parentNode.classList.add('error-highlight');
     }
 
     if (password === 'password') {
         messages.push('Password cannot be password')
-        password.classList.add('error-highlight');
+        password.parentNode.classList.add('error-highlight');
+    } else {
+        removeErrorMessageAndHighlight(password, messages, 'Please enter a password')
     }
 }
 
@@ -88,6 +99,15 @@ function togglePassword() {
     }
 }
 
+function removeErrorMessageAndHighlight(inputElement, messages, errorMessage) {
+    let index = messages.indexOf(errorMessage);
+    if (index > -1) {
+        messages.splice(index, 1);
+    }
+    inputElement.parentNode.classList.remove('error-highlight');
+}
+
+
 function loginUser() {
     let registeredUser = users.find(user => user.email === document.getElementById('email').value);
 
@@ -112,8 +132,8 @@ function getQueryParamsUserName() {
     return userName;
 }
 
-function displayUserName() {
-    const userName = getQueryParamsUserName();
-    const userNameElement = document.getElementById('userName');
-    userNameElement.textContent = decodeURIComponent(userName);
-  }
+// function displayUserName() {
+//     const userName = getQueryParamsUserName();
+//     const userNameElement = document.getElementById('userName');
+//     userNameElement.textContent = decodeURIComponent(userName);
+//   }
