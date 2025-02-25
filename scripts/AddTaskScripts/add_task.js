@@ -330,6 +330,7 @@ function setCategory(category) {
   console.log(selectedCategory);
   document.getElementById("category-field").value = category;
   toggleCategoryDropdown();
+  validateInputs();
 }
 
 document.addEventListener("click", function (event) {

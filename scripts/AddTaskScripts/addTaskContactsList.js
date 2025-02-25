@@ -1,7 +1,7 @@
 let assignedContacts = [];
 let dropdownItems = [];
 let selectedContacts = [];
-let subtasks = [];
+
 /**
  * Toggles the display of the dropdown content.
  */
@@ -15,8 +15,7 @@ function toggleDropdown() {
 window.onclick = function (event) {
   if (
     !event.target.matches("#assigned-to-field") &&
-    !event.target.closest(".dropdown-content") &&
-    !event.target.closest(".input-icon-assign-to-container")
+    !event.target.closest(".dropdown-content")
   ) {
     closeDropdowns();
   }
@@ -40,19 +39,6 @@ function toggleAssignToIconSrc() {
   let icon = document.getElementById("input-icon-assign-to");
   let src1 = "./assets/svg/addTasksSvg/arrow_drop_down.svg";
   let src2 = "./assets/svg/addTasksSvg/arrow_drop_up.svg";
-  icon.src = icon.src.endsWith("arrow_drop_down.svg") ? src2 : src1;
-}
-
-/**
- * Toggles the display of the category dropdown content and changes the icon's source.
- */
-function toggleCategoryDropdown() {
-  let dropdown = document.getElementById("category-dropdown");
-  let icon = document.getElementById("input-icon-category");
-  let src1 = "./assets/svg/addTasksSvg/arrow_drop_down.svg";
-  let src2 = "./assets/svg/addTasksSvg/arrow_drop_up.svg";
-  dropdown.style.display =
-    dropdown.style.display === "block" ? "none" : "block";
   icon.src = icon.src.endsWith("arrow_drop_down.svg") ? src2 : src1;
 }
 
@@ -119,22 +105,29 @@ function userCircleTemplate(contact, color) {
   `;
 }
 
-let titleInput = document.querySelector(".addTask-title input");
-let dateInput = document.querySelector(".task-date input");
-
-function validateInputs() {
-  let createTaskButton = document.querySelector(".createTask-button");
-  createTaskButton.disabled =
-    titleInput.value.trim() === "" || dateInput.value.trim() === "";
-}
-
 // Create Task Button Validation
 document.addEventListener("DOMContentLoaded", function () {
-  validateInputs();
+  let titleInput = document.querySelector(".addTask-title input");
+  let dateInput = document.querySelector(".task-date input");
+  let categoryInput = document.getElementById("category-field");
+  let createTaskButton = document.querySelector(".createTask-button");
+
+  function validateInputs() {
+    createTaskButton.disabled =
+      titleInput.value.trim() === "" ||
+      dateInput.value.trim() === "" ||
+      categoryInput.value === "Select task category";
+  }
+
   titleInput.addEventListener("input", validateInputs);
   dateInput.addEventListener("input", validateInputs);
+  categoryInput.addEventListener("input", validateInputs);
   validateInputs();
 });
+
+// in add_task.js hat die funktion setCategory() auch die validateInputs() funktion aufgerufen
+// Category-Btn--------------------------------------------------
+//
 
 // Search Functionality and Alphabetical Sorting
 document.addEventListener("DOMContentLoaded", function () {
