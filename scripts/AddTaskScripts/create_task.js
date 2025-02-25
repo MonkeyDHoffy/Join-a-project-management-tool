@@ -1,8 +1,6 @@
 let createdTasks = [];
 
 function createTask() {
-  showTaskNotification();
-
   let title = document.querySelector(".addTask-title input").value;
   let description = document.querySelector(
     ".addTask-description textarea"
@@ -28,4 +26,5 @@ function createTask() {
 
   console.log("Task created:", newTask);
   console.log("All tasks:", createdTasks);
+  showTaskNotification();
 }

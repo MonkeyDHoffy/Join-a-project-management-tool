@@ -24,6 +24,7 @@
     <script src="./scripts/ContactsScript.js/contacts.js"></script>
     <script src="./scripts/AddTaskScripts/addTaskContactsList.js" defer></script>
     <script src="./scripts/AddTaskScripts/add_task.js"></script>
+    <script src="./scripts/AddTaskScripts/create_task.js"></script>
 </head>
 
 
@@ -209,7 +210,7 @@
                                                 type="text" placeholder="Add new subtask" maxlength="30"><img
                                                 class="subtask-add" src="./assets/img/addTask/add.svg" alt=""
                                                 onclick="focusSubtaskInput()">
-                                            <div class="cancel-check-btn"><img class="subtask-cancel"
+                                            <div class="cancel-check-btn"><img class="subtask-cancel" a
                                                     onclick="cancelSubInput()" src="./assets/img/addTask/cross.svg"
                                                     alt=""><img class="subtask-check"
                                                     src="./assets/img/addTask/check.svg" alt=""
@@ -257,7 +258,7 @@
                             <div class="display-flex clear-create"><button onclick="resetAddTaskInputs()"
                                     class="clear-btn">Clear
                                     <img src="./assets/svg/addTasksSvg/clear.svg" alt=""></button><button
-                                    onclick="showTaskNotification()" class="createTask-button">Create Task<img
+                                    onclick="createTask()" class="createTask-button">Create Task<img
                                         src="./assets/svg/addTasksSvg/cross.svg" alt="">
                                 </button></div>
 
