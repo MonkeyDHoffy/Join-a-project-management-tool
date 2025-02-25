@@ -52,28 +52,32 @@ function validateForm() {
         let password = document.getElementById('password');
         let repeatPassword = document.getElementById('repeatPassword');
 
-        validateName(messages);
-        validateEmail(messages);
-        validatePassword(password, messages);
-        validatePassword(repeatPassword, messages);
-        comparePasswords(password, repeatPassword, messages)
-        checkFormValidity();
-
-        if (messages.length > 0) {
-            e.preventDefault()
-            errorElement.innerHTML = messages.join(', ')
-        } else {
-            errorElement.innerHTML = '';
-
-        }
-        //showSignUpMsg();
+        callValidationFunctions(messages, password, repeatPassword)
+        preventDefaultFormSubmit(e, messages, errorElement);
     })
 }
 
-function comparePasswords(password, repeatPassword, messages) {
-    // password = document.getElementById('password');
-    //repeatPassword = document.getElementById('repeatPassword');
+function callValidationFunctions(messages, password, repeatPassword) {
+    validateName(messages);
+    validateEmail(messages);
+    validatePassword(password, messages);
+    validatePassword(repeatPassword, messages);
+    comparePasswords(password, repeatPassword, messages)
+    checkFormValidity();
+}
 
+
+function preventDefaultFormSubmit(e, messages, errorElement) {
+    if (messages.length > 0) {
+        e.preventDefault()
+        errorElement.innerHTML = messages.join(', ')
+    } else {
+        errorElement.innerHTML = '';
+    }
+}
+
+
+function comparePasswords(password, repeatPassword, messages) {
     if (password.value !== repeatPassword.value || password.value === '' || repeatPassword.value === '') {
         if (!messages.includes('Passwords do not match')) {
             messages.push('Passwords do not match');
@@ -86,8 +90,8 @@ function comparePasswords(password, repeatPassword, messages) {
     }
 }
 
-function removeErrorMessageAndHighlight(inputElement, messages, errorMessage) {
 
+function removeErrorMessageAndHighlight(inputElement, messages, errorMessage) {
     let index = messages.indexOf(errorMessage);
     if (index > -1) {
         messages.splice(index, 1);
@@ -117,6 +121,7 @@ function validateEmail(messages) {
     }
 }
 
+
 function validatePassword(inputElementPW, messages) {
     if (inputElementPW.value === '' || inputElementPW.value == null) {
         if (!messages.includes('Please enter a password')) {
@@ -126,7 +131,11 @@ function validatePassword(inputElementPW, messages) {
     } else {
         removeErrorMessageAndHighlight(inputElementPW, messages, 'Please enter a password');
     }
+    validatePassworAsPassword(inputElementPW, messages);
+}
 
+
+function validatePassworAsPassword(inputElementPW, messages) {
     if (inputElementPW.value === 'password') {
         if (!messages.includes('Password cannot be password')) {
             messages.push('Password cannot be password');
@@ -137,10 +146,12 @@ function validatePassword(inputElementPW, messages) {
     }
 }
 
+
 function passwordFocus() {
     setupPasswordField('password', '.pw-wrapper button img', '.pw-wrapper button');
     setupPasswordField('repeatPassword', '.rep-pw-wrapper button img', '.rep-pw-wrapper button');
 }
+
 
 function setupPasswordField(passwordInputId, iconSelector, buttonSelector) {
     let passwordInput = document.getElementById(passwordInputId);
@@ -149,6 +160,7 @@ function setupPasswordField(passwordInputId, iconSelector, buttonSelector) {
 
     reAppearLockIcon(passwordInput, iconPW, iconPWButton);
 }
+
 
 function reAppearLockIcon(passwordInput, iconPW, iconPWButton) {
     passwordInput.addEventListener('input', () => {
@@ -181,6 +193,7 @@ function togglePasswordVisibility(button) {
     }
 }
 
+
 function checkFormValidity() {
     const signupName = document.getElementById('signupName');
     const email = document.getElementById('email');
@@ -201,8 +214,8 @@ function checkFormValidity() {
     } else {
         submitBtn.disabled = true;
     }
-
 }
+
 
 function registerUser() {
     let user = {
@@ -219,5 +232,4 @@ function registerUser() {
         putData("users", users);
         showSignUpMsg();
     }
-
 }
