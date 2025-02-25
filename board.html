@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./scripts/script.js"></script>
+    <script src="./scripts/AddTaskScripts/create_task.js"></script>
     <script src="./scripts/board.js"></script>
     <script src="./scripts/boardTemplate.js"></script>
-    <script src="./scripts/script.js"></script>
     <script src="./scripts/AddTaskScripts/add_task.js"></script>
     <script src="./scripts/AddTaskScripts/addTaskContactsList.js"></script>
     <link rel="icon" type="image/x-icon" href="./assets/icons/Favicon.png">
@@ -26,7 +27,7 @@
     <script src="./scripts/task_card_overlay_script.js"></script>
 </head>
 
-<body onload="updateHTML(); addTaskInit()">
+<body onload="init(); addTaskInit()">
 
     <div class="content-width">
 
@@ -185,33 +186,6 @@
                                     alt="Icon" class="input-icon">
                             </div>
                             <div class="dropdown-content" id="dropdown-content">
-                                <div onclick="checkIt(0)" class="dropdown-item">
-                                    <div class="addTask-profilepicture">VV</div>
-                                    <label class="custom-checkbox">
-                                        <p>Viktor Vaal</p>
-                                        <img class="cstm-checkbox" src="./assets/svg/addTasksSvg/Checkbutton.svg"
-                                            alt="">
-
-                                    </label>
-                                </div>
-                                <div onclick="checkIt(1)" class="dropdown-item">
-                                    <div class="addTask-profilepicture">JH</div>
-                                    <label class="custom-checkbox">
-
-                                        <p>Jannik Hoff</p>
-                                        <img class="cstm-checkbox" src="./assets/svg/addTasksSvg/Checkbutton.svg"
-                                            alt="">
-                                    </label>
-                                </div>
-                                <div onclick="checkIt(2)" class="dropdown-item">
-                                    <div class="addTask-profilepicture">DH</div>
-                                    <label class="custom-checkbox">
-
-                                        <p>Dany Hudson</p>
-                                        <img class="cstm-checkbox" src="./assets/svg/addTasksSvg/Checkbutton.svg"
-                                            alt="">
-                                    </label>
-                                </div>
                                 <!-- Add more users as needed -->
                             </div>
                         </div>
@@ -261,32 +235,6 @@
                             <div class="input-icon-category-container">
                                 <img id="input-icon-category" src="./assets/svg/addTasksSvg/arrow_drop_down.svg"
                                     alt="Icon" class="input-icon-category">
-                            </div>
-                            <div class="dropdown-content" id="dropdown-content">
-                                <div onclick="checkIt('Viktor Vaal')" class="dropdown-item">
-                                    <div class="addTask-profilepicture">VV</div>
-                                    <label class="custom-checkbox">
-                                        <p>Viktor Vaal</p>
-                                        <img class="cstm-checkbox" src="./assets/svg/addTasksSvg/Checkbutton.svg"
-                                            alt="">
-                                    </label>
-                                </div>
-                                <div onclick="checkIt('Jannik Hoff')" class="dropdown-item">
-                                    <div class="addTask-profilepicture">JH</div>
-                                    <label class="custom-checkbox">
-                                        <p>Jannik Hoff</p>
-                                        <img class="cstm-checkbox" src="./assets/svg/addTasksSvg/Checkbutton.svg"
-                                            alt="">
-                                    </label>
-                                </div>
-                                <div onclick="checkIt('Dany Hudson')" class="dropdown-item">
-                                    <div class="addTask-profilepicture">DH</div>
-                                    <label class="custom-checkbox">
-                                        <p>Dany Hudson</p>
-                                        <img class="cstm-checkbox" src="./assets/svg/addTasksSvg/Checkbutton.svg"
-                                            alt="">
-                                    </label>
-                                </div>
                             </div>
                         </div>
 

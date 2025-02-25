@@ -1,11 +1,10 @@
-let contacts = [];
+
 let currentId = 0;
 let colorId = 0;
 let currentLetter = "";
 
-async function getContacts() {
-  contacts = Object.values(await getData("contacts/"));
-  contacts.sort((a, b) => a.name.localeCompare(b.name));
+async function init() {
+  await getContacts();
   displayContacts();
 }
 
