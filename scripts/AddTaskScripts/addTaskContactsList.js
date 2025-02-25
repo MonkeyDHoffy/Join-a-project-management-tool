@@ -105,23 +105,29 @@ function userCircleTemplate(contact, color) {
   `;
 }
 
-// Create Task Button Validation
+// Create Task Button Validation !!! muss noch optimiert werden !!!!
+
+function validateInputs() {
+  debugger;
+  let titleInput = document.querySelector(".addTask-title input");
+  let dateInput = document.querySelector(".task-date input");
+  let categoryInput = document.getElementById("category-field");
+  let createTaskButton = document.querySelector(".createTask-button");
+
+  createTaskButton.disabled =
+    titleInput.value.trim() === "" ||
+    dateInput.value.trim() === "" ||
+    categoryInput.value === "Select task category";
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   let titleInput = document.querySelector(".addTask-title input");
   let dateInput = document.querySelector(".task-date input");
   let categoryInput = document.getElementById("category-field");
   let createTaskButton = document.querySelector(".createTask-button");
 
-  function validateInputs() {
-    createTaskButton.disabled =
-      titleInput.value.trim() === "" ||
-      dateInput.value.trim() === "" ||
-      categoryInput.value === "Select task category";
-  }
-
   titleInput.addEventListener("input", validateInputs);
   dateInput.addEventListener("input", validateInputs);
-  categoryInput.addEventListener("input", validateInputs);
   validateInputs();
 });
 
