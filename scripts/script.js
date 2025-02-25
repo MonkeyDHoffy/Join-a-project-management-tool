@@ -81,6 +81,12 @@ async function getUsers() {
   users = Object.values(await getData("users"))
 }
 
+function displayUserName() {
+  const userName = getQueryParamsUserName();
+  const userNameElement = document.getElementById('userName');
+  userNameElement.textContent = decodeURIComponent(userName);
+}
+
 // function regsterUser() {
 //     let name = "daniela";
 //     let email = "daniela@example.com";
