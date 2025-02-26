@@ -2,33 +2,21 @@ function taskCardOverlayTemplate(element) {
   return `
       <div class="task-card slide-in">
         <div class="badge">${element.selectedCategory}</div>
-        <h2>Kochwelt Page & Recipe Recommender</h2>
+        <h2>${element.title}</h2>
         <div class="card-description">
-          <span>Build start page with recipe recommendation.</span>
+          <span>${element.description}</span>
         </div>
   
-        <p class="card-due-date"><strong>Due date:</strong> 10/05/2023</p>
+        <p class="card-due-date"><strong>Due date:</strong> ${element.dueDate}</p>
         <p class="card-priority">
           <strong>Priority:</strong>
           <span class="priority-span">
-            Medium<img src="./assets/svg/addTasksSvg/medium.svg" alt="" />
+            ${element.priority}<img src="./assets/svg/addTasksSvg/${element.priority}.svg" alt="" />
           </span>
         </p>
   
-        <div class="card-assigned">
+        <div id="card-assigned">
           <strong>Assigned To:</strong>
-          <div class="assignee">
-            <span class="avatar" style="background-color: #5BC0DE;">EM</span>
-            Emmanuel Mauer
-          </div>
-          <div class="assignee">
-            <span class="avatar" style="background-color: #6F42C1;">MB</span>
-            Marcel Bauer
-          </div>
-          <div class="assignee">
-            <span class="avatar" style="background-color: #007BFF;">AM</span>
-            Anton Mayer
-          </div>
         </div>
   
         <div class="card-subtasks">
@@ -71,10 +59,24 @@ function taskCardOverlayTemplate(element) {
     `;
 }
 
-function renderTaskCardOverlay(element) {
+function assignedContactsTemplate(element, index, contact) {
+  return `<div class="assignee">
+            <span class="avatar" style="background-color: ${contact.color};">${element.selectedContacts[index].split(' ').map(word => word[0]).join('').toUpperCase()}</span>
+            ${element.selectedContacts[index]}
+          </div>`
+}
+
+function renderTaskCardOverlay(event) {
+  let element = createdTasks.find((task) => task.title == event.querySelector("h3").innerHTML);
   let overlay = document.getElementById("task-card-overlay");
   overlay.innerHTML = taskCardOverlayTemplate(element);
+  let assignedContacts = document.getElementById("card-assigned");
   overlay.classList.add("show");
+  for (let index = 0; index < element.selectedContacts.length; index++) {
+    let contact = contacts.find((contact) => contact.name == element.selectedContacts[index]);
+    assignedContacts.innerHTML += assignedContactsTemplate(element, index, contact);
+  }
+  
 
   overlay.addEventListener("click", (event) => {
     if (event.target === overlay) {

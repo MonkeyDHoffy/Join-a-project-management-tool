@@ -1,5 +1,5 @@
 function taskCardTemplate(element) {
-  return ` <div onclick="renderTaskCardOverlay()" ondragstart="startDrag(${element.id})" draggable="true" class="board-card">                              
+  return ` <div onclick="renderTaskCardOverlay(this)" ondragstart="startDrag(${element.id})" draggable="true" class="board-card">                              
                                     <div class="color-${element.selectedCategory.replace(" ", "-")}">${element.selectedCategory}</div>
   
                                     <h3>${element.title}</h3>                            
