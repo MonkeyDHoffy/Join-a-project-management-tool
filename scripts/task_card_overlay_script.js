@@ -21,8 +21,7 @@ function taskCardOverlayTemplate(element) {
   
         <div class="card-subtasks">
           <strong>Subtasks:</strong>
-          <label><input type="checkbox" checked /> Implement Recipe Recommendation</label>
-          <label><input type="checkbox" /> Start Page Layout</label>
+          ${renderSubtasks(element)}
         </div>
   
         <div class="card-actions">
@@ -57,6 +56,12 @@ function taskCardOverlayTemplate(element) {
         </div>
       </div>
     `;
+}
+//this function is used to render the subtasks of a task, mapping over the subtasks array and returning a string of html elements
+function renderSubtasks(element) {
+  return element.subtasks.map((subtask) => `
+    <label><input type="checkbox" ${element.completedSubtasks.includes(subtask) ? 'checked' : ''} /> ${subtask}</label>
+  `).join('');
 }
 
 function assignedContactsTemplate(element, index, contact) {
