@@ -8,9 +8,11 @@ function taskCardTemplate(element) {
                                 </div>
                                 <div class="board-card-subtasks">
                                     <progress value="${element.completedSubtasks.length}" max="${element.subtasks.length}"></progress>
+                                    <span class="subtasks-progress">${element.completedSubtasks.length}/${element.subtasks.length} Subtasks</span>
                                 </div>
-                                <div class="board-card-assigned-contacts">
-                                    
+                                <div class="board-contacts-and-priority">
+                                    <div class="board-card-assigned-contacts"></div>
+                                    <div class="board-card-priority"> <img src="./assets/svg/addTasksSvg/${element.priority}.svg" alt=""></div>
                                 </div>
                             </div>`;
 }

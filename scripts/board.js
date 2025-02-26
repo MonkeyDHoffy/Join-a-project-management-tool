@@ -4,22 +4,23 @@ let cardIndex = 0;
 
 async function boardInit() {
   await getTasks();
+  await getContacts();
   createdTasks.forEach((task) => {
-    task.selectedContacts == [""] ? [] : task.selectedContacts;
-    task.completedSubtasks == [""] ? [] : task.completedSubtasks;
-    task.subtasks == [""] ? [] : task.subtasks;
+    if (task.selectedContacts[0] === "") {
+      task.selectedContact = [];
+    }
+    if (task.completedSubtasks[0] === "") {
+      task.completedSubtasks = [];
+    }
+    if (task.subtasks[0] === "") {
+      task.subtasks = [];
+    }
   });
   updateHTML();
 }
 
 //-- render all tasks on the board
-async function updateHTML() {
-  createdTasks.forEach((task) => {
-    task.selectedContacts == [] ? [""] : task.selectedContacts;
-    task.completedSubtasks == [] ? [""] : task.completedSubtasks;
-    task.subtasks == [] ? [""] : task.subtasks;
-  });
-  await getContacts();
+function updateHTML() {
   renderToDo();
   renderInProgress();
   renderAwaitFeedback();
@@ -114,12 +115,23 @@ function startDrag(id) {
   currentDragedElement = id;
 }
 
-function drop(status) {
+async function drop(status) {
   if (currentDragedElement !== null) {
     let task = createdTasks.find((task) => task.id === currentDragedElement);
     task.status = status;
-    putData("tasks", createdTasks);
-    updateHTML();
+    createdTasks.forEach((task) => {
+      if (task.selectedContacts.length == 0) {
+        task.selectedContact = [""];
+      }
+      if (task.completedSubtasks.length == 0) {
+        task.completedSubtasks = [""];
+      }
+      if (task.subtasks.length == 0) {
+        task.subtasks = [""];
+      }
+    });
+    await putData("tasks", createdTasks);
+    await boardInit();
   }
   currentDragedElement = null;
 }

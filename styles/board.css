@@ -185,6 +185,39 @@ body {
   transform: rotate(5deg);
 }
 
+.board-contacts-and-priority {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.board-card-priority {
+  height: 32px;
+  width: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.board-card-priority img {
+  width: 20px;
+}
+
+.board-card-subtasks {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+progress {
+  width: 128px;
+}
+
+.board-card-subtasks span {
+  font-size: 12px;
+}
+
 .no-tasks {
   display: flex;
   justify-content: center;
