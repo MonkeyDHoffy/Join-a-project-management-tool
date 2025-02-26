@@ -26,6 +26,8 @@ function renderAssignedContactsToBoardCard(assignedContact, index) {
                                     </div> `
 }
 
+
+
 function noTasksTemplate(i) {
   return `<div draggable="true" class="no-tasks">
                             <span>No tasks ${taskStatus[i]}</span>
