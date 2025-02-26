@@ -7,7 +7,7 @@ async function boardInit() {
   await getContacts();
   createdTasks.forEach((task) => {
     if (task.selectedContacts[0] === "") {
-      task.selectedContact = [];
+      task.selectedContacts = [];
     }
     if (task.completedSubtasks[0] === "") {
       task.completedSubtasks = [];
@@ -25,6 +25,7 @@ function updateHTML() {
   renderInProgress();
   renderAwaitFeedback();
   renderDone();
+  hideNoSubtasks();
   cardIndex = 0;
 }
 
@@ -122,6 +123,15 @@ function renderDone() {
   }
 }
 
+function hideNoSubtasks() {
+  let subtasksRef = Array.from(document.getElementsByClassName("board-card-subtasks"));
+  for (let index = 0; index < subtasksRef.length; index++) {
+    if (subtasksRef[index].children[1].textContent === "0/0 Subtasks") {
+      subtasksRef[index].style.display = "none";
+    }
+  }
+}
+
 //-- drag and drop
 function allowDrop(ev) {
   ev.preventDefault();
@@ -137,7 +147,7 @@ async function drop(status) {
     task.status = status;
     createdTasks.forEach((task) => {
       if (task.selectedContacts.length == 0) {
-        task.selectedContact = [""];
+        task.selectedContacts = [""];
       }
       if (task.completedSubtasks.length == 0) {
         task.completedSubtasks = [""];

@@ -1,7 +1,7 @@
-function taskCardOverlayTemplate() {
+function taskCardOverlayTemplate(element) {
   return `
       <div class="task-card slide-in">
-        <div class="badge">User Story</div>
+        <div class="badge">${element.selectedCategory}</div>
         <h2>Kochwelt Page & Recipe Recommender</h2>
         <div class="card-description">
           <span>Build start page with recipe recommendation.</span>
@@ -71,9 +71,9 @@ function taskCardOverlayTemplate() {
     `;
 }
 
-function renderTaskCardOverlay() {
+function renderTaskCardOverlay(element) {
   let overlay = document.getElementById("task-card-overlay");
-  overlay.innerHTML = taskCardOverlayTemplate();
+  overlay.innerHTML = taskCardOverlayTemplate(element);
   overlay.classList.add("show");
 
   overlay.addEventListener("click", (event) => {
