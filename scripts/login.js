@@ -44,7 +44,9 @@ function validateEmail(messages) {
 function validatePassword(messages) {
     let password = document.getElementById('password');
     if (password.value === '' || password.value == null) {
-        messages.push('Please enter a password')
+        if (!messages.includes('Please enter a password')) {
+            messages.push('Please enter a password');
+        }
         password.parentNode.classList.add('error-highlight');
     }
 
