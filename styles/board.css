@@ -1,3 +1,21 @@
+.color-User-Story {
+  background-color: #0038FF;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 4px 16px;
+  border-radius: 8px;
+  width: fit-content;
+  color: white;
+}
+
+.color-Technical-Task {
+  background-color: #1FD7C1;
+  padding: 4px 16px;
+  border-radius: 8px;
+  width: fit-content;
+  color: white;
+}
+
 .board-header {
   height: 232px;
   width: 100%;
@@ -26,6 +44,22 @@ body {
 .search-and-add-task {
   display: flex;
   gap: 32px;
+}
+
+.board-card-assigned-contacts {
+  display: flex;
+}
+
+.contact-profile-picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  color: white;
+  border: 1px solid white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
 .add-task {
@@ -134,11 +168,14 @@ body {
 }
 
 .board-card {
+  cursor: pointer;
   padding: 16px;
-  border: 1px solid #2a3647;
+  border: none;
   border-radius: 24px;
-  max-height: 225px;
-  min-height: 177px;
+  max-height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   flex-grow: 1;
   box-shadow: 0px 0px 10px 3px #00000014;
   transform-origin: bottom left;

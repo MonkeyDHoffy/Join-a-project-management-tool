@@ -24,12 +24,13 @@
     <script src="./scripts/ContactsScript.js/contacts.js"></script>
     <script src="./scripts/AddTaskScripts/addTaskContactsList.js" defer></script>
     <script src="./scripts/AddTaskScripts/add_task.js"></script>
+    <script src="./scripts/AddTaskScripts/create_task.js"></script>
 </head>
 
 
 
-<body onload="addTaskInit(); getAssignedContacts(); renderAssignedContacts();">
-    <div class="content-width">
+<body onload="init(); ">
+    <div onclick="closeCategoryDropdown(event)" class="content-width">
 
         <div class="content_left">
             <div>
@@ -185,12 +186,13 @@
                                 </div>
 
                                 <div class="addTask-section addTask-category">
-                                    <label for="">
+                                    <label style="display: flex;" for="">
                                         <p>Category</p>
+                                        <p style="color: red;">*</p>
                                     </label>
                                     <div class="category-input" onclick="toggleCategoryDropdown()">
                                         <input id="category-field" class="placeholder-color"
-                                            placeholder="Select task category" type="text" readonly>
+                                            value="Select task category" type="text" readonly>
                                         <div class="input-icon-category-container">
                                             <img id="input-icon-category"
                                                 src="./assets/svg/addTasksSvg/arrow_drop_down.svg" alt="Icon"
@@ -208,7 +210,7 @@
                                                 type="text" placeholder="Add new subtask" maxlength="30"><img
                                                 class="subtask-add" src="./assets/img/addTask/add.svg" alt=""
                                                 onclick="focusSubtaskInput()">
-                                            <div class="cancel-check-btn"><img class="subtask-cancel"
+                                            <div class="cancel-check-btn"><img class="subtask-cancel" a
                                                     onclick="cancelSubInput()" src="./assets/img/addTask/cross.svg"
                                                     alt=""><img class="subtask-check"
                                                     src="./assets/img/addTask/check.svg" alt=""
@@ -256,7 +258,7 @@
                             <div class="display-flex clear-create"><button onclick="resetAddTaskInputs()"
                                     class="clear-btn">Clear
                                     <img src="./assets/svg/addTasksSvg/clear.svg" alt=""></button><button
-                                    onclick="showTaskNotification()" class="createTask-button">Create Task<img
+                                    onclick="createTask()" class="createTask-button">Create Task<img
                                         src="./assets/svg/addTasksSvg/cross.svg" alt="">
                                 </button></div>
 

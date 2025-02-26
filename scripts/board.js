@@ -1,27 +1,52 @@
 let taskStatus = ["to do", "in-progress", "await feedback", "done"];
 let currentDragedElement = null;
+let cardIndex = 0;
+
+async function boardInit() {
+  await getTasks();
+  createdTasks.forEach((task) => {
+    task.selectedContacts == [""] ? [] : task.selectedContacts;
+    task.completedSubtasks == [""] ? [] : task.completedSubtasks;
+    task.subtasks == [""] ? [] : task.subtasks;
+  });
+  updateHTML();
+}
 
 //-- render all tasks on the board
-function updateHTML() {
+async function updateHTML() {
+  createdTasks.forEach((task) => {
+    task.selectedContacts == [] ? [""] : task.selectedContacts;
+    task.completedSubtasks == [] ? [""] : task.completedSubtasks;
+    task.subtasks == [] ? [""] : task.subtasks;
+  });
+  await getContacts();
   renderToDo();
   renderInProgress();
   renderAwaitFeedback();
   renderDone();
+  cardIndex = 0;
 }
 
 function renderToDo() {
-  let toDo = tasks.filter((task) => task.status === "toDo");
+  let toDo = createdTasks.filter((task) => task.status === "toDo");
   document.getElementById("toDo").innerHTML = "";
   if (toDo.length === 0) {
     document.getElementById("toDo").innerHTML += noTasksTemplate(0);
   }
   for (let i = 0; i < toDo.length; i++) {
     document.getElementById("toDo").innerHTML += taskCardTemplate(toDo[i]);
+    for (let index = 0; index < toDo[i].selectedContacts.length; index++) {
+      let assignedContact = contacts.find(
+        (contact) => contact.name === toDo[i].selectedContacts[index]
+      );
+      document.getElementsByClassName("board-card-assigned-contacts")[cardIndex].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
+    }
+    cardIndex++;
   }
 }
 
 function renderInProgress() {
-  let inProgress = tasks.filter((task) => task.status === "inProgress");
+  let inProgress = createdTasks.filter((task) => task.status === "inProgress");
   document.getElementById("inProgress").innerHTML = "";
   if (inProgress.length === 0) {
     document.getElementById("inProgress").innerHTML += noTasksTemplate(1);
@@ -30,11 +55,20 @@ function renderInProgress() {
     document.getElementById("inProgress").innerHTML += taskCardTemplate(
       inProgress[i]
     );
+    for (let index = 0; index < inProgress[i].selectedContacts.length; index++ ) {
+      let assignedContact = contacts.find(
+        (contact) => contact.name === inProgress[i].selectedContacts[index]
+      );
+      document.getElementsByClassName("board-card-assigned-contacts")[cardIndex].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
+    }
+    cardIndex++;
   }
 }
 
 function renderAwaitFeedback() {
-  let awaitFeedback = tasks.filter((task) => task.status === "awaitFeedback");
+  let awaitFeedback = createdTasks.filter(
+    (task) => task.status === "awaitFeedback"
+  );
   document.getElementById("awaitFeedback").innerHTML = "";
   if (awaitFeedback.length === 0) {
     document.getElementById("awaitFeedback").innerHTML += noTasksTemplate(2);
@@ -43,17 +77,31 @@ function renderAwaitFeedback() {
     document.getElementById("awaitFeedback").innerHTML += taskCardTemplate(
       awaitFeedback[i]
     );
+    for (let index = 0; index < awaitFeedback[i].selectedContacts.length; index++) {
+      let assignedContact = contacts.find(
+        (contact) => contact.name === awaitFeedback[i].selectedContacts[index]
+      );
+      document.getElementsByClassName("board-card-assigned-contacts")[cardIndex].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
+    }
+    cardIndex++;
   }
 }
 
 function renderDone() {
-  let done = tasks.filter((task) => task.status === "done");
+  let done = createdTasks.filter((task) => task.status === "done");
   document.getElementById("done").innerHTML = "";
   if (done.length === 0) {
     document.getElementById("done").innerHTML += noTasksTemplate(3);
   }
   for (let i = 0; i < done.length; i++) {
     document.getElementById("done").innerHTML += taskCardTemplate(done[i]);
+    for (let index = 0; index < done[i].selectedContacts.length; index++) {
+      let assignedContact = contacts.find(
+        (contact) => contact.name === done[i].selectedContacts[index]
+      );
+      document.getElementsByClassName("board-card-assigned-contacts")[cardIndex].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
+    }
+    cardIndex++;
   }
 }
 
@@ -63,13 +111,14 @@ function allowDrop(ev) {
 }
 
 function startDrag(id) {
-    currentDragedElement = id;
+  currentDragedElement = id;
 }
 
 function drop(status) {
   if (currentDragedElement !== null) {
-    let task = tasks.find((task) => task.id === currentDragedElement);
+    let task = createdTasks.find((task) => task.id === currentDragedElement);
     task.status = status;
+    putData("tasks", createdTasks);
     updateHTML();
   }
   currentDragedElement = null;
@@ -90,17 +139,23 @@ function searchTask() {
     div.style.display = "none";
   });
   let filteredCards = boardCards.filter((div) =>
-    div.querySelector("h3")?.textContent.toLowerCase().trim().includes(searchInput)
+    div
+      .querySelector("h3")
+      ?.textContent.toLowerCase()
+      .trim()
+      .includes(searchInput)
   );
   filteredCards.forEach((div) => {
     div.style.display = "block";
   });
 }
 
-//-- add task overlay 
+//-- add task overlay
 function openAddTaskOverlay() {
   let addTaskOverlayRef = document.getElementById("addTaskOverlay");
-  let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
+  let addTaskOverlayContentRef = document.getElementById(
+    "addTaskOverlayContent"
+  );
   addTaskOverlayRef.classList.remove("d-none");
   addTaskOverlayRef.style.pointerEvents = "all";
   setTimeout(() => {
@@ -110,7 +165,6 @@ function openAddTaskOverlay() {
   changeMediumBtn();
 }
 
-
 /**
  * Closes the add task overlay.
  * Removes the active class, sets the content to move out of view to the right, and sets the pointer events to none.
@@ -118,7 +172,9 @@ function openAddTaskOverlay() {
  */
 function closeAddTaskOverlay() {
   let addTaskOverlayRef = document.getElementById("addTaskOverlay");
-  let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
+  let addTaskOverlayContentRef = document.getElementById(
+    "addTaskOverlayContent"
+  );
   addTaskOverlayRef.classList.remove("active");
   addTaskOverlayContentRef.style.left = "100%";
   addTaskOverlayRef.style.pointerEvents = "none";
@@ -133,7 +189,9 @@ function closeAddTaskOverlay() {
  */
 function closeOverlayOutside(event) {
   let addTaskOverlayRef = document.getElementById("addTaskOverlay");
-  let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
+  let addTaskOverlayContentRef = document.getElementById(
+    "addTaskOverlayContent"
+  );
   if (event.target == addTaskOverlayRef) {
     addTaskOverlayRef.classList.remove("active");
     addTaskOverlayRef.style.pointerEvents = "none";

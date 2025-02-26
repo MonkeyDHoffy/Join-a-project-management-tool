@@ -24,9 +24,10 @@
         rel="stylesheet">
     <link rel="stylesheet" href="./styles/style_task_card_overlay.css">
     <script src="./scripts/task_card_overlay_script.js"></script>
+    <script src="./scripts/AddTaskScripts/create_task.js"></script>
 </head>
 
-<body onload="updateHTML(); addTaskInit()">
+<body onload="updateHTML(); boardInit()">
 
     <div class="content-width">
 
@@ -167,7 +168,7 @@
                         <label for="">
                             <p>Description</p>
                         </label>
-                        <textarea value="hallo" class="description-area add-task-input-field"></textarea>
+                        <textarea class="description-area add-task-input-field"></textarea>
 
                     </div>
 
@@ -176,47 +177,24 @@
                             <p>Assigned to</p>
                         </label>
                         <div id="assigned-to-input">
-                            <input type="text" class="placeholder-color" id="assigned-to-field"
+                            <input class="add-task-input-field placeholder-color" type="text" id="assigned-to-field"
                                 placeholder="Select contacts to assign"
-                                onclick="toggleDropdown(); toggleAssignToIconSrc();">
+                                onclick="toggleDropdown(); toggleAssignToIconSrc(); ">
                             <div onclick="toggleDropdown(); toggleAssignToIconSrc();"
                                 class="input-icon-assign-to-container">
                                 <img id="input-icon-assign-to" src="./assets/svg/addTasksSvg/arrow_drop_down.svg"
                                     alt="Icon" class="input-icon">
                             </div>
                             <div class="dropdown-content" id="dropdown-content">
-                                <div onclick="checkIt(0)" class="dropdown-item">
-                                    <div class="addTask-profilepicture">VV</div>
-                                    <label class="custom-checkbox">
-                                        <p>Viktor Vaal</p>
-                                        <img class="cstm-checkbox" src="./assets/svg/addTasksSvg/Checkbutton.svg"
-                                            alt="">
 
-                                    </label>
-                                </div>
-                                <div onclick="checkIt(1)" class="dropdown-item">
-                                    <div class="addTask-profilepicture">JH</div>
-                                    <label class="custom-checkbox">
-
-                                        <p>Jannik Hoff</p>
-                                        <img class="cstm-checkbox" src="./assets/svg/addTasksSvg/Checkbutton.svg"
-                                            alt="">
-                                    </label>
-                                </div>
-                                <div onclick="checkIt(2)" class="dropdown-item">
-                                    <div class="addTask-profilepicture">DH</div>
-                                    <label class="custom-checkbox">
-
-                                        <p>Dany Hudson</p>
-                                        <img class="cstm-checkbox" src="./assets/svg/addTasksSvg/Checkbutton.svg"
-                                            alt="">
-                                    </label>
-                                </div>
-                                <!-- Add more users as needed -->
                             </div>
                         </div>
-                    </div>
 
+                        <section id="assigned-circles-section" class="assigned-circles-section">
+
+                        </section>
+
+                    </div>
 
 
                 </div>
@@ -252,55 +230,66 @@
                     </div>
 
                     <div class="addTask-section addTask-category">
-                        <label for="">
+                        <label style="display: flex;" for="">
                             <p>Category</p>
+                            <p style="color: red;">*</p>
                         </label>
-                        <div class="category-input">
-                            <input class="placeholder-color" placeholder="Select task category" type="text" readonly
-                                onclick="toggleCategoryIconSrc()">
+                        <div class="category-input" onclick="toggleCategoryDropdown()">
+                            <input id="category-field" class="placeholder-color" value="Select task category"
+                                type="text" readonly>
                             <div class="input-icon-category-container">
                                 <img id="input-icon-category" src="./assets/svg/addTasksSvg/arrow_drop_down.svg"
                                     alt="Icon" class="input-icon-category">
                             </div>
-                            <div class="dropdown-content" id="dropdown-content">
-                                <div onclick="checkIt('Viktor Vaal')" class="dropdown-item">
-                                    <div class="addTask-profilepicture">VV</div>
-                                    <label class="custom-checkbox">
-                                        <p>Viktor Vaal</p>
-                                        <img class="cstm-checkbox" src="./assets/svg/addTasksSvg/Checkbutton.svg"
-                                            alt="">
-                                    </label>
-                                </div>
-                                <div onclick="checkIt('Jannik Hoff')" class="dropdown-item">
-                                    <div class="addTask-profilepicture">JH</div>
-                                    <label class="custom-checkbox">
-                                        <p>Jannik Hoff</p>
-                                        <img class="cstm-checkbox" src="./assets/svg/addTasksSvg/Checkbutton.svg"
-                                            alt="">
-                                    </label>
-                                </div>
-                                <div onclick="checkIt('Dany Hudson')" class="dropdown-item">
-                                    <div class="addTask-profilepicture">DH</div>
-                                    <label class="custom-checkbox">
-                                        <p>Dany Hudson</p>
-                                        <img class="cstm-checkbox" src="./assets/svg/addTasksSvg/Checkbutton.svg"
-                                            alt="">
-                                    </label>
-                                </div>
-                            </div>
                         </div>
+                        <!-- </div> -->
 
                         <div class="addTask-subtasks">
                             <label for="">
                                 <p>Subtasks</p>
                             </label>
-                            <div class="addTask-section"><input class="add-task-input-field" type="text"
-                                    placeholder="Add new subtask">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                            <div class="addTask-sectio subtask-section"><input onclick="cancelEditSubtaskItem();"
+                                    class="add-task-input-field" type="text" placeholder="Add new subtask"
+                                    maxlength="30"><img class="subtask-add" src="./assets/img/addTask/add.svg" alt=""
+                                    onclick="focusSubtaskInput()">
+                                <div style="right:-84%" class="cancel-check-btn"><img class="subtask-cancel" a
+                                        onclick="cancelSubInput()" src="./assets/img/addTask/cross.svg" alt=""><img
+                                        class="subtask-check" src="./assets/img/addTask/check.svg" alt=""
+                                        onclick="renderSubtaskList()"></div>
 
+                            </div>
+
+
+                            <section id="subtasksList" class="subtask-list"></section>
+
+
+                            <section id="edit-subtask-item-field" class="edit-subtask-item">
+                                <input id="subtask-edit-input" class="subtask-edit-input" value="" type="text" name=""
+                                    id="" maxlength="30">
+                                <div class="edit-subtask-btns"><img onclick="deleteSubInputValue()"
+                                        src="./assets/svg/contacts_svg/delete.svg" alt=""><img
+                                        onclick="confirmSubEdit()" src="./assets/img/addTask/check.svg" alt="">
+                                </div>
+                            </section>
+
+                        </div>
+
+                        <section id="category-dropdown" class="category-dropdown">
+                            <div onclick="setCategory(technicalTask)" class="technicalTask-btn category-btn ">
+                                <p>Technical Task</p>
+                            </div>
+                            <div onclick="setCategory(UserStory)" class="userStory-btn category-btn">
+                                <p>User Story</p>
+                            </div>
+                        </section>
+
+
+
+
+                    </div>
+
+
+                </div>
 
             </div>
 
@@ -309,9 +298,8 @@
             <div><span style="color:red">*</span><span>This field is required</span></div>
             <div onclick="closeAddTaskOverlay(event)" class="display-flex clear-create"><button
                     onclick="clearInputFields()" class="clear-btn">Cancel
-                    <img src="./assets/svg/addTasksSvg/clear.svg" alt=""></button><button
-                    onclick="showTaskNotification()" class="createTask-button">Create Task<img
-                        src="./assets/svg/addTasksSvg/cross.svg" alt="">
+                    <img src="./assets/svg/addTasksSvg/clear.svg" alt=""></button><button onclick="createTask()"
+                    class="createTask-button">Create Task<img src="./assets/svg/addTasksSvg/cross.svg" alt="">
                 </button></div>
 
 
