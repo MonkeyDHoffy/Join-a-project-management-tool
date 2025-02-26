@@ -49,7 +49,7 @@ async function putData(path = "", data = "") {
 
 // ?????? without this code tasks disappeared in the firebase....?!?!
 async function getTasks() {
-  createdTasks = (await getData("tasks")) || [];
+  createdTasks = Object.values(await getData("tasks")) || [];
 }
 
 async function getUsers() {

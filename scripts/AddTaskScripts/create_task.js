@@ -69,16 +69,19 @@ async function createTask() {
     selectedSubtasks.push(item.innerHTML);
   });
   let newTask = {
-    "id": createdTasks.length + 1,
-    "status": "toDo",
-    "title": title,
-    "description": description,
-    "selectedContacts": selectedContacts.length > 0 ? selectedContacts.map((contact) => contact.name) : [""],
-    "dueDate": dueDate,
-    "priority": priority,
-    "selectedCategory": category,
-    "subtasks": selectedSubtasks.length > 0 ? selectedSubtasks : [""],
-    "completedSubtasks": [""],
+    id: createdTasks.length + 1,
+    status: "toDo",
+    title: title,
+    description: description,
+    selectedContacts:
+      selectedContacts.length > 0
+        ? selectedContacts.map((contact) => contact.name)
+        : [""],
+    dueDate: dueDate,
+    priority: priority,
+    selectedCategory: category,
+    subtasks: selectedSubtasks.length > 0 ? selectedSubtasks : [""],
+    completedSubtasks: [""],
   };
   createdTasks.push(newTask);
   selectedSubtasks = [];
@@ -90,13 +93,21 @@ async function createTask() {
 }
 
 async function uploadTasksToFirebase() {
-  try {
-    await putData("tasks", createdTasks);
-    console.log("Tasks successfully saved to Firebase!");
-  } catch (error) {
-    console.error("Error saving tasks to Firebase:", error);
-  }
+  createdTasks.forEach((task) => {
+    if (task.selectedContacts.length == 0) {
+      task.selectedContacts = [""];
+    }
+    if (task.completedSubtasks.length == 0) {
+      task.completedSubtasks = [""];
+    }
+    if (task.subtasks.length == 0) {
+      task.subtasks = [""];
+    }
+  });
+  await putData("tasks", createdTasks);
+  await boardInit();
 }
+
 
 async function setItem(key, value) {
   try {

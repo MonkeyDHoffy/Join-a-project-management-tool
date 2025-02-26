@@ -4,26 +4,28 @@ let cardIndex = 0;
 
 async function boardInit() {
   await getTasks();
+  await getContacts();
   createdTasks.forEach((task) => {
-    task.selectedContacts == [""] ? [] : task.selectedContacts;
-    task.completedSubtasks == [""] ? [] : task.completedSubtasks;
-    task.subtasks == [""] ? [] : task.subtasks;
+    if (task.selectedContacts[0] === "") {
+      task.selectedContacts = [];
+    }
+    if (task.completedSubtasks[0] === "") {
+      task.completedSubtasks = [];
+    }
+    if (task.subtasks[0] === "") {
+      task.subtasks = [];
+    }
   });
   updateHTML();
 }
 
 //-- render all tasks on the board
-async function updateHTML() {
-  createdTasks.forEach((task) => {
-    task.selectedContacts == [] ? [""] : task.selectedContacts;
-    task.completedSubtasks == [] ? [""] : task.completedSubtasks;
-    task.subtasks == [] ? [""] : task.subtasks;
-  });
-  await getContacts();
+function updateHTML() {
   renderToDo();
   renderInProgress();
   renderAwaitFeedback();
   renderDone();
+  hideNoSubtasks();
   cardIndex = 0;
 }
 
@@ -39,7 +41,9 @@ function renderToDo() {
       let assignedContact = contacts.find(
         (contact) => contact.name === toDo[i].selectedContacts[index]
       );
-      document.getElementsByClassName("board-card-assigned-contacts")[cardIndex].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
+      document.getElementsByClassName("board-card-assigned-contacts")[
+        cardIndex
+      ].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
     }
     cardIndex++;
   }
@@ -55,11 +59,17 @@ function renderInProgress() {
     document.getElementById("inProgress").innerHTML += taskCardTemplate(
       inProgress[i]
     );
-    for (let index = 0; index < inProgress[i].selectedContacts.length; index++ ) {
+    for (
+      let index = 0;
+      index < inProgress[i].selectedContacts.length;
+      index++
+    ) {
       let assignedContact = contacts.find(
         (contact) => contact.name === inProgress[i].selectedContacts[index]
       );
-      document.getElementsByClassName("board-card-assigned-contacts")[cardIndex].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
+      document.getElementsByClassName("board-card-assigned-contacts")[
+        cardIndex
+      ].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
     }
     cardIndex++;
   }
@@ -77,11 +87,17 @@ function renderAwaitFeedback() {
     document.getElementById("awaitFeedback").innerHTML += taskCardTemplate(
       awaitFeedback[i]
     );
-    for (let index = 0; index < awaitFeedback[i].selectedContacts.length; index++) {
+    for (
+      let index = 0;
+      index < awaitFeedback[i].selectedContacts.length;
+      index++
+    ) {
       let assignedContact = contacts.find(
         (contact) => contact.name === awaitFeedback[i].selectedContacts[index]
       );
-      document.getElementsByClassName("board-card-assigned-contacts")[cardIndex].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
+      document.getElementsByClassName("board-card-assigned-contacts")[
+        cardIndex
+      ].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
     }
     cardIndex++;
   }
@@ -99,9 +115,20 @@ function renderDone() {
       let assignedContact = contacts.find(
         (contact) => contact.name === done[i].selectedContacts[index]
       );
-      document.getElementsByClassName("board-card-assigned-contacts")[cardIndex].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
+      document.getElementsByClassName("board-card-assigned-contacts")[
+        cardIndex
+      ].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
     }
     cardIndex++;
+  }
+}
+
+function hideNoSubtasks() {
+  let subtasksRef = Array.from(document.getElementsByClassName("board-card-subtasks"));
+  for (let index = 0; index < subtasksRef.length; index++) {
+    if (subtasksRef[index].children[1].textContent === "0/0 Subtasks") {
+      subtasksRef[index].style.display = "none";
+    }
   }
 }
 
@@ -114,12 +141,23 @@ function startDrag(id) {
   currentDragedElement = id;
 }
 
-function drop(status) {
+async function drop(status) {
   if (currentDragedElement !== null) {
     let task = createdTasks.find((task) => task.id === currentDragedElement);
     task.status = status;
-    putData("tasks", createdTasks);
-    updateHTML();
+    createdTasks.forEach((task) => {
+      if (task.selectedContacts.length == 0) {
+        task.selectedContacts = [""];
+      }
+      if (task.completedSubtasks.length == 0) {
+        task.completedSubtasks = [""];
+      }
+      if (task.subtasks.length == 0) {
+        task.subtasks = [""];
+      }
+    });
+    await putData("tasks", createdTasks);
+    await boardInit();
   }
   currentDragedElement = null;
 }
