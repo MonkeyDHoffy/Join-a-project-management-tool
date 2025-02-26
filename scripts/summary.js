@@ -1,4 +1,4 @@
-function init() {
+function summaryInit() {
     renderTaskAmount();
     renderTasksInProgress();
     renderTasksAwaitingFeedback();
