@@ -2,16 +2,16 @@ function taskCardOverlayTemplate(element) {
   return `
       <div class="task-card slide-in">
         <div class="badge">${element.selectedCategory}</div>
-        <h2>${element.title}</h2>
+        <h2>${element.title.charAt(0).toUpperCase() + element.title.slice(1)}</h2>
         <div class="card-description">
           <span>${element.description}</span>
         </div>
   
-        <p class="card-due-date"><strong>Due date:</strong> ${element.dueDate}</p>
+        <p class="card-due-date"><strong>Due date:</strong> ${element.dueDate.replace(/-/g, '/')}</p>
         <p class="card-priority">
           <strong>Priority:</strong>
           <span class="priority-span">
-            ${element.priority}<img src="./assets/svg/addTasksSvg/${element.priority}.svg" alt="" />
+            ${element.priority.charAt(0).toUpperCase() + element.priority.slice(1)}<img src="./assets/svg/addTasksSvg/${element.priority}.svg" alt="" />
           </span>
         </p>
   
