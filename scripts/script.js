@@ -1,32 +1,3 @@
-// let tasks = [
-//   {
-//     id: 0,
-//     category: "user story",
-//     title: "Putzen",
-//     status: "toDo",
-//     assignedTo: "daniela",
-//     date: "01.01.2023",
-//     description: "Haus putzen",
-//     priority: "high",
-//     subtasks: ["hof kehren", "badezimmer putzen"],
-//   },
-//   {
-//     id: 1,
-//     title: "Kochen",
-//     status: "inProgress",
-//   },
-//   {
-//     id: 2,
-//     title: "Einkaufen",
-//     status: "awaitFeedback",
-//   },
-//   {
-//     id: 3,
-//     title: "Rasen mähen",
-//     status: "awaitFeedback",
-//   },
-// ];
-
 const colors = [
   "--orange",
   "--pink",
@@ -44,8 +15,7 @@ const colors = [
   "--magenta",
   "--light-orange",
 ];
-const BASE_URL =
-  "https://remotestorage-f4b14-default-rtdb.europe-west1.firebasedatabase.app/";
+const BASE_URL = "https://remotestorage-f4b14-default-rtdb.europe-west1.firebasedatabase.app/";
 let data;
 let users = [];
 let createdTasks = [];

@@ -1,5 +1,6 @@
 let taskStatus = ["to do", "in-progress", "await feedback", "done"];
 let currentDragedElement = null;
+let cardIndex = 0;
 
 async function boardInit() {
   await getTasks();
@@ -18,12 +19,12 @@ async function updateHTML() {
     task.completedSubtasks == [] ? [""] : task.completedSubtasks;
     task.subtasks == [] ? [""] : task.subtasks;
   });
-  // putData("tasks", createdTasks);
   await getContacts();
   renderToDo();
   renderInProgress();
   renderAwaitFeedback();
   renderDone();
+  cardIndex = 0;
 }
 
 function renderToDo() {
@@ -34,18 +35,13 @@ function renderToDo() {
   }
   for (let i = 0; i < toDo.length; i++) {
     document.getElementById("toDo").innerHTML += taskCardTemplate(toDo[i]);
-    for (
-      let index = 0;
-      index < createdTasks[i].selectedContacts.length;
-      index++
-    ) {
+    for (let index = 0; index < toDo[i].selectedContacts.length; index++) {
       let assignedContact = contacts.find(
-        (contact) => contact.name === createdTasks[i].selectedContacts[index]
+        (contact) => contact.name === toDo[i].selectedContacts[index]
       );
-      document.getElementsByClassName("board-card-assigned-contacts")[
-        i
-      ].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
+      document.getElementsByClassName("board-card-assigned-contacts")[cardIndex].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
     }
+    cardIndex++;
   }
 }
 
@@ -59,18 +55,13 @@ function renderInProgress() {
     document.getElementById("inProgress").innerHTML += taskCardTemplate(
       inProgress[i]
     );
-    for (
-      let index = 0;
-      index < createdTasks[i].selectedContacts.length;
-      index++
-    ) {
+    for (let index = 0; index < inProgress[i].selectedContacts.length; index++ ) {
       let assignedContact = contacts.find(
-        (contact) => contact.name === createdTasks[i].selectedContacts[index]
+        (contact) => contact.name === inProgress[i].selectedContacts[index]
       );
-      document.getElementsByClassName("board-card-assigned-contacts")[
-        i
-      ].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
+      document.getElementsByClassName("board-card-assigned-contacts")[cardIndex].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
     }
+    cardIndex++;
   }
 }
 
@@ -86,18 +77,13 @@ function renderAwaitFeedback() {
     document.getElementById("awaitFeedback").innerHTML += taskCardTemplate(
       awaitFeedback[i]
     );
-    for (
-      let index = 0;
-      index < createdTasks[i].selectedContacts.length;
-      index++
-    ) {
+    for (let index = 0; index < awaitFeedback[i].selectedContacts.length; index++) {
       let assignedContact = contacts.find(
-        (contact) => contact.name === createdTasks[i].selectedContacts[index]
+        (contact) => contact.name === awaitFeedback[i].selectedContacts[index]
       );
-      document.getElementsByClassName("board-card-assigned-contacts")[
-        i
-      ].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
+      document.getElementsByClassName("board-card-assigned-contacts")[cardIndex].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
     }
+    cardIndex++;
   }
 }
 
@@ -109,18 +95,13 @@ function renderDone() {
   }
   for (let i = 0; i < done.length; i++) {
     document.getElementById("done").innerHTML += taskCardTemplate(done[i]);
-    for (
-      let index = 0;
-      index < createdTasks[i].selectedContacts.length;
-      index++
-    ) {
+    for (let index = 0; index < done[i].selectedContacts.length; index++) {
       let assignedContact = contacts.find(
-        (contact) => contact.name === createdTasks[i].selectedContacts[index]
+        (contact) => contact.name === done[i].selectedContacts[index]
       );
-      document.getElementsByClassName("board-card-assigned-contacts")[
-        i
-      ].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
+      document.getElementsByClassName("board-card-assigned-contacts")[cardIndex].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
     }
+    cardIndex++;
   }
 }
 
@@ -137,6 +118,7 @@ function drop(status) {
   if (currentDragedElement !== null) {
     let task = createdTasks.find((task) => task.id === currentDragedElement);
     task.status = status;
+    putData("tasks", createdTasks);
     updateHTML();
   }
   currentDragedElement = null;
