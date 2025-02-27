@@ -21,9 +21,12 @@
     <link rel="stylesheet" href="./styles/AddTaskSection/addTaskContactsList.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <linkhref="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Moul&family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Press+Start+2P&family=Sniglet:wght@400;800&family=Varela+Round&display=swap"rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Moul&family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Press+Start+2P&family=Sniglet:wght@400;800&family=Varela+Round&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./styles/style_task_card_overlay.css">
-    
+    <link rel="stylesheet" href="./styles/AddTaskSection/task_edit_overlay.css">
+
 </head>
 
 <body onload="boardInit()">
@@ -297,7 +300,7 @@
             <div><span style="color:red">*</span><span>This field is required</span></div>
             <div onclick="closeAddTaskOverlay(event)" class="display-flex clear-create"><button
                     onclick="clearInputFields()" class="clear-btn">Cancel
-                    <img src="./assets/svg/addTasksSvg/clear.svg" alt=""></button><button onclick="createTask()"
+                    <img src="./assets/svg/addTasksSvg/clear.svg" alt=""></button><button onclick="createTaskOverlay()"
                     class="createTask-button">Create Task<img src="./assets/svg/addTasksSvg/cross.svg" alt="">
                 </button></div>
 

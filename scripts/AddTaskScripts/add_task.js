@@ -1,5 +1,6 @@
 // Initialize the task creation form by setting the icons
 function addTaskInit() {
+  createTaskInit()
   setIcons();
   changeMediumBtn();
 }
@@ -187,6 +188,18 @@ function showTaskNotification() {
     setTimeout(() => {
       notification.classList.remove("show");
       window.location.href = "./board.html";
+    }, 2000);
+  }
+}
+
+function showTaskNotificationOverlayAddTask() {
+  let notification = document.querySelector(".click-notification-add-task");
+  if (notification) {
+    resetAddTaskInputs();
+    notification.classList.add("show");
+    boardInit();
+    setTimeout(() => {
+      notification.classList.remove("show");
     }, 2000);
   }
 }
