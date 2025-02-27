@@ -165,9 +165,7 @@ function searchTask() {
 //-- add task overlay
 function openAddTaskOverlay() {
   let addTaskOverlayRef = document.getElementById("addTaskOverlay");
-  let addTaskOverlayContentRef = document.getElementById(
-    "addTaskOverlayContent"
-  );
+  let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
   addTaskOverlayRef.classList.remove("d-none");
   addTaskOverlayRef.style.pointerEvents = "all";
   setTimeout(() => {

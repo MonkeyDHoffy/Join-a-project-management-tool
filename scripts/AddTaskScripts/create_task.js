@@ -50,8 +50,7 @@
 
 let selectedSubtasks = [];
 
-async function init() {
-  addTaskInit();
+async function createTaskInit() {
   getAssignedContacts();
   renderAssignedContacts();
   await getTasks();
@@ -105,7 +104,7 @@ async function uploadTasksToFirebase() {
     }
   });
   await putData("tasks", createdTasks);
-  await boardInit();
+  // await boardInit();
 }
 
 

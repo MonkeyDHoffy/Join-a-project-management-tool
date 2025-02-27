@@ -1,6 +1,6 @@
 
 
-function init() {
+function loginInit() {
     validateForm();
     passwordFocus();
     getUsers();
@@ -20,6 +20,7 @@ function validateForm() {
 
         validateEmail(messages);
         validatePassword(messages);
+        checkLoginFormValidity();
         if (messages.length > 0) {
             e.preventDefault()
             errorElement.innerHTML = messages.join(', ')
@@ -48,15 +49,19 @@ function validatePassword(messages) {
             messages.push('Please enter a password');
         }
         password.parentNode.classList.add('error-highlight');
+
+    } else {
+        removeErrorMessageAndHighlight(password, messages, 'Please enter a password');
     }
 
-    if (password === 'password') {
-        messages.push('Password cannot be password')
+    if (password.value === 'password') {
+        if (!messages.includes('Password cannot be password')) {
+            messages.push('Password cannot be password');
+        }
         password.parentNode.classList.add('error-highlight');
-    } else {
-        removeErrorMessageAndHighlight(password, messages, 'Please enter a password')
     }
 }
+
 
 function passwordFocus() {
     let passwordInput = document.getElementById('password');
@@ -109,6 +114,22 @@ function removeErrorMessageAndHighlight(inputElement, messages, errorMessage) {
     inputElement.parentNode.classList.remove('error-highlight');
 }
 
+function checkLoginFormValidity() {
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const loginBtn = document.getElementById('login');
+
+    const loginEmailIsValid = emailInput.value !== '';
+    const loginPasswordIsValid = passwordInput.value !== '';
+
+    if (loginEmailIsValid && loginPasswordIsValid) {
+        loginBtn.disabled = false;
+    } else {
+        loginBtn.disabled = true;
+    }
+
+}
+
 
 function loginUser() {
     let registeredUser = users.find(user => user.email === document.getElementById('email').value);
@@ -127,12 +148,12 @@ function loginUser() {
     }
 }
 
-function getQueryParamsUserName() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const userName = urlParams.get('name');
-    console.log(urlParams.get('name'));
-    return userName;
-}
+// function getQueryParamsUserName() {
+//     const urlParams = new URLSearchParams(window.location.search);
+//     const userName = urlParams.get('name');
+//     console.log(urlParams.get('name'));
+//     return userName;
+// }
 
 // function displayUserName() {
 //     const userName = getQueryParamsUserName();

@@ -313,6 +313,12 @@ body {
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
+.login:disabled {
+    background-color: rgba(0, 0, 0, 0.3);
+    cursor: not-allowed;
+
+}
+
 .guest-login {
     width: 180px;
     height: 40px;

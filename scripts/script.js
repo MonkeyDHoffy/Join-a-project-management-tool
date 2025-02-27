@@ -56,6 +56,13 @@ async function getUsers() {
   users = Object.values(await getData("users"));
 }
 
+function getQueryParamsUserName() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const userName = urlParams.get('name');
+  console.log(urlParams.get('name'));
+  return userName;
+}
+
 function displayUserName() {
   const userName = getQueryParamsUserName();
   const userNameElement = document.getElementById("userName");
