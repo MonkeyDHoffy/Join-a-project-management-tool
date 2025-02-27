@@ -3,7 +3,6 @@ function taskCardOverlayTemplate(element) {
       <div class="task-card slide-in">
         <div class="badge">${element.selectedCategory}</div>
         <h2>${element.title.charAt(0).toUpperCase() + element.title.slice(1)}</h2>
-        <h2>${element.title.charAt(0).toUpperCase() + element.title.slice(1)}</h2>
         <div class="card-description">
           <span>${element.description}</span>
         </div>
@@ -11,7 +10,6 @@ function taskCardOverlayTemplate(element) {
         <p class="card-priority">
           <strong>Priority:</strong>
           <span class="priority-span">
-            ${element.priority.charAt(0).toUpperCase() + element.priority.slice(1)}<img src="./assets/svg/addTasksSvg/${element.priority}.svg" alt="" />
             ${element.priority.charAt(0).toUpperCase() + element.priority.slice(1)}<img src="./assets/svg/addTasksSvg/${element.priority}.svg" alt="" />
           </span>
         </p>
@@ -62,11 +60,32 @@ function taskCardOverlayTemplate(element) {
 //this function is used to render the subtasks of a task, mapping over the subtasks array and returning a string of html elements
 function renderSubtasks(element) {
   return element.subtasks.map((subtask) => `
-    <label><input type="checkbox"} /> ${subtask}</label>
-    <label><input type="checkbox"} /> ${subtask}</label>
+    <label><input onclick="toggleSubtaskCompleted('${subtask}')" type="checkbox"> ${subtask}</label>
   `).join('');
 }
 
+async function toggleSubtaskCompleted(subtask) {
+  let element = createdTasks.find((task) => task.subtasks.includes(subtask));
+  if (!element.completedSubtasks.includes(subtask)) {
+    element.completedSubtasks.push(subtask);
+  } else {
+    element.completedSubtasks.splice(element.completedSubtasks.indexOf(subtask), 1);
+  }
+  createdTasks.forEach((task) => {
+    if (task.selectedContacts.length == 0) {
+      task.selectedContacts = [""];
+    }
+    if (task.completedSubtasks.length == 0) {
+      task.completedSubtasks = [""];
+    }
+    if (task.subtasks.length == 0) {
+      task.subtasks = [""];
+    }
+  });
+  await putData("tasks", createdTasks);
+  await boardInit();
+  
+}
 
 function secondAssignedContactsTemplate(element, index, contact) {
   return `<div class="assignee">
@@ -83,9 +102,6 @@ function renderTaskCardOverlay(event) {
   overlay.classList.add("show");
   for (let index = 0; index < element.selectedContacts.length; index++) {
     let contact = contacts.find((contact) => contact.name == element.selectedContacts[index]);
-    if (contact) {
-      assignedContacts.innerHTML += secondAssignedContactsTemplate(element, index, contact);
-    }
     if (contact) {
       assignedContacts.innerHTML += secondAssignedContactsTemplate(element, index, contact);
     }
