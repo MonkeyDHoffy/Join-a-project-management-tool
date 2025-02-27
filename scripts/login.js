@@ -4,9 +4,11 @@ function loginInit() {
     validateForm();
     passwordFocus();
     getUsers();
-
+    // rememberMe();
     getQueryParamsUserName();
 };
+
+
 
 function validateForm() {
     let errorElement = document.getElementById('error');
@@ -21,6 +23,8 @@ function validateForm() {
         validateEmail(messages);
         validatePassword(messages);
         checkLoginFormValidity();
+        rememberMe();
+        getRememberMeUser();
         if (messages.length > 0) {
             e.preventDefault()
             errorElement.innerHTML = messages.join(', ')
@@ -129,7 +133,43 @@ function checkLoginFormValidity() {
     }
 
 }
+function rememberMe() {
+    const rememberMeChbx = document.getElementById('rememberMe');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
 
+    rememberMeChbx.addEventListener('click', () => {
+
+        if (rememberMeChbx.checked) {
+            localStorage.setItem('rmEmail', emailInput.value);
+            localStorage.setItem('rmPassword', passwordInput.value);
+        }
+    });
+    //localStorage.getItem('rmEmail');
+    //console.log('rmEmail');
+
+    //getRememberMeUser(rememberMeChbx, emailInput, passwordInput);
+}
+
+function getRememberMeUser() {
+    const rmEmail = localStorage.getItem('rmEmail');
+    const rmPassword = localStorage.getItem('rmPassword');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const rememberMeChbx = document.getElementById('rememberMe');
+    
+    if (rmEmail && rmPassword ) {
+        emailInput.value = rmEmail;
+        passwordInput.value = rmPassword;
+        rememberMeChbx.checked = true;
+    }
+
+
+    // if (rememberMeChbx.checked && emailInput.value !== "") {
+    //     localStorage.getItem('rmEmail') = emailInput.value;
+    //     localStorage.getItem('rmPassword') = passwordInput.value;
+    // } 
+}
 
 function loginUser() {
     let registeredUser = users.find(user => user.email === document.getElementById('email').value);
@@ -147,21 +187,10 @@ function loginUser() {
         window.location.href = `summary.html?name=${userName}`;
     }
 
-    //rememberMe();
+
 }
 
-function rememberMe() {
-    const rememberMeChbx = document.getElementById('rememberMe');
-    const emailInput = document.getElementById('email');
 
-    if (rememberMeChbx.checked) {
-        localStorage.setItem('email', emailInput.value);
-
-    }
-
-    localStorage.getItem('email');
-    console.log('email');
-}
 
 
 // function getQueryParamsUserName() {
