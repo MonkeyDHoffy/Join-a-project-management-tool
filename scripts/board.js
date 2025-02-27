@@ -132,7 +132,7 @@ async function drop(status) {
     task.status = status;
     createdTasks.forEach((task) => {
       if (task.selectedContacts.length == 0) {
-        task.selectedContact = [""];
+        task.selectedContacts = [""];
       }
       if (task.completedSubtasks.length == 0) {
         task.completedSubtasks = [""];
