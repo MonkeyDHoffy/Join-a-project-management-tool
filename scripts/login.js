@@ -146,7 +146,23 @@ function loginUser() {
         let userName = encodeURIComponent(registeredUser.name);
         window.location.href = `summary.html?name=${userName}`;
     }
+
+    //rememberMe();
 }
+
+function rememberMe() {
+    const rememberMeChbx = document.getElementById('rememberMe');
+    const emailInput = document.getElementById('email');
+
+    if (rememberMeChbx.checked) {
+        localStorage.setItem('email', emailInput.value);
+
+    }
+
+    localStorage.getItem('email');
+    console.log('email');
+}
+
 
 // function getQueryParamsUserName() {
 //     const urlParams = new URLSearchParams(window.location.search);
