@@ -37,7 +37,7 @@ function taskCardOverlayTemplate(element) {
                   fill="#2A3647" />
               </g>
             </svg>
-            <button class="delete card-btn">Delete</button>
+            <button onclick="deleteTaskCardOverlay('${element.title}')" class="delete card-btn">Delete</button>
           </div>
           <div class="div-border-left">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -129,13 +129,24 @@ function renderTaskCardOverlay(event) {
       assignedContacts.innerHTML += secondAssignedContactsTemplate(element, index, contact);
     }
   }
-  
-  
   overlay.addEventListener("click", (event) => {
     if (event.target === overlay) {
       overlay.classList.remove("show");
     }
   });
+}
+
+function closeTaskCardOverlay() {
+  let taskCardOverlayRef = document.getElementById("task-card-overlay");
+  taskCardOverlayRef.classList.remove("show"); 
+}
+
+async function deleteTaskCardOverlay(title) {
+  let element = createdTasks.find((task) => task.title == title);
+  createdTasks.splice(createdTasks.indexOf(element), 1);
+  await putTasks();
+  await boardInit();
+  closeTaskCardOverlay();
 }
 
 // function renderTaskEditOverlay(element) {
@@ -297,8 +308,9 @@ function renderTaskCardOverlay(event) {
 //   }
 // }
 
+
+
 function renderTaskEditOverlay(element) {
-  
   let editField = document.querySelector(".task-card");
   if (editField) {
     editField.innerHTML = `

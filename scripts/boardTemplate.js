@@ -21,7 +21,7 @@ function renderAssignedContactsToBoardCard(assignedContact, index) {
     if (!assignedContact) {
         return "";
     }
-    return ` <div style="background-color:${assignedContact.color}; transform: translateX(-${index * 10}px);"  class="contact-profile-picture">
+    return ` <div style="background-color:${assignedContact.color}; transform: translateX(-${index * 7}px);"  class="contact-profile-picture-board">
                                     ${assignedContact.name.split(' ').map(word => word[0]).join('').toUpperCase()}
                                     </div> `
 }

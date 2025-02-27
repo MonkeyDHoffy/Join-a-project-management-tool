@@ -14,6 +14,7 @@ function updateHTML() {
   renderTasks("inProgress", "inProgress");
   renderTasks("awaitFeedback", "awaitFeedback");
   renderTasks("done", "done");
+  hideSubtasksIfEmpty();
   cardIndex = 0;
 }
 
