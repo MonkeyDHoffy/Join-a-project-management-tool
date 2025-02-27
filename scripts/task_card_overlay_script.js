@@ -60,31 +60,20 @@ function taskCardOverlayTemplate(element) {
 //this function is used to render the subtasks of a task, mapping over the subtasks array and returning a string of html elements
 function renderSubtasks(element) {
   return element.subtasks.map((subtask) => `
-    <label><input onclick="toggleSubtaskCompleted('${subtask}')" type="checkbox"> ${subtask}</label>
-  `).join('');
+    <label><input onclick="toggleSubtaskCompleted('${subtask}', this)" type="checkbox"> ${subtask}</label>`).join('');
 }
 
-async function toggleSubtaskCompleted(subtask) {
-  let element = createdTasks.find((task) => task.subtasks.includes(subtask));
-  if (!element.completedSubtasks.includes(subtask)) {
-    element.completedSubtasks.push(subtask);
+async function toggleSubtaskCompleted(subtask, element) {
+  let task = createdTasks.find((task) => task.subtasks.includes(subtask));
+  if (!task.completedSubtasks.includes(subtask)) {
+    task.completedSubtasks.push(subtask);
+    element.checked = true;
   } else {
-    element.completedSubtasks.splice(element.completedSubtasks.indexOf(subtask), 1);
+    task.completedSubtasks.splice(task.completedSubtasks.indexOf(subtask), 1);
+    element.checked = false;
   }
-  createdTasks.forEach((task) => {
-    if (task.selectedContacts.length == 0) {
-      task.selectedContacts = [""];
-    }
-    if (task.completedSubtasks.length == 0) {
-      task.completedSubtasks = [""];
-    }
-    if (task.subtasks.length == 0) {
-      task.subtasks = [""];
-    }
-  });
-  await putData("tasks", createdTasks);
+  await putTasks();
   await boardInit();
-  
 }
 
 function secondAssignedContactsTemplate(element, index, contact) {

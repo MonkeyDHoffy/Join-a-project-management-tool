@@ -2,105 +2,32 @@ let taskStatus = ["to do", "in-progress", "await feedback", "done"];
 let currentDragedElement = null;
 let cardIndex = 0;
 
-
 async function boardInit() {
   await getTasks();
   await getContacts();
-  createdTasks.forEach((task) => {
-    if (task.selectedContacts[0] === "") {
-      task.selectedContacts = [];
-    }
-    if (task.completedSubtasks[0] === "") {
-      task.completedSubtasks = [];
-    }
-    if (task.subtasks[0] === "") {
-      task.subtasks = [];
-    }
-  });
   updateHTML();
 }
 
 //-- render all tasks on the board
 function updateHTML() {
-  renderToDo();
-  renderInProgress();
-  renderAwaitFeedback();
-  renderDone();
-  hideSubtasksIfEmpty();
+  renderTasks("toDo", "toDo");
+  renderTasks("inProgress", "inProgress");
+  renderTasks("awaitFeedback", "awaitFeedback");
+  renderTasks("done", "done");
   cardIndex = 0;
 }
 
-function renderToDo() {
-  let toDo = createdTasks.filter((task) => task.status === "toDo");
-  document.getElementById("toDo").innerHTML = "";
-  if (toDo.length === 0) {
-    document.getElementById("toDo").innerHTML += noTasksTemplate(0);
+function renderTasks(status, elementId) {
+  let tasks = createdTasks.filter((task) => task.status === status);
+  document.getElementById(elementId).innerHTML = "";
+  if (tasks.length === 0) {
+    document.getElementById(elementId).innerHTML += noTasksTemplate(taskStatus.indexOf(status));
   }
-  for (let i = 0; i < toDo.length; i++) {
-    document.getElementById("toDo").innerHTML += taskCardTemplate(toDo[i]);
-    for (let index = 0; index < toDo[i].selectedContacts.length; index++) {
+  for (let i = 0; i < tasks.length; i++) {
+    document.getElementById(elementId).innerHTML += taskCardTemplate(tasks[i]);
+    for (let index = 0; index < tasks[i].selectedContacts.length; index++) {
       let assignedContact = contacts.find(
-        (contact) => contact.name === toDo[i].selectedContacts[index]
-      );
-      document.getElementsByClassName("board-card-assigned-contacts")[cardIndex].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
-    }
-    cardIndex++;
-  }
-}
-
-function renderInProgress() {
-  let inProgress = createdTasks.filter((task) => task.status === "inProgress");
-  document.getElementById("inProgress").innerHTML = "";
-  if (inProgress.length === 0) {
-    document.getElementById("inProgress").innerHTML += noTasksTemplate(1);
-  }
-  for (let i = 0; i < inProgress.length; i++) {
-    document.getElementById("inProgress").innerHTML += taskCardTemplate(
-      inProgress[i]
-    );
-    for (let index = 0; index < inProgress[i].selectedContacts.length; index++ ) {
-      let assignedContact = contacts.find(
-        (contact) => contact.name === inProgress[i].selectedContacts[index]
-      );
-      document.getElementsByClassName("board-card-assigned-contacts")[cardIndex].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
-    }
-    cardIndex++;
-  }
-}
-
-function renderAwaitFeedback() {
-  let awaitFeedback = createdTasks.filter(
-    (task) => task.status === "awaitFeedback"
-  );
-  document.getElementById("awaitFeedback").innerHTML = "";
-  if (awaitFeedback.length === 0) {
-    document.getElementById("awaitFeedback").innerHTML += noTasksTemplate(2);
-  }
-  for (let i = 0; i < awaitFeedback.length; i++) {
-    document.getElementById("awaitFeedback").innerHTML += taskCardTemplate(
-      awaitFeedback[i]
-    );
-    for (let index = 0; index < awaitFeedback[i].selectedContacts.length; index++) {
-      let assignedContact = contacts.find(
-        (contact) => contact.name === awaitFeedback[i].selectedContacts[index]
-      );
-      document.getElementsByClassName("board-card-assigned-contacts")[cardIndex].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
-    }
-    cardIndex++;
-  }
-}
-
-function renderDone() {
-  let done = createdTasks.filter((task) => task.status === "done");
-  document.getElementById("done").innerHTML = "";
-  if (done.length === 0) {
-    document.getElementById("done").innerHTML += noTasksTemplate(3);
-  }
-  for (let i = 0; i < done.length; i++) {
-    document.getElementById("done").innerHTML += taskCardTemplate(done[i]);
-    for (let index = 0; index < done[i].selectedContacts.length; index++) {
-      let assignedContact = contacts.find(
-        (contact) => contact.name === done[i].selectedContacts[index]
+        (contact) => contact.name === tasks[i].selectedContacts[index]
       );
       document.getElementsByClassName("board-card-assigned-contacts")[cardIndex].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
     }
