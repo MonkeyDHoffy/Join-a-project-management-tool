@@ -50,31 +50,39 @@ async function putData(path = "", data = "") {
 // ?????? without this code tasks disappeared in the firebase....?!?!
 async function getTasks() {
   createdTasks = Object.values(await getData("tasks")) || [];
-  createdTasks.forEach((task) => {
-    if (task.selectedContacts[0] === "") {
-      task.selectedContacts = [];
-    }
-    if (task.completedSubtasks[0] === "") {
-      task.completedSubtasks = [];
-    }
-    if (task.subtasks[0] === "") {
-      task.subtasks = [];
-    }
-  });
+  if (createdTasks[0] == "") {
+    createdTasks = [];
+  } else {
+    createdTasks.forEach((task) => {
+      if (task.selectedContacts[0] === "") {
+        task.selectedContacts = [];
+      }
+      if (task.completedSubtasks[0] === "") {
+        task.completedSubtasks = [];
+      }
+      if (task.subtasks[0] === "") {
+        task.subtasks = [];
+      }
+    });
+  }
 }
 
 async function putTasks() {
-  createdTasks.forEach((task) => {
-    if (task.selectedContacts.length == 0) {
-      task.selectedContacts = [""];
-    }
-    if (task.completedSubtasks.length == 0) {
-      task.completedSubtasks = [""];
-    }
-    if (task.subtasks.length == 0) {
-      task.subtasks = [""];
-    }
-  });
+  if (createdTasks.length == 0) {
+    createdTasks = [""];
+  } else {
+    createdTasks.forEach((task) => {
+      if (task.selectedContacts.length == 0) {
+        task.selectedContacts = [""];
+      }
+      if (task.completedSubtasks.length == 0) {
+        task.completedSubtasks = [""];
+      }
+      if (task.subtasks.length == 0) {
+        task.subtasks = [""];
+      }
+    });
+  }
   await putData("tasks", createdTasks);
 }
 
