@@ -2,12 +2,13 @@ let taskStatus = ["to do", "in-progress", "await feedback", "done"];
 let currentDragedElement = null;
 let cardIndex = 0;
 
+
 async function boardInit() {
   await getTasks();
   await getContacts();
   createdTasks.forEach((task) => {
     if (task.selectedContacts[0] === "") {
-      task.selectedContact = [];
+      task.selectedContacts = [];
     }
     if (task.completedSubtasks[0] === "") {
       task.completedSubtasks = [];
@@ -25,6 +26,7 @@ function updateHTML() {
   renderInProgress();
   renderAwaitFeedback();
   renderDone();
+  hideSubtasksIfEmpty();
   cardIndex = 0;
 }
 
@@ -103,6 +105,15 @@ function renderDone() {
       document.getElementsByClassName("board-card-assigned-contacts")[cardIndex].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
     }
     cardIndex++;
+  }
+}
+
+function hideSubtasksIfEmpty() {
+  let subtasksRef = document.getElementsByClassName("board-card-subtasks");
+  for (let i = 0; i < subtasksRef.length; i++) {
+    if (subtasksRef[i].children[1].textContent === "0/0 Subtasks") {
+      subtasksRef[i].style.display = "none";
+    }
   }
 }
 
