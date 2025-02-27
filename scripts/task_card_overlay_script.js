@@ -384,23 +384,23 @@ function renderTaskEditOverlay(element) {
               <button
                 onclick="changeUrgentBtn()"
                 id="urgent-btn"
-                class="urgent prio-btn-urgent ${element.priority === 'urgent' ? 'active' : ''}"
+                class="${element.priority === 'urgent' ? 'urgent-btn-active' : 'prio-btn-urgent'}"
               >
-                Urgent <img id="urgent-img" src="./assets/img/addTask/urgent.svg" alt="" />
+                Urgent <img id="urgent-img" src="${element.priority === 'urgent' ? './assets/svg/addTasksSvg/urgentactive.svg' : './assets/svg/addTasksSvg/urgent.svg'}" alt="" />
               </button>
               <button
                 onclick="changeMediumBtn()"
                 id="medium-btn"
-                class="medium prio-btn-medium ${element.priority === 'medium' ? 'active' : ''}"
+                class="${element.priority === 'medium' ? 'medium-btn-active' : 'prio-btn-medium'}"
               >
-                Medium <img id="medium-img" src="./assets/img/addTask/medium.svg" alt="" />
+                Medium <img id="medium-img" src="${element.priority === 'medium' ? './assets/svg/addTasksSvg/mediumactive.svg' : './assets/svg/addTasksSvg/medium.svg'}" alt="" />
               </button>
               <button
                 onclick="changeLowBtn()"
                 id="low-btn"
-                class="prio-btn-low ${element.priority === 'low' ? 'active' : ''}"
+                class="${element.priority === 'low' ? 'low-btn-active' : 'prio-btn-low'}"
               >
-                Low <img id="low-img" src="./assets/img/addTask/low.svg" alt="" />
+                Low <img id="low-img" src="${element.priority === 'low' ? './assets/svg/addTasksSvg/lowactive.svg' : './assets/svg/addTasksSvg/low.svg'}" alt="" />
               </button>
             </div>
           </div>
