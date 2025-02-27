@@ -302,7 +302,7 @@ function renderTaskEditOverlay(element) {
   let editField = document.querySelector(".task-card");
   if (editField) {
     editField.innerHTML = `
-      <div class="addTask-wrapper-edit-overlay">
+      <div class="addTask-wrapper addTask-wrapper-edit-overlay">
         <div class="addTask-left-edit-overlay">
           <div class="addTask-section addTask-title">
             <label style="display: flex;" for="">
@@ -406,26 +406,6 @@ function renderTaskEditOverlay(element) {
           </div>
 
           <div class="addTask-section addTask-category">
-            <label style="display: flex;" for="">
-              <p>Category</p>
-            </label>
-            <div class="category-input" onclick="toggleCategoryDropdown()">
-              <input
-                id="category-field"
-                class="placeholder-color"
-                value="${element.selectedCategory}"
-                type="text"
-                readonly
-              />
-              <div class="input-icon-category-container">
-                <img
-                  id="input-icon-category"
-                  src="./assets/svg/addTasksSvg/arrow_drop_down.svg"
-                  alt="Icon"
-                  class="input-icon-category"
-                />
-              </div>
-            </div>
 
             <div class="addTask-subtasks">
               <label for="">
