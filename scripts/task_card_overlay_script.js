@@ -429,7 +429,7 @@ function renderTaskEditOverlay(element) {
                 </div>
               </div>
 
-              <section id="subtasksList" class="subtask-list"></section>
+              <section id="subtasksList" class="subtask-list">${renderSubtasks(element)}</section>
 
               <section id="edit-subtask-item-field" class="edit-subtask-item">
                 <input id="subtask-edit-input" class="subtask-edit-input" value="" type="text" name="" id="" maxlength="30" />
