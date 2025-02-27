@@ -1,6 +1,6 @@
 function taskCardOverlayTemplate(element) {
   return `
-      <div class="task-card slide-in">
+      <div id="task-card-big" class="task-card slide-in">
         <div class="badge">${element.selectedCategory}</div>
         <h2>${element.title.charAt(0).toUpperCase() + element.title.slice(1)}</h2>
         <div class="card-description">
@@ -51,7 +51,7 @@ function taskCardOverlayTemplate(element) {
                   fill="#2A3647" />
               </g>
             </svg>
-            <button class="edit card-btn"> Edit</button>
+            <button onclick='renderTaskEditOverlay(${JSON.stringify(element)})' class="edit card-btn"> Edit</button>
           </div>
         </div>
       </div>
@@ -136,4 +136,344 @@ function renderTaskCardOverlay(event) {
       overlay.classList.remove("show");
     }
   });
+}
+
+// function renderTaskEditOverlay(element) {
+//   let editField = document.querySelector(".task-card");
+//   if (editField) {
+//     editField.innerHTML = `   <div class="addTask-wrapper-edit-overlay">
+
+//                             <div class="addTask-left-edit-overlay">
+//                                 <div class="addTask-section addTask-title">
+//                                     <label style="display: flex;" for="">
+//                                         <p>Title</p>
+                                  
+//                                     </label>
+//                                     <input onclick="addRequiredTitle(this)" oninput="addRequiredTitle(this)"
+//                                         class="add-task-input-field" placeholder="Enter a title" type="text">
+//                                     <div class="required-text">
+//                                         <span id="requiredTitle" class="d-none">This field is required</span>
+//                                     </div>
+//                                 </div>
+
+//                                 <div class="addTask-section addTask-description">
+//                                     <label for="">
+//                                         <p>Description</p>
+//                                     </label>
+//                                     <textarea class="description-area add-task-input-field"></textarea>
+
+//                                 </div>
+
+//                                 <div class=" addTask-section addTask-assignedTo">
+//                                     <label for="">
+//                                         <p>Assigned to</p>
+//                                     </label>
+//                                     <div id="assigned-to-input">
+//                                         <input class="add-task-input-field placeholder-color" type="text"
+//                                             id="assigned-to-field" placeholder="Select contacts to assign"
+//                                             onclick="toggleDropdown(); toggleAssignToIconSrc(); ">
+//                                         <div onclick="toggleDropdown(); toggleAssignToIconSrc();"
+//                                             class="input-icon-assign-to-container">
+//                                             <img id="input-icon-assign-to"
+//                                                 src="./assets/svg/addTasksSvg/arrow_drop_down.svg" alt="Icon"
+//                                                 class="input-icon">
+//                                         </div>
+//                                         <div class="dropdown-content" id="dropdown-content">
+
+//                                         </div>
+//                                     </div>
+
+//                                     <section id="assigned-circles-section" class="assigned-circles-section">
+
+//                                     </section>
+
+//                                 </div>
+
+
+//                             </div>
+
+//                             <div class="add-task-vl"></div>
+
+//                             <div class="addTask-right-edit-overlay">
+
+//                                 <div class="addTask-section task-date">
+//                                     <label style="display: flex;" for="">
+//                                         <p>Due date</p>
+                                       
+//                                     </label>
+//                                     <input id="dueDateInputField" onclick="addRequiredDate(this)"
+//                                         oninput="addRequiredDate(this)" class="add-task-input-field" type="date"
+//                                         style="color: #ccc;">
+//                                     <div class="required-text">
+//                                         <span id="requiredDate" class="d-none">This field is required</span>
+//                                     </div>
+//                                 </div>
+
+//                                 <div class="addTask-section addTask-prio">
+//                                     <label for="">
+//                                         <p>Prio</p>
+//                                     </label>
+//                                     <div class="prio-buttons">
+//                                         <button onclick="changeUrgentBtn()" id="urgent-btn"
+//                                             class="urgent prio-btn-urgent">Urgent <img id="urgent-img" src=""
+//                                                 alt=""></button>
+//                                         <button onclick="changeMediumBtn()" id="medium-btn"
+//                                             class="medium prio-btn-medium">Medium
+//                                             <img id="medium-img" src="" alt=""></button>
+//                                         <button onclick="changeLowBtn()" id="low-btn" class="prio-btn-low">Low <img
+//                                                 id="low-img" src="" alt=""></button>
+//                                     </div>
+//                                 </div>
+
+//                                 <div class="addTask-section addTask-category">
+//                                     <label style="display: flex;" for="">
+//                                         <p>Category</p>
+                                      
+//                                     </label>
+//                                     <div class="category-input" onclick="toggleCategoryDropdown()">
+//                                         <input id="category-field" class="placeholder-color"
+//                                             value="Select task category" type="text" readonly>
+//                                         <div class="input-icon-category-container">
+//                                             <img id="input-icon-category"
+//                                                 src="./assets/svg/addTasksSvg/arrow_drop_down.svg" alt="Icon"
+//                                                 class="input-icon-category">
+//                                         </div>
+//                                     </div>
+//                                     <!-- </div> -->
+
+//                                     <div class="addTask-subtasks">
+//                                         <label for="">
+//                                             <p>Subtasks</p>
+//                                         </label>
+//                                         <div class="addTask-sectio subtask-section"><input
+//                                                 onclick="cancelEditSubtaskItem();" class="add-task-input-field"
+//                                                 type="text" placeholder="Add new subtask" maxlength="30"><img
+//                                                 class="subtask-add" src="./assets/img/addTask/add.svg" alt=""
+//                                                 onclick="focusSubtaskInput()">
+//                                             <div class="cancel-check-btn"><img class="subtask-cancel" a
+//                                                     onclick="cancelSubInput()" src="./assets/img/addTask/cross.svg"
+//                                                     alt=""><img class="subtask-check"
+//                                                     src="./assets/img/addTask/check.svg" alt=""
+//                                                     onclick="renderSubtaskList()"></div>
+
+//                                         </div>
+
+
+//                                         <section id="subtasksList" class="subtask-list"></section>
+
+
+//                                         <section id="edit-subtask-item-field" class="edit-subtask-item">
+//                                             <input id="subtask-edit-input" class="subtask-edit-input" value=""
+//                                                 type="text" name="" id="" maxlength="30">
+//                                             <div class="edit-subtask-btns"><img onclick="deleteSubInputValue()"
+//                                                     src="./assets/svg/contacts_svg/delete.svg" alt=""><img
+//                                                     onclick="confirmSubEdit()" src="./assets/img/addTask/check.svg"
+//                                                     alt="">
+//                                             </div>
+//                                         </section>
+
+//                                     </div>
+
+//                                     <section id="category-dropdown" class="category-dropdown">
+//                                         <div onclick="setCategory(technicalTask)"
+//                                             class="technicalTask-btn category-btn ">
+//                                             <p>Technical Task</p>
+//                                         </div>
+//                                         <div onclick="setCategory(UserStory)" class="userStory-btn category-btn">
+//                                             <p>User Story</p>
+//                                         </div>
+//                                     </section>
+
+
+
+
+//                                 </div>
+
+
+//                             </div>
+
+//                         </div>`;
+    
+//   }
+// }
+
+function renderTaskEditOverlay(element) {
+  
+  let editField = document.querySelector(".task-card");
+  if (editField) {
+    editField.innerHTML = `
+      <div class="addTask-wrapper-edit-overlay">
+        <div class="addTask-left-edit-overlay">
+          <div class="addTask-section addTask-title">
+            <label style="display: flex;" for="">
+              <p>Title</p>
+            </label>
+            <input
+              onclick="addRequiredTitle(this)"
+              oninput="addRequiredTitle(this)"
+              class="add-task-input-field"
+              placeholder="Enter a title"
+              type="text"
+              value="${element.title}"
+            />
+            <div class="required-text">
+              <span id="requiredTitle" class="d-none">This field is required</span>
+            </div>
+          </div>
+
+          <div class="addTask-section addTask-description">
+            <label for="">
+              <p>Description</p>
+            </label>
+            <textarea class="description-area add-task-input-field">${element.description || ''}</textarea>
+          </div>
+
+          <div class="addTask-section addTask-assignedTo">
+            <label for="">
+              <p>Assigned to</p>
+            </label>
+            <div id="assigned-to-input">
+              <input
+                class="add-task-input-field placeholder-color"
+                type="text"
+                id="assigned-to-field"
+                placeholder="Select contacts to assign"
+                onclick="toggleDropdown(); toggleAssignToIconSrc();"
+              />
+              <div onclick="toggleDropdown(); toggleAssignToIconSrc();" class="input-icon-assign-to-container">
+                <img
+                  id="input-icon-assign-to"
+                  src="./assets/svg/addTasksSvg/arrow_drop_down.svg"
+                  alt="Icon"
+                  class="input-icon"
+                />
+              </div>
+              <div class="dropdown-content" id="dropdown-content"></div>
+            </div>
+
+            <section id="assigned-circles-section" class="assigned-circles-section"></section>
+          </div>
+        </div>
+
+        <div class="add-task-vl"></div>
+
+        <div class="addTask-right-edit-overlay">
+          <div class="addTask-section task-date">
+            <label style="display: flex;" for="">
+              <p>Due date</p>
+            </label>
+            <input
+              id="dueDateInputField"
+              onclick="addRequiredDate(this)"
+              oninput="addRequiredDate(this)"
+              class="add-task-input-field"
+              type="date"
+              style="color: #ccc;"
+              value="${element.dueDate || ''}"
+            />
+            <div class="required-text">
+              <span id="requiredDate" class="d-none">This field is required</span>
+            </div>
+          </div>
+
+          <div class="addTask-section addTask-prio">
+            <label for="">
+              <p>Prio</p>
+            </label>
+            <div class="prio-buttons">
+              <button
+                onclick="changeUrgentBtn()"
+                id="urgent-btn"
+                class="urgent prio-btn-urgent ${element.priority === 'urgent' ? 'active' : ''}"
+              >
+                Urgent <img id="urgent-img" src="./assets/img/addTask/urgent.svg" alt="" />
+              </button>
+              <button
+                onclick="changeMediumBtn()"
+                id="medium-btn"
+                class="medium prio-btn-medium ${element.priority === 'medium' ? 'active' : ''}"
+              >
+                Medium <img id="medium-img" src="./assets/img/addTask/medium.svg" alt="" />
+              </button>
+              <button
+                onclick="changeLowBtn()"
+                id="low-btn"
+                class="prio-btn-low ${element.priority === 'low' ? 'active' : ''}"
+              >
+                Low <img id="low-img" src="./assets/img/addTask/low.svg" alt="" />
+              </button>
+            </div>
+          </div>
+
+          <div class="addTask-section addTask-category">
+            <label style="display: flex;" for="">
+              <p>Category</p>
+            </label>
+            <div class="category-input" onclick="toggleCategoryDropdown()">
+              <input
+                id="category-field"
+                class="placeholder-color"
+                value="${element.selectedCategory}"
+                type="text"
+                readonly
+              />
+              <div class="input-icon-category-container">
+                <img
+                  id="input-icon-category"
+                  src="./assets/svg/addTasksSvg/arrow_drop_down.svg"
+                  alt="Icon"
+                  class="input-icon-category"
+                />
+              </div>
+            </div>
+
+            <div class="addTask-subtasks">
+              <label for="">
+                <p>Subtasks</p>
+              </label>
+              <div class="addTask-sectio subtask-section">
+                <input
+                  onclick="cancelEditSubtaskItem();"
+                  class="add-task-input-field"
+                  type="text"
+                  placeholder="Add new subtask"
+                  maxlength="30"
+                /><img class="subtask-add" src="./assets/img/addTask/add.svg" alt="" onclick="focusSubtaskInput()" />
+                <div class="cancel-check-btn">
+                  <img class="subtask-cancel" a onclick="cancelSubInput()" src="./assets/img/addTask/cross.svg" alt="" /><img
+                    class="subtask-check"
+                    src="./assets/img/addTask/check.svg"
+                    alt=""
+                    onclick="renderSubtaskList()"
+                  />
+                </div>
+              </div>
+
+              <section id="subtasksList" class="subtask-list"></section>
+
+              <section id="edit-subtask-item-field" class="edit-subtask-item">
+                <input id="subtask-edit-input" class="subtask-edit-input" value="" type="text" name="" id="" maxlength="30" />
+                <div class="edit-subtask-btns">
+                  <img onclick="deleteSubInputValue()" src="./assets/svg/contacts_svg/delete.svg" alt="" /><img
+                    onclick="confirmSubEdit()"
+                    src="./assets/img/addTask/check.svg"
+                    alt=""
+                  />
+                </div>
+              </section>
+            </div>
+
+            <section id="category-dropdown" class="category-dropdown">
+              <div onclick="setCategory(technicalTask)" class="technicalTask-btn category-btn">
+                <p>Technical Task</p>
+              </div>
+              <div onclick="setCategory(UserStory)" class="userStory-btn category-btn">
+                <p>User Story</p>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    `;
+  }
 }
