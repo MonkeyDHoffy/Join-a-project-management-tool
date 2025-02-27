@@ -1,5 +1,6 @@
 // Initialize the task creation form by setting the icons
 function addTaskInit() {
+  createTaskInit()
   setIcons();
   changeMediumBtn();
 }

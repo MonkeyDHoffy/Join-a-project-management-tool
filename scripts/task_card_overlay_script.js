@@ -58,23 +58,57 @@ function taskCardOverlayTemplate(element) {
     `;
 }
 //this function is used to render the subtasks of a task, mapping over the subtasks array and returning a string of html elements
+// function renderSubtasks(element) {
+//   return element.subtasks.map((subtask) => `
+//     <label><input onclick="toggleSubtaskCompleted('${subtask}', this)" type="checkbox"> ${subtask}</label>`).join('');
+// }
+
+ async function toggleSubtaskCompleted(subtask, element) {
+   let task = createdTasks.find((task) => task.subtasks.includes(subtask));
+   if (!task.completedSubtasks.includes(subtask)) {
+     task.completedSubtasks.push(subtask);
+     element.checked = true;
+   } else {
+     task.completedSubtasks.splice(task.completedSubtasks.indexOf(subtask), 1);
+     element.checked = false;
+   }
+   await putTasks();
+   await boardInit();
+ }
+
 function renderSubtasks(element) {
-  return element.subtasks.map((subtask) => `
-    <label><input onclick="toggleSubtaskCompleted('${subtask}', this)" type="checkbox"> ${subtask}</label>`).join('');
+  return element.subtasks.map((subtask) => {
+    let isCompleted = element.completedSubtasks.includes(subtask);
+    return `
+      <label>
+        <input
+          onclick="toggleSubtaskCompleted('${subtask}', this)"
+          type="checkbox"
+          ${isCompleted ? 'checked' : ''}
+        />
+        ${subtask}
+      </label>
+    `;
+  }).join('');
 }
 
-async function toggleSubtaskCompleted(subtask, element) {
-  let task = createdTasks.find((task) => task.subtasks.includes(subtask));
-  if (!task.completedSubtasks.includes(subtask)) {
-    task.completedSubtasks.push(subtask);
-    element.checked = true;
-  } else {
-    task.completedSubtasks.splice(task.completedSubtasks.indexOf(subtask), 1);
-    element.checked = false;
-  }
-  await putTasks();
-  await boardInit();
-}
+// async function toggleSubtaskCompleted(subtask, element) {
+//   let task = createdTasks.find((task) => task.subtasks.includes(subtask));
+//   if (task) {
+//     if (!task.completedSubtasks.includes(subtask)) {
+//       task.completedSubtasks.push(subtask);
+//       element.checked = true;
+//     } else {
+//       task.completedSubtasks.splice(task.completedSubtasks.indexOf(subtask), 1);
+//       element.checked = false;
+//     }
+//     try {
+//       await putTasks(); 
+//     } catch (error) {
+//       console.error("Error updating subtask status in Firebase:", error);
+//     }    
+//   }
+// }
 
 function secondAssignedContactsTemplate(element, index, contact) {
   return `<div class="assignee">
