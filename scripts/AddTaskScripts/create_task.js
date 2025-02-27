@@ -99,6 +99,26 @@ async function createTask() {
   showTaskNotification();
 }
 
+async function createTaskOverlay() {
+  getTaskInputs();
+  items.forEach((item) => {
+    selectedSubtasks.push(item.innerHTML);
+  });
+  let newTask = {
+    "id": createdTasks.length + 1, "status": "toDo", "title": title,
+    "description": description,
+    "selectedContacts": selectedContacts.length > 0 ? selectedContacts.map((contact) => contact.name) : [""],
+    "dueDate": dueDate, "priority": priority, "selectedCategory": category,
+    "subtasks": selectedSubtasks.length > 0 ? selectedSubtasks : [""],
+    "completedSubtasks": [""],
+  };
+  createdTasks.push(newTask);
+  selectedSubtasks = [];
+  selectedContacts = [];
+  await uploadTasksToFirebase();
+  showTaskNotificationOverlayAddTask();
+}
+
 async function uploadTasksToFirebase() {
   createdTasks.forEach((task) => {
     if (task.selectedContacts.length == 0) {

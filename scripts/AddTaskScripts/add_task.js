@@ -191,6 +191,18 @@ function showTaskNotification() {
   }
 }
 
+function showTaskNotificationOverlayAddTask() {
+  let notification = document.querySelector(".click-notification-add-task");
+  if (notification) {
+    resetAddTaskInputs();
+    notification.classList.add("show");
+    boardInit();
+    setTimeout(() => {
+      notification.classList.remove("show");
+    }, 2000);
+  }
+}
+
 function addRequiredTitle(element) {
   let requiredTextTitle = document.getElementById("requiredTitle");
   element.setAttribute("required", "true");
