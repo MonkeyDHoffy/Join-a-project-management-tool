@@ -186,6 +186,7 @@ function showTaskNotification() {
     notification.classList.add("show");
     setTimeout(() => {
       notification.classList.remove("show");
+      window.location.href = "./board.html";
     }, 2000);
   }
 }

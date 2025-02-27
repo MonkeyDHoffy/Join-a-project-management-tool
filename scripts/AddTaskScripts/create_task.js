@@ -54,6 +54,17 @@ async function createTaskInit() {
   getAssignedContacts();
   renderAssignedContacts();
   await getTasks();
+  createdTasks.forEach((task) => {
+    if (task.selectedContacts[0] === "") {
+      task.selectedContact = [];
+    }
+    if (task.completedSubtasks[0] === "") {
+      task.completedSubtasks = [];
+    }
+    if (task.subtasks[0] === "") {
+      task.subtasks = [];
+    }
+  });
 }
 
 async function createTask() {

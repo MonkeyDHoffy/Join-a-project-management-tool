@@ -67,12 +67,9 @@ function renderSubtasks(element) {
   `).join('');
 }
 
-function secondAssignedContactsTemplate(element, index, contact) {
+
 function secondAssignedContactsTemplate(element, index, contact) {
   return `<div class="assignee">
-            <span class="avatar" style="background-color: ${contact.color};">${contact.name.split(' ').map(word => word[0]).join('').toUpperCase()}</span>
-            ${contact.name}
-          </div>`;
             <span class="avatar" style="background-color: ${contact.color};">${contact.name.split(' ').map(word => word[0]).join('').toUpperCase()}</span>
             ${contact.name}
           </div>`;
