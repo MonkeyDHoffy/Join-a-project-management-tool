@@ -67,10 +67,10 @@ function taskCardOverlayTemplate(element) {
    let task = createdTasks.find((task) => task.subtasks.includes(subtask));
    if (!task.completedSubtasks.includes(subtask)) {
      task.completedSubtasks.push(subtask);
-     element.checked = true;
+    //  element.checked = true;
    } else {
      task.completedSubtasks.splice(task.completedSubtasks.indexOf(subtask), 1);
-     element.checked = false;
+    //  element.checked = false;
    }
    await putTasks();
    await boardInit();
