@@ -1,11 +1,11 @@
-
+let messages = [];
 
 function loginInit() {
     validateForm();
     passwordFocus();
     getUsers();
-    // rememberMe();
     getQueryParamsUserName();
+    //loginUser(messages);
 };
 
 
@@ -13,8 +13,7 @@ function loginInit() {
 function validateForm() {
     let errorElement = document.getElementById('error');
     let form = document.getElementById('loginForm');
-    let messages = [];
-
+    //let messages = [];
     form.addEventListener('input', (e) => {
 
         messages.length = 0;
@@ -157,8 +156,8 @@ function getRememberMeUser() {
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
     const rememberMeChbx = document.getElementById('rememberMe');
-    
-    if (rmEmail && rmPassword ) {
+
+    if (rmEmail && rmPassword) {
         emailInput.value = rmEmail;
         passwordInput.value = rmPassword;
         rememberMeChbx.checked = true;
@@ -167,18 +166,52 @@ function getRememberMeUser() {
 
 
 function loginUser() {
-    let registeredUser = users.find(user => user.email === document.getElementById('email').value);
+    let registeredUser   = users.find(user => user.email === document.getElementById('email').value);
+    let errorElement = document.getElementById('error');
 
     if (!registeredUser) {
-        alert('User not found');
-        return;
-
-    } else if (registeredUser.password !== document.getElementById('password').value) {
-        alert('Password incorrect');
-        return;
-
+        userNotFoundMessage(errorElement);
+    
+    } else if (registeredUser  .password !== document.getElementById('password').value) {
+        passwordIncorrectMessage(errorElement);
+      
     } else {
-        let userName = encodeURIComponent(registeredUser.name);
+        let userName = encodeURIComponent(registeredUser  .name);
         window.location.href = `summary.html?name=${userName}`;
     }
 }
+
+
+function userNotFoundMessage(errorElement) {
+    if (!messages.includes('User  not found')) {
+        messages.push('User   not found');
+    }
+    errorElement.innerHTML = messages.join(', ');
+    return;
+}
+
+function passwordIncorrectMessage(errorElement) {
+    if (!messages.includes('Password incorrect')) {
+        messages.push('Password incorrect');
+    }
+    errorElement.innerHTML = messages.join(', ');
+    return;
+}
+
+
+
+// function loginUser() {
+//     let registeredUser  = users.find(user => user.email === document.getElementById('email').value);
+//     let errorElement = document.getElementById('error');
+
+//     if (!registeredUser ) {
+//         errorElement.innerHTML = 'User  not found';
+//         return;
+//     } else if (registeredUser .password !== document.getElementById('password').value) {
+//         errorElement.innerHTML = 'Password incorrect';
+//         return;
+//     } else {
+//         let userName = encodeURIComponent(registeredUser .name);
+//         window.location.href = `summary.html?name=${userName}`;
+//     }
+// }
