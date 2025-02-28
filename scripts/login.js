@@ -100,15 +100,13 @@ function togglePassword() {
         passwordInput.type = 'text';
         iconPW.src = '../assets/svg/eye_slash.svg';
         iconPW.classList.add('cursor-pointer');
-        //iconPW.classList.add('eye_slash_small');  
-
     } else {
         passwordInput.type = 'password';
         iconPW.src = '../assets/svg/eye.svg';
         iconPW.classList.add('cursor-pointer');
-
     }
 }
+
 
 function removeErrorMessageAndHighlight(inputElement, messages, errorMessage) {
     let index = messages.indexOf(errorMessage);
@@ -117,6 +115,7 @@ function removeErrorMessageAndHighlight(inputElement, messages, errorMessage) {
     }
     inputElement.parentNode.classList.remove('error-highlight');
 }
+
 
 function checkLoginFormValidity() {
     const emailInput = document.getElementById('email');
@@ -131,8 +130,9 @@ function checkLoginFormValidity() {
     } else {
         loginBtn.disabled = true;
     }
-
 }
+
+
 function rememberMe() {
     const rememberMeChbx = document.getElementById('rememberMe');
     const emailInput = document.getElementById('email');
@@ -143,13 +143,13 @@ function rememberMe() {
         if (rememberMeChbx.checked) {
             localStorage.setItem('rmEmail', emailInput.value);
             localStorage.setItem('rmPassword', passwordInput.value);
+        } else {
+            localStorage.removeItem('rmEmail');
+            localStorage.removeItem('rmPassword');
         }
     });
-    //localStorage.getItem('rmEmail');
-    //console.log('rmEmail');
-
-    //getRememberMeUser(rememberMeChbx, emailInput, passwordInput);
 }
+
 
 function getRememberMeUser() {
     const rmEmail = localStorage.getItem('rmEmail');
@@ -163,13 +163,8 @@ function getRememberMeUser() {
         passwordInput.value = rmPassword;
         rememberMeChbx.checked = true;
     }
-
-
-    // if (rememberMeChbx.checked && emailInput.value !== "") {
-    //     localStorage.getItem('rmEmail') = emailInput.value;
-    //     localStorage.getItem('rmPassword') = passwordInput.value;
-    // } 
 }
+
 
 function loginUser() {
     let registeredUser = users.find(user => user.email === document.getElementById('email').value);
@@ -186,22 +181,4 @@ function loginUser() {
         let userName = encodeURIComponent(registeredUser.name);
         window.location.href = `summary.html?name=${userName}`;
     }
-
-
 }
-
-
-
-
-// function getQueryParamsUserName() {
-//     const urlParams = new URLSearchParams(window.location.search);
-//     const userName = urlParams.get('name');
-//     console.log(urlParams.get('name'));
-//     return userName;
-// }
-
-// function displayUserName() {
-//     const userName = getQueryParamsUserName();
-//     const userNameElement = document.getElementById('userName');
-//     userNameElement.textContent = decodeURIComponent(userName);
-//   }
