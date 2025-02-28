@@ -12,6 +12,7 @@ async function summaryInit() {
     showAmountOfUrgentTasks();
     showUpcomingDeadline();
     displayUserName();
+    getActuellTime();
 }
 
 function renderTaskAmount() {
@@ -44,4 +45,9 @@ function showUpcomingDeadline() {
     } else {
         upcomingDeadlineRef.innerHTML = "No upcoming deadlines";
     }
+}
+
+function getActuellTime() {
+ console.log(new Date());
+    
 }

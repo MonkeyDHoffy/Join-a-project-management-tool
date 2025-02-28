@@ -306,15 +306,14 @@ function closeAddTaskOverlay() {
  */
 function closeOverlayOutside(event) {
   let addTaskOverlayRef = document.getElementById("addTaskOverlay");
-  let addTaskOverlayContentRef = document.getElementById(
-    "addTaskOverlayContent"
-  );
+  let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
   if (event.target == addTaskOverlayRef) {
     addTaskOverlayRef.classList.remove("active");
     addTaskOverlayRef.style.pointerEvents = "none";
     addTaskOverlayContentRef.style.left = "100%";
     setTimeout(() => {
       addTaskOverlayRef.classList.add("d-none");
+      addTaskOverlayContentRef.innerHTML = "";
     }, 400);
   }
 }

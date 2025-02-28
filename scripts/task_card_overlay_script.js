@@ -163,6 +163,14 @@ function renderTaskCardOverlay(event) {
   });
 }
 
+function showAssignedContacts(selectedContacts) {
+  let assignedCirclesSectionRef = document.getElementById("assigned-circles-section");
+  let assignedContacts = contacts.filter((contact) => selectedContacts.includes(contact.name));
+  for (let index = 0; index < assignedContacts.length; index++) {
+    assignedCirclesSectionRef.innerHTML += userCircleTemplate(assignedContacts[index], assignedContacts[index].color);  
+  }
+}
+
 function closeTaskCardOverlay() {
   let taskCardOverlayRef = document.getElementById("task-card-overlay");
   taskCardOverlayRef.classList.remove("show"); 
@@ -337,6 +345,7 @@ function renderTaskEditOverlay(element) {
     `;
   filterAndSortDropdown();
   toggleSubtasks();
+  showAssignedContacts(element.selectedContacts);
   }
 }
 
