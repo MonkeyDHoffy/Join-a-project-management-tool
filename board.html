@@ -43,11 +43,11 @@
                     <a href="./summary.html"><button class="nav_btn nav_summary "><span><img
                                     src="./assets/img/navBar/summary.svg" alt="">Summary</span></button></a>
 
-                    <a class="active" href="./add_task.html"><button class="nav_btn nav_add_task "
-                            ><span><img src="./assets/img/navBar/add_task.svg" alt="">Add
+                    <a href="./add_task.html"><button class="nav_btn nav_add_task "><span><img
+                                    src="./assets/img/navBar/add_task.svg" alt="">Add
                                 Task</span></button></a>
 
-                    <a  class="active" href="./board.html"><button class="nav_btn nav_board active" disabled><span><img
+                    <a class="active" href="./board.html"><button class="nav_btn nav_board active" disabled><span><img
                                     src="./assets/img/navBar/board.svg" alt="">Board</span></button></a>
 
                     <a href="./contacts.html"><button class="nav_btn nav_contacts"><span><img
@@ -101,7 +101,7 @@
                                 <input class="find-task-input" id="findTaskInput" type="text" placeholder="Find Task">
                                 <button class="search-btn"><img src="./assets/img/search.png" alt=""></button>
                             </form>
-                            <button onclick="openAddTaskOverlay()" id="addTask" class="add-task">Add Task <img
+                            <button onclick="renderTaskOverlayContent()" id="addTask" class="add-task">Add Task <img
                                     src="./assets/img/add.png" alt=""></button>
                         </div>
                     </div>
@@ -148,7 +148,7 @@
 
     </div>
     <div id="addTaskOverlayContent" class="add-task-overlay-content">
-        <div class="addTask-header-and-input">
+        <!-- <div class="addTask-header-and-input">
             <div class="addTask-header">
                 <h1>Add Task</h1>
                 <div onclick="closeAddTaskOverlay(event)" id="closeBtn" class="close-btn"><img
@@ -298,8 +298,8 @@
 
             </div>
 
-        </div>
-        <div class="addTask-footer">
+        </div> -->
+        <!-- <div class="addTask-footer">
             <div><span style="color:red">*</span><span>This field is required</span></div>
             <div onclick="closeAddTaskOverlay(event)" class="display-flex clear-create"><button
                     onclick="clearInputFields()" class="clear-btn">Cancel
@@ -308,19 +308,20 @@
                 </button></div>
 
 
-        </div>
-
-
-        <div class="click-notification-add-task">
-            <p>Task added to board </p> <img src="./assets/img/navBar/board.svg" alt="">
-        </div>
+        </div> -->
 
 
 
-        <div id="task-card-overlay"></div>
-        <div id="dark-background"></div>
 
     </div>
+    <div class="click-notification-add-task">
+        <p>Task added to board </p> <img src="./assets/img/navBar/board.svg" alt="">
+    </div>
+
+
+
+    <div id="task-card-overlay"></div>
+    <div id="dark-background"></div>
     <section class="mobile-nav-section">
 
         <section class="mobile-navBar">

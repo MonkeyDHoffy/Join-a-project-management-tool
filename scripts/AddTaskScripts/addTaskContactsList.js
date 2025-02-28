@@ -112,14 +112,10 @@ function validateInputs() {
   let dateInput = document.querySelector(".task-date input");
   let categoryInput = document.getElementById("category-field");
   let createTaskButton = document.querySelector(".createTask-button");
-
-  createTaskButton.disabled =
-    titleInput.value.trim() === "" ||
-    dateInput.value.trim() === "" ||
-    categoryInput.value === "Select task category";
+  createTaskButton.disabled = titleInput.value.trim() === "" || dateInput.value.trim() === "" || categoryInput.value === "Select task category";
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+function validateInputFields() {
   let titleInput = document.querySelector(".addTask-title input");
   let dateInput = document.querySelector(".task-date input");
   let categoryInput = document.getElementById("category-field");
@@ -128,14 +124,14 @@ document.addEventListener("DOMContentLoaded", function () {
   titleInput.addEventListener("input", validateInputs);
   dateInput.addEventListener("input", validateInputs);
   validateInputs();
-});
+};
 
 // in add_task.js hat die funktion setCategory() auch die validateInputs() funktion aufgerufen
 // Category-Btn--------------------------------------------------
 //
 
 // Search Functionality and Alphabetical Sorting
-document.addEventListener("DOMContentLoaded", function () {
+function filterAndSortDropdown() {
   let assignedToField = document.getElementById("assigned-to-field");
   let dropdownContent = document.getElementById("dropdown-content");
 
@@ -146,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
       await renderAssignedContacts();
       sortDropdownItems();
     });
-});
+};
 
 function sortDropdownItems() {
   dropdownItems.sort((a, b) => {

@@ -1,6 +1,9 @@
 // Initialize the task creation form by setting the icons
 function addTaskInit() {
-  createTaskInit()
+  validateInputFields();
+  filterAndSortDropdown();
+  toggleSubtasks();
+  createTaskInit();
   setIcons();
   changeMediumBtn();
 }
@@ -229,6 +232,7 @@ function addRequiredDate(element) {
 //Subtask functions-----------------------------------------------------------------------------
 
 function focusSubtaskInput() {
+  
   document.querySelector(".addTask-subtasks input").focus();
 }
 
@@ -317,7 +321,7 @@ function cancelSubInput() {
   document.querySelector(".addTask-subtasks input").focus();
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+function toggleSubtasks() {
   // Add event listener to toggle subtask buttons based on input value
   document
     .querySelector(".addTask-subtasks input")
@@ -332,7 +336,7 @@ document.addEventListener("DOMContentLoaded", function () {
         cancelCheckBtn.style.display = "none";
       }
     });
-});
+};
 
 // Category-Btn--------------------------------------------------
 function toggleCategoryDropdown() {

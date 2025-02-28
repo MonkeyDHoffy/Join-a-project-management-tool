@@ -158,6 +158,7 @@ function renderTaskCardOverlay(event) {
   overlay.addEventListener("click", (event) => {
     if (event.target === overlay) {
       overlay.classList.remove("show");
+      overlay.innerHTML = "";
     }
   });
 }
@@ -296,7 +297,7 @@ function renderTaskEditOverlay(element) {
                   type="text"
                   placeholder="Add new subtask"
                   maxlength="30"
-                /><img class="subtask-add" src="./assets/img/addTask/add.svg" alt="" onclick="focusSubtaskInput()" />
+                /><img class="subtask-add" src="./assets/img/addTask/add.svg" alt="" onclick="focusSubtaskInput(this)" />
                 <div class="cancel-check-btn">
                   <img class="subtask-cancel" a onclick="cancelSubInput()" src="./assets/img/addTask/cross.svg" alt="" /><img
                     class="subtask-check"
@@ -334,5 +335,8 @@ function renderTaskEditOverlay(element) {
         </div>
       </div>
     `;
+  filterAndSortDropdown();
+  toggleSubtasks();
   }
 }
+
