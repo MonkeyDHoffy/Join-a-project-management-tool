@@ -1,5 +1,5 @@
 
-
+let messages = [];
 
 function init() {
     validateForm();
@@ -45,7 +45,7 @@ function toggleErrorPrivPol() {
 function validateForm() {
     let errorElement = document.getElementById('error');
     let form = document.getElementById('signupForm');
-    let messages = [];
+    //let messages = [];
 
     form.addEventListener('input', (e) => {
 
@@ -205,6 +205,10 @@ function checkFormValidity() {
     const chbPrivPol = document.getElementById('chbPrivPol');
     const submitBtn = document.getElementById('submitBtn');
 
+    setFormValidityConditons(signupName, email, password, repeatPassword, chbPrivPol, submitBtn);
+}
+
+function setFormValidityConditons(signupName, email, password, repeatPassword, chbPrivPol, submitBtn) {
     const signupNameIsValid = signupName.value !== '';
     const emailIsValid = email.value !== '' && email.value.includes('@');
     const passwordIsValid = password.value !== '' && password.value !== 'password';
@@ -228,7 +232,10 @@ function registerUser() {
     };
 
     if (users.find(user => user.email === document.getElementById('email').value)) {
-        alert('User already exists');
+        //alert('User already exists');
+        // if (!messages.includes('User already exists')) {
+           messages.push('User already exists');
+        // }
 
     } else {
         users.push(user);
