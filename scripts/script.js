@@ -98,7 +98,13 @@ function getQueryParamsUserName() {
 }
 
 function displayUserName() {
+  let greetingRef = document.getElementById("greeting");
   const userName = getQueryParamsUserName();
+  if (userName == null) {
+    greetingRef.innerHTML = "Good morning";
+    return;
+  }
+  greetingRef.innerHTML = "Good morning, ";
   const userNameElement = document.getElementById("userName");
   userNameElement.textContent = decodeURIComponent(userName);
 }

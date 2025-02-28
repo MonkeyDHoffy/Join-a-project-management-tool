@@ -17,25 +17,27 @@
 <body onload="summaryInit()">
     <div class="content-width">
         <div class="content_left">
-            <div>
-                <div class="logo"><img src="./assets/img/Logo.png" alt=""></div>
+            <div class="logo-and-navbar-wrapper">
+                <div class="logo"><img src="./assets/img/Logo.png" alt="">
+                </div>
+
+
+                <section class="navBar">
+                    <a href="./summary.html"><button class="nav_btn nav_summary "><span><img
+                                    src="./assets/img/navBar/summary.svg" alt="">Summary</span></button></a>
+
+                    <a class="active" href="./add_task.html"><button class="nav_btn nav_add_task active"
+                            disabled><span><img src="./assets/img/navBar/add_task.svg" alt="">Add
+                                Task</span></button></a>
+
+                    <a href="./board.html"><button class="nav_btn nav_board"><span><img
+                                    src="./assets/img/navBar/board.svg" alt="">Board</span></button></a>
+
+                    <a href="./contacts.html"><button class="nav_btn nav_contacts"><span><img
+                                    src="./assets/img/navBar/contacts.svg" alt="">Contacts</span></button></a>
+
+                </section>
             </div>
-
-            <section class="navBar">
-                <a class="active" href="./summary.html"><button class="nav_btn nav_summary active"
-                        disabled="true"><span><img src="./assets/img/navBar/summary.svg"
-                                alt="">Summary</span></button></a>
-
-                <a href="./add_task.html"><button class="nav_btn nav_add_task"><span><img
-                                src="./assets/img/navBar/add_task.svg" alt="">Add Task</span></button></a>
-
-                <a href="./board.html"><button class="nav_btn nav_board"><span><img src="./assets/img/navBar/board.svg"
-                                alt="">Board</span></button></a>
-
-                <a href="./contacts.html"><button class="nav_btn nav_contacts"><span><img
-                                src="./assets/img/navBar/contacts.svg" alt="">Contacts</span></button></a>
-
-            </section>
 
             <div class="judicial-links">
                 <div class="judicial-links-container">
@@ -147,8 +149,10 @@
                         </div>
                     </div>
                     <div class="greeting">
-                        <h3 class="font-size-47px color-2A3647">Good morning,</h3>
-                        <h2 class="user-name" id="userName">Sofia Müller</h2>
+                        <h3 id="greeting" class="font-size-47px color-2A3647 font-weight-500">Good morning, 
+                            <h2 class="user-name" id="userName"></h2>
+                        </h3>
+                       
                     </div>
                 </div>
 
