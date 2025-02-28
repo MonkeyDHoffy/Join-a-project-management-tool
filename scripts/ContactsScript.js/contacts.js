@@ -42,9 +42,9 @@ async function deleteContact(id) {
   contacts.splice(id, 1);
   console.log(contacts);
   await putData("contacts/", contacts);
-  await getContacts();
   hideOverlay();
   contactItem.innerHTML = "";
+  await init();
 }
 
 function displayContacts() {
