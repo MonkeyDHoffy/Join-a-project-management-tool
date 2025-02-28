@@ -1,33 +1,47 @@
-function summaryInit() {
-    // renderTaskAmount();
-    // renderTasksInProgress();
-    // renderTasksAwaitingFeedback();
-    // renderToDos();
-    // renderDone();
+const options = { year: "numeric", month: "long", day: "numeric" };
+let deadlines = [];
+let urgentTasks = [];
+
+async function summaryInit() {
+    await getTasks();
+    renderTaskAmount();
+    renderTaskFieldsAmount('tasksInProgress', 'inProgress');
+    renderTaskFieldsAmount('awaitingFeedback', 'awaitFeedback');
+    renderTaskFieldsAmount('toDo', 'toDo');
+    renderTaskFieldsAmount('done', 'done');
+    showAmountOfUrgentTasks();
+    showUpcomingDeadline();
     displayUserName();
 }
 
-// function renderTaskAmount() {
-//     let tasksInBoard = document.getElementById("tasksInBoard");
-//     tasksInBoard.innerHTML = tasks.length;
-// }
+function renderTaskAmount() {
+    let tasksInBoard = document.getElementById("tasksInBoard");
+    tasksInBoard.innerHTML = createdTasks.length;
+}
 
-// function renderTasksInProgress() {
-//     let tasksInProgress = document.getElementById("tasksInProgress");
-//     tasksInProgress.innerHTML = tasks.filter(task => task.status === "inProgress").length;
-// }
+function renderTaskFieldsAmount(displayField, status) {
+    let tasksInProgress = document.getElementById(displayField);
+    tasksInProgress.innerHTML = createdTasks.filter(task => task.status === status).length;
+}
 
-// function renderTasksAwaitingFeedback() {
-//     let awaitingFeedback = document.getElementById("awaitingFeedback");
-//     awaitingFeedback.innerHTML = tasks.filter(task => task.status === "awaitFeedback").length;
-// }
+function showAmountOfUrgentTasks() {
+    let urgentAmountRef = document.getElementById("urgent");
+    createdTasks.forEach((task) => {
+        if (task.priority == "urgent") {
+            urgentTasks.push(task.priority)
+        }
+    });
+    urgentAmountRef.innerHTML = urgentTasks.length;
+}
 
-// function renderToDos() {
-//     let toDo = document.getElementById("toDo");
-//     toDo.innerHTML = tasks.filter(task => task.status === "toDo").length;
-// }
-
-// function renderDone() {
-//     let done = document.getElementById("done");
-//     done.innerHTML = tasks.filter(task => task.status === "done").length;
-// }
+function showUpcomingDeadline() {
+    let upcomingDeadlineRef = document.getElementById("deadline-date");
+    deadlines = createdTasks.map(task => new Date(task.dueDate));
+    deadlines.sort((a, b) => a - b);
+    let upcomingDeadline = deadlines[0];
+    if (upcomingDeadline) {
+        upcomingDeadlineRef.innerHTML = upcomingDeadline.toLocaleDateString("en-US", options);
+    } else {
+        upcomingDeadlineRef.innerHTML = "No upcoming deadlines";
+    }
+}
