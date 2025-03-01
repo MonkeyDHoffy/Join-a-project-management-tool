@@ -46,6 +46,30 @@ body {
   gap: 32px;
 }
 
+.confirm-btn-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#confirmTaskChanges {
+  background-color: #2a3647;
+  padding: 16px;
+  border-radius: 10px;
+  color: white;
+  font-size: 21px;
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.1s ease-in-out;
+}
+
+#confirmTaskChanges:hover {
+  background-color: #29abe2;
+  box-shadow: 0px 4px 4px 0px #00000040;
+}
+
 .board-card-assigned-contacts {
   display: flex;
 }

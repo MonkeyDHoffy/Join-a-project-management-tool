@@ -3,6 +3,8 @@ let description;
 let dueDate;
 let category;
 let items;
+let completedItems = [];
+let completedSubtasks = [];
 let selectedSubtasks = [];
 
 async function createTaskInit() {

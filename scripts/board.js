@@ -281,6 +281,16 @@ function addTaskOverlayBoardTemplate() {
 
             </div>
 
+        </div>
+        <div class="addTask-footer">
+            <div><span style="color:red">*</span><span>This field is required</span></div>
+            <div onclick="closeAddTaskOverlay(event)" class="display-flex clear-create"><button
+                    onclick="clearInputFields()" class="clear-btn">Cancel
+                    <img src="./assets/svg/addTasksSvg/clear.svg" alt=""></button><button onclick="createTaskOverlay()"
+                    class="createTask-button">Create Task<img src="./assets/svg/addTasksSvg/cross.svg" alt="">
+                </button></div>
+
+
         </div>`;}
 
 /**
@@ -318,6 +328,43 @@ function closeOverlayOutside(event) {
   }
 }
 
+let editedSelectedContacts = [];
+
+async function confirmTaskChanges(currentTitle) {
+  getTaskOverlayInputs();
+  let taskToEdit = createdTasks.find((task) => task.title == currentTitle);
+  let taskIndex = createdTasks.indexOf(taskToEdit);
+  items.forEach((item) => {
+    selectedSubtasks.push(item.innerHTML);
+  });
+  // for (let index = 0; index < selectedContacts.length; index++) {
+  //   if (selectedContacts[index] == null) 
+  //     delete selectedContacts[index]
+  // }
+  let editedTask = {
+    "id": createdTasks.length + 1, "status": "toDo", "title": title,
+    "description": description,
+    "selectedContacts": editedSelectedContacts.length > 0 ? editedSelectedContacts.map((contact) => contact.name) : selectedContacts,
+    "dueDate": dueDate, "priority": priority, "selectedCategory": taskToEdit.selectedCategory,
+    "subtasks": selectedSubtasks.length > 0 ? selectedSubtasks : [""],
+    "completedSubtasks": taskToEdit.completedSubtasks.length > 0 ? taskToEdit.completedSubtasks : [""]
+  }
+  createdTasks.splice(taskIndex, 1);
+  await putTasks();
+  createdTasks[taskIndex] = editedTask;
+  selectedSubtasks = [];
+  selectedContacts = [];
+  await putTasks();
+  await boardInit();
+  closeTaskCardOverlay();
+}
+
+function getTaskOverlayInputs() {
+  title = document.querySelector(".addTask-title input").value;
+  description = document.querySelector(".addTask-description textarea").value;
+  dueDate = document.querySelector(".task-date input").value;
+  items = Array.from(document.getElementsByClassName("subtask-item"));
+}
 /**
  * Clears the values of all input fields with the class "add-task-input-field".
  * Sets their "required" attribute to "false".

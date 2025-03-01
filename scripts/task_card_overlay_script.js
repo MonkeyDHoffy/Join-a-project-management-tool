@@ -341,11 +341,15 @@ function renderTaskEditOverlay(element) {
             </section>
           </div>
         </div>
+        <div class="confirm-btn-wrapper">
+        <button onclick="confirmTaskChanges('${element.title}')" id="confirmTaskChanges">Ok<img src="./assets/img/check.png" alt=""></button>
+        </div>
       </div>
     `;
   filterAndSortDropdown();
   toggleSubtasks();
   showAssignedContacts(element.selectedContacts);
+  selectedContacts = element.selectedContacts;
   }
 }
 
