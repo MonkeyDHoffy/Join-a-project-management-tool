@@ -97,14 +97,27 @@ function getQueryParamsUserName() {
   return userName;
 }
 
+function getActuellTime() {
+  let date = new Date();
+  let hours = date.getHours();
+  if (hours < 12) {
+      greeting = "Good morning";
+  } else if (hours < 18) {
+      greeting = "Good afternoon";
+  } else {
+      greeting = "Good evening";
+  }
+}
+
 function displayUserName() {
+  getActuellTime();
   let greetingRef = document.getElementById("greeting");
   const userName = getQueryParamsUserName();
   if (userName == null) {
-    greetingRef.innerHTML = "Good morning";
+    greetingRef.innerHTML = greeting;
     return;
   }
-  greetingRef.innerHTML = "Good morning, ";
+  greetingRef.innerHTML = greeting + ", ";
   const userNameElement = document.getElementById("userName");
   userNameElement.textContent = decodeURIComponent(userName);
 }

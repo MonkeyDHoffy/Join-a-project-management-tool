@@ -1,6 +1,7 @@
 const options = { year: "numeric", month: "long", day: "numeric" };
 let deadlines = [];
 let urgentTasks = [];
+let greeting;
 
 async function summaryInit() {
     await getTasks();
@@ -45,9 +46,4 @@ function showUpcomingDeadline() {
     } else {
         upcomingDeadlineRef.innerHTML = "No upcoming deadlines";
     }
-}
-
-function getActuellTime() {
- console.log(new Date());
-    
 }
