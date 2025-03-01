@@ -118,6 +118,7 @@ function openAddTaskOverlay() {
 function renderTaskOverlayContent() {
   let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
   addTaskOverlayContentRef.innerHTML = addTaskOverlayBoardTemplate();
+  toggleSubtasks();
   renderAssignedContacts();
   renderContactsDropdown();
   openAddTaskOverlay();
@@ -236,16 +237,19 @@ function addTaskOverlayBoardTemplate() {
                             <label for="">
                                 <p>Subtasks</p>
                             </label>
-                            <div class="addTask-sectio subtask-section"><input onclick="cancelEditSubtaskItem();"
-                                    class="add-task-input-field" type="text" placeholder="Add new subtask"
-                                    maxlength="30"><img class="subtask-add" src="./assets/img/addTask/add.svg" alt=""
-                                    onclick="focusSubtaskInput()">
-                                <div style="right:-84%" class="cancel-check-btn"><img class="subtask-cancel" a
-                                        onclick="cancelSubInput()" src="./assets/img/addTask/cross.svg" alt=""><img
-                                        class="subtask-check" src="./assets/img/addTask/check.svg" alt=""
-                                        onclick="renderSubtaskList()"></div>
+                            <div class="addTask-sectio subtask-section"><input
+                                                onclick="cancelEditSubtaskItem();" class="add-task-input-field"
+                                                type="text" placeholder="Add new subtask" maxlength="30"><img
+                                                class="subtask-add" src="./assets/img/addTask/add.svg" alt=""
+                                                onclick="focusSubtaskInput()">
+                                            <div class="cancel-check-btn"><img class="subtask-cancel" a
+                                                    onclick="cancelSubInput()" src="./assets/img/addTask/cross.svg"
+                                                    alt=""><img class="subtask-check"
+                                                    src="./assets/img/addTask/check.svg" alt=""
+                                                    onclick="renderSubtaskList()"></div>
 
-                            </div>
+                                        </div>
+
 
 
                             <section id="subtasksList" class="subtask-list"></section>
