@@ -593,3 +593,18 @@ textarea {
   cursor: pointer;
   background-color: #c9cdd3;
 }
+
+@media(max-width:999px){
+  .addTask-wrapper {
+    flex-direction: column;
+    gap: 16px;
+
+    .addTask-left {
+      width: 100%;
+    }
+
+    .addTask-right {
+      width: 100%;
+    }
+  }
+}
