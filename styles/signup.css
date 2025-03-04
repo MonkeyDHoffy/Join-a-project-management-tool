@@ -267,11 +267,11 @@ body {
 }
 
 .confirm-priv-pol label::before {
-    content: "";
+    content: url('../assets/svg/box-unchecked.svg');
     display: inline-block;
     width: 1em;
     height: 1em;
-    border: .05em solid #2A3647;
+    /* border: .05em solid #2A3647; */
     border-radius: .15em;
     margin-right: .5em;
     cursor: pointer;
