@@ -610,6 +610,19 @@ textarea {
 }
 
 @media(max-width:570px){
+  .header{
+    justify-content: flex-end !important;
+    p{
+      display: none;
+    }
+  }
+
+  .question-mark-img{
+    display: none;
+  }
+  .content-wrapper{
+    overflow: auto;
+  }
   .content-right-wrapper {
     height: 100%;
     padding: 16px;
@@ -620,9 +633,9 @@ textarea {
 
 .prio-buttons {
 flex-direction: column;
+align-items: center;
 }
 .addTask-footer {
-  padding: 16px;
   position: relative;
   top: 8%;
   display: flex;
