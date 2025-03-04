@@ -254,7 +254,7 @@ function renderTaskEditOverlay(element) {
               onclick="addRequiredDate(this)"
               oninput="addRequiredDate(this)"
               class="add-task-input-field"
-              type="date"
+              type="date" lang="de-DE"
               style="color: #ccc;"
               value="${element.dueDate || ''}"
             />

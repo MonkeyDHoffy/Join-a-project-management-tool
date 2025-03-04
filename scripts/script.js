@@ -20,6 +20,7 @@ let data;
 let users = [];
 let createdTasks = [];
 let contacts = [];
+let loggedInUser;
 
 async function getData(path = "") {
   try {
@@ -90,36 +91,20 @@ async function getUsers() {
   users = Object.values(await getData("users"));
 }
 
-function getQueryParamsUserName() {
+async function getQueryParamsUserName() {
   const urlParams = new URLSearchParams(window.location.search);
   const userName = urlParams.get('name');
+  if (userName !== null) {
   console.log(urlParams.get('name'));
+  await putData("loggedInUser", userName);
   return userName;
-}
-
-function getActuellTime() {
-  let date = new Date();
-  let hours = date.getHours();
-  if (hours < 12) {
-      greeting = "Good morning";
-  } else if (hours < 18) {
-      greeting = "Good afternoon";
-  } else {
-      greeting = "Good evening";
   }
 }
 
-function displayUserName() {
-  getActuellTime();
-  let greetingRef = document.getElementById("greeting");
-  const userName = getQueryParamsUserName();
-  if (userName == null) {
-    greetingRef.innerHTML = greeting;
-    return;
-  }
-  greetingRef.innerHTML = greeting + ", ";
-  const userNameElement = document.getElementById("userName");
-  userNameElement.textContent = decodeURIComponent(userName);
+async function logOut() {
+  loggedInUser = "";
+  await putData("loggedInUser", loggedInUser);
+  window.location.href = "./index.html";
 }
 
 // function regsterUser() {

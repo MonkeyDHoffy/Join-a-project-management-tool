@@ -4,7 +4,6 @@ function loginInit() {
     validateForm();
     passwordFocus();
     getUsers();
-    getQueryParamsUserName();
     //loginUser(messages);
 };
 
@@ -165,7 +164,7 @@ function getRememberMeUser() {
 }
 
 
-function loginUser() {
+async function loginUser() {
     let registeredUser   = users.find(user => user.email === document.getElementById('email').value);
     let errorElement = document.getElementById('error');
 

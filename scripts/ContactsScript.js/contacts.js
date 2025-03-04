@@ -16,7 +16,7 @@ async function createContact() {
   contacts.push(contact);
   await putData("contacts/", contacts);
   hideOverlay();
-  await getContacts();
+  init();
   showClickNotification();
 }
 
@@ -33,7 +33,7 @@ async function editContact(id) {
   contacts[id] = editedContact;
   await putData("contacts/", contacts);
   hideOverlay();
-  await getContacts();
+  init();
   renderContact(id);
 }
 

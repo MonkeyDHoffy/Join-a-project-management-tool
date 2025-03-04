@@ -12,8 +12,8 @@ async function summaryInit() {
     renderTaskFieldsAmount('done', 'done');
     showAmountOfUrgentTasks();
     showUpcomingDeadline();
-    displayUserName();
-    getActuellTime();
+    await getQueryParamsUserName();
+    await displayUserName();
 }
 
 function renderTaskAmount() {
@@ -45,5 +45,31 @@ function showUpcomingDeadline() {
         upcomingDeadlineRef.innerHTML = upcomingDeadline.toLocaleDateString("en-US", options);
     } else {
         upcomingDeadlineRef.innerHTML = "No upcoming deadlines";
+    }
+}
+
+async function displayUserName() {
+    loggedInUser = await getData("loggedInUser");
+    getActuellTime();
+    let greetingRef = document.getElementById("greeting");
+    if (loggedInUser == "" || loggedInUser == null) {
+        greetingRef.innerHTML = greeting;
+        loggedInUser = "";
+        return;
+    }
+    greetingRef.innerHTML = greeting + ", ";
+    const userNameElement = document.getElementById("userName");
+    userNameElement.textContent = decodeURIComponent(loggedInUser);
+}
+
+function getActuellTime() {
+    let date = new Date();
+    let hours = date.getHours();
+    if (hours < 12) {
+        greeting = "Good morning";
+    } else if (hours < 18) {
+        greeting = "Good afternoon";
+    } else {
+        greeting = "Good evening";
     }
 }
