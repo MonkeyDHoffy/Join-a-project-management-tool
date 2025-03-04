@@ -346,7 +346,7 @@ async function confirmTaskChanges(currentTitle) {
   //     delete selectedContacts[index]
   // }
   let editedTask = {
-    "id": createdTasks.length + 1, "status": "toDo", "title": title,
+    "id": createdTasks.length + 1, "status": taskToEdit.status, "title": title,
     "description": description,
     "selectedContacts": editedSelectedContacts.length > 0 ? editedSelectedContacts.map((contact) => contact.name) : selectedContacts,
     "dueDate": dueDate, "priority": priority, "selectedCategory": taskToEdit.selectedCategory,
