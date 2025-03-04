@@ -232,10 +232,7 @@ function registerUser() {
     };
 
     if (users.find(user => user.email === document.getElementById('email').value)) {
-        //alert('User already exists');
-        // if (!messages.includes('User already exists')) {
-           messages.push('User already exists');
-        // }
+           messages.push('User already exists'); 
 
     } else {
         users.push(user);
