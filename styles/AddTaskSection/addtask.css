@@ -608,3 +608,29 @@ textarea {
     }
   }
 }
+
+@media(max-width:570px){
+  .content-right-wrapper {
+    height: 100%;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.prio-buttons {
+flex-direction: column;
+}
+.addTask-footer {
+  padding: 16px;
+  position: relative;
+  top: 8%;
+  display: flex;
+  justify-content: space-between;
+  span{
+    display: none;
+  }
+}
+
+
+}
