@@ -303,11 +303,12 @@ body {
 }
 
 .remember-me-wrapper label::before {
-    content: "";
+    content: url('../assets/svg/box-unchecked.svg');
+    /* content: ""; */
     display: inline-block;
     width: 1em;
     height: 1em;
-    border: .05em solid #2A3647;
+    /* border: .05em solid #2A3647; */
     border-radius: .15em;
     margin-right: .5em;
     cursor: pointer;
@@ -325,6 +326,7 @@ body {
     width: 1em;
     height: 1em;
     border: none;
+    /* border: .05em solid white; */
 }
 
 .rm-chb {
