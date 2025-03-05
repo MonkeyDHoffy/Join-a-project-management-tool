@@ -131,7 +131,7 @@
                                         <p>Assigned to</p>
                                     </label>
                                     <div id="assigned-to-input">
-                                        <input class="add-task-input-field placeholder-color" type="text"
+                                        <input oninput="filterDropdownItems()" class="add-task-input-field placeholder-color" type="text"
                                             id="assigned-to-field" placeholder="Select contacts to assign"
                                             onclick="toggleDropdown(); toggleAssignToIconSrc(); ">
                                         <div onclick="toggleDropdown(); toggleAssignToIconSrc();"

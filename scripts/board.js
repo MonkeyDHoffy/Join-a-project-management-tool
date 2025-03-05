@@ -166,7 +166,7 @@ function addTaskOverlayBoardTemplate() {
                             <p>Assigned to</p>
                         </label>
                         <div id="assigned-to-input">
-                            <input class="add-task-input-field placeholder-color" type="text" id="assigned-to-field"
+                            <input oninput="filterDropdownItems()" class="add-task-input-field placeholder-color" type="text" id="assigned-to-field"
                                 placeholder="Select contacts to assign"
                                 onclick="toggleDropdown(); toggleAssignToIconSrc(); ">
                             <div onclick="toggleDropdown(); toggleAssignToIconSrc();"
@@ -348,7 +348,7 @@ async function confirmTaskChanges(currentTitle) {
   let editedTask = {
     "id": createdTasks.length + 1, "status": taskToEdit.status, "title": title,
     "description": description,
-    "selectedContacts": editedSelectedContacts.length > 0 ? editedSelectedContacts.map((contact) => contact.name) : selectedContacts,
+    "selectedContacts": editedSelectedContacts.length > 0 ? editedSelectedContacts : selectedContacts,
     "dueDate": dueDate, "priority": priority, "selectedCategory": taskToEdit.selectedCategory,
     "subtasks": selectedSubtasks.length > 0 ? selectedSubtasks : [""],
     "completedSubtasks": taskToEdit.completedSubtasks.length > 0 ? taskToEdit.completedSubtasks : [""]

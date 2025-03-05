@@ -5,10 +5,14 @@ let selectedContacts = [];
 /**
  * Toggles the display of the dropdown content.
  */
-function toggleDropdown() {
+async function toggleDropdown() {
+  await toggleCheckedBackground();
+  checkSelectedContacts();
+}
+
+async function toggleCheckedBackground() {
   let dropdown = document.getElementById("dropdown-content");
-  dropdown.style.display =
-    dropdown.style.display === "block" ? "none" : "block";
+  dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
 }
 
 // Close the dropdown if the user clicks outside of it
@@ -131,18 +135,11 @@ function validateInputFields() {
 //
 
 // Search Functionality and Alphabetical Sorting
-function filterAndSortDropdown() {
-  let assignedToField = document.getElementById("assigned-to-field");
-  let dropdownContent = document.getElementById("dropdown-content");
 
-  assignedToField.addEventListener("input", filterDropdownItems);
-  document
-    .getElementById("assigned-to-field")
-    .addEventListener("click", async function () {
-      await renderAssignedContacts();
-      sortDropdownItems();
-    });
-};
+async function filterAndSortDropdown() {
+  await renderAssignedContacts();
+  sortDropdownItems();
+}
 
 function sortDropdownItems() {
   dropdownItems.sort((a, b) => {
@@ -204,9 +201,7 @@ function restoreSelectedState() {
 
 function assignedContactsTemplate(index) {
   return `
-        <div onclick="checkIt('${
-          assignedContacts[index].name
-        }', ${index})" class="dropdown-item">
+        <div onclick="checkIt('${assignedContacts[index].name}', ${index}); updateSelectedContacts(this)" class="dropdown-item">
           <div style="background-color:${
             assignedContacts[index].color
           }" class="addTask-profilepicture">${assignedContacts[index].name

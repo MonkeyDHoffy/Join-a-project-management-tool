@@ -165,6 +165,7 @@ function renderTaskCardOverlay(event) {
 
 function showAssignedContacts(selectedContacts) {
   let assignedCirclesSectionRef = document.getElementById("assigned-circles-section");
+  assignedCirclesSectionRef.innerHTML = "";
   let assignedContacts = contacts.filter((contact) => selectedContacts.includes(contact.name));
   for (let index = 0; index < assignedContacts.length; index++) {
     assignedCirclesSectionRef.innerHTML += userCircleTemplate(assignedContacts[index], assignedContacts[index].color);  
@@ -220,7 +221,7 @@ function renderTaskEditOverlay(element) {
               <p>Assigned to</p>
             </label>
             <div id="assigned-to-input">
-              <input
+              <input oninput="filterDropdownItems()"
                 class="add-task-input-field placeholder-color"
                 type="text"
                 id="assigned-to-field"
@@ -349,7 +350,37 @@ function renderTaskEditOverlay(element) {
   filterAndSortDropdown();
   toggleSubtasks();
   showAssignedContacts(element.selectedContacts);
-  selectedContacts = element.selectedContacts;
+  editedSelectedContacts = element.selectedContacts;
   }
 }
 
+function checkSelectedContacts() {
+  // let img = item.querySelector(".cstm-checkbox");
+  // let checkedSrc = "./assets/svg/addTasksSvg/checked.svg";
+  // let uncheckedSrc = "./assets/svg/addTasksSvg/Checkbutton.svg";
+  let contactsContainer = document.getElementsByClassName("dropdown-item");
+  for (let i = 0; i < contactsContainer.length; i++) {
+    let contact = contactsContainer[i];
+    let contactName = contact.querySelector("p").textContent;
+    if (editedSelectedContacts.includes(contactName)) {
+      contact.classList.add("checked");
+      contact.querySelector(".cstm-checkbox").src = "./assets/svg/addTasksSvg/checked.svg";
+      // img.src = checkedSrc;
+    } else {
+      // img.src = uncheckedSrc;
+      contact.classList.remove("checked");
+    }
+  }
+}
+
+function updateSelectedContacts(element) {
+  let contactName = element.querySelector("p").textContent;
+  if (editedSelectedContacts.includes(contactName)) {
+    let index = editedSelectedContacts.indexOf(contactName);
+    editedSelectedContacts.splice(index, 1);
+  }else {
+    editedSelectedContacts.push(contactName);
+  }
+  showAssignedContacts(editedSelectedContacts);
+}
+ 
