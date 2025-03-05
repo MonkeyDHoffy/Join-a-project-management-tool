@@ -50,7 +50,7 @@ function breakDescriptions() {
   let descriptionContainers = document.getElementsByClassName("board-card-description");
   for (let i = 0; i < descriptionContainers.length; i++) {
     let description = descriptionContainers[i].querySelector("p").textContent;
-    description = description.slice(0, 50) + "...";
+    description = description.slice(0, 38) + "...";
     descriptionContainers[i].textContent = description;
 }
 }

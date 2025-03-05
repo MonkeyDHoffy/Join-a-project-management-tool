@@ -192,6 +192,7 @@ body {
 }
 
 .board-card {
+  word-break: break-all;
   cursor: pointer;
   padding: 16px;
   border: none;
