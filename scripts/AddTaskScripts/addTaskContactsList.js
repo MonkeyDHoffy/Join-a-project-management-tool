@@ -122,8 +122,8 @@ function validateInputs() {
 function validateInputFields() {
   let titleInput = document.querySelector(".addTask-title input");
   let dateInput = document.querySelector(".task-date input");
-  let categoryInput = document.getElementById("category-field");
-  let createTaskButton = document.querySelector(".createTask-button");
+  // let categoryInput = document.getElementById("category-field");
+  // let createTaskButton = document.querySelector(".createTask-button");
 
   titleInput.addEventListener("input", validateInputs);
   dateInput.addEventListener("input", validateInputs);
