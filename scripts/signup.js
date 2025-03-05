@@ -223,7 +223,7 @@ function setFormValidityConditons(signupName, email, password, repeatPassword, c
     }
 }
 
-
+/* this function should actually be an async function, no?  */
 function registerUser() {
     let user = {
         'name': document.getElementById('signupName').value,
@@ -240,3 +240,28 @@ function registerUser() {
         showSignUpMsg();
     }
 }
+
+/* this is what the AI suggested
+
+async function registerUser () {
+  try {
+    let user = {
+      'name': document.getElementById('signupName').value,
+      'email': document.getElementById('email').value,
+      'password': document.getElementById('password').value
+    };
+
+    if (users.find(user => user.email === document.getElementById('email').value)) {
+      messages.push('User  already exists');
+    } else {
+      await putData("users", users);
+      showSignUpMsg();
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
+
+*/
