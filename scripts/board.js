@@ -336,6 +336,14 @@ let editedSelectedContacts = [];
 
 async function confirmTaskChanges(currentTitle) {
   getTaskOverlayInputs();
+  let id = 0;
+  for (let index = 0; index < createdTasks.length; index++) {
+    createdTasks.forEach((task) => {
+      if(id == task.id){
+        id++;
+      }
+    }) 
+  }
   let taskToEdit = createdTasks.find((task) => task.title == currentTitle);
   let taskIndex = createdTasks.indexOf(taskToEdit);
   items.forEach((item) => {
@@ -346,15 +354,13 @@ async function confirmTaskChanges(currentTitle) {
   //     delete selectedContacts[index]
   // }
   let editedTask = {
-    "id": createdTasks.length + 1, "status": taskToEdit.status, "title": title,
+    "id": id, "status": taskToEdit.status, "title": title,
     "description": description,
     "selectedContacts": editedSelectedContacts.length > 0 ? editedSelectedContacts : selectedContacts,
     "dueDate": dueDate, "priority": priority, "selectedCategory": taskToEdit.selectedCategory,
     "subtasks": selectedSubtasks.length > 0 ? selectedSubtasks : [""],
     "completedSubtasks": taskToEdit.completedSubtasks.length > 0 ? taskToEdit.completedSubtasks : [""]
   }
-  createdTasks.splice(taskIndex, 1);
-  await putTasks();
   createdTasks[taskIndex] = editedTask;
   selectedSubtasks = [];
   selectedContacts = [];
