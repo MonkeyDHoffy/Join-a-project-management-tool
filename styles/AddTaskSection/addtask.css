@@ -1,7 +1,7 @@
 .content-right-wrapper {
   height: 100%;
   max-width: 1116px;
-  padding: 110px 96px;
+  padding: 70px 96px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -10,7 +10,7 @@
 .add-task-header-and-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   height: 100%;
 }
 
@@ -160,8 +160,6 @@ textarea {
 }
 
 .addTask-footer {
-  position: relative;
-  top: 8%;
   display: flex;
   justify-content: space-between;
 }
@@ -219,8 +217,7 @@ textarea {
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.addTask-subtasks:focus {
-}
+.addTask-subtasks:focus {}
 
 .prio-buttons {
   display: flex;
@@ -409,6 +406,7 @@ textarea {
   0% {
     transform: translateY(900%);
   }
+
   100% {
     transform: translateY(0);
   }
@@ -418,6 +416,7 @@ textarea {
   0% {
     transform: translateY(0);
   }
+
   100% {
     transform: translateY(100%);
   }
@@ -461,8 +460,7 @@ textarea {
   cursor: pointer;
 }
 
-.subtask-section {
-}
+.subtask-section {}
 
 .cancel-check-btn {
   display: none;
@@ -507,6 +505,7 @@ textarea {
 
 .subtask-item-field:hover {
   background-color: #ccc;
+
   .btn-section {
     display: block;
   }
@@ -527,8 +526,8 @@ textarea {
   display: flex;
 }
 
-.edit-subtask-item-field input {
-}
+.edit-subtask-item-field input {}
+
 .edit-subtask-btns {
   display: flex;
   gap: 8px;
@@ -563,6 +562,7 @@ textarea {
 .addTask-category {
   padding-top: 16px;
 }
+
 .addTask-assignedTo {
   padding-top: 16px;
 }
@@ -594,7 +594,7 @@ textarea {
   background-color: #c9cdd3;
 }
 
-@media(max-width:999px){
+@media(max-width:999px) {
   .addTask-wrapper {
     flex-direction: column;
     gap: 16px;
@@ -609,41 +609,44 @@ textarea {
   }
 }
 
-@media(max-width:570px){
-  .header{
+@media(max-width:570px) {
+  .header {
     justify-content: flex-end !important;
-    p{
+
+    p {
       display: none;
     }
   }
 
-  .question-mark-img{
+  .question-mark-img {
     display: none;
   }
-  .content-wrapper{
+
+  .content-wrapper {
     overflow: auto;
   }
+
   .content-right-wrapper {
     height: 100%;
     padding: 16px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-.prio-buttons {
-flex-direction: column;
-align-items: center;
-}
-.addTask-footer {
-  position: relative;
-  top: 8%;
-  display: flex;
-  justify-content: space-between;
-  span{
-    display: none;
   }
-}
+
+  .prio-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .addTask-footer {
+    display: flex;
+    justify-content: space-between;
+
+    span {
+      display: none;
+    }
+  }
 
 
 }
