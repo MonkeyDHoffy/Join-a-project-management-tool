@@ -334,7 +334,42 @@ function closeOverlayOutside(event) {
 
 let editedSelectedContacts = [];
 
-async function confirmTaskChanges(currentTitle) {
+async function confirmTaskChanges(currentTitle) {async function confirmTaskChanges(currentTitle) {
+  getTaskOverlayInputs();
+  let taskToEdit = createdTasks.find((task) => task.title == currentTitle);
+  if (!taskToEdit) return; // Sicherheitscheck
+
+  let taskIndex = createdTasks.indexOf(taskToEdit);
+  items.forEach((item) => {
+    selectedSubtasks.push(item.innerHTML);
+  });
+  
+  // Behalte die ursprüngliche ID bei
+  let editedTask = {
+    "id": taskToEdit.id,
+    "status": taskToEdit.status,
+    "title": title,
+    "description": description,
+    "selectedContacts": editedSelectedContacts.length > 0 ? editedSelectedContacts : selectedContacts || [],
+    "dueDate": dueDate,
+    "priority": priority,
+    "selectedCategory": taskToEdit.selectedCategory,
+    "subtasks": selectedSubtasks.length > 0 ? selectedSubtasks : taskToEdit.subtasks || [""],
+    "completedSubtasks": taskToEdit.completedSubtasks || [""]
+  };
+  
+  // Aktualisiere den Task direkt
+  createdTasks[taskIndex] = editedTask;
+  
+  // Setze die Arrays zurück
+  selectedSubtasks = [];
+  selectedContacts = [];
+  
+  // Speichere und aktualisiere
+  await putTasks();
+  await boardInit();
+  closeTaskCardOverlay();
+}
   getTaskOverlayInputs();
   let taskToEdit = createdTasks.find((task) => task.title == currentTitle);
   let taskIndex = createdTasks.indexOf(taskToEdit);
