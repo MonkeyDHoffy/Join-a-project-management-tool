@@ -17,39 +17,66 @@ body {
     flex-direction: column;
     height: 100%;
     overflow: hidden;
-    background-color: #d8eef8;
+    background-color: #F6F7F8;
 
 
 }
 
 /*   :::::::   content wrapper   :::::::   */
 .signup-content-box {
-    background-color: #d8eef8;
+    /* background-color: #3c5ef5; */
+    /* background-color: #d8eef8; */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    width: 100%;
+    width: 96vw;
     max-width: 1440px;
-    height: 100vh;
-    min-height: 80vh;
-    padding: 48px 0;
+    height: 880px;
+    min-height: 880px;
     position: relative;
     overflow: hidden;
 }
 
+/* .login-content-box {
+    background-color: #3c5ef5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 96vw;
+    max-width: 1440px;
+    height: 720px;
+    min-height: 720px;
+    position: relative;
+    overflow: hidden;
+} */
+
+
+
+
 /*   :::::::   'not a user' login   :::::::   */
 .signup-logo-box {
     width: 100%;
+    height: 100px;
     display: flex;
     align-items: center;
-    padding: 0 48px;
-    bottom: 316px;
+    /* padding: 0 48px; */
+    /* bottom: 316px; */
     /*:::::*/
-    position: relative;
+    position: absolute;
+    top: 0;
     /*   :::::::   
     z-index: 1;*/
 }
+ .logo, .logo img {
+    height: 100px;
+    object-fit: contain;
+    
+ }
+
+
+
 
 
 .nau-sign-up button:hover,
@@ -66,7 +93,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 652px;
+    width: 560px;
     height: 630px;
     min-height: 449px;
     background-color: rgb(255, 255, 255);
@@ -257,6 +284,7 @@ body {
 .confirm-priv-pol label {
     cursor: pointer;
     display: flex;
+    align-items: center;
 }
 
 .confirm-priv-pol input[type="checkbox"] {
