@@ -15,6 +15,7 @@ function updateHTML() {
   renderTasks("awaitFeedback", "awaitFeedback");
   renderTasks("done", "done");
   hideSubtasksIfEmpty();
+  breakDescriptions();
   cardIndex = 0;
 }
 
@@ -43,6 +44,15 @@ function hideSubtasksIfEmpty() {
       subtasksRef[i].style.display = "none";
     }
   }
+}
+
+function breakDescriptions() {
+  let descriptionContainers = document.getElementsByClassName("board-card-description");
+  for (let i = 0; i < descriptionContainers.length; i++) {
+    let description = descriptionContainers[i].querySelector("p").textContent;
+    description = description.slice(0, 50) + "...";
+    descriptionContainers[i].textContent = description;
+}
 }
 
 //-- drag and drop
