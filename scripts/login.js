@@ -11,7 +11,7 @@ function loginInit() {
 
 function handleAnimationBackdrop() {
     const backdrop = document.getElementById('backdrop');
-    backdrop.addEventListener("animationend", () => {
+    backdrop.addEventListener('animationend', () => {
         backdrop.classList.add('d-none');
         backdrop.remove();
     });
