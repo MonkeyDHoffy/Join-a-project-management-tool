@@ -24,17 +24,15 @@ body {
 
 /*   :::::::   content wrapper   :::::::   */
 .login-content-box {
-    background-color: #d8eef8;
+    background-color: #3c5ef5;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    width: 100%;
+    width: 96vw;
     max-width: 1440px;
-    height: 100vh;
-    min-height: 80vh;
-    /*background-color: #F6F7F8;*/
-    padding: 48px 0;
+    height: 720px;
+    min-height: 720px;
     position: relative;
     overflow: hidden;
 }
@@ -59,8 +57,11 @@ body {
     }
 
     100% {
-        top: 80px;
-        left: 77px;
+        top: 0px;
+        left: 0px;
+
+        /* top: 80px;
+        left: 77px; */
         transform: scale(0.3, 0.3);
     }
 }
@@ -71,9 +72,9 @@ body {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 0 48px;
-    position: relative;
-    bottom: 80px;
+    /* padding: 0 48px; */
+    position: absolute;
+    top: 0px;
     /*   :::::::   
     z-index: 1;*/
 }
@@ -84,7 +85,7 @@ body {
     align-items: center;
     width: 320px;
     height: 40px;
-    margin-right: 40px;
+    /* margin-right: 40px; */
     padding: 8px;
     gap: 16px;
 }
@@ -116,7 +117,7 @@ body {
 
 
 /*   :::::::   logo und animation   :::::::   */
-.p1-logo-box {
+/* .p1-logo-box {
     position: fixed;
     height: 100%;
     max-height: 1024px;
@@ -127,7 +128,7 @@ body {
     align-items: center;
     background: transparent;
     z-index: 800;
-}
+} */
 
 .p1-logo {
     position: absolute;
@@ -168,11 +169,12 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 652px;
+    width: 560px;
     height: 449px;
     min-height: 449px;
     background-color: rgb(255, 255, 255);
     border-radius: 30px;
+    /* margin-top: 32px; */
 
 }
 
@@ -396,10 +398,8 @@ body {
     align-items: center;
     width: 100%;
     height: 48px;
-    position: relative;
-    top: 80px;
-
-
+    position: absolute;
+    bottom: 8px;
 }
 
 .prvt-polce-legl-note {
