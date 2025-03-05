@@ -353,8 +353,6 @@ async function confirmTaskChanges(currentTitle) {
     "subtasks": selectedSubtasks.length > 0 ? selectedSubtasks : [""],
     "completedSubtasks": taskToEdit.completedSubtasks.length > 0 ? taskToEdit.completedSubtasks : [""]
   }
-  createdTasks.splice(taskIndex, 1);
-  await putTasks();
   createdTasks[taskIndex] = editedTask;
   selectedSubtasks = [];
   selectedContacts = [];
