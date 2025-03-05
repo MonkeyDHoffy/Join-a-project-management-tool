@@ -199,3 +199,9 @@
 .div-border-left:hover {
   border-left: none;
 }
+
+.task-card h2 {
+  max-height: 128px;
+  overflow: auto;
+  word-break: break-word;
+}
