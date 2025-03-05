@@ -224,7 +224,7 @@ function setFormValidityConditons(signupName, email, password, repeatPassword, c
 }
 
 /* this function should actually be an async function, no?  */
-function registerUser() {
+async function registerUser() {
     let user = {
         'name': document.getElementById('signupName').value,
         'email': document.getElementById('email').value,
@@ -236,7 +236,7 @@ function registerUser() {
 
     } else {
         users.push(user);
-        putData("users", users);
+        await putData("users", users);
         showSignUpMsg();
     }
 }
