@@ -6,7 +6,7 @@
       .st0 {
         fill: none;
         stroke: #2a3647;
-        stroke-width: 1.4px;
+        stroke-width: 1px;
       }
     </style>
   </defs>
