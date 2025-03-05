@@ -1,12 +1,27 @@
 let messages = [];
 
 function loginInit() {
+
     validateForm();
     passwordFocus();
     getUsers();
+    handleAnimationBackdrop();
     //loginUser(messages);
 };
 
+function handleAnimationBackdrop() {
+    const backdrop = document.getElementById('backdrop');
+    backdrop.addEventListener("animationend", () => {
+        backdrop.classList.add('d-none');
+        backdrop.remove();
+    });
+}
+
+// function removeAnimationBackdrop() {
+//     let backdrop = document.getElementById('backdrop');
+//     backdrop.classList.add('d-none');
+//     backdrop.classList.remove();
+// }
 
 
 function validateForm() {
@@ -165,17 +180,17 @@ function getRememberMeUser() {
 
 
 async function loginUser() {
-    let registeredUser   = users.find(user => user.email === document.getElementById('email').value);
+    let registeredUser = users.find(user => user.email === document.getElementById('email').value);
     let errorElement = document.getElementById('error');
 
     if (!registeredUser) {
         userNotFoundMessage(errorElement);
-    
-    } else if (registeredUser  .password !== document.getElementById('password').value) {
+
+    } else if (registeredUser.password !== document.getElementById('password').value) {
         passwordIncorrectMessage(errorElement);
-      
+
     } else {
-        let userName = encodeURIComponent(registeredUser  .name);
+        let userName = encodeURIComponent(registeredUser.name);
         window.location.href = `summary.html?name=${userName}`;
     }
 }
