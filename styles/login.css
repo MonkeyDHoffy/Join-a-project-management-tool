@@ -164,7 +164,8 @@ body {
 
 /*   :::::::   page 'Login'   :::::::   */
 .login-content {
-    background-color: rgb(214, 243, 186);
+
+    background-color: rgb(189, 235, 146);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -172,7 +173,7 @@ body {
     width: 560px;
     height: 449px;
     min-height: 449px;
-    background-color: rgb(255, 255, 255);
+    /* background-color: rgb(255, 255, 255); */
     border-radius: 30px;
     /* margin-top: 32px; */
 
@@ -223,7 +224,8 @@ body {
     gap: 16px;
 }
 
-.email-wrapper, .pw-wrapper {
+.email-wrapper,
+.pw-wrapper {
     width: 422px;
     height: 48px;
     color: rgba(0, 0, 0, 0.3);
@@ -259,13 +261,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
-
 }
+
 .cursor-pointer {
     cursor: pointer;
 }
- /* .eye_slash_small {
+
+/* .eye_slash_small {
     width: 20px;
     height: 20px;
 } */
@@ -324,6 +326,7 @@ body {
     background: #EDF2FA;
 
 }
+
 .remember-me-wrapper input[type="checkbox"]:checked+label::before {
     content: url('../assets/svg/box-checked.svg');
     width: 1em;
@@ -367,6 +370,7 @@ body {
     cursor: pointer;
 
 }
+
 .login:hover {
     background-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
@@ -431,7 +435,7 @@ body {
 
 /*   :::::::   media query  :::::::   */
 
-@media screen and (width <= 428px) {
+@media screen and ( 320px <= width <= 428px) {
 
     .backdrop {
         position: absolute;
@@ -450,7 +454,26 @@ body {
     .logo-resp {
         display: block;
     }
+
     .login-content {
         width: 88%;
+    }
+
+    .email-wrapper,
+    .pw-wrapper {
+        width: 72%;
+       
+    }
+}
+
+@media screen and (width <= 640px) {
+    .login-content {
+        width: 88%;
+    }
+
+    .email-wrapper,
+    .pw-wrapper {
+        width: 88%;
+       
     }
 }
