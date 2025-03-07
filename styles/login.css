@@ -251,6 +251,7 @@ body {
     font-size: 1em;
     outline: none;
     padding: 0 16px 0 0;
+    background: transparent;
 }
 
 #pw-icon {
@@ -460,19 +461,19 @@ body {
     }
 
     .email-wrapper,
-    .pw-wrapper {
-        width: 72%;
+    .pw-wrapper, #loginForm {
+        width: 88%;
        
     }
 }
 
 @media screen and (width <= 640px) {
     .login-content {
-        width: 88%;
+        width: 84%;
     }
 
     .email-wrapper,
-    .pw-wrapper {
+    .pw-wrapper, #loginForm {
         width: 88%;
        
     }
