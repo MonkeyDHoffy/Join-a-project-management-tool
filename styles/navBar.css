@@ -329,3 +329,14 @@ span {
   color: #ffffff;
   background-color: #284572;
 }
+
+@media(max-width:570px) {
+  .header {
+    justify-content: flex-end !important;
+
+    p {
+      display: none;
+    }
+  }
+
+}

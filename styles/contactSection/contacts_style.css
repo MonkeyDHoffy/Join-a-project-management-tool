@@ -208,3 +208,11 @@
 .mail-and-number {
 }
 
+@media(max-width: 1000px) {
+ .contacts-content-left {
+    width: 100%;
+  }
+  .contacts-content-right {
+    width: 0;
+  }
+}

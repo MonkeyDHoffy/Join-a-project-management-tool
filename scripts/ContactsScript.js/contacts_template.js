@@ -115,6 +115,13 @@ function renderContact(id) {
                                   </div>
                               </div>
                               </div>`;
+    
+    if (window.innerWidth <= 1000) {
+    let contactsLeft = document.querySelector('.contacts-content-left');
+    let contactsRight = document.querySelector('.contacts-content-right');
+        contactsLeft.style.display = 'none';
+        contactsRight.style.width = '100%';
+    }
 }
 
 function renderEditOverlay(id) {
