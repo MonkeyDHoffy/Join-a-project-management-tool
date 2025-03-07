@@ -177,6 +177,109 @@ h2 {
     gap:0;
   }
 }
+@media(max-height:820px){
+  .summary-wrapper {
+    height: 100%;
+    overflow-y: auto;
+    justify-content: flex-start;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  
+  .headline {
+    position: static;
+    margin-top: 10px;
+  }
+}
+
+@media(max-width:550px){
+  .summary-overview{
+    transform: scale(0.85);
+    transform-origin: center;
+    width: 100%;
+    position: static; /* Changed from relative positioning with negative top */
+    margin-top: 20px;
+  }
+  .summary-wrapper {
+    padding-left: 20px;
+    padding-right: 20px;
+    align-items: center;
+  }
+  .board-overview{
+    gap:16px;
+  }
+  .flex-box{
+    position: relative;
+    top:-5%;
+  }
+}
+
+@media(max-width:450px){
+  .summary-overview{
+    transform: scale(0.85);
+    transform-origin: center;
+  }
+  .summary-wrapper {
+    overflow-y: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: calc(100vh - 96px);
+    max-height: 100%;
+    justify-content: flex-start;
+    padding-top: 20px;
+  }
+  .flex-box{
+    position: relative;
+    top:-5%;
+  }
+}
+
+@media(max-width:375px){
+  .summary-overview{
+    transform: scale(0.75);
+    transform-origin: center;
+    position: static;
+    margin-top: 15px;
+  }
+  
+  .headline {
+    scale:0.8;
+    margin-top: 5px;
+  }
+  .flex-box{
+    position: relative;
+    top:-5%;
+  }
+}
+
+@media(max-width:325px){
+  .summary-overview{
+    transform: scale(0.65);
+    transform-origin: center;
+  }
+  .summary-wrapper{
+    padding: 0 15px;
+  }
+  .headline{
+    scale: 0.75;
+    position: static; 
+    margin-top: 0;
+    h1{
+      font-size: 57px;
+    }
+    span{
+      font-size:20px;
+    }
+  }
+}
+
+@media(max-height:600px){
+  .summary-wrapper {
+    padding-top: 10px;
+    justify-content: flex-start;
+  }
+  
+}
 
 @media(max-width:550px){
   .summary-overview{
@@ -188,6 +291,7 @@ h2 {
     top: -10%;
   }
   .summary-wrapper {
+  
     padding-left: 20px;
     padding-right: 20px;
     align-items: center;
@@ -203,6 +307,7 @@ h2 {
     transform-origin: center;
   }
   .summary-wrapper {
+    overflow-y: scroll;
     padding-left: 15px;
     padding-right: 15px;
   }
@@ -216,6 +321,21 @@ h2 {
     top: -15%;
   }
 }
+
+
+@media(max-width:325px){
+  .summary-overview{
+    transform: scale(0.65);
+    transform-origin: center;
+  }
+  .headline{
+    scale: 0.8;
+    position: relative;
+    top: 5%;
+  }
+}
+
+
 
 @media(max-width:320px){
   .summary-overview{
