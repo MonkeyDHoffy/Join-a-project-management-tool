@@ -221,6 +221,10 @@
 }
 
 @media(max-width: 1000px) {
+
+  .contacts-heading-right {
+    padding-top: 0px;
+  }
   .contacts-content-left {
     width: 100%;
   }
@@ -233,4 +237,35 @@ width: 100%;
   .responsive-back-btn {
     display: flex;
   }
+}
+
+@media(max-width: 614px) {
+  .contacts-content-right{
+    
+    h2{
+      font-size: 36px;
+    }
+  }
+
+}
+
+@media(max-width: 544px) {
+  .contacts-content-right{
+    .avatar-circle{
+      width: 80px;
+      height: 80px;
+    }
+    
+    h2{
+      font-size: 36px;
+    }
+
+    .name-and-edit{
+      padding-left: 32px;
+    }
+  }
+  .contact-information {
+    padding: 32px;
+}
+
 }
