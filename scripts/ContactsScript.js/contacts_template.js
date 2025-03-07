@@ -120,9 +120,18 @@ function renderContact(id) {
     let contactsLeft = document.querySelector('.contacts-content-left');
     let contactsRight = document.querySelector('.contacts-content-right');
         contactsLeft.style.display = 'none';
-        contactsRight.style.width = '100%';
+        contactsRight.style.display = 'block';
     }
 }
+
+function responsiveBackBtn() {
+    if (window.innerWidth <= 1000) {
+      
+      let contactsLeft = document.querySelector('.contacts-content-left');
+      let contactsRight = document.querySelector('.contacts-content-right');
+      contactsLeft.style.display = 'block';
+      contactsRight.style.display = 'none';
+    }}
 
 function renderEditOverlay(id) {
     let overlayContainer = document.getElementById("overlay-container");

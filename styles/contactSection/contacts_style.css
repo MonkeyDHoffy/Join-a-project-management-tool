@@ -207,12 +207,30 @@
 }
 .mail-and-number {
 }
+.responsive-back-btn {
+  display: none;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  justify-content: flex-end;
+}
+
+.responsive-back-btn img {
+  padding: 8px;
+  cursor: pointer;
+}
 
 @media(max-width: 1000px) {
- .contacts-content-left {
+  .contacts-content-left {
     width: 100%;
   }
+  
   .contacts-content-right {
-    width: 0;
+    display: none;
+width: 100%;
+  }
+
+  .responsive-back-btn {
+    display: flex;
   }
 }
