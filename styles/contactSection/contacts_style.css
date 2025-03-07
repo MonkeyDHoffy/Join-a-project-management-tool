@@ -246,7 +246,33 @@ width: 100%;
       font-size: 36px;
     }
   }
+  .contacts-heading-right{
+    flex-direction: column;
+    gap:0;
+    align-items: flex-start;
+    padding-left:32px;
+  }
 
+  .bigContacts {
+    font-size: 47px;
+    line-height: 40px;
+  }
+  .betterwith {
+    padding: 0;
+    padding-bottom: 8px;
+    color: #2a3647;
+    display: flex;
+    align-items: center;
+ width: auto;
+ height: auto;
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 27px;
+    border-left: none;
+    border-bottom: 3px solid #29abe2; 
+    border-image: linear-gradient(to right, #29abe2 60%, transparent 40%);
+    border-image-slice: 0 0 1 0;
+}
 }
 
 @media(max-width: 544px) {
