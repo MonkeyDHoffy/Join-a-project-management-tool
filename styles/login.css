@@ -475,15 +475,6 @@ body {
         z-index: 0;
     }
 
-    /* .p1-logo img {
-        display: none;
-    } 
-
-    .logo-resp {
-        display: block;
-    }
-    */
-
     .login-content {
         width: 88%;
     }
@@ -496,7 +487,7 @@ body {
     }
 
     #Ebene_1 g path[fill="#2A3647"] {
-        fill: #FFFFFF;
+        /* fill: #FFFFFF; */
         animation: color-change 2s forwards;
         animation-duration: 2.4s;
         animation-delay: 1.6s;
@@ -546,7 +537,7 @@ body {
     }
 
     #Ebene_1 g path[fill="#2A3647"] {
-        fill: #FFFFFF;
+        /* fill: #FFFFFF; */
         animation: color-change 2s forwards;
         animation-duration: 2.4s;
         animation-delay: 1.6s;
