@@ -487,6 +487,7 @@ body {
     }
 
     #Ebene_1 g path[fill="#2A3647"] {
+        fill: #2A3647;
         /* fill: #FFFFFF; */
         animation: color-change 2s forwards;
         animation-duration: 2.4s;
@@ -503,7 +504,7 @@ body {
     .email-wrapper,
     .pw-wrapper,
     #loginForm {
-        width: 88%;
+        width: 92%;
 
     }
 
@@ -537,6 +538,7 @@ body {
     }
 
     #Ebene_1 g path[fill="#2A3647"] {
+        fill: #2A3647;
         /* fill: #FFFFFF; */
         animation: color-change 2s forwards;
         animation-duration: 2.4s;
