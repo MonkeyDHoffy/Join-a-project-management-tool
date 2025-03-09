@@ -23,10 +23,13 @@
 
         <div class="signup-content">
             <div class="sgnp-h1">
+                <a href="index.html" class="arrow-link">
+                    <img src="../assets/svg/arrow_back.svg" alt="Back" />
+                </a>
                 <h1>Sign Up</h1>
             </div>
             <div class="sgnp-form">
-                <form id="signupForm" novalidate onsubmit="registerUser(); return false" >
+                <form id="signupForm" novalidate onsubmit="registerUser(); return false">
 
                     <div class="name-wrapper">
                         <input type="text" placeholder="Name" id="signupName">
@@ -59,10 +62,10 @@
                             <input type="checkbox" class="chb-priv-pol" id="chbPrivPol" onclick="toggleErrorPrivPol()">
                             <label for="chbPrivPol">I agree to the <a href="#" class="priv-polce-link"> Privacy
                                     policy</a></label>
-                                    
+
                         </div>
                         <span id="errorPrivPol"></span> <!--onclick="showSignUpMsg(); return false" -->
-                        <button type="submit"  class="signup" id="submitBtn" disabled >Sign up</button>
+                        <button type="submit" class="signup" id="submitBtn" disabled>Sign up</button>
                         <div class="signup-msg  d-none" id="signUpMsg">You have successesfully signed up</div>
                     </div>
                 </form>
@@ -80,7 +83,7 @@
 
     <div class="backdrop d-none" id="backdrop"></div>
 
-    
+
 
 </body>
 
