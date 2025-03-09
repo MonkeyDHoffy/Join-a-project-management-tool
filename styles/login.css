@@ -127,22 +127,7 @@ body {
     border-color: #007bff;
 }
 
-
-
 /*   :::::::   logo und animation   :::::::   */
-/* .p1-logo-box {
-    position: fixed;
-    height: 100%;
-    max-height: 1024px;
-    width: 100%;
-    max-width: 1440px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: transparent;
-    z-index: 800;
-} */
-
 .p1-logo {
     position: absolute;
     top: 50%;
@@ -189,8 +174,6 @@ body {
 
 /*   :::::::   page 'Login'   :::::::   */
 .login-content {
-
-    background-color: rgb(189, 235, 146);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -198,7 +181,7 @@ body {
     width: 560px;
     height: 449px;
     min-height: 449px;
-    /* background-color: rgb(255, 255, 255); */
+    background-color: rgb(255, 255, 255);
     border-radius: 30px;
     /* margin-top: 32px; */
 
@@ -268,7 +251,6 @@ body {
     padding: 5px 16px;
 }
 
-
 .email-wrapper:hover,
 .pw-wrapper:hover {
     border-color: #007bff;
@@ -299,13 +281,6 @@ body {
     cursor: pointer;
 }
 
-/* .eye_slash_small {
-    width: 20px;
-    height: 20px;
-} */
-
-
-
 #error {
     width: 422px;
     height: 16px;
@@ -319,7 +294,6 @@ body {
 }
 
 /*   :::::::   remember me   :::::::    */
-
 .remember-me-wrapper {
     display: flex;
     align-items: center;
@@ -373,9 +347,7 @@ body {
     margin-right: 10px !important;
 }
 
-
 /*   :::::::   login button  guest login button   :::::::    */
-
 .login-button-box {
     display: flex;
     justify-content: center;
@@ -462,7 +434,6 @@ body {
 }
 
 /*   :::::::   media query  :::::::   */
-
 @media screen and (320px <=width <=428px) {
 
     .backdrop {
@@ -487,7 +458,7 @@ body {
     }
 
     #Ebene_1 g path[fill="#2A3647"] {
-        fill: #2A3647;
+        /* fill: #2A3647; */
         /* fill: #FFFFFF; */
         animation: color-change 2s forwards;
         animation-duration: 2.4s;
@@ -538,7 +509,7 @@ body {
     }
 
     #Ebene_1 g path[fill="#2A3647"] {
-        fill: #2A3647;
+        /* fill: #2A3647; */
         /* fill: #FFFFFF; */
         animation: color-change 2s forwards;
         animation-duration: 2.4s;
