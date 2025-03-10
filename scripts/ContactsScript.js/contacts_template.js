@@ -119,8 +119,12 @@ function renderContact(id) {
     if (window.innerWidth <= 1000) {
     let contactsLeft = document.querySelector('.contacts-content-left');
     let contactsRight = document.querySelector('.contacts-content-right');
+    let responsiveEditBtnOne = document.querySelector('.add-contact-btn');
+    let responsiveEditBtnTwo = document.querySelector('.edit-contact-btn-responsive');
         contactsLeft.style.display = 'none';
         contactsRight.style.display = 'block';
+        responsiveEditBtnOne.style.display = 'none';
+        responsiveEditBtnTwo.style.display = 'flex';
     }
 }
 
@@ -129,8 +133,12 @@ function responsiveBackBtn() {
       
       let contactsLeft = document.querySelector('.contacts-content-left');
       let contactsRight = document.querySelector('.contacts-content-right');
+      let responsiveEditBtnOne = document.querySelector('.add-contact-btn');
+      let responsiveEditBtnTwo = document.querySelector('.edit-contact-btn-responsive');
       contactsLeft.style.display = 'block';
       contactsRight.style.display = 'none';
+        responsiveEditBtnOne.style.display = 'flex';
+        responsiveEditBtnTwo.style.display = 'none';
     }}
 
 function renderEditOverlay(id) {
