@@ -162,6 +162,10 @@ body {
   border-color: #29abe2;
 }
 
+.btn-title:hover path {
+  stroke: #29abe2;
+}
+
 .board-wrapper {
   padding: 0 64px 24px 64px;
   height: 100%;
@@ -249,13 +253,15 @@ progress[value] {
 progress::-webkit-progress-bar {
   background-color: #e6e6e6;
   border-radius: 16px;
-  height: 8px;
-  width: 128px;
 }
 
 progress::-webkit-progress-value {
   background-color: #4589FF;
   border-radius: 16px;
+}
+
+progress {
+  width: 128px;
   height: 8px;
 }
 
@@ -303,7 +309,7 @@ progress::-webkit-progress-value {
 .add-task-overlay-content {
   position: absolute;
   top: calc(50% - 435px);
-  left: 100%;
+  left: -1000px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -402,4 +408,80 @@ progress::-webkit-progress-value {
   display: flex;
   animation: slideInFromBottom 0.5s ease-out forwards;
   opacity: 1;
+}
+
+.add-task-mobile-btn {
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  background-color: #2a3647;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 3px;
+  display: none;
+}
+
+.mobile-headline-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+@media(max-width: 1280px) {
+  .content-right {
+    height: calc(100% - 176px);
+  }
+  .board-wrapper {
+    flex-direction: column;
+    padding: 0 16px 64px 16px ;
+    height: fit-content;
+  }
+
+  .board-card {
+    min-width: 252px;
+    flex-grow: 0;
+  }
+
+  .board-field {
+    flex-direction: row;
+    overflow: auto;
+    padding: 8px;
+  }
+
+  .add-task-mobile-btn {
+    display: flex;
+  }
+
+  .add-task {
+    display: none;
+  }
+
+  .board-header-title {
+    flex-direction: column;
+    width: 100%;
+    gap: 32px;
+    padding: 0 16px;
+  }
+
+  .board-header-title h2 {
+    font-size: 47px;
+  }
+
+  .mobile-headline-wrapper {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .search-and-add-task {
+    width: 100%;
+  }
+
+  .find-task {
+    width: 100%;
+  }
+
+  .no-tasks {
+    flex: 1;
+  }
 }

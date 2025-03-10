@@ -6,6 +6,7 @@ async function boardInit() {
   await getTasks();
   await getContacts();
   updateHTML();
+  changeOnclickFunctionOnResize();
 }
 
 //-- render all tasks on the board
@@ -37,6 +38,24 @@ function renderTasks(status, elementId) {
   }
 }
 
+function changeOnclickFunctionOnResize() {
+  let buttons = document.getElementsByClassName("btn-title");
+  if (window.innerWidth < 1000) {
+    for (let i = 0; i < buttons.length; i++) {
+      buttons[i].onclick = function () {
+        window.location.href = './add_task.html';
+      };
+    }
+  }else {
+    for (let i = 0; i < buttons.length; i++) {
+      buttons[i].onclick = function () {
+        renderTaskOverlayContent(); 
+        validateInputFields();
+      }
+    }
+  }
+}
+
 function hideSubtasksIfEmpty() {
   let subtasksRef = document.getElementsByClassName("board-card-subtasks");
   for (let i = 0; i < subtasksRef.length; i++) {
@@ -52,7 +71,7 @@ function breakDescriptions() {
     let description = descriptionContainers[i].querySelector("p").textContent;
     description = description.slice(0, 38) + "...";
     descriptionContainers[i].textContent = description;
-}
+  }
 }
 
 //-- drag and drop
@@ -305,7 +324,8 @@ function addTaskOverlayBoardTemplate() {
                 </button></div>
 
 
-        </div>`;}
+        </div>`;
+}
 
 /**
  * Closes the add task overlay.
@@ -316,7 +336,7 @@ function closeAddTaskOverlay() {
   let addTaskOverlayRef = document.getElementById("addTaskOverlay");
   let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
   addTaskOverlayRef.classList.remove("active");
-  addTaskOverlayContentRef.style.left = "100%";
+  addTaskOverlayContentRef.style.left = "-1000px";
   addTaskOverlayRef.style.pointerEvents = "none";
   setTimeout(() => {
     addTaskOverlayRef.classList.add("d-none");
@@ -334,7 +354,7 @@ function closeOverlayOutside(event) {
   if (event.target == addTaskOverlayRef) {
     addTaskOverlayRef.classList.remove("active");
     addTaskOverlayRef.style.pointerEvents = "none";
-    addTaskOverlayContentRef.style.left = "100%";
+    addTaskOverlayContentRef.style.left = "-1000px";
     setTimeout(() => {
       addTaskOverlayRef.classList.add("d-none");
       addTaskOverlayContentRef.innerHTML = "";
@@ -349,10 +369,10 @@ async function confirmTaskChanges(currentTitle) {
   let id = 0;
   for (let index = 0; index < createdTasks.length; index++) {
     createdTasks.forEach((task) => {
-      if(id == task.id){
+      if (id == task.id) {
         id++;
       }
-    }) 
+    })
   }
   let taskToEdit = createdTasks.find((task) => task.title == currentTitle);
   let taskIndex = createdTasks.indexOf(taskToEdit);
