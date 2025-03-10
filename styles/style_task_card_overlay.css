@@ -23,12 +23,15 @@
   from {
     transform: translateX(300%);
   }
+
   to {
     transform: translateX(0);
   }
 }
 
 .task-card {
+  display: flex;
+  flex-direction: column;
   background: white;
   padding: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -132,7 +135,8 @@
   justify-content: center;
   align-items: center;
   color: white;
-  font-weight: bold;
+  font-size: 14px;
+  font-weight: 250;
   margin-right: 8px;
 }
 
@@ -205,4 +209,24 @@
   max-height: 219px;
   overflow: auto;
   word-break: break-word;
+}
+
+@media(max-width: 625px) {
+  .task-card {
+    width: 396px;
+    padding: 32px 24px;
+  }
+
+  .task-card h2 {
+    font-size: 36px;
+  }
+
+  .avatar {
+    width: 42px;
+    height: 42px;
+  }
+
+  .show {
+    overflow: auto;
+  }
 }

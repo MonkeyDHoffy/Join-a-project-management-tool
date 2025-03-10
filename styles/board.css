@@ -485,15 +485,16 @@ progress {
   .no-tasks {
     flex: 1;
   }
-}
 
-@media(max-width: 625px) {
-  .task-card {
-    width: 396px !important;
-    padding: 32px 24px !important;
+  .btn-title {
+    height: 30px;
+    width: 30px;
   }
 
-  .task-card h2 {
-    font-size: 36px !important;
+  .btn-title svg {
+    height: 15px;
+    width: 15px;
+    padding: 0;
   }
 }
+
