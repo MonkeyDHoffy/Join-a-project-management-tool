@@ -114,55 +114,13 @@ body {
     transform: translateX(-50%);
 }
 
-
-/* .sgnp-h1 {
-    margin-bottom: 48px;
-    width: 315px;
-    height: 89px;
-    gap: 16px;
-    position: relative;
-
-}
-
-.sgnp-h1::after {
-    content: "";
-    display: block;
-    width: 40%;
-    height: 8px;
-    border-bottom: 3px solid #29ABE2;
-    margin-top: 12px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-
-.sgnp-h1 h1::before {
-    content: url('../assets/svg/arrow_back.svg');
-    display: inline-block;
-    width: 32px;
-    height: 32px;
-    position: absolute;
-    left: -80px;
-    top: 24%;
-    transform: translateY(-50%);
-    cursor: pointer;
-}
-
-.sgnp-h1 h1 {
-    font-size: 61px;
-    font-weight: 700;
-    text-align: center;
-    line-height: 73.2px;
-    position: relative;
-} */
-
 /*   :::::::   signup form   :::::::   */
 .sgnp-form {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: 90%;
 }
 
 .sgnp-form form {
@@ -469,7 +427,7 @@ body {
     .email-wrapper,
     .pw-wrapper,
     .rep-pw-wrapper,
-    #loginForm {
+    #loginForm, #error {
         width: 92%;
 
     }
