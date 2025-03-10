@@ -379,6 +379,9 @@ async function confirmTaskChanges(currentTitle) {
   items.forEach((item) => {
     selectedSubtasks.push(item.innerHTML);
   });
+  taskToEdit.completedSubtasks = taskToEdit.completedSubtasks.filter(subtask =>
+    selectedSubtasks.includes(subtask)
+  );
   // for (let index = 0; index < selectedContacts.length; index++) {
   //   if (selectedContacts[index] == null) 
   //     delete selectedContacts[index]

@@ -251,6 +251,11 @@ function renderSubtaskList() {
 
 function deleteSubtaskItem(element) {
   element.parentElement.parentElement.remove();
+  // let subtaskText = element.parentElement.parentElement.querySelector("li").textContent;
+  // completedSubtasks.splice(completedSubtasks.indexOf(subtaskText), 1);
+  // console.log(completedSubtasks);
+  
+  
 }
 
 function subtaskListTemplate(subtaskInput) {
