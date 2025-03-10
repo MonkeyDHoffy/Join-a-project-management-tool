@@ -440,6 +440,7 @@ progress {
 
   .board-card {
     min-width: 252px;
+    max-width: 252px;
     flex-grow: 0;
   }
 
@@ -483,5 +484,16 @@ progress {
 
   .no-tasks {
     flex: 1;
+  }
+}
+
+@media(max-width: 625px) {
+  .task-card {
+    width: 396px !important;
+    padding: 32px 24px !important;
+  }
+
+  .task-card h2 {
+    font-size: 36px !important;
   }
 }
