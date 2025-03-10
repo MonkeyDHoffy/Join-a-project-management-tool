@@ -479,6 +479,10 @@ body {
 
     }
 
+    #error {
+        width: 92%;
+    }
+
     .login-button-box {
         flex-direction: column;
         gap: 16px;
