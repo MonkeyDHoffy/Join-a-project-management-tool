@@ -95,7 +95,12 @@
 
                 <div class="board-header">
                     <div class="board-header-title">
-                        <h2>Board</h2>
+                        <div class="mobile-headline-wrapper">
+                            <h2>Board</h2>
+                            <div onclick="renderTaskOverlayContent(); validateInputFields()" class="add-task-mobile-btn">
+                                <img src="./assets/img/add_task_mobile.png" alt="">
+                            </div>
+                        </div>
                         <div class="search-and-add-task">
                             <form onkeyup="searchTask()" onsubmit="return false" class="find-task" id="findTask">
                                 <input class="find-task-input" id="findTaskInput" type="text" placeholder="Find Task">

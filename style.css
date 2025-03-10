@@ -44,9 +44,9 @@
   --light-orange: #ffbb2b;
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 8px;
-}
+} */
 
 ::-webkit-scrollbar-track {
   background: #f0f0f0;
