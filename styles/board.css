@@ -431,6 +431,7 @@ progress {
   .board-wrapper {
     flex-direction: column;
     padding: 0 16px;
+    height: fit-content;
   }
 
   .board-card {
@@ -459,6 +460,10 @@ progress {
     padding: 0 16px;
   }
 
+  .board-header-title h2 {
+    font-size: 47px;
+  }
+
   .mobile-headline-wrapper {
     width: 100%;
     justify-content: space-between;
@@ -471,10 +476,8 @@ progress {
   .find-task {
     width: 100%;
   }
-}
 
-
-
-@media(max-width: 900px) {
-  
+  .no-tasks {
+    flex: 1;
+  }
 }

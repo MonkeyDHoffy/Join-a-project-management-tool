@@ -316,7 +316,7 @@ function closeAddTaskOverlay() {
   let addTaskOverlayRef = document.getElementById("addTaskOverlay");
   let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
   addTaskOverlayRef.classList.remove("active");
-  addTaskOverlayContentRef.style.left = "100%";
+  addTaskOverlayContentRef.style.left = "-1000px";
   addTaskOverlayRef.style.pointerEvents = "none";
   setTimeout(() => {
     addTaskOverlayRef.classList.add("d-none");
@@ -334,7 +334,7 @@ function closeOverlayOutside(event) {
   if (event.target == addTaskOverlayRef) {
     addTaskOverlayRef.classList.remove("active");
     addTaskOverlayRef.style.pointerEvents = "none";
-    addTaskOverlayContentRef.style.left = "100%";
+    addTaskOverlayContentRef.style.left = "-1000px";
     setTimeout(() => {
       addTaskOverlayRef.classList.add("d-none");
       addTaskOverlayContentRef.innerHTML = "";
