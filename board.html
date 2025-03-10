@@ -29,7 +29,7 @@
 
 </head>
 
-<body onload="boardInit()">
+<body onresize="changeOnclickFunctionOnResize()" onload="boardInit()">
 
     <div class="content-width">
 
@@ -97,7 +97,7 @@
                     <div class="board-header-title">
                         <div class="mobile-headline-wrapper">
                             <h2>Board</h2>
-                            <div onclick="renderTaskOverlayContent(); validateInputFields()" class="add-task-mobile-btn">
+                            <div onclick="window.location.href='./add_task.html'" class="add-task-mobile-btn">
                                 <img src="./assets/img/add_task_mobile.png" alt="">
                             </div>
                         </div>
@@ -116,7 +116,14 @@
                     <div class="board-title-field-wrapper">
                         <div class="to-do-title flex-title">
                             <h3>To-Do</h3>
-                            <button onclick="openAddTaskOverlay()" class="add-to-do btn-title">+</button>
+                            <button onclick="renderTaskOverlayContent(); validateInputFields()" class="add-to-do btn-title">
+                                <svg width="10" height="11" viewBox="0 0 10 11" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 1.5V9.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+                                    <path d="M9 5.57544L1 5.57544" stroke="#2A3647" stroke-width="2"
+                                        stroke-linecap="round" />
+                                </svg>
+                            </button>
                         </div>
                         <div ondrop="drop('toDo', event)" ondragover="allowDrop(event)" draggable="true" id="toDo"
                             class="to-do-field board-field"></div>
@@ -124,7 +131,14 @@
                     <div class="board-title-field-wrapper">
                         <div class="to-do-title flex-title">
                             <h3>In progress</h3>
-                            <button onclick="openAddTaskOverlay()" class="add-in-progress btn-title">+</button>
+                            <button onclick="renderTaskOverlayContent(); validateInputFields()" class="add-in-progress btn-title">
+                                <svg width="10" height="11" viewBox="0 0 10 11" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 1.5V9.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+                                    <path d="M9 5.57544L1 5.57544" stroke="#2A3647" stroke-width="2"
+                                        stroke-linecap="round" />
+                                </svg>
+                            </button>
                         </div>
                         <div ondrop="drop('inProgress', event)" ondragover="allowDrop(event)" draggable="true"
                             id="inProgress" class="in-progress-field board-field"></div>
@@ -132,7 +146,14 @@
                     <div class="board-title-field-wrapper">
                         <div class="to-do-title flex-title">
                             <h3>Await feedback</h3>
-                            <button onclick="openAddTaskOverlay()" class="add-await-feedback btn-title">+</button>
+                            <button onclick="renderTaskOverlayContent(); validateInputFields()" class="add-await-feedback btn-title">
+                                <svg width="10" height="11" viewBox="0 0 10 11" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 1.5V9.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round" />
+                                    <path d="M9 5.57544L1 5.57544" stroke="#2A3647" stroke-width="2"
+                                        stroke-linecap="round" />
+                                </svg>
+                            </button>
                         </div>
                         <div ondrop="drop('awaitFeedback', event)" ondragover="allowDrop(event)" draggable="true"
                             id="awaitFeedback" class="await-feedback-field board-field"></div>

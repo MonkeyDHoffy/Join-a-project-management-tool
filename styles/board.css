@@ -162,6 +162,10 @@ body {
   border-color: #29abe2;
 }
 
+.btn-title:hover path {
+  stroke: #29abe2;
+}
+
 .board-wrapper {
   padding: 0 64px 24px 64px;
   height: 100%;
@@ -430,7 +434,7 @@ progress {
   }
   .board-wrapper {
     flex-direction: column;
-    padding: 0 16px;
+    padding: 0 16px 64px 16px ;
     height: fit-content;
   }
 
