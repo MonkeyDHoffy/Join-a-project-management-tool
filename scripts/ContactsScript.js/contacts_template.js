@@ -141,6 +141,76 @@ function responsiveBackBtn() {
         responsiveEditBtnTwo.style.display = 'none';
     }}
 
+// function openResponsiveEdit() {
+//     let editDeleteMenu = document.querySelector('.edit-delete-btn-responsive');
+//     if (editDeleteMenu.style.display === 'flex') {
+//         editDeleteMenu.style.display = 'none';
+//     } else {
+//         editDeleteMenu.style.display = 'flex';
+//         let contactId = getCurrentContactId();
+//         if (contactId !== null) {
+//             let editBtn = editDeleteMenu.querySelector('.edit-btn-responsive');
+//             let deleteBtn = editDeleteMenu.querySelector('.delete-btn-responsive');
+//             if (editBtn) {
+//                 editBtn.setAttribute('onclick', `renderEditOverlay(${contactId})`);}
+//             if (deleteBtn) {
+//                 deleteBtn.setAttribute('onclick', `deleteContact(${contactId})`);}
+//         }}}
+
+
+function openResponsiveEdit() {
+    let editDeleteMenu = document.querySelector('.edit-delete-btn-responsive');
+    if (editDeleteMenu.classList.contains('slide-in-responsive')) {
+        editDeleteMenu.classList.remove('slide-in-responsive');
+        editDeleteMenu.classList.add('slide-out-responsive');
+        setTimeout(() => {
+            editDeleteMenu.style.display = 'none';
+            editDeleteMenu.classList.remove('slide-out-responsive');
+        }, 300); 
+    } else {
+        editDeleteMenu.classList.add('slide-in-responsive');
+        editDeleteMenu.style.display = 'flex';
+        let contactId = getCurrentContactId();
+        if (contactId !== null) {
+            let editBtn = editDeleteMenu.querySelector('.edit-btn-responsive');
+            let deleteBtn = editDeleteMenu.querySelector('.delete-btn-responsive');
+            
+            if (editBtn) {
+                editBtn.setAttribute('onclick', `renderEditOverlay(${contactId})`);
+            }
+            
+            if (deleteBtn) {
+                deleteBtn.setAttribute('onclick', `deleteContact(${contactId})`);
+            }
+        }
+    }
+}
+
+function closeResponsiveEditOnOutsideClick(event) {
+    let editDeleteMenu = document.querySelector('.edit-delete-btn-responsive');
+    let editButton = document.querySelector('.edit-contact-btn-responsive');
+    if (!editDeleteMenu || editDeleteMenu.style.display !== 'flex' || 
+        !editDeleteMenu.classList.contains('slide-in-responsive')) {
+        return; 
+    }
+    if (!editDeleteMenu.contains(event.target) && !editButton.contains(event.target)) {
+        openResponsiveEdit();
+    }
+}
+document.addEventListener('click', closeResponsiveEditOnOutsideClick);
+
+function getCurrentContactId() {
+    let contactNameElement = document.querySelector('.name-and-edit h2');
+    if (!contactNameElement) return null;
+    let contactName = contactNameElement.textContent;
+    for (let i = 0; i < contacts.length; i++) {
+        if (contacts[i].name === contactName) {
+            return i;
+        }
+    } 
+    return null;
+}
+
 function renderEditOverlay(id) {
     let overlayContainer = document.getElementById("overlay-container");
     showOverlay();

@@ -2,6 +2,7 @@
   display: flex;
 }
 
+
 .contacts-content-left {
   width: 456px;
   /* Feste Breite von 456px */
@@ -252,9 +253,108 @@
   background-color: #2a3647;;
 }
 
+@keyframes slideInFromRightRes {
+  0% {
+    transform: translateX(150px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutToRightRes {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(150px);
+    opacity: 0;
+  }
+}
+
+.edit-delete-btn-responsive {
+  position: absolute;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px 15px;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 120px;
+  bottom: 100px; 
+  right: 15px; 
+  border-bottom-right-radius: 0;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out; 
+  animation-fill-mode: forwards;
+}
+
+.slide-in-responsive {
+  animation-name: slideInFromRight;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+
+.slide-out-responsive {
+  animation-name: slideOutToRight;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+
+.edit-btn-responsive, .delete-btn-responsive {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.edit-btn-responsive:hover, .delete-btn-responsive:hover {
+  background: #f3f3f3;
+}
+
+.edit-btn-responsive svg, .delete-btn-responsive svg {
+  width: 20px;
+  height: 20px;
+}
+
+.edit-btn-responsive button, .delete-btn-responsive button {
+  border: none;
+  background: none;
+  font-size: 14px;
+  color: #2A3647;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .edit-delete-btn-responsive {
+      padding: 8px;
+      min-width: 100px;
+  }
+  
+  .edit-btn-responsive, .delete-btn-responsive {
+      padding: 6px 8px;
+      font-size: 12px;
+  }
+
+  .edit-btn-responsive svg, .delete-btn-responsive svg {
+      width: 18px;
+      height: 18px;
+  }
+}
+
+
 
 
 @media(max-width: 1000px) {
+  .edit-delete-btn {
+    display: none;
+  }
 
   .add-contact-btn {
     display: flex;

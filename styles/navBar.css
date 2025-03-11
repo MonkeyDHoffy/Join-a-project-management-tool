@@ -207,6 +207,7 @@ span {
   .mobile-nav-section {
     display: block;
     position: fixed;
+    z-index: 1000;
     bottom: 0;
     width: 100%;
     background-color: #2a3647;
