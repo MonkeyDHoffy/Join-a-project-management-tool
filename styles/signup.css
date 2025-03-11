@@ -24,20 +24,18 @@ body {
 
 /*   :::::::   content wrapper   :::::::   */
 .signup-content-box {
-    /* background-color: #F6F7F8; */
+     background-color: #315e8a; /**/
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     width: 96vw;
     max-width: 1440px;
-    height: 880px;
-    min-height: 880px;
+    height: auto;
+    min-height: 96%;
     position: relative;
     overflow: hidden;
 }
-
-
 
 /*   :::::::   'not a user' login   :::::::   */
 .signup-logo-box {
@@ -60,6 +58,12 @@ body {
     object-fit: contain;
 }
 
+#Ebene_1 {
+    width: 120px;
+    height: 75px;
+}
+
+
 /*   :::::::   page 'Login'   :::::::   */
 .signup-content {
     background-color: #85fa9e;
@@ -67,8 +71,8 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 560px;
-    height: 630px;
+    width: 598px;
+    height: 595px;
     min-height: 449px;
     /* background-color: rgb(255, 255, 255); */
     border-radius: 30px;
@@ -99,7 +103,7 @@ body {
 }
 
 .sgnp-h1 h1 {
-    font-size: 61px;
+    font-size: 47px;
     font-weight: 700;
     position: relative;
 }
@@ -393,7 +397,7 @@ body {
 }
 
 /*   :::::::   media query  :::::::   */
-@media screen and (320px <=width <=428px) {
+@media screen and (320px < width < 428px) {
     .signup-content {
         width: 88%;
     }
@@ -412,13 +416,13 @@ body {
     }
 }
 
-@media screen and (427px <=width) {
+@media screen and (427px < width) {
     .arrow-link {
         left: -64px;
     }
 }
 
-@media screen and (520px <=width) {
+@media screen and (520px < width) {
     .arrow-link {
         left: -48px;
     }
@@ -426,9 +430,9 @@ body {
 
 
 
-@media screen and (width <=640px) {
+@media screen and (width < 640px) {
     .signup-content {
-        width: 98%;
+        width: 92%;
     }
 
     .name-wrapper,
