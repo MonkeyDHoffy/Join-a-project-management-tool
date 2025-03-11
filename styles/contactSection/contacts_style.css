@@ -294,13 +294,13 @@
 }
 
 .slide-in-responsive {
-  animation-name: slideInFromRight;
+  animation-name: slideInFromRightRes;
   animation-duration: 0.3s;
   animation-fill-mode: forwards;
 }
 
 .slide-out-responsive {
-  animation-name: slideOutToRight;
+  animation-name: slideOutToRightRes;
   animation-duration: 0.3s;
   animation-fill-mode: forwards;
 }
