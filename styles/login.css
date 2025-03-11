@@ -31,8 +31,8 @@ body {
     align-items: center;
     width: 96vw;
     max-width: 1440px;
-    height: 880px;
-    min-height: 880px;
+    height: auto;
+    min-height: 96%;
     position: relative;
     overflow: hidden;
 }
@@ -87,7 +87,7 @@ body {
     align-items: center;
     /* padding: 0 48px; */
     position: absolute;
-    top: 0px;
+    top: 16px;
     /*   :::::::   
     z-index: 1;*/
 }
@@ -134,8 +134,8 @@ body {
     left: 50%;
     transform-origin: top left;
     transform: translate(-50%, -50%);
-    width: 274px;
-    height: 334px;
+    width: 172px;
+    /* height: 334px; */
     display: flex;
     justify-content: center;
     background: transparent;
