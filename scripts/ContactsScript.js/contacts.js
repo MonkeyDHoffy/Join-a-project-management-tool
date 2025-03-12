@@ -88,7 +88,8 @@ function hideOverlayOnOutsideClick(event) {
 
 function showOverlay() {
   let overlayContainer = document.getElementById("overlay-container");
-  overlayContainer.innerHTML = getOverlayTemplate();
+  const overlayTemplate = getOverlayTemplate();
+  overlayContainer.append(overlayTemplate);
   document.querySelector(".dark-background").style.display = "block";
   setTimeout(() => {
     document.querySelector(".dark-background").classList.add("overlay-open");
