@@ -63,18 +63,18 @@ function taskCardOverlayTemplate(element) {
 //     <label><input onclick="toggleSubtaskCompleted('${subtask}', this)" type="checkbox"> ${subtask}</label>`).join('');
 // }
 
- async function toggleSubtaskCompleted(subtask, element) {
-   let task = createdTasks.find((task) => task.subtasks.includes(subtask));
-   if (!task.completedSubtasks.includes(subtask)) {
-     task.completedSubtasks.push(subtask);
+async function toggleSubtaskCompleted(subtask, element) {
+  let task = createdTasks.find((task) => task.subtasks.includes(subtask));
+  if (!task.completedSubtasks.includes(subtask)) {
+    task.completedSubtasks.push(subtask);
     //  element.checked = true;
-   } else {
-     task.completedSubtasks.splice(task.completedSubtasks.indexOf(subtask), 1);
+  } else {
+    task.completedSubtasks.splice(task.completedSubtasks.indexOf(subtask), 1);
     //  element.checked = false;
-   }
-   await putTasks();
-   await boardInit();
- }
+  }
+  await putTasks();
+  await boardInit();
+}
 
 function renderSubtasks(element) {
   return element.subtasks.map((subtask) => {
@@ -107,16 +107,15 @@ function renderEditSubtask(subtask) {
 function renderEditSubtasks(element) {
 
   return `<div class="subtask-item-field">
-  <li class="item-${element.value} subtask-item">${
-    element.value
-  }</li>
+  <li class="item-${element.value} subtask-item">${element.value
+    }</li>
   
-     <div class="btn-section"><img onclick="editSubtaskItem('${
-       element.value
-     }')" class="edit-subtask-item-btn" src="./assets/svg/contacts_svg/edit.svg" alt=""><img onclick="deleteSubtaskItem(this)" class="delete-subtask-item-btn"
+     <div class="btn-section"><img onclick="editSubtaskItem('${element.value
+    }')" class="edit-subtask-item-btn" src="./assets/svg/contacts_svg/edit.svg" alt=""><img onclick="deleteSubtaskItem(this)" class="delete-subtask-item-btn"
             src="./assets/svg/contacts_svg/delete.svg" alt=""></div>
     </div>
-`;}
+`;
+}
 
 // async function toggleSubtaskCompleted(subtask, element) {
 //   let task = createdTasks.find((task) => task.subtasks.includes(subtask));
@@ -168,13 +167,13 @@ function showAssignedContacts(selectedContacts) {
   assignedCirclesSectionRef.innerHTML = "";
   let assignedContacts = contacts.filter((contact) => selectedContacts.includes(contact.name));
   for (let index = 0; index < assignedContacts.length; index++) {
-    assignedCirclesSectionRef.innerHTML += userCircleTemplate(assignedContacts[index], assignedContacts[index].color);  
+    assignedCirclesSectionRef.innerHTML += userCircleTemplate(assignedContacts[index], assignedContacts[index].color);
   }
 }
 
 function closeTaskCardOverlay() {
   let taskCardOverlayRef = document.getElementById("task-card-overlay");
-  taskCardOverlayRef.classList.remove("show"); 
+  taskCardOverlayRef.classList.remove("show");
 }
 
 async function deleteTaskCardOverlay(title) {
@@ -190,6 +189,9 @@ function renderTaskEditOverlay(element) {
   let editField = document.querySelector(".task-card");
   if (editField) {
     editField.innerHTML = `
+            <div class="close-overlay-btn">
+              <img onclick="closeTaskCardOverlay()" src="./assets/img/close-btn.png" alt="">
+            </div>
       <div class="addTask-wrapper addTask-wrapper-edit-overlay">
         <div class="addTask-left-edit-overlay">
           <div class="addTask-section addTask-title">
@@ -347,10 +349,10 @@ function renderTaskEditOverlay(element) {
         </div>
       </div>
     `;
-  filterAndSortDropdown();
-  toggleSubtasks();
-  showAssignedContacts(element.selectedContacts);
-  editedSelectedContacts = element.selectedContacts;
+    filterAndSortDropdown();
+    toggleSubtasks();
+    showAssignedContacts(element.selectedContacts);
+    editedSelectedContacts = element.selectedContacts;
   }
 }
 
@@ -378,9 +380,8 @@ function updateSelectedContacts(element) {
   if (editedSelectedContacts.includes(contactName)) {
     let index = editedSelectedContacts.indexOf(contactName);
     editedSelectedContacts.splice(index, 1);
-  }else {
+  } else {
     editedSelectedContacts.push(contactName);
   }
   showAssignedContacts(editedSelectedContacts);
 }
- 

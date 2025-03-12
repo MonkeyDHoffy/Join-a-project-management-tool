@@ -428,11 +428,29 @@ progress {
   align-items: center;
 }
 
+.close-overlay-btn {
+  z-index: 1000;
+  transform: translate(1px, -18px);
+  padding: 24px;
+  height: 70px;
+  position: sticky;
+  top: 0px;
+  background-color: white;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.close-overlay-btn img {
+  margin-right: 24px;
+  transform: translateX(40px);
+}
+
 @media (max-height: 700px) {
   .task-card {
-    gap: 8px !important;
+    gap: 0px !important;
     overflow: auto;
-    height: 90vh;
+    height: 90vh !important;
   }
 }
 
