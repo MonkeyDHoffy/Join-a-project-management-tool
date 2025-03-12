@@ -429,9 +429,9 @@ progress {
 }
 
 .close-edit-task-overlay-btn {
-  cursor: pointer;
+
   z-index: 1000;
-  transform: translate(1px, -18px);
+  transform: translateY(-18px);
   padding: 24px;
   height: 70px;
   position: sticky;
@@ -443,6 +443,7 @@ progress {
 }
 
 .close-edit-task-overlay-btn img {
+  cursor: pointer;
   margin-right: 24px;
   transform: translateX(40px);
 }
@@ -456,11 +457,14 @@ progress {
   cursor: pointer;
 }
 
-@media (max-height: 700px) {
+.edit-task-overlay-hight {
+  height: 90vh !important;
+}
+
+@media (max-height: 870px) {
   .task-card {
     gap: 0px !important;
     overflow: auto;
-    height: 90vh !important;
   }
 }
 
@@ -545,12 +549,14 @@ progress {
 
   .addTask-section input {
     font-size: 14px !important;
+    width: 99% !important;
   }
 
   .description-area {
     font-size: 14px !important;
     height: fit-content !important;
     padding: 4px 8px  !important;
+    width: 99% !important;
   }
 
   #urgent-btn {
