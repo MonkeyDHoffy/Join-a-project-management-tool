@@ -19,12 +19,10 @@ body {
     overflow: hidden;
     background-color: #F6F7F8;
 
-
 }
 
 /*   :::::::   content wrapper   :::::::   */
 .signup-content-box {
-     background-color: #315e8a; /**/
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -67,7 +65,6 @@ body {
 
 /*   :::::::   page 'Login'   :::::::   */
 .signup-content {
-    background-color: #85fa9e;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -75,7 +72,7 @@ body {
     width: 598px;
     height: 595px;
     min-height: 449px;
-    /* background-color: rgb(255, 255, 255); */
+    background-color: rgb(255, 255, 255);
     border-radius: 30px;
     position: absolute;
 
@@ -93,8 +90,8 @@ body {
 
 .arrow-link {
     position: absolute;
-    left: -80px;
-    top: 48%;
+    left: -88px;
+    top: 40%;
     transform: translateY(-50%);
 }
 
@@ -398,37 +395,6 @@ body {
 }
 
 /*   :::::::   media query  :::::::   */
-@media screen and (320px < width < 428px) {
-    .signup-content {
-        width: 88%;
-    }
-
-    .name-wrapper,
-    .email-wrapper,
-    .pw-wrapper,
-    .rep-pw-wrapper,
-    #loginForm {
-        width: 88%;
-    }
-
-    .arrow-link {
-        left: 2px;
-    }
-}
-
-@media screen and (427px < width) {
-    .arrow-link {
-        left: -64px;
-    }
-}
-
-@media screen and (520px < width) {
-    .arrow-link {
-        left: -32px;
-    }
-}
-
-
 @media screen and (width < 640px) {
     .signup-content {
         width: 92%;
@@ -441,7 +407,10 @@ body {
     #loginForm,
     #error {
         width: 92%;
+    }
 
+    .arrow-link {
+        left: -64px;
     }
 
     .login-button-box {
@@ -474,8 +443,6 @@ body {
     }
 
     #Ebene_1 g path[fill="#2A3647"] {
-        /* fill: #2A3647; */
-        /* fill: #FFFFFF; */
         animation: color-change 2s forwards;
         animation-duration: 2.4s;
         animation-delay: 1.6s;
@@ -483,4 +450,32 @@ body {
     }
 }
 
-  
+@media screen and (width < 540px) {
+    .arrow-link {
+        left: -10px;
+    }
+}
+
+@media screen and (370px < width < 428px) {
+    .signup-content {
+        width: 88%;
+    }
+
+    .name-wrapper,
+    .email-wrapper,
+    .pw-wrapper,
+    .rep-pw-wrapper,
+    #loginForm {
+        width: 88%;
+    }
+
+    .arrow-link {
+        left: 12px;
+    }
+}
+
+@media screen and (width < 370px)  {
+    .arrow-link {
+        left: 32px;
+    }
+}
