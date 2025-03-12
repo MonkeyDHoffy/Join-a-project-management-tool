@@ -666,10 +666,12 @@ textarea {
       justify-content: space-between;
   }
 
-  .prio-buttons {
-      flex-direction: column;
+  .prio-buttons {scale:0.8;
       align-items: center;
-  }
+      position: relative;
+        right: 11%;
+    }
+  
 
   .addTask-footer {
       display: flex;
@@ -725,5 +727,16 @@ textarea {
   overflow-y: auto;
   word-break: break-word;
   top: -5%;
+}
+
+.add-task-header-and-wrapper {
+  display: flex
+;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.createTask-button {
 }
 }
