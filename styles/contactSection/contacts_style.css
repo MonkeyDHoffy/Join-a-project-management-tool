@@ -12,8 +12,8 @@
 }
 
 .add-new-contact {
-  position: absolute;
-  top: 100px;
+  /* position: absolute;
+  top: 100px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,6 +42,8 @@
 }
 
 .contacts-content-left-header {
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
