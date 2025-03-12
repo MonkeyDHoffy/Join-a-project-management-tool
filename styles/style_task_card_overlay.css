@@ -234,8 +234,9 @@
 @media(max-width: 625px) {
   .task-card {
     width: 396px;
-    padding: 16px 16px;
-    gap: 8px;
+    padding: 18px;
+    gap: 16px;
+
   }
 
   .task-card h2 {
@@ -271,7 +272,7 @@
   }
 
   #task-card-overlay {
-    padding-bottom: 80px;
+    padding-bottom: 10px;
   }
 
   .avatar {

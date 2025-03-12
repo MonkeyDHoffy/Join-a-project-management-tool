@@ -428,6 +428,14 @@ progress {
   align-items: center;
 }
 
+@media (max-height: 700px) {
+  .task-card {
+    gap: 8px !important;
+    overflow: auto;
+    height: 90vh;
+  }
+}
+
 @media(max-width: 1280px) {
   .content-right {
     height: calc(100% - 176px);
@@ -498,3 +506,95 @@ progress {
   }
 }
 
+@media (max-width: 570px) {
+  .addTask-section {
+    gap: 0 !important;
+  }
+
+  .addTask-section p {
+    font-size: 16px !important;
+  }
+
+  .addTask-section input {
+    font-size: 14px !important;
+  }
+
+  .description-area {
+    font-size: 14px !important;
+    height: fit-content !important;
+    padding: 4px 8px  !important;
+  }
+
+  #urgent-btn {
+    font-size: 16px;
+    padding: 10px 16px;
+    width: 122px;
+    height: 44px;
+  }
+
+  #medium-btn {
+    font-size: 16px;
+    padding: 10px 16px;
+    width: 122px;
+    height: 44px;
+  }
+
+  #low-btn {
+    font-size: 16px;
+    padding: 10px 16px;
+    width: 122px;
+    height: 44px;
+  }
+
+  .prio-buttons {
+    flex-direction: row !important;
+    gap: 4px !important;
+  }
+
+  .addTask-profilepicture {
+    height: 32px !important;
+    width: 32px !important;
+    transform: translateY(10px);
+    font-size: 12px !important;
+    font-weight: 200;
+  }
+
+  .assigned-circles-section {
+    gap: 4px;
+  }
+
+  .subtask-add {
+    transform: translateY(40%);
+  }
+
+  .cancel-check-btn {
+    transform: translateY(50%);
+  }
+
+  .cancel-check-btn img {
+    height: 16px;
+  }
+
+  #confirmTaskChanges {
+    font-size: 14px;
+    padding: 12px 12px;
+  }
+}
+
+@media (max-width: 450px) {
+  .prio-buttons {
+    flex-direction: column !important;
+  }
+
+  #urgent-btn {
+    width: 90%;
+  }
+
+  #medium-btn {
+    width: 90%;
+  }
+
+  #low-btn {
+    width: 90%;
+  }
+}
