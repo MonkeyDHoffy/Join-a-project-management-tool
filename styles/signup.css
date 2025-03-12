@@ -31,8 +31,9 @@ body {
     align-items: center;
     width: 96vw;
     max-width: 1440px;
+    /* height: 880px; */
     height: auto;
-    min-height: 96%;
+    min-height: 880px;
     position: relative;
     overflow: hidden;
 }
@@ -408,7 +409,6 @@ body {
     .rep-pw-wrapper,
     #loginForm {
         width: 88%;
-
     }
 
     .arrow-link {
@@ -424,10 +424,9 @@ body {
 
 @media screen and (520px < width) {
     .arrow-link {
-        left: -48px;
+        left: -32px;
     }
 }
-
 
 
 @media screen and (width < 640px) {
@@ -482,5 +481,6 @@ body {
         animation-delay: 1.6s;
         animation-timing-function: ease-in-out;
     }
-
 }
+
+  

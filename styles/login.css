@@ -434,7 +434,7 @@ body {
 }
 
 /*   :::::::   media query  :::::::   */
-@media screen and (320px <=width <=428px) {
+@media screen and (320px < width < 428px) {
 
     .backdrop {
         position: absolute;
@@ -467,7 +467,7 @@ body {
     }
 }
 
-@media screen and (width <=640px) {
+@media screen and (width < 640px) {
     .login-content {
         width: 98%;
     }
