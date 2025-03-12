@@ -428,7 +428,8 @@ progress {
   align-items: center;
 }
 
-.close-overlay-btn {
+.close-edit-task-overlay-btn {
+  cursor: pointer;
   z-index: 1000;
   transform: translate(1px, -18px);
   padding: 24px;
@@ -441,9 +442,18 @@ progress {
   align-items: center;
 }
 
-.close-overlay-btn img {
+.close-edit-task-overlay-btn img {
   margin-right: 24px;
   transform: translateX(40px);
+}
+
+.badge-close-btn-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.close-task-card-overlay-btn {
+  cursor: pointer;
 }
 
 @media (max-height: 700px) {

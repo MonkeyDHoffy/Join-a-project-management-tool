@@ -1,7 +1,13 @@
 function taskCardOverlayTemplate(element) {
   return `
       <div id="task-card-big" class="task-card slide-in">
-        <div class="badge-${element.selectedCategory.toLowerCase().replace(' ', '-')}">${element.selectedCategory}</div>
+        <div class="badge-close-btn-wrapper">
+          <div class="badge-${element.selectedCategory.toLowerCase().replace(' ', '-')}">${element.selectedCategory}</div>
+           <div class="close-task-card-overlay-btn">
+              <img onclick="closeTaskCardOverlay()" src="./assets/img/close-btn.png" alt="">
+            </div>
+            </div>
+
         <h2>${element.title.charAt(0).toUpperCase() + element.title.slice(1)}</h2>
         <div class="card-description">
           <span class="description-span">${element.description}</span>
@@ -189,7 +195,7 @@ function renderTaskEditOverlay(element) {
   let editField = document.querySelector(".task-card");
   if (editField) {
     editField.innerHTML = `
-            <div class="close-overlay-btn">
+            <div class="close-edit-task-overlay-btn">
               <img onclick="closeTaskCardOverlay()" src="./assets/img/close-btn.png" alt="">
             </div>
       <div class="addTask-wrapper addTask-wrapper-edit-overlay">
