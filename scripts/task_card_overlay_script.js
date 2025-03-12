@@ -1,10 +1,10 @@
 function taskCardOverlayTemplate(element) {
   return `
       <div id="task-card-big" class="task-card slide-in">
-        <div class="badge">${element.selectedCategory}</div>
+        <div class="badge-${element.selectedCategory.toLowerCase().replace(' ', '-')}">${element.selectedCategory}</div>
         <h2>${element.title.charAt(0).toUpperCase() + element.title.slice(1)}</h2>
         <div class="card-description">
-          <span>${element.description}</span>
+          <span class="description-span">${element.description}</span>
         </div>
         <p class="card-due-date"><strong>Due date:</strong> ${element.dueDate.replace(/-/g, '/')}</p>
         <p class="card-priority">
