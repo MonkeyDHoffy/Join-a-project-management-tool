@@ -90,11 +90,7 @@ function renderSubtasks(element) {
         <input
           onclick="toggleSubtaskCompleted('${subtask}', this)"
           type="checkbox"
-          ${isCompleted ? 'checked' : ''}
-        />
-        ${subtask}
-      </label>
-    `;
+          ${isCompleted ? 'checked' : ''}/>${subtask}</label>`;
   }).join('');
 }
 
@@ -111,7 +107,6 @@ function renderEditSubtask(subtask) {
 }
 
 function renderEditSubtasks(element) {
-
   return `<div class="subtask-item-field">
   <li class="item-${element.value} subtask-item">${element.value
     }</li>
