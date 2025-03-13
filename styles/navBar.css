@@ -196,6 +196,10 @@ span {
   display: none;
 }
 
+.responsive-logo{
+  display: none;
+}
+
 @media (max-width: 1350px) {
   .content_left {
     display: none;
@@ -332,11 +336,16 @@ span {
 
 @media(max-width:570px) {
   .header {
-    justify-content: flex-end !important;
-
+    /* justify-content: flex-end !important; */
+padding: 20px 16px 20px 16px;
     p {
       display: none;
     }
   }
 
+
+
+.responsive-logo {
+ display: block;
+}
 }

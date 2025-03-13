@@ -638,7 +638,7 @@ textarea {
 
 @media(max-width:570px) {
   .header {
-      justify-content: flex-end !important;
+      /* justify-content: flex-end !important; */
   }
 
   .header p {
