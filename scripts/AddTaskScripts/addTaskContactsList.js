@@ -2,9 +2,7 @@ let assignedContacts = [];
 let dropdownItems = [];
 let selectedContacts = [];
 
-/**
- * Toggles the display of the dropdown content.
- */
+
 async function toggleDropdown() {
   await toggleCheckedBackground();
   checkSelectedContacts();
@@ -35,10 +33,6 @@ function closeDropdowns() {
   }
 }
 
-/**
- * Toggles the source of the "assign to" icon between a dropdown arrow and an upward arrow.
- * Changes the icon's source based on its current state.
- */
 function toggleAssignToIconSrc() {
   let icon = document.getElementById("input-icon-assign-to");
   let src1 = "./assets/svg/addTasksSvg/arrow_drop_down.svg";
@@ -55,7 +49,7 @@ function checkIt(name, index) {
     let itemName = item.querySelector("p").textContent;
     if (itemName === name) {
       toggleCheckbox(item, name, index);
-      break; // Stop after finding the correct item
+      break; 
     }
   }
   console.log(selectedContacts);
@@ -79,7 +73,6 @@ function toggleCheckbox(item, name, index) {
   }
 }
 
-// Render user circles based on selected contacts
 function renderUserCircles() {
   let assignedCirclesSection = document.getElementById(
     "assigned-circles-section"
@@ -109,8 +102,6 @@ function userCircleTemplate(contact, color) {
   `;
 }
 
-// Create Task Button Validation !!! muss noch optimiert werden !!!!
-
 function validateInputs() {
   let titleInput = document.querySelector(".addTask-title input");
   let dateInput = document.querySelector(".task-date input");
@@ -122,17 +113,11 @@ function validateInputs() {
 function validateInputFields() {
   let titleInput = document.querySelector(".addTask-title input");
   let dateInput = document.querySelector(".task-date input");
-  // let categoryInput = document.getElementById("category-field");
-  // let createTaskButton = document.querySelector(".createTask-button");
-
   titleInput.addEventListener("input", validateInputs);
   dateInput.addEventListener("input", validateInputs);
   validateInputs();
 };
 
-// in add_task.js hat die funktion setCategory() auch die validateInputs() funktion aufgerufen
-// Category-Btn--------------------------------------------------
-//
 
 // Search Functionality and Alphabetical Sorting
 
@@ -163,7 +148,6 @@ function filterDropdownItems() {
   });
 }
 
-// Assign to field connection to contacts
 async function getAssignedContacts() {
   assignedContacts = Object.values(await getData("contacts/"));
   console.log(assignedContacts);
@@ -177,11 +161,9 @@ async function renderAssignedContacts() {
   for (let index = 0; index < assignedContacts.length; index++) {
     assignedContactsList.innerHTML += assignedContactsTemplate(index);
   }
-  // Update dropdownItems after rendering
   dropdownItems = Array.from(
     assignedContactsList.getElementsByClassName("dropdown-item")
   );
-  // Restore selected state
   restoreSelectedState();
 }
 

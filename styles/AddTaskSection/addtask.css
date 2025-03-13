@@ -57,15 +57,6 @@ input {
   justify-content: space-between;
 }
 
-/* .addTask-title {
-  input {
-    width: 400px;
-    padding: 12px 21px 12px 21px;
-    gap: 10px;
-    border-radius: 10px;
-    border: 1px solid #c9cdd3;
-  }
-} */
 
 .addTask-section {
   display: flex;
@@ -461,8 +452,6 @@ textarea {
   cursor: pointer;
 }
 
-.subtask-section {}
-
 .cancel-check-btn {
   display: none;
   width: 51px;
@@ -485,7 +474,6 @@ textarea {
   position: relative;
   width: 100%;
   height: 64px;
-  /* border: 2px dashed #054483; */
   overflow-y: auto;
   word-break: break-word;
   top: -13%;
@@ -520,7 +508,6 @@ textarea {
   display: none;
   width: 100%;
   height: 64px;
-  /* border: 2px dashed #46a82e; */
 }
 
 .edit-subtask-item-field {
@@ -637,9 +624,6 @@ textarea {
 }
 
 @media(max-width:570px) {
-  .header {
-      /* justify-content: flex-end !important; */
-  }
 
   .header p {
       display: none;
@@ -660,7 +644,7 @@ textarea {
   .content-right-wrapper {
       height: 100%;
       padding: 16px;
-      padding-bottom: 140px; /* Add extra padding at bottom to accommodate the footer */
+      padding-bottom: 140px; 
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -706,7 +690,7 @@ textarea {
   }
 
   .mobile-nav-section {
-      z-index: 101; /* Ensure mobile navbar stays on top */
+      z-index: 101; 
   }
 
   .clear-create {
@@ -723,7 +707,6 @@ textarea {
   width: 100%;
   height: fit-content;
   max-height: 100px;
-  /* border: 2px dashed #054483; */
   overflow-y: auto;
   word-break: break-word;
   top: -5%;
@@ -737,6 +720,4 @@ textarea {
   height: 100%;
 }
 
-.createTask-button {
-}
 }
