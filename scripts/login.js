@@ -54,6 +54,7 @@ function validateForm() {
     })
 }
 
+
 function validateEmail(messages) {
     let email = document.getElementById('email');
     let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -67,6 +68,7 @@ function validateEmail(messages) {
         removeErrorMessageAndHighlight(email, messages, 'Please enter a valid Email');
     }
 }
+
 
 function validatePassword(messages) {
     let password = document.getElementById('password');
@@ -152,6 +154,7 @@ function checkLoginFormValidity() {
     } else {
         loginBtn.disabled = true;
     }
+    renderLoginButtons();
 }
 
 
