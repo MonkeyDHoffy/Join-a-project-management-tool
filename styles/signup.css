@@ -444,18 +444,14 @@ body {
         top: 720px;
     }
 
-    #Ebene_1 g path[fill="#2A3647"] {
-        animation: color-change 2s forwards;
-        animation-duration: 2.4s;
-        animation-delay: 1.6s;
-        animation-timing-function: ease-in-out;
-    }
+
 }
 
 @media screen and (width < 540px) {
     .arrow-link {
         left: -10px;
     }
+
 }
 
 @media screen and (370px < width < 428px) {
@@ -476,10 +472,8 @@ body {
     }
 }
 
-@media screen and (width < 370px)  {
+@media screen and (width < 370px) {
     .arrow-link {
         left: 32px;
     }
 }
-
-  
