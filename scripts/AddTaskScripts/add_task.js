@@ -341,6 +341,15 @@ function toggleSubtasks() {
         cancelCheckBtn.style.display = "none";
       }
     });
+
+    document
+    .querySelector(".addTask-subtasks input")
+    .addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault(); 
+        renderSubtaskList(); 
+      }
+    });
 };
 
 // Category-Btn--------------------------------------------------
