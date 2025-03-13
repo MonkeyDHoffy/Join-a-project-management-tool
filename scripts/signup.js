@@ -1,11 +1,14 @@
 
 let messages = [];
 
-function init() {
+function SignUpInit() {
+    renderSignupForm();
     validateForm();
     passwordFocus();
     checkFormValidity();
     getUsers();
+    
+
 };
 
 
