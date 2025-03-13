@@ -31,6 +31,8 @@ body {
     max-width: 1440px;
     /* height: 880px; */
     height: auto;
+    /* height: 880px; */
+    height: auto;
     min-height: 880px;
     position: relative;
     overflow: hidden;
@@ -479,3 +481,5 @@ body {
         left: 32px;
     }
 }
+
+  
