@@ -1,14 +1,16 @@
 let messages = [];
 
 function loginInit() {
-
+ renderLoginForm();
     validateForm();
     passwordFocus();
     getUsers();
     handleAnimationBackdrop();
     animateLogo();
     //loginUser(messages);
+   
 };
+
 
 function handleAnimationBackdrop() {
     const backdrop = document.getElementById('backdrop');
@@ -18,12 +20,6 @@ function handleAnimationBackdrop() {
     });
 }
 
-// function animateLogo() {
-//     if (!localStorage.getItem("animationRun")) {
-//       document.querySelector(".p1-logo").classList.add("animate");
-//       localStorage.setItem("animationRun", "true");
-//     }
-//   }
 
 function animateLogo() {
     let animationRun = false;
@@ -154,7 +150,7 @@ function checkLoginFormValidity() {
     } else {
         loginBtn.disabled = true;
     }
-    renderLoginButtons();
+    
 }
 
 
