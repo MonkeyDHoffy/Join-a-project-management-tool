@@ -6,6 +6,7 @@ function loginInit() {
     passwordFocus();
     getUsers();
     handleAnimationBackdrop();
+    animateLogo();
     //loginUser(messages);
 };
 
@@ -17,12 +18,20 @@ function handleAnimationBackdrop() {
     });
 }
 
-// function removeAnimationBackdrop() {
-//     let backdrop = document.getElementById('backdrop');
-//     backdrop.classList.add('d-none');
-//     backdrop.classList.remove();
-// }
+// function animateLogo() {
+//     if (!localStorage.getItem("animationRun")) {
+//       document.querySelector(".p1-logo").classList.add("animate");
+//       localStorage.setItem("animationRun", "true");
+//     }
+//   }
 
+function animateLogo() {
+    let animationRun = false;
+    if (!animationRun) {
+        document.querySelector(".p1-logo").classList.add("animate");
+        animationRun = true;
+    }
+}
 
 function validateForm() {
     let errorElement = document.getElementById('error');
