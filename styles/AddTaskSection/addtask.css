@@ -623,7 +623,7 @@ textarea {
 }
 }
 
-@media(max-width:570px) {
+@media(max-width:620px) {
 
   .header p {
       display: none;
@@ -649,13 +649,6 @@ textarea {
       flex-direction: column;
       justify-content: space-between;
   }
-
-  .prio-buttons {scale:0.8;
-      align-items: center;
-      position: relative;
-        right: 11%;
-    }
-  
 
   .addTask-footer {
       display: flex;
@@ -720,4 +713,24 @@ textarea {
   height: 100%;
 }
 
+}
+
+@media (max-width: 450px) {
+  .prio-buttons {
+    width: 100% !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  #urgent-btn {
+    width: 90% !important;
+  }
+
+  #medium-btn {
+    width: 90% !important; 
+  }
+
+  #low-btn {
+    width: 90% !important;
+  }
 }

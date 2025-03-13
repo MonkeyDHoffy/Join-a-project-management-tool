@@ -239,6 +239,31 @@
     border-radius: 24px;
   }
 
+  .prio-buttons {
+    gap: 4px !important;
+  }
+
+  #urgent-btn {
+    font-size: 16px;
+    padding: 10px 16px;
+    width: 120px ;
+    height: 44px ;
+  }
+
+  #medium-btn {
+    font-size: 16px;
+    padding: 10px 16px;
+    width: 120px ;
+    height: 44px ;
+  }
+
+  #low-btn {
+    font-size: 16px;
+    padding: 10px 16px;
+    width: 120px ;
+    height: 44px ;
+  }
+
   .task-card h2 {
     font-size: 32px;
     line-height: 40px;

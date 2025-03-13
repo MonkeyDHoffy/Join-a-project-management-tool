@@ -472,10 +472,15 @@ progress {
   .content-right {
     height: calc(100% - 176px);
   }
+
   .board-wrapper {
     flex-direction: column;
     padding: 0 16px 64px 16px ;
     height: fit-content;
+  }
+
+  .addTask-subtasks {
+    padding: 10px !important;
   }
 
   .board-card {
@@ -559,27 +564,6 @@ progress {
     width: 99% !important;
   }
 
-  #urgent-btn {
-    font-size: 16px;
-    padding: 10px 16px;
-    width: 122px;
-    height: 44px;
-  }
-
-  #medium-btn {
-    font-size: 16px;
-    padding: 10px 16px;
-    width: 122px;
-    height: 44px;
-  }
-
-  #low-btn {
-    font-size: 16px;
-    padding: 10px 16px;
-    width: 122px;
-    height: 44px;
-  }
-
   .prio-buttons {
     flex-direction: row !important;
     gap: 4px !important;
@@ -618,18 +602,20 @@ progress {
 
 @media (max-width: 450px) {
   .prio-buttons {
+    width: 100% !important;
     flex-direction: column !important;
+    align-items: center !important;
   }
 
   #urgent-btn {
-    width: 90%;
+    width: 90% !important;
   }
 
   #medium-btn {
-    width: 90%;
+    width: 90% !important; 
   }
 
   #low-btn {
-    width: 90%;
+    width: 90% !important;
   }
 }

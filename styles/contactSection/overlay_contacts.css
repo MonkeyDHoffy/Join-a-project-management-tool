@@ -24,6 +24,7 @@
 }
 
 .add-contact-overlay {
+  padding: 0 14px;
   z-index: 5;
   position: fixed;
   top: 0;
@@ -312,4 +313,115 @@ button:hover {
   align-items: center;
   animation: slideInFromRight 0.5s ease-out forwards;
   opacity: 1;
+}
+
+.close-mobile-overlay {
+  cursor: pointer;
+  height: 14px !important;
+  width: 14px !important;
+  transform: translateY(-86px);
+  align-self: end;
+  display: none;
+}
+@media (max-width: 1350px) {
+  .contacts-content-left {
+    padding-bottom: 160px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .content-overlay-right {
+    padding-left: 30px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .content-overlay-wrapper {
+    flex-direction: column;
+    height: 760px;
+    width: 396px;
+  }
+
+  .input-icon {
+    top: -33px;
+  }
+
+  .content-overlay-left {
+    padding: 66px 24px;
+    height: 352px;
+  }
+
+  .delete-btn-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 82px;
+    height: 51px;
+  }
+
+  .save-btn-overlay {
+    width: 99px;
+    height: 51px;
+  }
+
+  .content-overlay-left p {
+    font-size: 47px;
+  }
+
+  .content-overlay-left img {
+    display: none;
+  }
+
+  .close-mobile-overlay {
+    display: block !important;
+  }
+
+  .content-left-text p{
+    font-size: 47px;
+    line-height: 40px;
+  }
+
+  .content-left-text span {
+    font-size: 20px;
+  }
+
+  .content-overlay-right {
+    flex-direction: column;
+    padding: 0 14px 60px 14px;
+  }
+
+  .input-and-close-wrapper {
+    width: 100%;
+    align-items: center;
+  }
+
+  .input-group {
+    width: 100%;
+    align-items: center;
+  }
+
+  .contact-avatar {
+    height: 24px;
+  }
+
+  .avatar-circle {
+    transform: translateY(-50%);
+  }
+
+  .contact-form {
+    width: 100%;
+  }
+  
+   .close-icon {
+    display: none;
+ }
+
+ .cancel-btn-overlay {
+  display: none;
+ }
+
+  .contact-input {
+    width: 100% !important;
+    height: 41px !important;
+  }
 }
