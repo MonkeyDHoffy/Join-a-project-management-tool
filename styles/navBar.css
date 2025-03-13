@@ -334,6 +334,14 @@ span {
   background-color: #284572;
 }
 
+.logo-and-navbar-wrapper-datenschutz {
+  display: flex;  
+  height: 50%;
+  flex-direction: column;
+  align-items: center;
+gap:128px;
+}
+
 @media(max-width:570px) {
   .header {
     /* justify-content: flex-end !important; */
