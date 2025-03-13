@@ -1,14 +1,16 @@
 let messages = [];
 
 function loginInit() {
- renderLoginForm();
+    renderPrivPol();
+    renderLoginForm();
     validateForm();
     passwordFocus();
     getUsers();
     handleAnimationBackdrop();
     animateLogo();
+    
     //loginUser(messages);
-   
+
 };
 
 
@@ -150,7 +152,7 @@ function checkLoginFormValidity() {
     } else {
         loginBtn.disabled = true;
     }
-    
+
 }
 
 
