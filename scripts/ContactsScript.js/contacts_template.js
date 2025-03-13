@@ -163,6 +163,7 @@ function getEditOverlayTemplate(id) {
     return `<section onclick="hideOverlayOnOutsideClick(event)" class="add-contact-overlay">
                 <div class="content-overlay-wrapper">
                     <div class="content-overlay-left">
+                        <img onclick="hideOverlay()" class="close-mobile-overlay" src="./assets/img/contacts_imgs/close_mobile_overlay.png" alt="">
                         <img src="./assets/img/Logo.png" alt="">
                         <p>Edit contact</p>
                         <div class="blue-line"></div>
