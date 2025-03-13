@@ -2,12 +2,14 @@
 let messages = [];
 
 function SignUpInit() {
+    renderPrivPol();
     renderSignupForm();
+    
     validateForm();
     passwordFocus();
     checkFormValidity();
     getUsers();
-    
+
 
 };
 
@@ -234,7 +236,7 @@ async function registerUser() {
     };
 
     if (users.find(user => user.email === document.getElementById('email').value)) {
-           messages.push('User already exists'); 
+        messages.push('User already exists');
 
     } else {
         users.push(user);
