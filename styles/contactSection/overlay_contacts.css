@@ -323,6 +323,11 @@ button:hover {
   align-self: end;
   display: none;
 }
+@media (max-width: 1350px) {
+  .contacts-content-left {
+    padding-bottom: 160px;
+  }
+}
 
 @media (max-width: 1050px) {
   .content-overlay-right {
