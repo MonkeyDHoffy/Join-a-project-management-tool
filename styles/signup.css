@@ -31,8 +31,6 @@ body {
     max-width: 1440px;
     /* height: 880px; */
     height: auto;
-    /* height: 880px; */
-    height: auto;
     min-height: 880px;
     position: relative;
     overflow: hidden;
@@ -399,52 +397,21 @@ body {
 /*   :::::::   media query  :::::::   */
 @media screen and (width < 640px) {
     .signup-content {
-        width: 92%;
+        width: 88%;
     }
 
     .name-wrapper,
     .email-wrapper,
     .pw-wrapper,
     .rep-pw-wrapper,
-    #loginForm,
-    #error {
-        width: 92%;
+    #loginForm {
+        width: 88%;
+
     }
 
     .arrow-link {
-        left: -64px;
+        left: 2px;
     }
-
-    .login-button-box {
-        flex-direction: column;
-        gap: 16px;
-        margin-bottom: 24px;
-    }
-
-    .login {
-        width: 180px;
-        font-size: 16px;
-    }
-
-    .guest-login {
-        font-size: 16px;
-    }
-
-    .login-h1 {
-        margin-bottom: 48px;
-        margin-top: 12px;
-    }
-
-    .nau-sign-up,
-    .nau-sign-up-box {
-        justify-content: center;
-    }
-
-    .nau-sign-up-box {
-        top: 720px;
-    }
-
-
 }
 
 @media screen and (width < 540px) {
@@ -477,3 +444,5 @@ body {
         left: 32px;
     }
 }
+
+  
