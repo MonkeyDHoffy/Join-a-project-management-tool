@@ -144,7 +144,7 @@ function secondAssignedContactsTemplate(element, index, contact) {
 }
 
 function renderTaskCardOverlay(event) {
-  let element = createdTasks.find((task) => task.title == event.querySelector("h3").innerHTML);
+  let element = createdTasks.find((task) => task.title == event.querySelector("h3").textContent);
   let overlay = document.getElementById("task-card-overlay");
   overlay.innerHTML = taskCardOverlayTemplate(element);
   let assignedContacts = document.getElementById("card-assigned");
