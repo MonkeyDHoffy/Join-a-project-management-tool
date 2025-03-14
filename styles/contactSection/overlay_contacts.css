@@ -327,6 +327,8 @@ button:hover {
   .contacts-content-left {
     padding-bottom: 160px;
   }
+
+
 }
 
 @media (max-width: 1050px) {
@@ -338,7 +340,7 @@ button:hover {
 @media (max-width: 1000px) {
   .content-overlay-wrapper {
     flex-direction: column;
-    height: 760px;
+    height: 95vh;
     width: 396px;
   }
 
