@@ -57,6 +57,7 @@ async function createTaskOverlay() {
   createdTasks.push(newTask);
   selectedSubtasks = [];
   selectedContacts = [];
+  editedSelectedContacts = [];
   await putTasks();
   showTaskNotificationOverlayAddTask();
 }

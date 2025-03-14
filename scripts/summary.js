@@ -14,6 +14,7 @@ async function summaryInit() {
     showUpcomingDeadline();
     await getQueryParamsUserName();
     await displayUserName();
+    renderUserIconName();
 }
 
 function renderTaskAmount() {

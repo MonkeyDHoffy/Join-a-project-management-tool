@@ -144,7 +144,7 @@ function secondAssignedContactsTemplate(element, index, contact) {
 }
 
 function renderTaskCardOverlay(event) {
-  let element = createdTasks.find((task) => task.title == event.querySelector("h3").innerHTML);
+  let element = createdTasks.find((task) => task.title == event.querySelector("h3").textContent);
   let overlay = document.getElementById("task-card-overlay");
   overlay.innerHTML = taskCardOverlayTemplate(element);
   let assignedContacts = document.getElementById("card-assigned");
@@ -159,6 +159,7 @@ function renderTaskCardOverlay(event) {
     if (event.target === overlay) {
       overlay.classList.remove("show");
       overlay.innerHTML = "";
+      editedSelectedContacts = [];
     }
   });
 }
@@ -175,6 +176,7 @@ function showAssignedContacts(selectedContacts) {
 function closeTaskCardOverlay() {
   let taskCardOverlayRef = document.getElementById("task-card-overlay");
   taskCardOverlayRef.classList.remove("show");
+  editedSelectedContacts = [];
 }
 
 async function deleteTaskCardOverlay(title) {

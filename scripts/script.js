@@ -101,6 +101,16 @@ async function getQueryParamsUserName() {
   }
 }
 
+async function renderUserIconName() {
+  loggedInUser = await getData("loggedInUser");
+  let userIcon = document.getElementById("userIcon");
+  if (loggedInUser == "" || loggedInUser == undefined) {
+    userIcon.innerHTML = "G";
+  }else {
+    userIcon.innerHTML = loggedInUser.split(' ').map(word => word[0]).join('').toUpperCase();
+  }
+}
+
 async function logOut() {
   loggedInUser = "";
   await putData("loggedInUser", loggedInUser);
