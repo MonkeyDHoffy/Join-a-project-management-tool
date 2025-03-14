@@ -315,14 +315,26 @@ button:hover {
   opacity: 1;
 }
 
-.close-mobile-overlay {
+/* .close-mobile-overlay {
   cursor: pointer;
   height: 14px !important;
   width: 14px !important;
   transform: translateY(-86px);
   align-self: end;
   display: none;
+} */
+
+.close-mobile-overlay{
+cursor: pointer;
+    height: 14px !important;
+    width: 14px !important;
+    /* transform: translateY(-37px); */
+    align-self: end;
+    display: none;
+    position: relative;
+    top: -37%;
 }
+
 @media (max-width: 1350px) {
   .contacts-content-left {
     padding-bottom: 160px;
