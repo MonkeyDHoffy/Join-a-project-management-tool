@@ -1,14 +1,14 @@
 let messages = [];
 
 function loginInit() {
-    renderPrivPol();
+    
     renderLoginForm();
     validateForm();
     passwordFocus();
     getUsers();
     handleAnimationBackdrop();
     animateLogo();
-    
+    renderPrivPol();
     //loginUser(messages);
 
 };
