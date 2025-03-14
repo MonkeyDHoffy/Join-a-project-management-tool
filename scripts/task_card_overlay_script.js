@@ -159,6 +159,7 @@ function renderTaskCardOverlay(event) {
     if (event.target === overlay) {
       overlay.classList.remove("show");
       overlay.innerHTML = "";
+      editedSelectedContacts = [];
     }
   });
 }
@@ -175,6 +176,7 @@ function showAssignedContacts(selectedContacts) {
 function closeTaskCardOverlay() {
   let taskCardOverlayRef = document.getElementById("task-card-overlay");
   taskCardOverlayRef.classList.remove("show");
+  editedSelectedContacts = [];
 }
 
 async function deleteTaskCardOverlay(title) {

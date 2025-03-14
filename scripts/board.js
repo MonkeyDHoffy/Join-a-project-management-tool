@@ -168,6 +168,8 @@ function closeAddTaskOverlay() {
   addTaskOverlayRef.classList.remove("active");
   addTaskOverlayContentRef.style.left = "-1000px";
   addTaskOverlayRef.style.pointerEvents = "none";
+  editedSelectedContacts = [];
+  selectedContacts = [];
   setTimeout(() => {
     addTaskOverlayRef.classList.add("d-none");
     addTaskOverlayContentRef.innerHTML = "";
@@ -185,6 +187,8 @@ function closeOverlayOutside(event) {
     addTaskOverlayRef.classList.remove("active");
     addTaskOverlayRef.style.pointerEvents = "none";
     addTaskOverlayContentRef.style.left = "-1000px";
+    editedSelectedContacts = [];
+    selectedContacts = [];
     setTimeout(() => {
       addTaskOverlayRef.classList.add("d-none");
       addTaskOverlayContentRef.innerHTML = "";
@@ -245,14 +249,13 @@ function getTaskOverlayInputs() {
  */
 
 function clearInputFields() {
-  let inputFieldsRef = Array.from(
-    document.getElementsByClassName("add-task-input-field")
-  );
+  let inputFieldsRef = Array.from(document.getElementsByClassName("add-task-input-field"));
   inputFieldsRef.forEach((inputField) => {
     inputField.value = "";
     inputField.setAttribute("required", "false");
   });
   changeMediumBtn();
+  editedSelectedContacts = [];
 }
 
 /**
