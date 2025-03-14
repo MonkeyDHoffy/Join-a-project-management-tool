@@ -352,7 +352,7 @@ span {
 gap:128px;
 }
 
-@media(max-width:570px) {
+@media(max-width:620px) {
   .header {
     /* justify-content: flex-end !important; */
 padding: 20px 16px 20px 16px;
