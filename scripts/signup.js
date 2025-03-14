@@ -4,7 +4,6 @@ let messages = [];
 function SignUpInit() {
     renderPrivPol();
     renderSignupForm();
-    
     validateForm();
     passwordFocus();
     checkFormValidity();
