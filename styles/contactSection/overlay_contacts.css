@@ -332,7 +332,7 @@ cursor: pointer;
     align-self: end;
     display: none;
     position: relative;
-    top: -37%;
+    top: -25%;
 }
 
 @media (max-width: 1350px) {
