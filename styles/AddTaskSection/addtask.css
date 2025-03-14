@@ -582,7 +582,7 @@ textarea {
   background-color: #c9cdd3;
 }
 
-.requiredResponsiveSpan{
+.requiredResponsiveSpan {
   display: none;
 }
 
@@ -603,8 +603,8 @@ textarea {
   .addTask-footer {
     display: flex;
     justify-content: space-between;
-    position: fixed; 
-    bottom: 79px; 
+    position: fixed;
+    bottom: 79px;
     left: 0;
     right: 0;
     padding: 16px;
@@ -612,56 +612,6 @@ textarea {
     width: 100%;
     background-color: #f6f7f8;
     padding-top: 0;
-}
-
-.addTask-subtasks {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding-bottom: 140px;
-}
-}
-
-@media(max-width:620px) {
-
-  .header p {
-      display: none;
-  }
-
-  .question-mark-img {
-      display: none;
-  }
-
-  .content-wrapper {
-      overflow: auto;
-  }
-
-  .addTask-wrapper{
-    height:calc(100% - 168px);
-  }
-
-  .content-right-wrapper {
-      height: 100%;
-      padding: 16px;
-      padding-bottom: 140px; 
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-  }
-
-  .addTask-footer {
-      display: flex;
-      justify-content: space-between;
-      position: fixed;
-      bottom: 65px; 
-      left: 0;
-      right: 0;
-      padding: 16px;
-      z-index: 100;
-      width: 100%;
-      background-color: #f6f7f8;
-      padding-top: 0;
   }
 
   .addTask-subtasks {
@@ -670,20 +620,82 @@ textarea {
     flex-direction: column;
     gap: 8px;
     padding-bottom: 140px;
+  }
+
+  .cancel-check-btn {
+    right: -92%;
+  }
+
 }
 
+@media(max-width:870px) {
+  .cancel-check-btn {
+    right: -85%;
+  }
+}
+
+@media(max-width:620px) {
+
+  .header p {
+    display: none;
+  }
+
+  .question-mark-img {
+    display: none;
+  }
+
+  .content-wrapper {
+    overflow: auto;
+  }
+
+  .addTask-wrapper {
+    height: calc(100% - 168px);
+  }
+
+  .content-right-wrapper {
+    height: 100%;
+    padding: 16px;
+    padding-bottom: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .addTask-footer {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 65px;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    z-index: 100;
+    width: 100%;
+    background-color: #f6f7f8;
+    padding-top: 0;
+  }
+
+  .addTask-subtasks {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 140px;
+  }
 
 
-   .addTask-footer span {
-      display: none;
-  } 
-  .requiredResponsiveSpan{
+
+  .addTask-footer span {
+    display: none;
+  }
+
+  .requiredResponsiveSpan {
     display: block;
     padding-bottom: 16px;
   }
 
   .mobile-nav-section {
-      z-index: 101; 
+    z-index: 101;
   }
 
   .clear-create {
@@ -692,26 +704,25 @@ textarea {
     align-items: center;
     gap: 16px;
     padding-bottom: 8px;
-    scale:0.9;
-}
+    scale: 0.9;
+  }
 
-.subtask-list {
-  position: relative;
-  width: 100%;
-  height: fit-content;
-  max-height: 100px;
-  overflow-y: auto;
-  word-break: break-word;
-  top: -5%;
-}
+  .subtask-list {
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    max-height: 100px;
+    overflow-y: auto;
+    word-break: break-word;
+    top: -5%;
+  }
 
-.add-task-header-and-wrapper {
-  display: flex
-;
-  flex-direction: column;
-  justify-content: flex-start;
-  height: 100%;
-}
+  .add-task-header-and-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+  }
 
 }
 
@@ -727,10 +738,16 @@ textarea {
   }
 
   #medium-btn {
-    width: 90% !important; 
+    width: 90% !important;
   }
 
   #low-btn {
     width: 90% !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .cancel-check-btn {
+    right: -80%;
   }
 }

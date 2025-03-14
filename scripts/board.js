@@ -3,6 +3,7 @@ let currentDragedElement = null;
 let cardIndex = 0;
 
 async function boardInit() {
+  renderUserIconName();
   await getTasks();
   await getContacts();
   updateHTML();

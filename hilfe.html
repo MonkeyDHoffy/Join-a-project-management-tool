@@ -17,7 +17,7 @@
     <script src="./scripts/script.js"></script>
 </head>
 
-<body>
+<body onload="renderUserIconName();">
 
     <div class="content-width">
 
@@ -64,8 +64,7 @@
                 <p>Kanban Project Management Tool</p>
                 <div class="header_btn_and_pic">
                     <div style="position: relative;">
-                        <img class="profile_picture" src="./assets/img/dog-705820_640.jpg" alt=""
-                            onclick="toggleMenu()">
+                        <div onclick="toggleMenu()" class="user-icon" id="userIcon"></div>
                         <section class="menu">
                             <div class="menu-btns">
                                 <a href="./hilfe.html" class="menu-item">Help</a>

@@ -4,6 +4,7 @@ let colorId = 0;
 let currentLetter = "";
 
 async function init() {
+  renderUserIconName();
   await getContacts();
   displayContacts();
 }
