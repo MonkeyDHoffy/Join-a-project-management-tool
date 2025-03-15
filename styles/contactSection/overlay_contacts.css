@@ -420,7 +420,7 @@ cursor: pointer;
 @media (max-width: 1000px) {
   .content-overlay-wrapper {
     flex-direction: column;
-    height: 95vh;
+    height: fit-content;
     width: 396px;
   }
 
@@ -505,5 +505,11 @@ cursor: pointer;
   .contact-input {
     width: 100% !important;
     height: 41px !important;
+  }
+}
+
+@media (max-height: 780px) {
+  .content-overlay-wrapper {
+    height: 95vh;
   }
 }

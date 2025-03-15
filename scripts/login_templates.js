@@ -32,7 +32,7 @@ function renderLoginForm() {
 
                     <div class="login-button-box">
                         <button class="login" type="submit" id="login" disabled onclick="loginUser()">Login</button>
-                        <button class="guest-login">Guest Login</button>
+                        <button onclick="guestLogIn()" class="guest-login">Guest Login</button>
                     </div>
                 </form>
     `;

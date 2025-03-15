@@ -464,7 +464,6 @@ progress {
 
 @media (max-height: 870px) {
   .task-card {
-    gap: 0px !important;
     overflow: auto;
   }
 }
