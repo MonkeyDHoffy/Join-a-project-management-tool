@@ -168,4 +168,22 @@ function toggleMenu() {
   menu.style.display = menu.style.display === "block" ? "none" : "block";
 }
 
+/**
+ * Initializes event listeners for document clicks to handle closing the menu
+ * when clicking outside of it.
+ */
+function initMenuCloseHandling() {
+  document.addEventListener('click', function(event) {
+    let menu = document.querySelector('.menu');
+    let userIcon = document.getElementById('userIcon');
+    if (menu && menu.style.display === 'block' && 
+        !menu.contains(event.target) && 
+        event.target !== userIcon && 
+        !userIcon.contains(event.target)) {
+      menu.style.display = 'none';
+    }
+  });
+}
+document.addEventListener('DOMContentLoaded', initMenuCloseHandling);
+
 
