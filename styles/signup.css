@@ -27,7 +27,6 @@ body {
     align-items: center;
     width: 96vw;
     max-width: 1440px;
-    /* height: 880px; */
     height: auto;
     min-height: 880px;
     position: relative;
@@ -422,12 +421,28 @@ body {
     .arrow-link {
         left: 12px;
     }
+
+    #error {
+        width: 80%;
+    }
 }
+
 
 @media screen and (width < 370px) {
     .arrow-link {
         left: 32px;
     }
-}
 
-  
+    .signup-content-box {
+        height: 665px;
+        min-height: 100%;
+    }
+
+    .signup-content {
+        top: 132px;
+    }
+
+    #error {
+        width: 72%;
+    }
+}
