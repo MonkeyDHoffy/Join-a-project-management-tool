@@ -1,7 +1,7 @@
-const options = { year: "numeric", month: "long", day: "numeric" };
 let deadlines = [];
 let urgentTasks = [];
 let greeting;
+const options = { year: "numeric", month: "long", day: "numeric" };
 
 async function summaryInit() {
     await getTasks();

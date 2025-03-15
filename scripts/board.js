@@ -1,6 +1,7 @@
 let taskStatus = ["to do", "in-progress", "await feedback", "done"];
 let currentDragedElement = null;
 let cardIndex = 0;
+let editedSelectedContacts = [];
 
 async function boardInit() {
   renderUserIconName();
@@ -195,8 +196,6 @@ function closeOverlayOutside(event) {
     }, 400);
   }
 }
-
-let editedSelectedContacts = [];
 
 async function confirmTaskChanges(currentTitle) {
   getTaskOverlayInputs();

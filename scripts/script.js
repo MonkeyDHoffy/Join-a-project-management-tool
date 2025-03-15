@@ -1,3 +1,9 @@
+const BASE_URL = "https://remotestorage-f4b14-default-rtdb.europe-west1.firebasedatabase.app/";
+let data;
+let users = [];
+let createdTasks = [];
+let contacts = [];
+let loggedInUser;
 const colors = [
   "--orange",
   "--pink",
@@ -15,12 +21,6 @@ const colors = [
   "--magenta",
   "--light-orange",
 ];
-const BASE_URL = "https://remotestorage-f4b14-default-rtdb.europe-west1.firebasedatabase.app/";
-let data;
-let users = [];
-let createdTasks = [];
-let contacts = [];
-let loggedInUser;
 
 async function getData(path = "") {
   try {
