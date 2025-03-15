@@ -1,5 +1,13 @@
 
 
+/**
+ * Renders the sign-up form on the page by setting the innerHTML of the element
+ * with the ID 'signupFormBox'. The form includes input fields for name, email,
+ * password, and password confirmation, along with a checkbox for agreeing to
+ * the privacy policy. It also provides functionality for toggling password
+ * visibility and validating the privacy policy agreement. The form is
+ * submitted using the function 'registerUser()'.
+ */
 function renderSignupForm() {
     document.getElementById('signupFormBox').innerHTML = `
 
