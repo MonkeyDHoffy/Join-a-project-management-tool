@@ -396,6 +396,10 @@ body {
     .arrow-link {
         left: 2px;
     }
+
+    #error {
+        width: 88%;
+    }
 }
 
 @media screen and (width < 540px) {
@@ -403,6 +407,9 @@ body {
         left: -10px;
     }
 
+    #error {
+        width: 88%;
+    }
 }
 
 @media screen and (370px < width < 428px) {
@@ -425,6 +432,10 @@ body {
     #error {
         width: 80%;
     }
+
+    #error {
+        width: 88%;
+    }
 }
 
 
@@ -443,6 +454,6 @@ body {
     }
 
     #error {
-        width: 72%;
+        width: 88%;
     }
 }
