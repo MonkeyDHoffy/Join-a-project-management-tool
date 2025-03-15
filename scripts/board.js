@@ -1,8 +1,13 @@
 let taskStatus = ["to do", "in-progress", "await feedback", "done"];
 let currentDragedElement = null;
 let cardIndex = 0;
-let editedSelectedContacts = [];
 
+/**
+ * Initializes the board by rendering user information, fetching tasks and contacts,
+ * updating the HTML, and setting up event handlers based on screen size.
+ * @async
+ * @returns {Promise<void>}
+ */
 async function boardInit() {
   renderUserIconName();
   await getTasks();
@@ -11,7 +16,9 @@ async function boardInit() {
   changeOnclickFunctionOnResize();
 }
 
-//-- render all tasks on the board
+/**
+ * Renders all tasks on the board based on their status and updates related UI elements.
+ */
 function updateHTML() {
   renderTasks("toDo", "toDo");
   renderTasks("inProgress", "inProgress");
@@ -22,6 +29,11 @@ function updateHTML() {
   cardIndex = 0;
 }
 
+/**
+ * Renders tasks with a specific status into the corresponding board column.
+ * @param {string} status - The status of tasks to render ("toDo", "inProgress", "awaitFeedback", "done").
+ * @param {string} elementId - The ID of the container element where tasks should be rendered.
+ */
 function renderTasks(status, elementId) {
   let tasks = createdTasks.filter((task) => task.status === status);
   document.getElementById(elementId).innerHTML = "";
@@ -40,6 +52,11 @@ function renderTasks(status, elementId) {
   }
 }
 
+/**
+ * Changes the onclick function for task buttons based on window size.
+ * On smaller screens (<1000px), redirects to add_task.html.
+ * On larger screens, renders the task overlay.
+ */
 function changeOnclickFunctionOnResize() {
   let buttons = document.getElementsByClassName("btn-title");
   if (window.innerWidth < 1000) {
@@ -58,6 +75,9 @@ function changeOnclickFunctionOnResize() {
   }
 }
 
+/**
+ * Hides subtask elements for tasks that have no subtasks.
+ */
 function hideSubtasksIfEmpty() {
   let subtasksRef = document.getElementsByClassName("board-card-subtasks");
   for (let i = 0; i < subtasksRef.length; i++) {
@@ -67,6 +87,9 @@ function hideSubtasksIfEmpty() {
   }
 }
 
+/**
+ * Truncates long task descriptions with ellipses to maintain UI consistency.
+ */
 function breakDescriptions() {
   let descriptionContainers = document.getElementsByClassName("board-card-description");
   for (let i = 0; i < descriptionContainers.length; i++) {
@@ -76,15 +99,28 @@ function breakDescriptions() {
   }
 }
 
-//-- drag and drop
+/**
+ * Allows dropping of dragged elements by preventing the default behavior.
+ * @param {Event} ev - The drag event.
+ */
 function allowDrop(ev) {
   ev.preventDefault();
 }
 
+/**
+ * Starts the drag operation and sets the currently dragged element.
+ * @param {number|string} id - The ID of the task being dragged.
+ */
 function startDrag(id) {
   currentDragedElement = id;
 }
 
+/**
+ * Handles the drop operation for dragged tasks, updating their status and refreshing the UI.
+ * @async
+ * @param {string} status - The new status to assign to the dropped task.
+ * @returns {Promise<void>}
+ */
 async function drop(status) {
   if (currentDragedElement !== null) {
     let task = createdTasks.find((task) => task.id === currentDragedElement);
@@ -111,7 +147,6 @@ async function drop(status) {
  * Hides all board cards initially and then selectively shows cards
  * whose titles include the search input text, ignoring case.
  */
-
 function searchTask() {
   let searchInput = document
     .getElementById("findTaskInput")
@@ -128,7 +163,9 @@ function searchTask() {
   });
 }
 
-//-- add task overlay
+/**
+ * Opens the add task overlay with animation and prepares its content.
+ */
 function openAddTaskOverlay() {
   let addTaskOverlayRef = document.getElementById("addTaskOverlay");
   let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
@@ -142,6 +179,9 @@ function openAddTaskOverlay() {
   changeMediumBtn();
 }
 
+/**
+ * Renders the content of the task overlay and initializes related UI elements.
+ */
 function renderTaskOverlayContent() {
   let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
   addTaskOverlayContentRef.innerHTML = addTaskOverlayBoardTemplate();
@@ -151,6 +191,9 @@ function renderTaskOverlayContent() {
   openAddTaskOverlay();
 }
 
+/**
+ * Renders the contacts dropdown menu with all available contacts.
+ */
 function renderContactsDropdown() {
   let dropdownContent = document.getElementById("dropdown-content");
   dropdownContent.innerHTML = contacts.map(contact => `
@@ -159,9 +202,7 @@ function renderContactsDropdown() {
 }
 
 /**
- * Closes the add task overlay.
- * Removes the active class, sets the content to move out of view to the right, and sets the pointer events to none.
- * Then, after a delay of 400ms, adds the d-none class to hide the overlay.
+ * Closes the add task overlay with animation and resets related variables.
  */
 function closeAddTaskOverlay() {
   let addTaskOverlayRef = document.getElementById("addTaskOverlay");
@@ -179,7 +220,7 @@ function closeAddTaskOverlay() {
 
 /**
  * Closes the add task overlay if the user clicks outside of it.
- * @param {Event} event - The event that triggered this function.
+ * @param {Event} event - The click event that triggered this function.
  */
 function closeOverlayOutside(event) {
   let addTaskOverlayRef = document.getElementById("addTaskOverlay");
@@ -197,6 +238,14 @@ function closeOverlayOutside(event) {
   }
 }
 
+let editedSelectedContacts = [];
+
+/**
+ * Applies changes to a task and updates the data on the server.
+ * @async
+ * @param {string} currentTitle - The current title of the task being edited.
+ * @returns {Promise<void>}
+ */
 async function confirmTaskChanges(currentTitle) {
   getTaskOverlayInputs();
   let id = 0;
@@ -215,10 +264,7 @@ async function confirmTaskChanges(currentTitle) {
   taskToEdit.completedSubtasks = taskToEdit.completedSubtasks.filter(subtask =>
     selectedSubtasks.includes(subtask)
   );
-  // for (let index = 0; index < selectedContacts.length; index++) {
-  //   if (selectedContacts[index] == null) 
-  //     delete selectedContacts[index]
-  // }
+
   let editedTask = {
     "id": id, "status": taskToEdit.status, "title": title,
     "description": description,
@@ -235,18 +281,19 @@ async function confirmTaskChanges(currentTitle) {
   closeTaskCardOverlay();
 }
 
+/**
+ * Retrieves input values from the task overlay form elements.
+ */
 function getTaskOverlayInputs() {
   title = document.querySelector(".addTask-title input").value;
   description = document.querySelector(".addTask-description textarea").value;
   dueDate = document.querySelector(".task-date input").value;
   items = Array.from(document.getElementsByClassName("subtask-item"));
 }
-/**
- * Clears the values of all input fields with the class "add-task-input-field".
- * Sets their "required" attribute to "false".
- * Invokes the changeMediumBtn function after clearing the inputs.
- */
 
+/**
+ * Clears all input fields in the add task form and resets their required attribute.
+ */
 function clearInputFields() {
   let inputFieldsRef = Array.from(document.getElementsByClassName("add-task-input-field"));
   inputFieldsRef.forEach((inputField) => {
@@ -258,8 +305,7 @@ function clearInputFields() {
 }
 
 /**
- * Shows the notification for adding a task and clears all input fields.
- * The notification is removed after 2000ms.
+ * Displays a notification after a task has been added and clears input fields.
  */
 function showTaskNotification() {
   let notification = document.querySelector(".click-notification-add-task");

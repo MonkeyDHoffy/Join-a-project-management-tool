@@ -7,12 +7,21 @@ let completedItems = [];
 let completedSubtasks = [];
 let selectedSubtasks = [];
 
+/**
+ * Initializes the task creation process by getting assigned contacts and rendering them, then loading existing tasks.
+ * @async
+ * @returns {Promise<void>} A promise that resolves when tasks are loaded
+ */
 async function createTaskInit() {
   getAssignedContacts();
   renderAssignedContacts();
   await getTasks();
 }
 
+/**
+ * Collects all the input values from the task creation form fields and assigns them to global variables.
+ * @returns {void}
+ */
 function getTaskInputs() {
 title = document.querySelector(".addTask-title input").value;
 description = document.querySelector(".addTask-description textarea").value;
@@ -21,6 +30,12 @@ category = document.getElementById("category-field").value;
 items = Array.from(document.getElementsByClassName("subtask-item"));
 }
 
+/**
+ * Creates a new task with the collected input values and adds it to the task list, then saves it to storage.
+ * Clears selected subtasks and contacts after creating the task.
+ * @async
+ * @returns {Promise<void>} A promise that resolves when the task is saved
+ */
 async function createTask() {
   getTaskInputs();
   items.forEach((item) => {
@@ -41,6 +56,13 @@ async function createTask() {
   showTaskNotification();
 }
 
+/**
+ * Creates a new task from an overlay form, adds it to the task list, and saves it to storage.
+ * Displays a specific notification for task creation from overlay.
+ * Clears selected subtasks and contacts after creating the task.
+ * @async
+ * @returns {Promise<void>} A promise that resolves when the task is saved
+ */
 async function createTaskOverlay() {
   getTaskInputs();
   items.forEach((item) => {

@@ -1,14 +1,23 @@
-
 let currentId = 0;
 let colorId = 0;
 let currentLetter = "";
 
+/**
+ * Initializes the contacts page by rendering user icon name, retrieving contacts data, and displaying contacts.
+ * @async
+ * @returns {Promise<void>}
+ */
 async function init() {
   renderUserIconName();
   await getContacts();
   displayContacts();
 }
 
+/**
+ * Creates a new contact with form input values, adds it to contacts array and updates the backend.
+ * @async
+ * @returns {Promise<void>}
+ */
 async function createContact() {
   let contactName = document.getElementById("name").value;
   let contactEmail = document.getElementById("email").value;
@@ -21,6 +30,12 @@ async function createContact() {
   showClickNotification();
 }
 
+/**
+ * Updates an existing contact with the provided ID using form input values.
+ * @async
+ * @param {number} id - The index of the contact to edit in the contacts array
+ * @returns {Promise<void>}
+ */
 async function editContact(id) {
   let contactName = document.getElementById("name").value;
   let contactEmail = document.getElementById("email").value;
@@ -38,6 +53,12 @@ async function editContact(id) {
   renderContact(id);
 }
 
+/**
+ * Removes a contact with the specified ID from the contacts array and updates the backend.
+ * @async
+ * @param {number} id - The index of the contact to delete in the contacts array
+ * @returns {Promise<void>}
+ */
 async function deleteContact(id) {
   let contactItem = document.getElementById("contact-information");
   contacts.splice(id, 1);
@@ -48,6 +69,10 @@ async function deleteContact(id) {
   await init();
 }
 
+/**
+ * Renders all contacts in the contacts list with alphabetical letter dividers.
+ * @returns {void}
+ */
 function displayContacts() {
   let contactsList = document.querySelector(".contacts-list");
   if (!contactsList) {
@@ -61,12 +86,17 @@ function displayContacts() {
       addLetterDivider(firstLetter, contactsList);
     }
     contactsList.innerHTML += contactTemplate(contact, currentId);
-    // applyRandomColorToClass(color);
     currentId++;
   });
   currentId = 0;
 }
 
+/**
+ * Adds a letter divider to the contacts list to organize contacts alphabetically.
+ * @param {string} firstLetter - The first letter to display in the divider
+ * @param {HTMLElement} contactsList - The container element for the contacts list
+ * @returns {void}
+ */
 function addLetterDivider(firstLetter, contactsList) {
   currentLetter = firstLetter;
   let letterDivider = document.createElement("div");
@@ -75,6 +105,11 @@ function addLetterDivider(firstLetter, contactsList) {
   contactsList.appendChild(letterDivider);
 }
 
+/**
+ * Hides the overlay when clicking outside of it, unless clicking on specific excluded elements.
+ * @param {Event} event - The click event object
+ * @returns {void}
+ */
 function hideOverlayOnOutsideClick(event) {
   let overlayWrapper = document.querySelector(".content-overlay-wrapper");
   if (
@@ -87,9 +122,13 @@ function hideOverlayOnOutsideClick(event) {
   }
 }
 
+/**
+ * Displays the contact overlay and applies animation for a smooth appearance.
+ * @returns {void}
+ */
 function showOverlay() {
   let overlayContainer = document.getElementById("overlay-container");
-  const overlayTemplate = getOverlayTemplate();
+  let overlayTemplate = getOverlayTemplate();
   overlayContainer.append(overlayTemplate);
   document.querySelector(".dark-background").style.display = "block";
   setTimeout(() => {
@@ -97,6 +136,10 @@ function showOverlay() {
   }, 10);
 }
 
+/**
+ * Hides the contact overlay with an animation and removes it from the DOM.
+ * @returns {void}
+ */
 function hideOverlay() {
   let overlay = document.querySelector(".add-contact-overlay");
   let darkBackground = document.querySelector(".dark-background");
@@ -110,6 +153,10 @@ function hideOverlay() {
   }
 }
 
+/**
+ * Shows a temporary notification that disappears after a set duration.
+ * @returns {void}
+ */
 function showClickNotification() {
   let notification = document.querySelector(".click-notification");
   if (notification) {

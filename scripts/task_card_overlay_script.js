@@ -1,3 +1,8 @@
+/**
+ * Generates the HTML template for the task card overlay
+ * @param {Object} element - The task object containing all task data
+ * @returns {string} HTML template string for the task card overlay
+ */
 function taskCardOverlayTemplate(element) {
   return `
       <div id="task-card-big" class="task-card slide-in">
@@ -63,25 +68,29 @@ function taskCardOverlayTemplate(element) {
       </div>
     `;
 }
-//this function is used to render the subtasks of a task, mapping over the subtasks array and returning a string of html elements
-// function renderSubtasks(element) {
-//   return element.subtasks.map((subtask) => `
-//     <label><input onclick="toggleSubtaskCompleted('${subtask}', this)" type="checkbox"> ${subtask}</label>`).join('');
-// }
 
+/**
+ * Toggles the completion status of a subtask and updates the task data
+ * @param {string} subtask - The subtask text to toggle
+ * @param {HTMLElement} element - The HTML element that triggered the toggle
+ * @async
+ */
 async function toggleSubtaskCompleted(subtask, element) {
   let task = createdTasks.find((task) => task.subtasks.includes(subtask));
   if (!task.completedSubtasks.includes(subtask)) {
     task.completedSubtasks.push(subtask);
-    //  element.checked = true;
   } else {
     task.completedSubtasks.splice(task.completedSubtasks.indexOf(subtask), 1);
-    //  element.checked = false;
   }
   await putTasks();
   await boardInit();
 }
 
+/**
+ * Renders the subtasks list with checkboxes for the task card overlay
+ * @param {Object} element - The task object containing subtasks and completed subtasks
+ * @returns {string} HTML string containing all subtasks with checkboxes
+ */
 function renderSubtasks(element) {
   return element.subtasks.map((subtask) => {
     let isCompleted = element.completedSubtasks.includes(subtask);
@@ -94,6 +103,11 @@ function renderSubtasks(element) {
   }).join('');
 }
 
+/**
+ * Creates HTML template for an editable subtask item
+ * @param {string} subtask - The subtask text
+ * @returns {string} HTML template for the editable subtask item
+ */
 function renderEditSubtask(subtask) {
   return `
     <div class="subtask-item-field">
@@ -106,6 +120,11 @@ function renderEditSubtask(subtask) {
   `;
 }
 
+/**
+ * Creates HTML template for editable subtasks in the edit overlay
+ * @param {Object} element - Object containing the subtask value
+ * @returns {string} HTML template for the editable subtask in edit mode
+ */
 function renderEditSubtasks(element) {
   return `<div class="subtask-item-field">
   <li class="item-${element.value} subtask-item">${element.value
@@ -118,24 +137,13 @@ function renderEditSubtasks(element) {
 `;
 }
 
-// async function toggleSubtaskCompleted(subtask, element) {
-//   let task = createdTasks.find((task) => task.subtasks.includes(subtask));
-//   if (task) {
-//     if (!task.completedSubtasks.includes(subtask)) {
-//       task.completedSubtasks.push(subtask);
-//       element.checked = true;
-//     } else {
-//       task.completedSubtasks.splice(task.completedSubtasks.indexOf(subtask), 1);
-//       element.checked = false;
-//     }
-//     try {
-//       await putTasks(); 
-//     } catch (error) {
-//       console.error("Error updating subtask status in Firebase:", error);
-//     }    
-//   }
-// }
-
+/**
+ * Generates HTML template for assigned contacts in the task card
+ * @param {Object} element - The task object
+ * @param {number} index - Index of the contact in the contacts array
+ * @param {Object} contact - Contact object with name and color properties
+ * @returns {string} HTML template for the assigned contact
+ */
 function secondAssignedContactsTemplate(element, index, contact) {
   return `<div class="assignee">
             <span class="avatar" style="background-color: ${contact.color};">${contact.name.split(' ').map(word => word[0]).join('').toUpperCase()}</span>
@@ -143,6 +151,10 @@ function secondAssignedContactsTemplate(element, index, contact) {
           </div>`;
 }
 
+/**
+ * Displays the task card overlay with all task details
+ * @param {HTMLElement} event - The HTML element that triggered the event
+ */
 function renderTaskCardOverlay(event) {
   let element = createdTasks.find((task) => task.title == event.querySelector("h3").textContent);
   let overlay = document.getElementById("task-card-overlay");
@@ -164,6 +176,10 @@ function renderTaskCardOverlay(event) {
   });
 }
 
+/**
+ * Displays the assigned contacts in the task card
+ * @param {Array<string>} selectedContacts - Array of selected contact names
+ */
 function showAssignedContacts(selectedContacts) {
   let assignedCirclesSectionRef = document.getElementById("assigned-circles-section");
   assignedCirclesSectionRef.innerHTML = "";
@@ -173,12 +189,20 @@ function showAssignedContacts(selectedContacts) {
   }
 }
 
+/**
+ * Closes the task card overlay
+ */
 function closeTaskCardOverlay() {
   let taskCardOverlayRef = document.getElementById("task-card-overlay");
   taskCardOverlayRef.classList.remove("show");
   editedSelectedContacts = [];
 }
 
+/**
+ * Deletes a task and updates the board
+ * @param {string} title - Title of the task to delete
+ * @async
+ */
 async function deleteTaskCardOverlay(title) {
   let element = createdTasks.find((task) => task.title == title);
   createdTasks.splice(createdTasks.indexOf(element), 1);
@@ -187,7 +211,10 @@ async function deleteTaskCardOverlay(title) {
   closeTaskCardOverlay();
 }
 
-
+/**
+ * Renders the edit overlay for a task
+ * @param {Object} element - The task object to edit
+ */
 function renderTaskEditOverlay(element) {
   let editField = document.querySelector(".task-card");
   if (window.innerHeight < 870) {
@@ -196,8 +223,23 @@ function renderTaskEditOverlay(element) {
     editField.classList.remove("edit-task-overlay-hight");
   }
   if (editField) {
-    editField.innerHTML = `
-            <div class="close-edit-task-overlay-btn">
+    editField.innerHTML = taskEditOverlayTemplateOne(element);
+            
+    filterAndSortDropdown();
+    toggleSubtasks();
+    showAssignedContacts(element.selectedContacts);
+    editedSelectedContacts = element.selectedContacts;
+  }
+}
+
+/**
+ * Generates the HTML template for the task edit overlay
+ * @param {Object} element - The task object to edit
+ * @returns {string} HTML template for the task edit form
+ */
+function taskEditOverlayTemplateOne(element) {
+  return `
+  <div class="close-edit-task-overlay-btn">
               <img onclick="closeTaskCardOverlay()" src="./assets/img/close-btn.png" alt="">
             </div>
       <div class="addTask-wrapper addTask-wrapper-edit-overlay">
@@ -357,17 +399,12 @@ function renderTaskEditOverlay(element) {
         </div>
       </div>
     `;
-    filterAndSortDropdown();
-    toggleSubtasks();
-    showAssignedContacts(element.selectedContacts);
-    editedSelectedContacts = element.selectedContacts;
-  }
 }
 
+/**
+ * Checks which contacts are selected in the dropdown and updates their visual state
+ */
 function checkSelectedContacts() {
-  // let img = item.querySelector(".cstm-checkbox");
-  // let checkedSrc = "./assets/svg/addTasksSvg/checked.svg";
-  // let uncheckedSrc = "./assets/svg/addTasksSvg/Checkbutton.svg";
   let contactsContainer = document.getElementsByClassName("dropdown-item");
   for (let i = 0; i < contactsContainer.length; i++) {
     let contact = contactsContainer[i];
@@ -375,14 +412,16 @@ function checkSelectedContacts() {
     if (editedSelectedContacts.includes(contactName)) {
       contact.classList.add("checked");
       contact.querySelector(".cstm-checkbox").src = "./assets/svg/addTasksSvg/checked.svg";
-      // img.src = checkedSrc;
     } else {
-      // img.src = uncheckedSrc;
       contact.classList.remove("checked");
     }
   }
 }
 
+/**
+ * Updates the selected contacts list when a contact is clicked
+ * @param {HTMLElement} element - The clicked contact element
+ */
 function updateSelectedContacts(element) {
   let contactName = element.querySelector("p").textContent;
   if (editedSelectedContacts.includes(contactName)) {

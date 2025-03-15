@@ -3,6 +3,11 @@ let urgentTasks = [];
 let greeting;
 const options = { year: "numeric", month: "long", day: "numeric" };
 
+/**
+ * Initializes the summary page by loading tasks and rendering all task-related information.
+ * @async
+ * @returns {Promise<void>}
+ */
 async function summaryInit() {
     await getTasks();
     renderTaskAmount();
@@ -17,16 +22,30 @@ async function summaryInit() {
     renderUserIconName();
 }
 
+/**
+ * Renders the total number of tasks in the board.
+ * @returns {void}
+ */
 function renderTaskAmount() {
     let tasksInBoard = document.getElementById("tasksInBoard");
     tasksInBoard.innerHTML = createdTasks.length;
 }
 
+/**
+ * Renders the number of tasks for a specific status field.
+ * @param {string} displayField - The ID of the HTML element where the count will be displayed.
+ * @param {string} status - The status of tasks to count.
+ * @returns {void}
+ */
 function renderTaskFieldsAmount(displayField, status) {
     let tasksInProgress = document.getElementById(displayField);
     tasksInProgress.innerHTML = createdTasks.filter(task => task.status === status).length;
 }
 
+/**
+ * Counts and displays the number of urgent tasks.
+ * @returns {void}
+ */
 function showAmountOfUrgentTasks() {
     let urgentAmountRef = document.getElementById("urgent");
     createdTasks.forEach((task) => {
@@ -37,6 +56,10 @@ function showAmountOfUrgentTasks() {
     urgentAmountRef.innerHTML = urgentTasks.length;
 }
 
+/**
+ * Finds and displays the closest upcoming deadline from all tasks.
+ * @returns {void}
+ */
 function showUpcomingDeadline() {
     let upcomingDeadlineRef = document.getElementById("deadline-date");
     deadlines = createdTasks.map(task => new Date(task.dueDate));
@@ -49,6 +72,11 @@ function showUpcomingDeadline() {
     }
 }
 
+/**
+ * Retrieves the logged-in user data and displays the appropriate greeting.
+ * @async
+ * @returns {Promise<void>}
+ */
 async function displayUserName() {
     loggedInUser = await getData("loggedInUser");
     getActuellTime();
@@ -63,6 +91,10 @@ async function displayUserName() {
     userNameElement.textContent = decodeURIComponent(loggedInUser);
 }
 
+/**
+ * Determines the appropriate greeting based on the current time of day.
+ * @returns {void}
+ */
 function getActuellTime() {
     let date = new Date();
     let hours = date.getHours();

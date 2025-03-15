@@ -1,19 +1,26 @@
 let messages = [];
 
+
+/**
+ * Initializes all login functionality
+ * @function loginInit
+ * @returns {undefined}
+ */
 function loginInit() {
-    renderPrivPol();
     renderLoginForm();
     validateForm();
     passwordFocus();
     getUsers();
     handleAnimationBackdrop();
     animateLogo();
-    
-    //loginUser(messages);
-
+    renderPrivPol();
 };
 
 
+/**
+ * Handles the animation end event for the backdrop element.
+ * Adds the 'd-none' class to hide the element and then removes it from the DOM.
+ */
 function handleAnimationBackdrop() {
     const backdrop = document.getElementById('backdrop');
     backdrop.addEventListener('animationend', () => {
@@ -23,6 +30,13 @@ function handleAnimationBackdrop() {
 }
 
 
+/**
+ * Adds the 'animate' class to the '.p1-logo' element and
+ * ensures that the animation only runs once. The animation
+ * is defined in the css file.
+ * @function animateLogo
+ * @returns {undefined}
+ */
 function animateLogo() {
     let animationRun = false;
     if (!animationRun) {
@@ -31,20 +45,27 @@ function animateLogo() {
     }
 }
 
+
+/**
+ * Listens for input events on the login form and validates its fields.
+ * Whenever the fields are invalid, prevents the form from submitting and
+ * displays the validation errors in the '.error' element.
+ * @function validateForm
+ * @returns {undefined}
+ */
 function validateForm() {
     let errorElement = document.getElementById('error');
     let form = document.getElementById('loginForm');
-    //let messages = [];
     form.addEventListener('input', (e) => {
-
         messages.length = 0;
         errorElement.innerHTML = '';
-
+        
         validateEmail(messages);
         validatePassword(messages);
         checkLoginFormValidity();
         rememberMe();
         getRememberMeUser();
+
         if (messages.length > 0) {
             e.preventDefault()
             errorElement.innerHTML = messages.join(', ')
@@ -53,6 +74,17 @@ function validateForm() {
 }
 
 
+/**
+ * Validates the 'email' field in the login form. Checks if the field is empty, 
+ * null or if its value does not match the email regex pattern. If the field is 
+ * invalid, adds an error message to the 'messages' array and adds the 
+ * 'error-highlight' class to the field's parent node for styling. If the field is 
+ * valid, removes the error message and the 'error-highlight' class from the field's 
+ * parent node.
+ * @function validateEmail
+ * @param {Array<string>} messages - array to store validation error messages
+ * @returns {undefined}
+ */
 function validateEmail(messages) {
     let email = document.getElementById('email');
     let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -68,6 +100,15 @@ function validateEmail(messages) {
 }
 
 
+/**
+ * Validates the 'password' field in the login form. Checks if the field is empty, null or if
+ * its value is equal to 'password'. If the field is invalid, adds an error message to the
+ * 'messages' array and adds the 'error-highlight' class to the field's parent node for
+ * styling. If the field is valid, removes the error message and the 'error-highlight' class
+ * from the field's parent node.
+ * @param {Array<string>} messages - array to store validation error messages
+ * @returns {undefined}
+ */
 function validatePassword(messages) {
     let password = document.getElementById('password');
     if (password.value === '' || password.value == null) {
@@ -89,6 +130,15 @@ function validatePassword(messages) {
 }
 
 
+/**
+ * Initializes the password input field and its toggle button in the login form. The lock
+ * icon will be replaced with an eye icon when the password input field is not empty and
+ * the eye icon will be replaced with the lock icon when the password input field is empty.
+ * The toggle button is enabled when the password input field is not empty and disabled
+ * when the password input field is empty.
+ * @function passwordFocus
+ * @returns {undefined}
+ */
 function passwordFocus() {
     let passwordInput = document.getElementById('password');
     let iconPW = document.querySelector('.pw-wrapper button img');
@@ -98,6 +148,17 @@ function passwordFocus() {
 }
 
 
+/**
+ * Listens for input events on the password input field and updates the lock icon 
+ * accordingly. When the password input field is empty, the lock icon is displayed 
+ * and the toggle button is disabled. When the password input field is not empty, 
+ * the eye icon is displayed and the toggle button is enabled.
+ * @function reAppearLockIcon
+ * @param {HTMLInputElement} passwordInput - password input field
+ * @param {HTMLImageElement} iconPW - lock icon image element
+ * @param {HTMLButtonElement} iconPWButton - toggle button
+ * @returns {undefined}
+ */
 function reAppearLockIcon(passwordInput, iconPW, iconPWButton) {
     passwordInput.addEventListener('input', () => {
 
@@ -114,6 +175,15 @@ function reAppearLockIcon(passwordInput, iconPW, iconPWButton) {
 }
 
 
+/**
+ * Toggles the visibility of the password in the login form. When the password is 
+ * hidden, it changes the input type to 'text' to show the password and updates 
+ * the icon to an eye with a slash. When the password is visible, it changes the 
+ * input type back to 'password' and updates the icon to a plain eye. Adds the 
+ * 'cursor-pointer' class to the icon for styling.
+ * @function togglePassword
+ * @returns {undefined}
+ */
 function togglePassword() {
     let passwordInput = document.getElementById('password');
     let iconPW = document.querySelector('.pw-wrapper button img');
@@ -130,6 +200,16 @@ function togglePassword() {
 }
 
 
+/**
+ * Removes a specific error message from the 'messages' array and removes the
+ * 'error-highlight' class from the parent node of the input element.
+ * @function removeErrorMessageAndHighlight
+ * @param {HTMLInputElement} inputElement - input element to remove error 
+ *                                          message from
+ * @param {Array<string>} messages - array of error messages to remove from
+ * @param {string} errorMessage - error message to remove
+ * @returns {undefined}
+ */
 function removeErrorMessageAndHighlight(inputElement, messages, errorMessage) {
     let index = messages.indexOf(errorMessage);
     if (index > -1) {
@@ -139,6 +219,13 @@ function removeErrorMessageAndHighlight(inputElement, messages, errorMessage) {
 }
 
 
+/**
+ * Checks the validity of the login form by verifying if the email and password
+ * fields are filled. If both fields are filled, enables the login button; otherwise,
+ * disables it.
+ * @function checkLoginFormValidity
+ * @returns {undefined}
+ */
 function checkLoginFormValidity() {
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
@@ -156,6 +243,14 @@ function checkLoginFormValidity() {
 }
 
 
+/**
+ * Listens for click events on the 'Remember me' checkbox in the login form. When
+ * the checkbox is checked, saves the email and password input values to local
+ * storage. When the checkbox is unchecked, removes the email and password values
+ * from local storage.
+ * @function rememberMe
+ * @returns {undefined}
+ */
 function rememberMe() {
     const rememberMeChbx = document.getElementById('rememberMe');
     const emailInput = document.getElementById('email');
@@ -174,6 +269,13 @@ function rememberMe() {
 }
 
 
+/**
+ * Retrieves the saved email and password from local storage and populates the login form
+ * fields. Checks the 'Remember me' checkbox if the email and password are found in local
+ * storage.
+ * @function getRememberMeUser
+ * @returns {undefined}
+ */
 function getRememberMeUser() {
     const rmEmail = localStorage.getItem('rmEmail');
     const rmPassword = localStorage.getItem('rmPassword');
@@ -189,6 +291,12 @@ function getRememberMeUser() {
 }
 
 
+/**
+ * Handles the login process by checking the validity of the email and password
+ * input and then redirects to the summary page if the credentials are valid.
+ * @function loginUser
+ * @returns {Promise<void>}
+ */
 async function loginUser() {
     let registeredUser = users.find(user => user.email === document.getElementById('email').value);
     let errorElement = document.getElementById('error');
@@ -206,6 +314,13 @@ async function loginUser() {
 }
 
 
+/**
+ * Displays an error message indicating that the user was not found.
+ * If the message is not already present in the 'messages' array, it is added.
+ * The error message is then displayed in the specified error element.
+ * @param {HTMLElement} errorElement - The element where the error message will be displayed.
+ * @returns {undefined}
+ */
 function userNotFoundMessage(errorElement) {
     if (!messages.includes('User  not found')) {
         messages.push('User   not found');
@@ -214,6 +329,14 @@ function userNotFoundMessage(errorElement) {
     return;
 }
 
+
+/**
+ * Displays an error message indicating that the password is incorrect.
+ * If the message is not already present in the 'messages' array, it is added.
+ * The error message is then displayed in the specified error element.
+ * @param {HTMLElement} errorElement - The element where the error message will be displayed.
+ * @returns {undefined}
+ */
 function passwordIncorrectMessage(errorElement) {
     if (!messages.includes('Password incorrect')) {
         messages.push('Password incorrect');
@@ -222,20 +345,3 @@ function passwordIncorrectMessage(errorElement) {
     return;
 }
 
-
-
-// function loginUser() {
-//     let registeredUser  = users.find(user => user.email === document.getElementById('email').value);
-//     let errorElement = document.getElementById('error');
-
-//     if (!registeredUser ) {
-//         errorElement.innerHTML = 'User  not found';
-//         return;
-//     } else if (registeredUser .password !== document.getElementById('password').value) {
-//         errorElement.innerHTML = 'Password incorrect';
-//         return;
-//     } else {
-//         let userName = encodeURIComponent(registeredUser .name);
-//         window.location.href = `summary.html?name=${userName}`;
-//     }
-// }

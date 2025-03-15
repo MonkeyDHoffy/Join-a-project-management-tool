@@ -1,19 +1,33 @@
+// These arrays store contacts data for the dropdown functionality
 let assignedContacts = [];
 let dropdownItems = [];
 let selectedContacts = [];
 
 
+/**
+ * Toggles the dropdown menu visibility and updates the contact selection status
+ * @async
+ * @returns {Promise<void>}
+ */
 async function toggleDropdown() {
   await toggleCheckedBackground();
   checkSelectedContacts();
 }
 
+/**
+ * Toggles the visibility state of the dropdown content between visible and hidden
+ * @async
+ * @returns {Promise<void>}
+ */
 async function toggleCheckedBackground() {
   let dropdown = document.getElementById("dropdown-content");
   dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
 }
 
-// Close the dropdown if the user clicks outside of it
+/**
+ * Closes dropdown when user clicks outside of the dropdown area
+ * @param {Event} event - The click event object
+ */
 window.onclick = function (event) {
   if (
     !event.target.matches("#assigned-to-field") &&
@@ -23,6 +37,9 @@ window.onclick = function (event) {
   }
 };
 
+/**
+ * Closes all open dropdown menus on the page
+ */
 function closeDropdowns() {
   let dropdowns = document.getElementsByClassName("dropdown-content");
   for (let i = 0; i < dropdowns.length; i++) {
@@ -33,6 +50,9 @@ function closeDropdowns() {
   }
 }
 
+/**
+ * Toggles the dropdown arrow icon between pointing down and up
+ */
 function toggleAssignToIconSrc() {
   let icon = document.getElementById("input-icon-assign-to");
   let src1 = "./assets/svg/addTasksSvg/arrow_drop_down.svg";
@@ -40,7 +60,11 @@ function toggleAssignToIconSrc() {
   icon.src = icon.src.endsWith("arrow_drop_down.svg") ? src2 : src1;
 }
 
-// Custom Checkbox Handling
+/**
+ * Finds and checks a specific contact in the dropdown by name and index
+ * @param {string} name - The name of the contact to check
+ * @param {number} index - The index of the contact in the contacts array
+ */
 function checkIt(name, index) {
   let container = document.getElementById("dropdown-content");
   let dropdownItems = container.getElementsByClassName("dropdown-item");
@@ -56,6 +80,12 @@ function checkIt(name, index) {
   renderUserCircles();
 }
 
+/**
+ * Toggles the checkbox state for a contact and updates the selected contacts list
+ * @param {HTMLElement} item - The dropdown item element containing the checkbox
+ * @param {string} name - The name of the contact
+ * @param {number} index - The index of the contact in the contacts array
+ */
 function toggleCheckbox(item, name, index) {
   let img = item.querySelector(".cstm-checkbox");
   let checkedSrc = "./assets/svg/addTasksSvg/checked.svg";
@@ -73,6 +103,9 @@ function toggleCheckbox(item, name, index) {
   }
 }
 
+/**
+ * Renders user profile circles for all selected contacts in the assigned section
+ */
 function renderUserCircles() {
   let assignedCirclesSection = document.getElementById(
     "assigned-circles-section"
@@ -90,6 +123,12 @@ function renderUserCircles() {
   }
 }
 
+/**
+ * Creates HTML template for a user circle with initials and background color
+ * @param {Object} contact - The contact object containing name information
+ * @param {string} color - The background color for the user circle
+ * @returns {string} HTML template string for the user circle
+ */
 function userCircleTemplate(contact, color) {
   return `
     <div style="background-color:${color}; color:white;" class="addTask-profilepicture">
@@ -102,6 +141,9 @@ function userCircleTemplate(contact, color) {
   `;
 }
 
+/**
+ * Validates if all required form inputs are filled to enable the create task button
+ */
 function validateInputs() {
   let titleInput = document.querySelector(".addTask-title input");
   let dateInput = document.querySelector(".task-date input");
@@ -110,22 +152,30 @@ function validateInputs() {
   createTaskButton.disabled = titleInput.value.trim() === "" || dateInput.value.trim() === "" || categoryInput.value === "Select task category";
 }
 
+/**
+ * Sets up input field validation by adding event listeners to required fields
+ */
 function validateInputFields() {
   let titleInput = document.querySelector(".addTask-title input");
   let dateInput = document.querySelector(".task-date input");
   titleInput.addEventListener("input", validateInputs);
   dateInput.addEventListener("input", validateInputs);
   validateInputs();
-};
+}
 
-
-// Search Functionality and Alphabetical Sorting
-
+/**
+ * Renders contacts in the dropdown and sorts them alphabetically
+ * @async
+ * @returns {Promise<void>}
+ */
 async function filterAndSortDropdown() {
   await renderAssignedContacts();
   sortDropdownItems();
 }
 
+/**
+ * Sorts dropdown items alphabetically by contact name
+ */
 function sortDropdownItems() {
   dropdownItems.sort((a, b) => {
     const nameA = a.querySelector("p").textContent.toUpperCase();
@@ -139,6 +189,9 @@ function sortDropdownItems() {
   dropdownItems.forEach((item) => dropdownContent.appendChild(item));
 }
 
+/**
+ * Filters dropdown items based on user input in the search field
+ */
 function filterDropdownItems() {
   let assignedToField = document.getElementById("assigned-to-field");
   let filter = assignedToField.value.toLowerCase();
@@ -148,12 +201,22 @@ function filterDropdownItems() {
   });
 }
 
+/**
+ * Fetches contact data from storage and sorts alphabetically
+ * @async
+ * @returns {Promise<void>}
+ */
 async function getAssignedContacts() {
   assignedContacts = Object.values(await getData("contacts/"));
   console.log(assignedContacts);
   assignedContacts.sort((a, b) => a.name.localeCompare(b.name));
 }
 
+/**
+ * Renders all contacts in the dropdown menu and restores selected state
+ * @async
+ * @returns {Promise<void>}
+ */
 async function renderAssignedContacts() {
   await getAssignedContacts();
   let assignedContactsList = document.getElementById("dropdown-content");
@@ -167,6 +230,9 @@ async function renderAssignedContacts() {
   restoreSelectedState();
 }
 
+/**
+ * Restores the selected state of contacts in the dropdown after re-rendering
+ */
 function restoreSelectedState() {
   selectedContacts.forEach((contact) => {
     let item = dropdownItems.find(
@@ -181,6 +247,11 @@ function restoreSelectedState() {
   });
 }
 
+/**
+ * Creates HTML template for a contact item in the dropdown list
+ * @param {number} index - The index of the contact in the assignedContacts array
+ * @returns {string} HTML template string for the contact dropdown item
+ */
 function assignedContactsTemplate(index) {
   return `
         <div onclick="checkIt('${assignedContacts[index].name}', ${index}); updateSelectedContacts(this)" class="dropdown-item">
