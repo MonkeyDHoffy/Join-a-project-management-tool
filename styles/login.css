@@ -476,7 +476,6 @@ body {
         animation-delay: 1.6s;
         animation-timing-function: ease-in-out;
     }
-
 }
 
 @media screen and (320px < width < 428px) {
@@ -503,7 +502,6 @@ body {
 
     #Ebene_1 g path[fill="#2A3647"] {
         fill: #FFFFFF;
-        
     }
 
     #Ebene_1 g path[fill="#2A3647"] {
@@ -516,5 +514,18 @@ body {
     .nau-sign-up-box {
         top: 680px;
 
+    }
+
+    .login-content-box {
+        height: 665px;
+        min-height: 100%;
+    }
+
+    .login-content {
+        top: 124px;
+    }
+
+    #error {
+        width: 72%;
     }
 }
