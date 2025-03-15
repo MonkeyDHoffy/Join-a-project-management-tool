@@ -1,7 +1,7 @@
-const options = { year: "numeric", month: "long", day: "numeric" };
 let deadlines = [];
 let urgentTasks = [];
 let greeting;
+const options = { year: "numeric", month: "long", day: "numeric" };
 
 /**
  * Initializes the summary page by loading tasks and rendering all task-related information.

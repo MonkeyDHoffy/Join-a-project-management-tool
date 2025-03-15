@@ -345,3 +345,8 @@ function passwordIncorrectMessage(errorElement) {
     return;
 }
 
+async function guestLogIn() {
+    loggedInUser = "";
+    await putData("loggedInUser", loggedInUser);
+    window.location.href = "./summary.html";
+}
