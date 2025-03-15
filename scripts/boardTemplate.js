@@ -1,3 +1,15 @@
+/**
+ * Generates HTML template for a task card
+ * @param {Object} element - The task object containing task details
+ * @param {number} element.id - The unique identifier of the task
+ * @param {string} element.selectedCategory - The category of the task
+ * @param {string} element.title - The title of the task
+ * @param {string} element.description - The description of the task
+ * @param {Array} element.completedSubtasks - Array of completed subtasks
+ * @param {Array} element.subtasks - Array of all subtasks
+ * @param {string} element.priority - Priority level of the task
+ * @returns {string} HTML string representing the task card
+ */
 function taskCardTemplate(element) {
   return ` <div onclick="renderTaskCardOverlay(this)" ondragstart="startDrag(${element.id})" draggable="true" class="board-card">                              
                                     <div class="color-${element.selectedCategory.replace(" ", "-")}">${element.selectedCategory}</div>
@@ -17,6 +29,14 @@ function taskCardTemplate(element) {
                             </div>`;
 }
 
+/**
+ * Generates HTML for assigned contacts displayed on board cards
+ * @param {Object} assignedContact - Contact object with name and color properties
+ * @param {string} assignedContact.name - Name of the contact
+ * @param {string} assignedContact.color - Background color code for the contact's avatar
+ * @param {number} index - Index position used for calculating horizontal offset
+ * @returns {string} HTML string representing the contact avatar or empty string if contact is null
+ */
 function renderAssignedContactsToBoardCard(assignedContact, index) {
     if (!assignedContact) {
         return "";
@@ -26,12 +46,21 @@ function renderAssignedContactsToBoardCard(assignedContact, index) {
                                     </div> `
 }
 
+/**
+ * Generates HTML template for empty task columns
+ * @param {number} i - Index of the task status to display
+ * @returns {string} HTML string for the empty task placeholder
+ */
 function noTasksTemplate(i) {
   return `<div draggable="true" class="no-tasks">
                             <span>No tasks ${taskStatus[i]}</span>
                         </div>`;
 }
 
+/**
+ * Generates HTML template for the add task overlay on the board
+ * @returns {string} Complete HTML structure for add task form overlay
+ */
 function addTaskOverlayBoardTemplate() {
     return ` <div class="addTask-header-and-input">
               <div class="addTask-header">
@@ -85,7 +114,6 @@ function addTaskOverlayBoardTemplate() {
                           </section>
   
                       </div>
-  
   
                   </div>
   
@@ -151,10 +179,7 @@ function addTaskOverlayBoardTemplate() {
   
                                           </div>
   
-  
-  
                               <section id="subtasksList" class="subtask-list"></section>
-  
   
                               <section id="edit-subtask-item-field" class="edit-subtask-item">
                                   <input id="subtask-edit-input" class="subtask-edit-input" value="" type="text" name=""
@@ -176,11 +201,7 @@ function addTaskOverlayBoardTemplate() {
                               </div>
                           </section>
   
-  
-  
-  
                       </div>
-  
   
                   </div>
   
@@ -195,8 +216,7 @@ function addTaskOverlayBoardTemplate() {
                       class="createTask-button">Create Task<img src="./assets/svg/addTasksSvg/cross.svg" alt="">
                   </button></div>
   
-  
           </div>`;
-  }
+}
 
 

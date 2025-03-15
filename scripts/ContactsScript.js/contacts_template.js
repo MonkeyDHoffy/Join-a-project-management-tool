@@ -1,9 +1,17 @@
+/**
+ * Retrieves an overlay template from the DOM and returns a clone of it.
+ * @returns {DocumentFragment} A cloned node of the overlay template.
+ */
 function getOverlayTemplate() {
 
     let overlayTemplateRef = document.getElementById("overlayTemplate")
     return overlayTemplateRef.content.cloneNode(true);
 }
 
+/**
+ * Displays the details of a contact with the specified ID and handles responsive layout changes.
+ * @param {number} id - The index of the contact in the contacts array.
+ */
 function renderContact(id) {
     let contactItem = document.getElementById("contact-information");
     contactItem.innerHTML = "";
@@ -21,6 +29,11 @@ function renderContact(id) {
     }
 }
 
+/**
+ * Generates the HTML template for displaying a contact's detailed information card.
+ * @param {number} id - The index of the contact in the contacts array.
+ * @returns {string} HTML string for the contact card.
+ */
 function getContactCardTemplate(id) {
     return ` <div class="slider"><div class="pic-and-name">
                 <div class="contact-avatar">
@@ -80,6 +93,10 @@ function getContactCardTemplate(id) {
             </div>`;
 }
 
+/**
+ * Adjusts the layout for mobile view when going back from contact details to the contact list.
+ * This function modifies the display properties of various elements based on screen width.
+ */
 function responsiveBackBtn() {
     if (window.innerWidth <= 1000) {
       
@@ -93,6 +110,10 @@ function responsiveBackBtn() {
         responsiveEditBtnTwo.style.display = 'none';
     }}
 
+/**
+ * Toggles the visibility of the responsive edit menu with animation effects.
+ * Shows the menu if it's hidden and hides it if it's visible.
+ */
 function openResponsiveEdit() {
     let editDeleteMenu = document.querySelector('.edit-delete-btn-responsive');
     
@@ -103,6 +124,10 @@ function openResponsiveEdit() {
     }
 }
 
+/**
+ * Hides the responsive edit menu with a slide-out animation.
+ * @param {HTMLElement} menu - The menu element to hide.
+ */
 function hideResponsiveEditMenu(menu) {
     menu.classList.remove('slide-in-responsive');
     menu.classList.add('slide-out-responsive');
@@ -112,12 +137,20 @@ function hideResponsiveEditMenu(menu) {
     }, 300);
 }
 
+/**
+ * Shows the responsive edit menu with a slide-in animation and updates the button actions.
+ * @param {HTMLElement} menu - The menu element to show.
+ */
 function showResponsiveEditMenu(menu) {
     menu.classList.add('slide-in-responsive');
     menu.style.display = 'flex';
     updateResponsiveButtons(menu);
 }
 
+/**
+ * Updates the onclick attributes of edit and delete buttons in the responsive menu with the current contact ID.
+ * @param {HTMLElement} menu - The menu element containing the buttons to update.
+ */
 function updateResponsiveButtons(menu) {
     let contactId = getCurrentContactId();
     //lieber global definieren und funktionen in der html einbinden ??
@@ -128,6 +161,11 @@ function updateResponsiveButtons(menu) {
     if (deleteBtn) deleteBtn.setAttribute('onclick', `deleteContact(${contactId})`);
 }
 
+/**
+ * Closes the responsive edit menu when a click occurs outside of the menu and its toggle button.
+ * This function is attached as an event listener to the document.
+ * @param {Event} event - The click event object.
+ */
 function closeResponsiveEditOnOutsideClick(event) {
     let editDeleteMenu = document.querySelector('.edit-delete-btn-responsive');
     let editButton = document.querySelector('.edit-contact-btn-responsive');
@@ -141,6 +179,10 @@ function closeResponsiveEditOnOutsideClick(event) {
 }
 document.addEventListener('click', closeResponsiveEditOnOutsideClick);
 
+/**
+ * Identifies the ID of the currently displayed contact based on the name in the contact details.
+ * @returns {number|null} The index of the current contact in the contacts array, or null if not found.
+ */
 function getCurrentContactId() {
     let contactNameElement = document.querySelector('.name-and-edit h2');
     if (!contactNameElement) return null;
@@ -153,12 +195,21 @@ function getCurrentContactId() {
     return null;
 }
 
+/**
+ * Displays an overlay with a form for editing an existing contact's information.
+ * @param {number} id - The index of the contact in the contacts array.
+ */
 function renderEditOverlay(id) {
     let overlayContainer = document.getElementById("overlay-container");
     showOverlay();
     overlayContainer.innerHTML = getEditOverlayTemplate(id);
 }
 
+/**
+ * Generates the HTML template for the contact edit form with pre-filled contact information.
+ * @param {number} id - The index of the contact in the contacts array.
+ * @returns {string} HTML string for the edit form overlay.
+ */
 function getEditOverlayTemplate(id) {
     return `<section onclick="hideOverlayOnOutsideClick(event)" class="add-contact-overlay">
                 <div class="content-overlay-wrapper">
@@ -209,6 +260,14 @@ function getEditOverlayTemplate(id) {
             </section>`;
 }
 
+/**
+ * Generates the HTML template for displaying a contact item in the contact list.
+ * @param {Object} contact - The contact object containing name, email, and color properties.
+ * @param {string} contact.name - The name of the contact.
+ * @param {string} contact.email - The email of the contact.
+ * @param {string} contact.color - The color code for the contact avatar.
+ * @returns {string} HTML string for the contact list item.
+ */
 function contactTemplate(contact) {
     return `<div class="contact-item" onclick="renderContact(${currentId})">
                                 <div style="background-color:${contact.color};" id="contactProfilePicture${colorId}" class="contact-profile-picture">${contact.name.split(' ').map(word => word[0]).join('').toUpperCase()}</div>

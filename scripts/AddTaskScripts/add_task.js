@@ -1,4 +1,6 @@
-// Initialize the task creation form by setting the icons
+/**
+ * Initialize the task creation form by setting the icons and initializing various components
+ */
 function addTaskInit() {
   renderUserIconName();
   validateInputFields();
@@ -15,49 +17,65 @@ let UserStory = "User Story";
 let selectedCategory = "";
 let subtasks = [];
 
-// Set the initial icons for the priority buttons
+/**
+ * Set the initial icons for the priority buttons
+ */
 function setIcons() {
   urgentIcon();
   mediumIcon();
   lowIcon();
 }
 
-// Set the icon for the urgent button to the default state
+/**
+ * Set the icon for the urgent button to the default state
+ */
 function urgentIcon() {
   document.getElementById("urgent-img").src =
     "./assets/svg/addTasksSvg/urgent.svg";
 }
 
-// Set the icon for the medium button to the default state
+/**
+ * Set the icon for the medium button to the default state
+ */
 function mediumIcon() {
   document.getElementById("medium-img").src =
     "./assets/svg/addTasksSvg/medium.svg";
 }
 
-// Set the icon for the low button to the default state
+/**
+ * Set the icon for the low button to the default state
+ */
 function lowIcon() {
   document.getElementById("low-img").src = "./assets/svg/addTasksSvg/low.svg";
 }
 
-// Set the icon for the urgent button to the active state
+/**
+ * Set the icon for the urgent button to the active state
+ */
 function urgentIconActive() {
   document.getElementById("urgent-img").src =
     "./assets/svg/addTasksSvg/urgentactive.svg";
 }
 
-// Set the icon for the medium button to the active state
+/**
+ * Set the icon for the medium button to the active state
+ */
 function mediumIconActive() {
   document.getElementById("medium-img").src =
     "./assets/svg/addTasksSvg/mediumactive.svg";
 }
 
-// Set the icon for the low button to the active state
+/**
+ * Set the icon for the low button to the active state
+ */
 function lowIconActive() {
   document.getElementById("low-img").src =
     "./assets/svg/addTasksSvg/lowactive.svg";
 }
 
-// Change the urgent button to the active state and reset the other buttons
+/**
+ * Change the urgent button to the active state and reset the other buttons
+ */
 function changeUrgentBtn() {
   toggleUrgent();
   urgentIconActive();
@@ -69,7 +87,9 @@ function changeUrgentBtn() {
   toggleLowActive();
 }
 
-// Set the urgent button to the active state
+/**
+ * Set the urgent button to the active state
+ */
 function toggleUrgent() {
   priority = "urgent";
   let urgentBtn = document.getElementById("urgent-btn");
@@ -77,14 +97,18 @@ function toggleUrgent() {
   urgentBtn.classList.add("urgent-btn-active");
 }
 
-// Reset the urgent button to the default state
+/**
+ * Reset the urgent button to the default state
+ */
 function toggleUrgentActive() {
   let urgentBtn = document.getElementById("urgent-btn");
   urgentBtn.classList.remove("urgent-btn-active");
   urgentBtn.classList.add("prio-btn-urgent");
 }
 
-// Change the medium button to the active state and reset the other buttons
+/**
+ * Change the medium button to the active state and reset the other buttons
+ */
 function changeMediumBtn() {
   toggleMedium();
   mediumIconActive();
@@ -96,7 +120,9 @@ function changeMediumBtn() {
   toggleLowActive();
 }
 
-// Set the medium button to the active state
+/**
+ * Set the medium button to the active state
+ */
 function toggleMedium() {
   priority = "medium";
   let mediumBtn = document.getElementById("medium-btn");
@@ -104,14 +130,18 @@ function toggleMedium() {
   mediumBtn.classList.add("medium-btn-active");
 }
 
-// Reset the medium button to the default state
+/**
+ * Reset the medium button to the default state
+ */
 function toggleMediumActive() {
   let mediumBtn = document.getElementById("medium-btn");
   mediumBtn.classList.remove("medium-btn-active");
   mediumBtn.classList.add("prio-btn-medium");
 }
 
-// Change the low button to the active state and reset the other buttons
+/**
+ * Change the low button to the active state and reset the other buttons
+ */
 function changeLowBtn() {
   toggleLow();
   lowIconActive();
@@ -123,7 +153,9 @@ function changeLowBtn() {
   toggleUrgentActive();
 }
 
-// Set the low button to the active state
+/**
+ * Set the low button to the active state
+ */
 function toggleLow() {
   priority = "low";
   let lowBtn = document.getElementById("low-btn");
@@ -131,34 +163,47 @@ function toggleLow() {
   lowBtn.classList.add("low-btn-active");
 }
 
-// Reset the low button to the default state
+/**
+ * Reset the low button to the default state
+ */
 function toggleLowActive() {
   let lowBtn = document.getElementById("low-btn");
   lowBtn.classList.remove("low-btn-active");
   lowBtn.classList.add("prio-btn-low");
 }
 
+/**
+ * Reset all form inputs and selections to their default state
+ */
 function resetAddTaskInputs() {
   clearInputFields();
   changeMediumBtn();
   clearAssignedContacts();
   clearSubtasks();
-  // clearCategory();
   validateInputs();
 }
 
+/**
+ * Clear all subtasks from the list and reset the subtasks array
+ */
 function clearSubtasks() {
   subtasks = [];
   let subtasksListRef = document.getElementById("subtasksList");
   subtasksListRef.innerHTML = "";
 }
 
+/**
+ * Clear all assigned contacts and update the UI
+ */
 function clearAssignedContacts() {
   selectedContacts = [];
   renderAssignedContacts();
   renderUserCircles();
 }
 
+/**
+ * Clear all input fields and remove any validation errors
+ */
 function clearInputFields() {
   let requiredTitleRef = document.getElementById("requiredTitle");
   let requiredDateRef = document.getElementById("requiredDate");
@@ -173,6 +218,9 @@ function clearInputFields() {
   });
 }
 
+/**
+ * Toggle the dropdown icon for the category selector between up and down arrows
+ */
 function toggleCategoryIconSrc() {
   let icon = document.getElementById("input-icon-category");
   let src1 = "./assets/svg/addTasksSvg/arrow_drop_down.svg";
@@ -184,6 +232,9 @@ function toggleCategoryIconSrc() {
   }
 }
 
+/**
+ * Show a notification that a task was successfully added and redirect to the board
+ */
 function showTaskNotification() {
   let notification = document.querySelector(".click-notification-add-task");
   if (notification) {
@@ -196,6 +247,9 @@ function showTaskNotification() {
   }
 }
 
+/**
+ * Show a notification that a task was successfully added from the overlay without redirecting
+ */
 function showTaskNotificationOverlayAddTask() {
   let notification = document.querySelector(".click-notification-add-task");
   if (notification) {
@@ -208,6 +262,10 @@ function showTaskNotificationOverlayAddTask() {
   }
 }
 
+/**
+ * Add required validation for the title field
+ * @param {HTMLElement} element - The title input element to validate
+ */
 function addRequiredTitle(element) {
   let requiredTextTitle = document.getElementById("requiredTitle");
   element.setAttribute("required", "true");
@@ -219,6 +277,10 @@ function addRequiredTitle(element) {
   }
 }
 
+/**
+ * Add required validation for the date field
+ * @param {HTMLElement} element - The date input element to validate
+ */
 function addRequiredDate(element) {
   let requiredTextDate = document.getElementById("requiredDate");
   element.setAttribute("required", "true");
@@ -232,11 +294,16 @@ function addRequiredDate(element) {
 
 //Subtask functions-----------------------------------------------------------------------------
 
+/**
+ * Focus the input field for adding subtasks
+ */
 function focusSubtaskInput() {
-  
   document.querySelector(".addTask-subtasks input").focus();
 }
 
+/**
+ * Add a new subtask to the list from the input field
+ */
 function renderSubtaskList() {
   cancelEditSubtaskItem();
   let subtaskInput = document.querySelector(".addTask-subtasks input");
@@ -245,26 +312,28 @@ function renderSubtaskList() {
     subtaskList.innerHTML += subtaskListTemplate(subtaskInput);
     subtasks.push(subtaskInput.value);
     subtaskInput.value = "";
-    // Trigger the input event listener to toggle subtask buttons/wird noch durch normales onload ersetzt
     subtaskInput.dispatchEvent(new Event("input"));
   }
 }
 
+/**
+ * Remove a subtask from the list
+ * @param {HTMLElement} element - The delete button element that was clicked
+ */
 function deleteSubtaskItem(element) {
   element.parentElement.parentElement.remove();
-  // let subtaskText = element.parentElement.parentElement.querySelector("li").textContent;
-  // completedSubtasks.splice(completedSubtasks.indexOf(subtaskText), 1);
-  // console.log(completedSubtasks);
-  
-  
 }
 
+/**
+ * Generate HTML template for a subtask item
+ * @param {HTMLInputElement} subtaskInput - The input element containing the subtask value
+ * @returns {string} HTML template for the subtask item
+ */
 function subtaskListTemplate(subtaskInput) {
   return `<div class="subtask-item-field">
   <li class="item-${subtaskInput.value.replace(" ", "-")} subtask-item">${
     subtaskInput.value
   }</li>
-  
      <div class="btn-section"><img onclick="editSubtaskItem('${
        subtaskInput.value
      }')" class="edit-subtask-item-btn" src="./assets/svg/contacts_svg/edit.svg" alt=""><img onclick="deleteSubtaskItem(this)" class="delete-subtask-item-btn"
@@ -273,6 +342,10 @@ function subtaskListTemplate(subtaskInput) {
 `;
 }
 
+/**
+ * Enable editing of a specific subtask
+ * @param {string} subtaskValue - The current value of the subtask to edit
+ */
 function editSubtaskItem(subtaskValue) {
   document.querySelector(".subtask-list").style.display = "none";
   let editField = document.getElementById("edit-subtask-item-field");
@@ -280,15 +353,19 @@ function editSubtaskItem(subtaskValue) {
   let subtaskEditInput = editField.querySelector("input");
   subtaskEditInput.value = subtaskValue;
   subtaskEditInput.dataset.oldValue = subtaskValue;
-  // oldValue is used to store the old value of the subtask item, so we can compare it with the new value
-  // .dataset is used to store custom data attributes in the DOM, so we can access them later !!!!
 }
 
+/**
+ * Cancel the subtask editing mode
+ */
 function cancelEditSubtaskItem() {
   document.querySelector(".subtask-list").style.display = "block";
   document.getElementById("edit-subtask-item-field").style.display = "none";
 }
 
+/**
+ * Clear the subtask input field during editing and set focus to it
+ */
 function deleteSubInputValue() {
   let subtaskEditInput = document.getElementById("subtask-edit-input");
   if (subtaskEditInput) {
@@ -297,7 +374,9 @@ function deleteSubInputValue() {
   document.getElementById("subtask-edit-input").focus();
 }
 
-// Diese Funktion bestätigt die Bearbeitung eines Subtasks
+/**
+ * Save the edited subtask value
+ */
 function confirmSubEdit() {
   let subtaskEditInput = document.getElementById("subtask-edit-input");
   let newValue = subtaskEditInput.value.trim();
@@ -320,15 +399,20 @@ function confirmSubEdit() {
   cancelEditSubtaskItem();
 }
 
+/**
+ * Cancel adding a new subtask and clear the input
+ */
 function cancelSubInput() {
   let subtaskInput = document.querySelector(".addTask-subtasks input");
   subtaskInput.value = "";
-  subtaskInput.dispatchEvent(new Event("input")); // btn toggling to the original state
+  subtaskInput.dispatchEvent(new Event("input")); 
   document.querySelector(".addTask-subtasks input").focus();
 }
 
+/**
+ * Set up event listeners for the subtask input field to show/hide buttons and handle Enter key
+ */
 function toggleSubtasks() {
-  // Add event listener to toggle subtask buttons based on input value
   document
     .querySelector(".addTask-subtasks input")
     .addEventListener("input", function () {
@@ -351,9 +435,11 @@ function toggleSubtasks() {
         renderSubtaskList(); 
       }
     });
-};
+}
 
-// Category-Btn--------------------------------------------------
+/**
+ * Toggle the visibility of the category dropdown menu
+ */
 function toggleCategoryDropdown() {
   let categoryDropdown = document.querySelector(".category-dropdown");
   if (categoryDropdown.style.display === "none") {
@@ -363,6 +449,10 @@ function toggleCategoryDropdown() {
   }
 }
 
+/**
+ * Set the selected category and update the UI
+ * @param {string} category - The category to set
+ */
 function setCategory(category) {
   selectedCategory = category;
   console.log(selectedCategory);
@@ -371,6 +461,10 @@ function setCategory(category) {
   validateInputs();
 }
 
+/**
+ * Close the category dropdown when clicking outside
+ * @param {Event} event - The click event
+ */
 function closeCategoryDropdown(event) {
   let categoryDropdown = document.querySelector(".category-dropdown");
   let categoryField = document.getElementById("category-field");
@@ -379,13 +473,4 @@ function closeCategoryDropdown(event) {
   }
 }
 
-// document.addEventListener("click", function (event) {
-//   let categoryDropdown = document.querySelector(".category-dropdown");
-//   let categoryField = document.getElementById("category-field");
-//   let isClickInside =
-//     categoryDropdown.contains(event.target) ||
-//     categoryField.contains(event.target);
-//   if (!isClickInside) {
-//     categoryDropdown.style.display = "none";
-//   }
-// });
+
