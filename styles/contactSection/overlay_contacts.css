@@ -335,6 +335,74 @@ cursor: pointer;
     top: -25%;
 }
 
+
+@media (max-height: 550px) and (max-width: 1000px) {
+  .content-overlay-left {
+    padding: 25px 24px; 
+    max-height: 150px; 
+
+    p{
+      font-size: 24px !important;
+    }
+  }
+
+  .blue-line {
+    width: 90px;
+    border-top: 3px solid #29abe2;
+    position: relative;
+    top: -182%;
+}
+
+.avatar-circle {
+  width: 50px !important;
+  height: 50px !important;
+  font-size: 28px;
+}
+
+
+
+  .close-mobile-overlay {
+    cursor: pointer;
+    height: 14px !important;
+    width: 14px !important;
+    align-self: end;
+    display: none;
+    position: relative;
+    top: 64%;
+}
+  
+  .content-left-text p {
+    font-size: 32px; 
+    line-height: 32px;
+  }
+  
+  .content-left-text span {
+    font-size: 16px;
+  }
+  
+  .avatar-circle {
+    width: 80px; 
+    height: 80px;
+    font-size: 28px;
+  }
+  
+  .input-group {
+    gap: 5px;
+  }
+  
+  .contact-form input {
+    height: 40px; 
+    padding: 10px 15px; 
+    margin-bottom: 3px;
+  }
+
+  .content-overlay-right{
+    gap:0px;
+  }
+}
+
+
+
 @media (max-width: 1350px) {
   .contacts-content-left {
     padding-bottom: 160px;
