@@ -111,7 +111,7 @@ function renderEditSubtasks(element) {
 function renderSubtasks(element) {
     return element.subtasks.map((subtask) => {
         let isCompleted = element.completedSubtasks.includes(subtask);
-        return `
+        return `<div>
         <label>
           <input
             onclick="toggleSubtaskCompleted('${subtask}', this)"
