@@ -345,6 +345,13 @@ function passwordIncorrectMessage(errorElement) {
     return;
 }
 
+
+/**
+ * Logs in as a guest user by clearing the 'loggedInUser' data and storing it,
+ * then redirects to the summary page.
+ * @function guestLogIn
+ * @returns {Promise<void>}
+ */
 async function guestLogIn() {
     loggedInUser = "";
     await putData("loggedInUser", loggedInUser);
