@@ -4,7 +4,7 @@
  * @returns {string} HTML template string for the task card overlay
  */
 function taskCardOverlayTemplate(element) {
-    return `
+  return `
         <div id="task-card-big" class="task-card slide-in">
           <div class="badge-close-btn-wrapper">
             <div class="badge-${element.selectedCategory.toLowerCase().replace(' ', '-')}">${element.selectedCategory}</div>
@@ -75,7 +75,7 @@ function taskCardOverlayTemplate(element) {
  * @returns {string} HTML template for the editable subtask item
  */
 function renderEditSubtask(subtask) {
-    return `
+  return `
       <div class="subtask-item-field">
         <li class="item-${subtask.replace(" ", "-")} subtask-item">${subtask}</li>
         <div class="btn-section">
@@ -92,12 +92,12 @@ function renderEditSubtask(subtask) {
  * @returns {string} HTML template for the editable subtask in edit mode
  */
 function renderEditSubtasks(element) {
-    return `<div class="subtask-item-field">
+  return `<div class="subtask-item-field">
     <li class="item-${element.value} subtask-item">${element.value
-        }</li>
+    }</li>
     
        <div class="btn-section"><img onclick="editSubtaskItem('${element.value
-        }')" class="edit-subtask-item-btn" src="./assets/svg/contacts_svg/edit.svg" alt=""><img onclick="deleteSubtaskItem(this)" class="delete-subtask-item-btn"
+    }')" class="edit-subtask-item-btn" src="./assets/svg/contacts_svg/edit.svg" alt=""><img onclick="deleteSubtaskItem(this)" class="delete-subtask-item-btn"
               src="./assets/svg/contacts_svg/delete.svg" alt=""></div>
       </div>
   `;
@@ -109,15 +109,16 @@ function renderEditSubtasks(element) {
  * @returns {string} HTML string containing all subtasks with checkboxes
  */
 function renderSubtasks(element) {
-    return element.subtasks.map((subtask) => {
-        let isCompleted = element.completedSubtasks.includes(subtask);
-        return `<div>
-        <label>
-          <input
-            onclick="toggleSubtaskCompleted('${subtask}', this)"
-            type="checkbox"
-            ${isCompleted ? 'checked' : ''}/>${subtask}</label>`;
-    }).join('');
+  return element.subtasks.map((subtask) => {
+    let isCompleted = element.completedSubtasks.includes(subtask);
+    return `
+      <div class="subtask-wrapper">
+          <input type="checkbox" class="sbtsk-chb" id="${subtask}"  onclick="toggleSubtaskCompleted('${subtask}', this)"  ${isCompleted ? 'checked' : ''}/>
+          <label  for="${subtask}" class="checkbox-label">${subtask}</label>
+          </div>
+          `;  
+        
+  }).join('');
 }
 
 /**
@@ -128,7 +129,7 @@ function renderSubtasks(element) {
 * @returns {string} HTML template for the assigned contact
 */
 function secondAssignedContactsTemplate(element, index, contact) {
-    return `<div class="assignee">
+  return `<div class="assignee">
               <span class="avatar" style="background-color: ${contact.color};">${contact.name.split(' ').map(word => word[0]).join('').toUpperCase()}</span>
               ${contact.name}
             </div>`;
@@ -140,7 +141,7 @@ function secondAssignedContactsTemplate(element, index, contact) {
  * @returns {string} HTML template for the task edit form
  */
 function taskEditOverlayTemplateOne(element) {
-    return `
+  return `
     <div class="close-edit-task-overlay-btn">
                 <img onclick="closeTaskCardOverlay()" src="./assets/img/close-btn.png" alt="">
               </div>
