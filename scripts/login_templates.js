@@ -1,5 +1,14 @@
 
 
+/**
+ * Renders the login form on the page by setting the innerHTML of the element
+ * with the ID 'loginFormBox'. The form includes input fields for email and
+ * password, a checkbox for remembering the user, and a submit button. It also
+ * provides functionality for toggling password visibility and validating the
+ * form fields. The form is submitted using the function 'loginUser()'.
+ * @function renderLoginForm
+ * @returns {undefined}
+ */
 function renderLoginForm() {
     let loginForm = document.getElementById('loginFormBox');
     loginForm.innerHTML = `
