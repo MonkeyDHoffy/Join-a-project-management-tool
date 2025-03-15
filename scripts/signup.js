@@ -357,7 +357,6 @@ function checkFormValidity() {
     const repeatPassword = document.getElementById('repeatPassword');
     const chbPrivPol = document.getElementById('chbPrivPol');
     const submitBtn = document.getElementById('submitBtn');
-
     setFormValidityConditons(signupName, email, password, repeatPassword, chbPrivPol, submitBtn);
 }
 
@@ -381,10 +380,8 @@ function setFormValidityConditons(signupName, email, password, repeatPassword, c
     const passwordIsValid = password.value !== '' && password.value !== 'password';
     const repeatPasswordIsValid = repeatPassword.value !== '' && repeatPassword.value !== 'password';
     const privPolIsChecked = chbPrivPol.checked;
-
     if (signupNameIsValid && emailIsValid && passwordIsValid && repeatPasswordIsValid && privPolIsChecked) {
         submitBtn.disabled = false;
-
     } else {
         submitBtn.disabled = true;
     }
@@ -404,10 +401,8 @@ async function registerUser() {
         'email': document.getElementById('email').value,
         'password': document.getElementById('password').value
     };
-
     if (users.find(user => user.email === document.getElementById('email').value)) {
         messages.push('User already exists');
-
     } else {
         users.push(user);
         await putData("users", users);

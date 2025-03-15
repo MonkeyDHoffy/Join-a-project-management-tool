@@ -22,6 +22,11 @@ let createdTasks = [];
 let contacts = [];
 let loggedInUser;
 
+/**
+ * Fetches data from the Firebase database.
+ * @param {string} path - The path to the data in the database.
+ * @returns {Promise<Object|Array>} The requested data in JSON format.
+ */
 async function getData(path = "") {
   try {
     let response = await fetch(BASE_URL + path + ".json");
@@ -32,6 +37,12 @@ async function getData(path = "") {
   }
 }
 
+/**
+ * Updates data in the Firebase database.
+ * @param {string} path - The path to the data in the database.
+ * @param {Object|Array} data - The data to be stored.
+ * @returns {Promise<void>}
+ */
 async function putData(path = "", data = "") {
   try {
     let response = await fetch(BASE_URL + path + ".json", {
@@ -48,7 +59,10 @@ async function putData(path = "", data = "") {
   }
 }
 
-// ?????? without this code tasks disappeared in the firebase....?!?!
+/**
+ * Retrieves tasks from the database and normalizes their structure.
+ * @returns {Promise<void>}
+ */
 async function getTasks() {
   createdTasks = Object.values(await getData("tasks")) || [];
   if (createdTasks[0] == "") {
@@ -68,6 +82,10 @@ async function getTasks() {
   }
 }
 
+/**
+ * Prepares tasks for Firebase storage and updates the database.
+ * @returns {Promise<void>}
+ */
 async function putTasks() {
   if (createdTasks.length == 0) {
     createdTasks = [""];
@@ -87,10 +105,18 @@ async function putTasks() {
   await putData("tasks", createdTasks);
 }
 
+/**
+ * Fetches all users from the database.
+ * @returns {Promise<void>}
+ */
 async function getUsers() {
   users = Object.values(await getData("users"));
 }
 
+/**
+ * Retrieves the username from URL query parameters and stores it in the database.
+ * @returns {Promise<string|undefined>} The username from query parameters if available.
+ */
 async function getQueryParamsUserName() {
   const urlParams = new URLSearchParams(window.location.search);
   const userName = urlParams.get('name');
@@ -101,6 +127,10 @@ async function getQueryParamsUserName() {
   }
 }
 
+/**
+ * Renders the user icon with the initials of the logged-in user.
+ * @returns {Promise<void>}
+ */
 async function renderUserIconName() {
   loggedInUser = await getData("loggedInUser");
   let userIcon = document.getElementById("userIcon");
@@ -111,27 +141,31 @@ async function renderUserIconName() {
   }
 }
 
+/**
+ * Logs out the current user and redirects to the login page.
+ * @returns {Promise<void>}
+ */
 async function logOut() {
   loggedInUser = "";
   await putData("loggedInUser", loggedInUser);
   window.location.href = "./index.html";
 }
 
-// function regsterUser() {
-//     let name = "daniela";
-//     let email = "daniela@example.com";
-//     let passwort = "ertezrz";
-
+/**
+ * Fetches all contacts from the database and sorts them alphabetically by name.
+ * @returns {Promise<void>}
+ */
 async function getContacts() {
   contacts = Object.values(await getData("contacts/"));
   contacts.sort((a, b) => a.name.localeCompare(b.name));
 }
 
+/**
+ * Toggles the visibility of the menu.
+ */
 function toggleMenu() {
   let menu = document.querySelector(".menu");
   menu.style.display = menu.style.display === "block" ? "none" : "block";
 }
 
-// document.addEventListener('DOMContentLoaded', function() {
-//   displayUserName();
-// });
+
