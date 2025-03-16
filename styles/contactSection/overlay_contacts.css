@@ -510,6 +510,7 @@ cursor: pointer;
 
 @media (max-height: 780px) {
   .content-overlay-wrapper {
-    height: 95vh;
+    height: 85vh;
+    overflow: auto;
   }
 }
