@@ -653,11 +653,20 @@ textarea {
 
 @media(max-width:870px) {
   .cancel-check-btn {
-    right: -85%;
+    right: -90%;
+  }
+}
+
+@media(max-width:730px) {
+  .cancel-check-btn {
+    right: -87%;
   }
 }
 
 @media(max-width:620px) {
+  .cancel-check-btn {
+    right: -90%;
+  }
 
   .header p {
     display: none;
@@ -747,7 +756,25 @@ textarea {
 
 }
 
+@media(max-width:580px) {
+  .cancel-check-btn {
+    right: -87%;
+  }
+
+  .padding-right-68px {
+    padding-right: 70px !important;
+  }
+}
+
 @media (max-width: 450px) {
+  .cancel-check-btn {
+    right: -87%;
+  }
+
+  .padding-right-68px {
+    padding-right: 60px !important;
+  }
+
   .prio-buttons {
     width: 100% !important;
     flex-direction: column !important;
@@ -767,8 +794,28 @@ textarea {
   }
 }
 
+@media (max-width: 435px) {
+  .cancel-check-btn {
+    right: -85%;
+  }
+
+  .padding-right-68px {
+    padding-right: 62px !important;
+  }
+}
+
 @media (max-width: 390px) {
   .cancel-check-btn {
-    right: -80%;
+    right: -83%;
+  }
+
+  .padding-right-68px {
+    padding-right: 68px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .cancel-check-btn {
+    right: -81%;
   }
 }

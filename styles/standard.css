@@ -103,3 +103,7 @@ a {
 .display-none {
   display: none;
 }
+
+.padding-right-68px {
+  padding-right: 68px !important;
+}
