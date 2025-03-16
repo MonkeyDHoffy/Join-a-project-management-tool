@@ -221,10 +221,6 @@ h2 {
   .board-overview{
     gap:16px;
   }
-  .flex-box{
-    position: relative;
-    top:-5%;
-  }
 }
 
 @media(max-width:450px){
@@ -241,10 +237,6 @@ h2 {
     justify-content: flex-start;
     padding-top: 20px;
   }
-  .flex-box{
-    position: relative;
-    top:-5%;
-  }
 }
 
 @media(max-width:375px){
@@ -258,10 +250,6 @@ h2 {
   .headline {
     scale:0.8;
     margin-top: 5px;
-  }
-  .flex-box{
-    position: relative;
-    top:-5%;
   }
 }
 
