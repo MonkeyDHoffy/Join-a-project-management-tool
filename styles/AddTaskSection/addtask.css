@@ -438,16 +438,17 @@ textarea {
   opacity: 1;
 }
 
-.subtask-add {
-  width: 14px;
-  height: 14px;
+.subtask-section {
   position: relative;
-  top: -32px;
-  right: -91%;
 }
 
-.subtask-add:hover {
+.subtask-add {
   cursor: pointer;
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  top: 35%;
+  right: 15px;
 }
 
 .cancel-check-btn {
@@ -471,10 +472,11 @@ textarea {
 .subtask-list {
   position: relative;
   width: 100%;
-  height: 64px;
+  height: fit-content;
+  max-height: 64px;
   overflow-y: auto;
   word-break: break-word;
-  top: -13%;
+  top: -5%;
 }
 
 .subtask-item-field {
@@ -585,6 +587,7 @@ textarea {
 
 .requiredResponsiveSpan {
   display: none;
+  transform: translateY(-10px);
 }
 
 @media (max-width: 1350px) {
@@ -630,8 +633,7 @@ textarea {
 
   .requiredResponsiveSpan {
     display: block;
-    padding-bottom: 16px;
-    transform: translateY(-32px);
+    padding-bottom: 36px;
   }
 
   .addTask-subtasks {
@@ -697,7 +699,6 @@ textarea {
   .requiredResponsiveSpan {
     display: block;
     padding-bottom: 16px;
-    transform: translateY(0);
   }
 
   .mobile-nav-section {
@@ -717,7 +718,6 @@ textarea {
     position: relative;
     width: 100%;
     height: fit-content;
-    max-height: 100px;
     overflow-y: auto;
     word-break: break-word;
     top: -5%;
