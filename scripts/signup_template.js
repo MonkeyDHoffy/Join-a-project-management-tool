@@ -50,6 +50,5 @@ function renderSignupForm() {
         <div class="signup-msg  d-none" id="signUpMsg">You have successesfully signed up</div>
     </div>
 </form>
-
  `
 }
