@@ -8,14 +8,15 @@ let messages = [];
  * focus on the password input, check the form's validity and get all
  * users.
  */
-function SignUpInit() {
-     renderPrivPol();
-    renderSignupForm();
+function signUpInit() {
+    // renderSignupForm(registerUser);
+    renderPrivPol();
     validateForm();
     passwordFocus();
     checkFormValidity();
     getUsers();
-};
+
+}
 
 
 
@@ -403,9 +404,15 @@ async function registerUser() {
     };
     if (users.find(user => user.email === document.getElementById('email').value)) {
         messages.push('User already exists');
+        displayUserExists();
     } else {
         users.push(user);
         await putData("users", users);
         showSignUpMsg();
     }
+}
+
+function displayUserExists() {
+    let errorElement = document.getElementById('error');
+    errorElement.innerHTML = messages.join(', ')
 }
