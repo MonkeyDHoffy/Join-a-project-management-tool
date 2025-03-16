@@ -8,13 +8,11 @@
     <link rel="stylesheet" href="./styles/signup.css">
     <script src="./scripts/script.js"></script>
     <script defer src="./scripts/signup.js"></script>
-    <script defer src="./scripts/signup_template.js"></script>
     <script defer src="./scripts/priv_pol_template.js"></script>
-
     <title>Join Sign Up</title>
 </head>
 
-<body onload="SignUpInit()">
+<body onload="signUpInit()">
 
     <div class="signup-content-box" id="signupContentBox">
 
@@ -70,19 +68,61 @@
         <div class="signup-content">
             <div class="sgnp-h1">
                 <a href="index.html" class="arrow-link">
-                    <img src="../assets/svg/arrow_back.svg" alt="Back" />
+                    <img src="./assets/svg/arrow_back.svg" alt="Back" />
                 </a>
                 <h1>Sign Up</h1>
             </div>
-            <div class="sgnp-form" id="signupFormBox"></div>
-        </div>
+            <div class="sgnp-form" id="signupFormBox">
+                <form id="signupForm" novalidate onsubmit="return false">
 
-        <div class="priv-polce-legl-note-box" id="privPolBox"> 
-        </div>
+                    <div class="name-wrapper">
+                        <input type="text" placeholder="Name" id="signupName">
+                        <span><img src="./assets/svg/person.svg" alt=""></span>
+                    </div>
 
+                    <div class="email-wrapper">
+                        <input type="email" placeholder="Email" id="email">
+                        <span><img src="./assets/svg/mail.svg" alt=""></span>
+                    </div>
+
+                    <div class="pw-wrapper">
+                        <input type="password" placeholder="Password" id="password">
+                        <button type="button" disabled id="pwIcon" onclick="togglePasswordVisibility(this)"><img
+                                src="./assets/svg/lock.svg" alt=""></button>
+                    </div>
+
+                    <div class="rep-pw-wrapper">
+                        <input type="password" placeholder="Password" id="repeatPassword">
+                        <button type="button" disabled id="repPwIcon" onclick="togglePasswordVisibility(this)"><img
+                                src="./assets/svg/lock.svg" alt=""></button>
+                    </div>
+
+                    <span id="error"></span>
+
+                    <div class="sgnp-button-box">
+
+                        <div class="confirm-priv-pol">
+                            <input type="checkbox" class="chb-priv-pol" id="chbPrivPol" onclick="toggleErrorPrivPol()">
+                            <label for="chbPrivPol">I agree to the <a href="#" class="priv-polce-link"> Privacy
+                                    policy</a></label>
+
+                        </div>
+                        <span id="errorPrivPol"></span>
+                        <button type="submit" class="signup" id="submitBtn" onclick="registerUser(); return false"
+                            disabled>Sign up</button>
+                        <div class="signup-msg  d-none" id="signUpMsg">You have successesfully signed up</div>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
     </div>
+            <div class="priv-polce-legl-note-box" id="privPolBox"></div>
 
-
+        <div class="backdrop d-none" id="backdrop"></div>
+      
 </body>
 
 </html>
+    
