@@ -14,6 +14,7 @@ function loginInit() {
     handleAnimationBackdrop();
     animateLogo();
     renderPrivPol();
+    getRememberMeUser();
 };
 
 
@@ -64,7 +65,7 @@ function validateForm() {
         validatePassword(messages);
         checkLoginFormValidity();
         rememberMe();
-        getRememberMeUser();
+        // getRememberMeUser();
 
         if (messages.length > 0) {
             e.preventDefault()
