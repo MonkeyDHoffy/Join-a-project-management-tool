@@ -20,6 +20,7 @@ async function summaryInit() {
     await getQueryParamsUserName();
     await displayUserName();
     renderUserIconName();
+    showGreeting();
 }
 
 /**
@@ -104,5 +105,22 @@ function getActuellTime() {
         greeting = "Good afternoon";
     } else {
         greeting = "Good evening";
+    }
+}
+
+function showGreeting() {
+    let greetingBackground = document.getElementById("greetingBackground");
+    if (innerWidth < 1350) {
+        greetingBackground.style.display = "flex";
+        if (document.referrer.includes("index.html")) {
+            setTimeout(() => {
+                greetingBackground.style.opacity = "0";
+            }, 2000);
+            setTimeout(() => {
+                greetingBackground.style.display = "none";
+            }, 3000);
+        } else {
+            greetingBackground.style.display = "none";
+        }
     }
 }

@@ -139,15 +139,28 @@ h2 {
   color: #29abe2;
 }
 
-@media(max-width:830px){
+@media(max-width: 1350px) {
   .greeting {
     display: none;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    transition: all ease-in-out 0.5s;
   }
-  .summary-overview{
-    scale: 0.95;
-  }
+
   .summary-wrapper {
     align-items: center;
+  }
+}
+
+@media(max-width:830px){
+  .summary-overview{
+    scale: 0.95;
   }
 }
 
