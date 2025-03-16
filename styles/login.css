@@ -134,7 +134,7 @@ body {
     animation-duration: 1s;
     animation-delay: 2s;
     animation-timing-function: ease-in-out;
-  }
+}
 
 #Ebene_1 {
     width: 120px;
@@ -465,9 +465,10 @@ body {
         background-color: rgba(0, 0, 0, 1);
         z-index: 0;
     }
+
     #Ebene_1 g path[fill="#2A3647"] {
         fill: #FFFFFF;
-        
+
     }
 
     #Ebene_1 g path[fill="#2A3647"] {
@@ -512,7 +513,7 @@ body {
     }
 
     .nau-sign-up-box {
-        top: 680px;
+        top: 82%;
 
     }
 
@@ -529,7 +530,79 @@ body {
         width: 72%;
     }
 
-    
+
 }
 
+@media screen and (height < 740px) {
+    .login-h1 h1 {
+        font-size: 54px;
+    }
 
+    .login-h1::after {
+        margin-top: 4px;
+    }
+
+    .login-form form {
+        gap: 9px;
+    }
+
+    .login-h1 {
+        height: 64px;
+    }
+
+    .login-content {
+        height: 32%;
+    }
+
+    .login-h1 {
+        margin-top: 4px;
+    }
+
+    .email-wrapper, .pw-wrapper {
+        height: 40px;
+    }
+
+    .login-button-box {
+        margin-top: 16px;
+    }
+
+    .login, .login { 
+        height: 38px;
+    }
+
+    .nau-sign-up-box {
+        top: 610px;
+    }
+
+    .prvt-polce-legl-note-box {
+        bottom: 12px;
+    }
+}
+
+@media screen and (height < 670px) {
+  
+
+    .login-content {
+        min-height: 62%;
+    }
+
+    .login-h1 {
+        margin-top: 4px;
+    }
+
+    .email-wrapper, .pw-wrapper {
+        height: 40px;
+    }
+
+    .login, .login { 
+        height: 38px;
+    }
+
+    .nau-sign-up-box {
+        top: 550px;
+    }
+
+    .prvt-polce-legl-note-box {
+        bottom: 12px;
+    }
+}
