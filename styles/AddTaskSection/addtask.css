@@ -372,9 +372,9 @@ textarea {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  top: -50%;
-  left: 90%;
+  position: absolute;
+  top: 27%;
+  right: 10px;
 }
 
 .invalid:invalid {
@@ -456,9 +456,9 @@ textarea {
   display: none;
   width: 51px;
   height: 14px;
-  position: relative;
-  top: -34px;
-  right: -85%;
+  position: absolute;
+  top: 27%;
+  right: 10px;
 }
 
 .cancel-check-btn img:hover {
@@ -535,6 +535,7 @@ textarea {
 }
 
 .category-input {
+  position: relative;
   z-index: 10;
 }
 
@@ -644,30 +645,9 @@ textarea {
     gap: 8px;
     padding-bottom: 140px;
   }
-
-  .cancel-check-btn {
-    right: -92%;
-  }
-
-}
-
-@media(max-width:870px) {
-  .cancel-check-btn {
-    right: -90%;
-  }
-}
-
-@media(max-width:730px) {
-  .cancel-check-btn {
-    right: -87%;
-  }
 }
 
 @media(max-width:620px) {
-  .cancel-check-btn {
-    right: -90%;
-  }
-
   .header p {
     display: none;
   }
@@ -757,20 +737,12 @@ textarea {
 }
 
 @media(max-width:580px) {
-  .cancel-check-btn {
-    right: -87%;
-  }
-
   .padding-right-68px {
     padding-right: 70px !important;
   }
 }
 
 @media (max-width: 450px) {
-  .cancel-check-btn {
-    right: -87%;
-  }
-
   .padding-right-68px {
     padding-right: 60px !important;
   }
@@ -795,27 +767,13 @@ textarea {
 }
 
 @media (max-width: 435px) {
-  .cancel-check-btn {
-    right: -85%;
-  }
-
   .padding-right-68px {
     padding-right: 62px !important;
   }
 }
 
 @media (max-width: 390px) {
-  .cancel-check-btn {
-    right: -83%;
-  }
-
   .padding-right-68px {
     padding-right: 68px !important;
-  }
-}
-
-@media (max-width: 360px) {
-  .cancel-check-btn {
-    right: -81%;
   }
 }
