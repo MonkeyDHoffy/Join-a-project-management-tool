@@ -599,7 +599,7 @@ textarea {
 @media(max-width:999px) {
   .addTask-wrapper {
     flex-direction: column;
-    gap: 16px;
+    gap: 0px;
 
     .addTask-left {
       width: 100%;
