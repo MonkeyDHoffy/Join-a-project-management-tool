@@ -518,7 +518,7 @@ textarea {
   display: flex;
   gap: 8px;
   position: relative;
-  top: -56%;
+  top: -52%;
   right: -87%;
 }
 
@@ -539,7 +539,7 @@ textarea {
 
 .subtask-edit-input {
   position: relative !important;
-  top: -15% !important;
+  top: -7% !important;
   display: flex !important;
   align-items: center !important;
   font-size: 16px !important;
@@ -548,6 +548,7 @@ textarea {
   border-radius: 1px !important;
   border-bottom: 1px solid #29abe2 !important;
   box-shadow: none !important;
+  padding-right: 70px !important;
 }
 
 .addTask-category {
