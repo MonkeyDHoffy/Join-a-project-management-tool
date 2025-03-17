@@ -454,6 +454,11 @@ body {
 
     #error {
         width: 88%;
+        margin-block-start: -5px;
+    }
+
+    .sgnp-button-box {
+        margin-top: 24px;
     }
 }
 
@@ -490,7 +495,7 @@ body {
     }
 
     .sgnp-button-box {
-        gap: 12px;
+        
     }
 
     .priv-polce-legl-note-box {
@@ -538,7 +543,25 @@ body {
 }
 
 @media screen and (height <= 670px) {
+    .signup-logo-box {
+        top: 106px;
+    }
 
+    .signup-content {
+        height: 54%;
+    }
+
+    .arrow-link {
+        top: 32px;
+    }
+
+    .sgnp-button-box {
+        gap: 10px;
+    }
+
+    .confirm-priv-pol {
+        margin-top: 6px;
+    }
 
 }
 
