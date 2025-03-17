@@ -408,8 +408,21 @@ body {
 }
 
 @media screen and (width < 540px) {
+    .signup-content {
+        width: 88%;
+        height: 64%;
+    }
+
     .arrow-link {
         left: -10px;
+    }
+
+    .name-wrapper,
+    .email-wrapper,
+    .pw-wrapper,
+    .rep-pw-wrapper,
+    #loginForm {
+        width: 88%;
     }
 
     #error {
@@ -417,9 +430,14 @@ body {
     }
 }
 
-@media screen and (370px < width < 428px) {
+@media screen and (370px < width <= 428px) {
+    .signup-logo-box {
+        top: 62px;
+    }
+
     .signup-content {
         width: 88%;
+        height: 64%;
     }
 
     .name-wrapper,
@@ -435,10 +453,6 @@ body {
     }
 
     #error {
-        width: 80%;
-    }
-
-    #error {
         width: 88%;
     }
 }
@@ -448,6 +462,10 @@ body {
         left: 32px;
     }
 
+    .sgnp-h1 {
+        margin-bottom: 32px;
+    }
+
     .signup-content-box {
         height: 665px;
         min-height: 100%;
@@ -455,9 +473,63 @@ body {
 
     .signup-content {
         top: 132px;
+        height: 64%;
     }
 
-    #error {
+    .name-wrapper, .email-wrapper, .pw-wrapper, .rep-pw-wrapper {
+        height: 40px;
+    }
+
+    .sgnp-form form {
+        gap: 10px;
+    }
+
+    #error, #errorPrivPol {
         width: 88%;
+        margin-block-start: -5px;
+    }
+
+    .sgnp-button-box {
+        gap: 12px;
     }
 }
+
+@media screen and (height <= 740px) {
+    .sgnp-h1 {
+        height: 64px;
+        margin-top: 4px;
+    }
+
+    .sgnp-h1::after {
+        margin-top: 4px;
+    }
+
+    .sgnp-h1 h1 {
+        font-size: 54px;
+    }
+
+    .sgnp-form form {
+        gap: 9px;
+    }
+
+    .signup-content {
+        height: 56%;
+    }
+
+    .name-wrapper, .email-wrapper, .pw-wrapper, .rep-pw-wrapper {
+        height: 40px;
+    }
+
+    .sgnp-button-box {
+        margin-top: 16px;
+    }
+
+    .priv-polce-legl-note-box {
+        bottom: 12px;
+    }
+
+    .signup { 
+        height: 38px;
+    }
+}
+
