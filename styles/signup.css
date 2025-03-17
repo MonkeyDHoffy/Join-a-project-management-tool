@@ -492,6 +492,10 @@ body {
     .sgnp-button-box {
         gap: 12px;
     }
+
+    .priv-polce-legl-note-box {
+        bottom: 24px;
+    }
 }
 
 @media screen and (height <= 740px) {
@@ -531,5 +535,10 @@ body {
     .signup { 
         height: 38px;
     }
+}
+
+@media screen and (height <= 670px) {
+
+
 }
 
