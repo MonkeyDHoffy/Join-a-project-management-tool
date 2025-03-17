@@ -564,7 +564,7 @@ textarea {
   height: 100px;
   width: 100%;
   position: relative;
-  top: -67%;
+  top: -60%;
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -610,7 +610,7 @@ textarea {
   }
 
   .category-dropdown {
-    top: -70%;
+    top: -64%;
   }
 
   .addTask-footer {
