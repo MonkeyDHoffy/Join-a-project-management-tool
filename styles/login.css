@@ -533,29 +533,26 @@ body {
 
 }
 
-@media screen and (height < 740px) {
-    .login-h1 h1 {
-        font-size: 54px;
+@media screen and (height <= 740px) {
+    .login-h1 {
+        height: 64px;
+        margin-top: 4px;
     }
 
     .login-h1::after {
         margin-top: 4px;
     }
 
+    .login-h1 h1 {
+        font-size: 54px;
+    }
+
     .login-form form {
         gap: 9px;
     }
 
-    .login-h1 {
-        height: 64px;
-    }
-
     .login-content {
         height: 32%;
-    }
-
-    .login-h1 {
-        margin-top: 4px;
     }
 
     .email-wrapper, .pw-wrapper {
@@ -566,7 +563,7 @@ body {
         margin-top: 16px;
     }
 
-    .login, .login { 
+    .login, .guest-login { 
         height: 38px;
     }
 
