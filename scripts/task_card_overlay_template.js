@@ -77,7 +77,7 @@ function taskCardOverlayTemplate(element) {
 function renderEditSubtask(subtask) {
   return `
       <div class="subtask-item-field">
-        <li class="item-${subtask.replace(" ", "-")} subtask-item">${subtask}</li>
+        <li class="item-${subtask.replaceAll(" ", "-")} subtask-item">${subtask}</li>
         <div class="btn-section">
           <img onclick="editSubtaskItem('${subtask}')" class="edit-subtask-item-btn" src="./assets/svg/contacts_svg/edit.svg" alt="">
           <img onclick="deleteSubtaskItem(this)" class="delete-subtask-item-btn" src="./assets/svg/contacts_svg/delete.svg" alt="">
