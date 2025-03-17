@@ -77,7 +77,7 @@ function taskCardOverlayTemplate(element) {
 function renderEditSubtask(subtask) {
   return `
       <div class="subtask-item-field">
-        <li class="item-${subtask.replace(" ", "-")} subtask-item">${subtask}</li>
+        <li class="item-${subtask.replaceAll(" ", "-")} subtask-item">${subtask}</li>
         <div class="btn-section">
           <img onclick="editSubtaskItem('${subtask}')" class="edit-subtask-item-btn" src="./assets/svg/contacts_svg/edit.svg" alt="">
           <img onclick="deleteSubtaskItem(this)" class="delete-subtask-item-btn" src="./assets/svg/contacts_svg/delete.svg" alt="">
@@ -276,7 +276,7 @@ function taskEditOverlayTemplateOne(element) {
   
                 <section id="edit-subtask-item-field" class="edit-subtask-item">
                
-                  <input id="subtask-edit-input" class="subtask-edit-input" value="" type="text" name="" id="" maxlength="30" />
+                  <input id="subtask-edit-input" class="subtask-edit-input" value="" type="text" name=""/>
                   <div class="edit-subtask-btns">
                     <img onclick="deleteSubInputValue()" src="./assets/svg/contacts_svg/delete.svg" alt="" /><img
                       onclick="confirmSubEdit()"

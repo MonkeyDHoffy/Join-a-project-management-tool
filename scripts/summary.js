@@ -9,6 +9,7 @@ const options = { year: "numeric", month: "long", day: "numeric" };
  * @returns {Promise<void>}
  */
 async function summaryInit() {
+    showGreeting();
     await getTasks();
     renderTaskAmount();
     renderTaskFieldsAmount('tasksInProgress', 'inProgress');
@@ -20,7 +21,6 @@ async function summaryInit() {
     await getQueryParamsUserName();
     await displayUserName();
     renderUserIconName();
-    showGreeting();
 }
 
 /**

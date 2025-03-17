@@ -331,7 +331,7 @@ function deleteSubtaskItem(element) {
  */
 function subtaskListTemplate(subtaskInput) {
   return `<div class="subtask-item-field">
-  <li class="item-${subtaskInput.value.replace(" ", "-")} subtask-item">${
+  <li class="item-${subtaskInput.value.replaceAll(" ", "-")} subtask-item">${
     subtaskInput.value
   }</li>
      <div class="btn-section"><img onclick="editSubtaskItem('${
@@ -382,11 +382,11 @@ function confirmSubEdit() {
   let newValue = subtaskEditInput.value.trim();
   if (newValue !== "") {
     let subtaskItem = document.querySelector(
-      `.item-${subtaskEditInput.dataset.oldValue.replace(" ", "-")}`
+      `.item-${subtaskEditInput.dataset.oldValue.replaceAll(" ", "-")}`
     );
     subtaskItem.innerHTML = newValue;
-    subtaskItem.classList.remove(`item-${subtaskEditInput.dataset.oldValue}`);
-    subtaskItem.classList.add(`item-${newValue}`);
+    subtaskItem.classList.remove(`item-${subtaskEditInput.dataset.oldValue.replaceAll(" ", "-")}`);
+    subtaskItem.classList.add(`item-${newValue.replaceAll(" ", "-")}`);
     let deleteButton = subtaskItem.parentElement.querySelector(
       ".delete-subtask-item-btn"
     );
