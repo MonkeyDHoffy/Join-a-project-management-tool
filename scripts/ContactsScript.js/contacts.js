@@ -62,7 +62,6 @@ async function editContact(id) {
 async function deleteContact(id) {
   let contactItem = document.getElementById("contact-information");
   contacts.splice(id, 1);
-  console.log(contacts);
   await putData("contacts/", contacts);
   hideOverlay();
   contactItem.innerHTML = "";

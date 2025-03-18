@@ -53,7 +53,6 @@ async function putData(path = "", data = "") {
       body: JSON.stringify(data),
     });
     let responseToJson = await response.json();
-    console.log(responseToJson);
   } catch (error) {
     console.error(error);
   }
@@ -121,7 +120,6 @@ async function getQueryParamsUserName() {
   const urlParams = new URLSearchParams(window.location.search);
   const userName = urlParams.get('name');
   if (userName !== null) {
-  console.log(urlParams.get('name'));
   await putData("loggedInUser", userName);
   return userName;
   }

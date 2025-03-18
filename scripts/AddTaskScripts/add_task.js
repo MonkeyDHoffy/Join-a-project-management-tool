@@ -455,7 +455,6 @@ function toggleCategoryDropdown() {
  */
 function setCategory(category) {
   selectedCategory = category;
-  console.log(selectedCategory);
   document.getElementById("category-field").value = category;
   toggleCategoryDropdown();
   validateInputs();

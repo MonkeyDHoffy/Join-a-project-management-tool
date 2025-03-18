@@ -76,7 +76,6 @@ function checkIt(name, index) {
       break; 
     }
   }
-  console.log(selectedContacts);
   renderUserCircles();
 }
 
@@ -208,7 +207,6 @@ function filterDropdownItems() {
  */
 async function getAssignedContacts() {
   assignedContacts = Object.values(await getData("contacts/"));
-  console.log(assignedContacts);
   assignedContacts.sort((a, b) => a.name.localeCompare(b.name));
 }
 
