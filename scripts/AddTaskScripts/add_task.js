@@ -283,6 +283,11 @@ function addRequiredTitle(element) {
  */
 function addRequiredDate(element) {
   let requiredTextDate = document.getElementById("requiredDate");
+  checkIfDateIsEmpty(element, requiredTextDate);
+  checkIfDateIsInThePast(element, requiredTextDate);
+}
+
+function checkIfDateIsEmpty(element, requiredTextDate) {
   element.setAttribute("required", "true");
   if (element.value == "") {
     requiredTextDate.classList.remove("d-none");
@@ -292,6 +297,15 @@ function addRequiredDate(element) {
   }
 }
 
+function checkIfDateIsInThePast(element, requiredTextDate) {
+  let dueDate = new Date(element.value).getTime();
+  let today = new Date().getTime();
+  if (dueDate < today) {
+    element.classList.add("invalid");
+    requiredTextDate.textContent = "Date must be in the future";
+    requiredTextDate.classList.remove("d-none");
+  }
+}
 //Subtask functions-----------------------------------------------------------------------------
 
 /**
