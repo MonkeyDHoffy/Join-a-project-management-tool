@@ -3,6 +3,7 @@ let description;
 let dueDate;
 let category;
 let items;
+let createdTasksStatus = "";
 let completedItems = [];
 let completedSubtasks = [];
 let selectedSubtasks = [];
@@ -42,7 +43,7 @@ async function createTask() {
     selectedSubtasks.push(item.innerHTML);
   });
   let newTask = {
-    "id": createdTasks.length + 1, "status": "toDo", "title": title,
+    "id": createdTasks.length + 1, "status": createdTasksStatus == "" ? "toDo" : createdTasksStatus, "title": title,
     "description": description,
     "selectedContacts": selectedContacts.length > 0 ? selectedContacts.map((contact) => contact.name) : [""],
     "dueDate": dueDate, "priority": priority, "selectedCategory": category,
