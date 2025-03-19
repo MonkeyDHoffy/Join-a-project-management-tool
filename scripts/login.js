@@ -65,7 +65,6 @@ function validateForm() {
         validatePassword(messages);
         checkLoginFormValidity();
         rememberMe();
-        // getRememberMeUser();
 
         if (messages.length > 0) {
             e.preventDefault()
@@ -112,21 +111,47 @@ function validateEmail(messages) {
  */
 function validatePassword(messages) {
     let password = document.getElementById('password');
+    validatePasswordEmpty(password, messages);
+    validatePasswordNotPassword(password, messages);
+}
+
+/**
+ * Checks if the password field is empty or null. If the field is invalid, adds an error
+ * message to the 'messages' array and adds the 'error-highlight' class to the field's
+ * parent node for styling. If the field is valid, removes the error message and the
+ * 'error-highlight' class from the field's parent node.
+ * @param {HTMLInputElement} password - password input field
+ * @param {Array<string>} messages - array to store validation error messages
+ * @returns {undefined}
+ */
+function validatePasswordEmpty(password, messages) {
     if (password.value === '' || password.value == null) {
         if (!messages.includes('Please enter a password')) {
             messages.push('Please enter a password');
         }
         password.parentNode.classList.add('error-highlight');
-
     } else {
         removeErrorMessageAndHighlight(password, messages, 'Please enter a password');
     }
+}
 
+/**
+ * Checks if the password field value is equal to 'password'. If the field is invalid, adds
+ * an error message to the 'messages' array and adds the 'error-highlight' class to the
+ * field's parent node for styling. If the field is valid, removes the error message and the
+ * 'error-highlight' class from the field's parent node.
+ * @param {HTMLInputElement} password - password input field
+ * @param {Array<string>} messages - array to store validation error messages
+ * @returns {undefined}
+ */
+function validatePasswordNotPassword(password, messages) {
     if (password.value === 'password') {
         if (!messages.includes('Password cannot be password')) {
             messages.push('Password cannot be password');
         }
         password.parentNode.classList.add('error-highlight');
+    } else {
+        removeErrorMessageAndHighlight(password, messages, 'Password cannot be password');
     }
 }
 
