@@ -76,7 +76,6 @@ function checkIt(name, index) {
       break; 
     }
   }
-  console.log(selectedContacts);
   renderUserCircles();
 }
 
@@ -145,11 +144,17 @@ function userCircleTemplate(contact, color) {
  * Validates if all required form inputs are filled to enable the create task button
  */
 function validateInputs() {
+  let requiredTexts = document.querySelectorAll(".required-text span");
   let titleInput = document.querySelector(".addTask-title input");
   let dateInput = document.querySelector(".task-date input");
   let categoryInput = document.getElementById("category-field");
   let createTaskButton = document.querySelector(".createTask-button");
   createTaskButton.disabled = titleInput.value.trim() === "" || dateInput.value.trim() === "" || categoryInput.value === "Select task category";
+  for (let index = 0; index < requiredTexts.length; index++) {
+    if (!requiredTexts[index].classList.contains("d-none")) {
+      createTaskButton.disabled = true;
+    }
+  }
 }
 
 /**
@@ -208,7 +213,6 @@ function filterDropdownItems() {
  */
 async function getAssignedContacts() {
   assignedContacts = Object.values(await getData("contacts/"));
-  console.log(assignedContacts);
   assignedContacts.sort((a, b) => a.name.localeCompare(b.name));
 }
 

@@ -240,6 +240,19 @@ function closeOverlayOutside(event) {
 
 let editedSelectedContacts = [];
 
+function validateEditInputs() {
+  let requiredTexts = document.querySelectorAll(".required-text span");
+  let titleInput = document.querySelector(".addTask-title input");
+  let dateInput = document.querySelector(".task-date input");
+  let editTaskButton = document.getElementById("confirmTaskChanges");
+  editTaskButton.disabled = titleInput.value.trim() === "" || dateInput.value.trim() === "";
+  for (let index = 0; index < requiredTexts.length; index++) {
+    if (!requiredTexts[index].classList.contains("d-none")) {
+      editTaskButton.disabled = true;
+    }
+  }
+}
+
 /**
  * Applies changes to a task and updates the data on the server.
  * @async

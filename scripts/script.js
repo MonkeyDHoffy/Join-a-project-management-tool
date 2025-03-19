@@ -53,7 +53,6 @@ async function putData(path = "", data = "") {
       body: JSON.stringify(data),
     });
     let responseToJson = await response.json();
-    console.log(responseToJson);
   } catch (error) {
     console.error(error);
   }
@@ -121,7 +120,6 @@ async function getQueryParamsUserName() {
   const urlParams = new URLSearchParams(window.location.search);
   const userName = urlParams.get('name');
   if (userName !== null) {
-  console.log(urlParams.get('name'));
   await putData("loggedInUser", userName);
   return userName;
   }
@@ -176,10 +174,7 @@ function initMenuCloseHandling() {
   document.addEventListener('click', function(event) {
     let menu = document.querySelector('.menu');
     let userIcon = document.getElementById('userIcon');
-    if (menu && menu.style.display === 'block' && 
-        !menu.contains(event.target) && 
-        event.target !== userIcon && 
-        !userIcon.contains(event.target)) {
+    if (menu && menu.style.display === 'block' && !menu.contains(event.target) && event.target !== userIcon && !userIcon.contains(event.target)) {
       menu.style.display = 'none';
     }
   });

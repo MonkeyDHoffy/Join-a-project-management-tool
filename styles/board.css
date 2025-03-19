@@ -65,6 +65,13 @@ body {
   transition: all 0.1s ease-in-out;
 }
 
+#confirmTaskChanges:disabled {
+  box-shadow: none;
+  background-color: #d3d3d3;
+  color: #a9a9a9;
+  cursor: not-allowed;
+}
+
 #confirmTaskChanges:hover {
   background-color: #29abe2;
   box-shadow: 0px 4px 4px 0px #00000040;
