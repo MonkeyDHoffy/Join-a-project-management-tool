@@ -15,13 +15,13 @@ function renderLoginForm() {
     <form id="loginForm" novalidate onsubmit="return false">
                     <div class="email-wrapper">
                         <input type="email" placeholder="Email" id="email">
-                        <span><img src="../assets/svg/mail.svg" alt=""></span>
+                        <span><img src="./assets/svg/mail.svg" alt=""></span>
                     </div>
 
                     <div class="pw-wrapper">
                         <input type="password" placeholder="Password" id="password">
                         <button type="button" disabled id="pw-icon" onclick="togglePassword()"><img
-                                src="../assets/svg/lock.svg" alt=""></button>
+                                src="./assets/svg/lock.svg" alt=""></button>
                     </div>
                     <span id="error"></span>
 
