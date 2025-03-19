@@ -84,6 +84,7 @@ body {
     top: 40%;
     transform: translateY(-50%);
     cursor: pointer;
+    z-index: 999;
 }
 
 .arrow-link img {
@@ -431,9 +432,9 @@ body {
     }
 }
 
-@media screen and (370px < width <= 428px) {
+@media screen and (370px <= width <= 428px) {
     .signup-logo-box {
-        top: 62px;
+        top: 47px;
     }
 
     .signup-content {
@@ -479,7 +480,7 @@ body {
 
     .signup-content {
         top: 132px;
-        height: 64%;
+        height: 57%;
     }
 
     .name-wrapper, .email-wrapper, .pw-wrapper, .rep-pw-wrapper {
@@ -496,7 +497,8 @@ body {
     }
 
     .priv-polce-legl-note-box {
-        bottom: 24px;
+        /* bottom: 24px; */
+        bottom: 88px;
     }
 }
 
