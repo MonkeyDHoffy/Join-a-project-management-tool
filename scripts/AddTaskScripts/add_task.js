@@ -275,6 +275,7 @@ function addRequiredTitle(element) {
   } else {
     requiredTextTitle.classList.add("d-none");
   }
+  validateEditInputs();
 }
 
 /**
@@ -285,6 +286,7 @@ function addRequiredDate(element) {
   let requiredTextDate = document.getElementById("requiredDate");
   checkIfDateIsEmpty(element, requiredTextDate);
   checkIfDateIsInThePast(element, requiredTextDate);
+  validateEditInputs();
 }
 
 function checkIfDateIsEmpty(element, requiredTextDate) {
