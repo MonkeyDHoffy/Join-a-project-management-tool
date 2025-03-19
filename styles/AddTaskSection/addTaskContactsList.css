@@ -82,6 +82,7 @@
   width: 42px;
   height: 42px;
   border-radius: 50%;
+  padding: 8px;
   border: 1px solid white;
 }
 
@@ -130,9 +131,8 @@
 .assigned-circles-section {
   display: flex;
   justify-content: flex-start;
-  width: 100%;
-  height: 42px;
-  /* border: dashed 2px black; */
+  width: 290px;
+  height: fit-content;
   position: relative;
   top: -5px;
   overflow-x: auto;
