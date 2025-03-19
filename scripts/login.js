@@ -164,11 +164,11 @@ function reAppearLockIcon(passwordInput, iconPW, iconPWButton) {
     passwordInput.addEventListener('input', () => {
 
         if (passwordInput.value === '') {
-            iconPW.src = '../assets/svg/lock.svg';
+            iconPW.src = './assets/svg/lock.svg';
             iconPW.classList.remove('cursor-pointer');
             iconPWButton.disabled = true;
         } else {
-            iconPW.src = '../assets/svg/eye.svg';
+            iconPW.src = './assets/svg/eye.svg';
             iconPW.classList.add('cursor-pointer');
             iconPWButton.disabled = false;
         }
