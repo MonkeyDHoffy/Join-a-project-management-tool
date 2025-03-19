@@ -191,11 +191,11 @@ function togglePassword() {
 
     if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
-        iconPW.src = '../assets/svg/eye_slash.svg';
+        iconPW.src = './assets/svg/eye_slash.svg';
         iconPW.classList.add('cursor-pointer');
     } else {
         passwordInput.type = 'password';
-        iconPW.src = '../assets/svg/eye.svg';
+        iconPW.src = './assets/svg/eye.svg';
         iconPW.classList.add('cursor-pointer');
     }
 }
