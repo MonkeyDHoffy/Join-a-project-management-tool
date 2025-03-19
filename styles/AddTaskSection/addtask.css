@@ -592,7 +592,7 @@ textarea {
 
 @media (max-width: 1350px) {
   .content-right-wrapper {
-    padding-bottom: 100px;
+    padding-bottom: 200px;
   }
 }
 
@@ -669,7 +669,7 @@ textarea {
   .content-right-wrapper {
     height: 100%;
     padding: 16px;
-    padding-bottom: 140px;
+    padding-bottom: 0px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -739,6 +739,10 @@ textarea {
 }
 
 @media (max-width: 450px) {
+  .content-right-wrapper {
+    padding-bottom: 1300px;
+  }
+
   .padding-right-68px {
     padding-right: 60px !important;
   }
