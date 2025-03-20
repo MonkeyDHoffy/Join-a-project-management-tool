@@ -149,8 +149,8 @@ body {
     height: 100vh;
     background-color: rgba(255, 255, 255, 1);
     animation: fade-out forwards;
-    animation-duration: 2s;
-    animation-delay: 2.4s;
+    animation-duration: 1s;
+    animation-delay: 1.2s;
     transition-timing-function: ease-in-out;
     z-index: 0;
 }
@@ -473,8 +473,8 @@ body {
 
     #Ebene_1 g path[fill="#2A3647"] {
         animation: color-change 2s forwards;
-        animation-duration: 2.4s;
-        animation-delay: 1.6s;
+        animation-duration: 2s;
+        animation-delay: 1.3s;
         animation-timing-function: ease-in-out;
     }
 }
@@ -507,8 +507,8 @@ body {
 
     #Ebene_1 g path[fill="#2A3647"] {
         animation: color-change 2s forwards;
-        animation-duration: 2.4s;
-        animation-delay: 1.6s;
+        animation-duration: 2s;
+        animation-delay: 1.3s;
         animation-timing-function: ease-in-out;
     }
 
