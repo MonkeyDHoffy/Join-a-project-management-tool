@@ -153,7 +153,7 @@ function taskEditOverlayTemplateOne(element) {
               </label>
               <input
                 onclick="addRequiredTitle(this)"
-                oninput="addRequiredTitle(this)"
+                oninput="addRequiredTitle(this); validateEditInputs()"
                 class="add-task-input-field"
                 placeholder="Enter a title"
                 type="text"
@@ -208,7 +208,7 @@ function taskEditOverlayTemplateOne(element) {
               <input
                 id="dueDateInputField"
                 onclick="addRequiredDate(this)"
-                oninput="addRequiredDate(this)"
+                oninput="addRequiredDate(this); validateEditInputs()"
                 class="add-task-input-field"
                 type="date" lang="de-DE"
                 style="color: #ccc;"
