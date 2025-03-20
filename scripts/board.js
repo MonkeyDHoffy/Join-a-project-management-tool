@@ -257,7 +257,7 @@ function validateEditInputs() {
  */
 async function confirmTaskChanges(currentTitle) {
   getTaskOverlayInputs();
-  let id;
+  let id = 0;
   id = checkTaskId(id);
   let taskToEdit = createdTasks.find((task) => task.title == currentTitle);
   let taskIndex = createdTasks.indexOf(taskToEdit);
