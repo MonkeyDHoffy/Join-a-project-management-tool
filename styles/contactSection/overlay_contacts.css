@@ -443,7 +443,7 @@ cursor: pointer;
   }
 
   .content-overlay-left {
-    padding: 66px 24px;
+    padding: 36px 24px;
     height: 352px;
   }
 
@@ -453,6 +453,10 @@ cursor: pointer;
     align-items: center;
     width: 82px;
     height: 51px;
+  }
+
+  .close-mobile-overlay {
+    top: -5%;
   }
 
   .save-btn-overlay {
@@ -483,7 +487,7 @@ cursor: pointer;
 
   .content-overlay-right {
     flex-direction: column;
-    padding: 0 14px 60px 14px;
+    padding: 0 14px 40px 14px;
   }
 
   .input-and-close-wrapper {
@@ -497,11 +501,17 @@ cursor: pointer;
   }
 
   .contact-avatar {
-    height: 24px;
+    height: 0px;
   }
 
   .avatar-circle {
     transform: translateY(-50%);
+    width: 90px;
+    height: 90px;
+  }
+
+  .avatar-circle img {
+    width: 50px;
   }
 
   .contact-form {
