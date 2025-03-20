@@ -19,7 +19,7 @@ async function toggleSubtaskCompleted(subtask, element) {
  * Displays the task card overlay with all task details
  * @param {HTMLElement} event - The HTML element that triggered the event
  */
-function renderTaskCardOverlay(event) {
+function renderTaskCardOverlay(event, ) {
   let element = createdTasks.find((task) => task.title == event.querySelector("h3").textContent);
   let overlay = document.getElementById("task-card-overlay");
   overlay.innerHTML = taskCardOverlayTemplate(element);

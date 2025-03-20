@@ -1,5 +1,6 @@
 .help-content-wrapper {
     padding: 64px 64px;
+    max-width: calc(1920px - 232px);
 }
 
 .help-header {

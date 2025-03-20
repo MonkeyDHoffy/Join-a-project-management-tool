@@ -181,8 +181,7 @@ function openAddTaskOverlay() {
 /**
  * Renders the content of the task overlay and initializes related UI elements.
  */
-function renderTaskOverlayContent(status) {
-  createdTasksStatus = status;
+function renderTaskOverlayContent() {
   let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
   addTaskOverlayContentRef.innerHTML = addTaskOverlayBoardTemplate();
   toggleSubtasks();
