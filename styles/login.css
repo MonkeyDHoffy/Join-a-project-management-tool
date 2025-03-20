@@ -132,7 +132,7 @@ body {
 .p1-logo.animate {
     animation: shrink-move forwards;
     animation-duration: 1s;
-    animation-delay: 2s;
+    animation-delay: 0.7s;
     animation-timing-function: ease-in-out;
 }
 
