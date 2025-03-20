@@ -587,7 +587,7 @@ progress {
   }
 
   .assigned-circles-section {
-    gap: 4px;
+    gap: 0px;
   }
 
   .subtask-add {
