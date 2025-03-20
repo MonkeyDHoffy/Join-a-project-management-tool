@@ -19,6 +19,7 @@
         rel="stylesheet">
     <script src="./scripts/script.js"></script>
     <script src="./scripts/ContactsScript.js/contacts.js"></script>
+    <script src="./scripts/ContactsScript.js/validate_contact_form.js"></script>
     <script src="./scripts/ContactsScript.js/contacts_template.js"></script>
 </head>
 
@@ -217,15 +218,15 @@
                     <div class="input-group">
                         <div class="contact-form">
                             
-                            <input type="text" id="name" placeholder="Name" class="contact-input">
+                            <input oninput="validateForm()" type="text" id="name" placeholder="Name" class="contact-input">
                             <img class="input-icon" src="./assets/img/contacts_imgs/person.png" alt="Name Icon">
 
                            
-                            <input type="email" id="email" placeholder="Email" class="contact-input">
+                            <input oninput="validateForm()" type="email" id="email" placeholder="Email" class="contact-input">
                             <img class="input-icon" src="./assets/img/contacts_imgs/mail.png" alt="Email Icon">
 
                             
-                            <input type="tel" id="phone" placeholder="Phone" class="contact-input">
+                            <input oninput="validateForm()" type="tel" id="phone" placeholder="Phone" class="contact-input">
                             <img class="input-icon" src="./assets/img/contacts_imgs/call.png" alt="Phone Icon">
                         </div>
 

@@ -1,6 +1,7 @@
 let taskStatus = ["to do", "in-progress", "await feedback", "done"];
 let currentDragedElement = null;
 let cardIndex = 0;
+let editedSelectedContacts = [];
 
 /**
  * Initializes the board by rendering user information, fetching tasks and contacts,
@@ -148,9 +149,7 @@ async function drop(status) {
  * whose titles include the search input text, ignoring case.
  */
 function searchTask() {
-  let searchInput = document
-    .getElementById("findTaskInput")
-    .value.toLowerCase();
+  let searchInput = document.getElementById("findTaskInput").value.toLowerCase();
   let boardCards = Array.from(document.getElementsByClassName("board-card"));
   boardCards.forEach((div) => {
     div.style.display = "none";
@@ -197,9 +196,7 @@ function renderTaskOverlayContent(status) {
  */
 function renderContactsDropdown() {
   let dropdownContent = document.getElementById("dropdown-content");
-  dropdownContent.innerHTML = contacts.map(contact => `
-    <div onclick="selectContact('${contact.name}')">${contact.name}</div>
-  `).join('');
+  dropdownContent.innerHTML = contacts.map(contact => `<div onclick="selectContact('${contact.name}')">${contact.name}</div>`).join('');
 }
 
 /**
@@ -239,8 +236,6 @@ function closeOverlayOutside(event) {
   }
 }
 
-let editedSelectedContacts = [];
-
 function validateEditInputs() {
   let requiredTexts = document.querySelectorAll(".required-text span");
   let titleInput = document.querySelector(".addTask-title input");
@@ -262,14 +257,8 @@ function validateEditInputs() {
  */
 async function confirmTaskChanges(currentTitle) {
   getTaskOverlayInputs();
-  let id = 0;
-  for (let index = 0; index < createdTasks.length; index++) {
-    createdTasks.forEach((task) => {
-      if (id == task.id) {
-        id++;
-      }
-    })
-  }
+  let id;
+  id = checkTaskId(id);
   let taskToEdit = createdTasks.find((task) => task.title == currentTitle);
   let taskIndex = createdTasks.indexOf(taskToEdit);
   items.forEach((item) => {
@@ -278,21 +267,35 @@ async function confirmTaskChanges(currentTitle) {
   taskToEdit.completedSubtasks = taskToEdit.completedSubtasks.filter(subtask =>
     selectedSubtasks.includes(subtask)
   );
-
-  let editedTask = {
-    "id": id, "status": taskToEdit.status, "title": title,
-    "description": description,
-    "selectedContacts": editedSelectedContacts.length > 0 ? editedSelectedContacts : selectedContacts,
-    "dueDate": dueDate, "priority": priority, "selectedCategory": taskToEdit.selectedCategory,
-    "subtasks": selectedSubtasks.length > 0 ? selectedSubtasks : [""],
-    "completedSubtasks": taskToEdit.completedSubtasks.length > 0 ? taskToEdit.completedSubtasks : [""]
-  }
+  let editedTask = createEditTask(id, taskToEdit);
   createdTasks[taskIndex] = editedTask;
   selectedSubtasks = [];
   selectedContacts = [];
   await putTasks();
   await boardInit();
   closeTaskCardOverlay();
+}
+
+function checkTaskId(id) {
+  for (let index = 0; index < createdTasks.length; index++) {
+    createdTasks.forEach((task) => {
+      if (id == task.id) {
+        id++;
+      }
+    })
+  }
+  return id;
+}
+
+function createEditTask(id, taskToEdit) {
+  return {
+    "id": id, "status": taskToEdit.status, "title": title,
+    "description": description,
+    "selectedContacts": editedSelectedContacts.length > 0 ? editedSelectedContacts : selectedContacts,
+    "dueDate": dueDate, "priority": priority, "selectedCategory": taskToEdit.selectedCategory,
+    "subtasks": selectedSubtasks.length > 0 ? selectedSubtasks : [""],
+    "completedSubtasks": taskToEdit.completedSubtasks.length > 0 ? taskToEdit.completedSubtasks : [""]
+  };
 }
 
 /**

@@ -131,11 +131,7 @@ function renderUserCircles() {
 function userCircleTemplate(contact, color) {
   return `
     <div style="background-color:${color}; color:white;" class="addTask-profilepicture">
-      ${contact.name
-        .split(" ")
-        .map((word) => word[0])
-        .join("")
-        .toUpperCase()}
+      ${contact.name.split(" ").map((word) => word[0]).join("").toUpperCase()}
     </div>
   `;
 }
@@ -259,13 +255,9 @@ function restoreSelectedState() {
 function assignedContactsTemplate(index) {
   return `
         <div onclick="checkIt('${assignedContacts[index].name}', ${index}); updateSelectedContacts(this)" class="dropdown-item">
-          <div style="background-color:${
-            assignedContacts[index].color
-          }" class="addTask-profilepicture">${assignedContacts[index].name
-    .split(" ")
-    .map((word) => word[0])
-    .join("")
-    .toUpperCase()}</div>
+          <div style="background-color:${assignedContacts[index].color}" class="addTask-profilepicture">
+            ${assignedContacts[index].name.split(" ").map((word) => word[0]).join("").toUpperCase()}
+          </div>
           <label class="custom-checkbox">
             <p>${assignedContacts[index].name}</p>
             <img class="cstm-checkbox" src="./assets/svg/addTasksSvg/Checkbutton.svg" alt="">

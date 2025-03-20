@@ -94,15 +94,15 @@ function getEditOverlayTemplate(id) {
                         <div class="input-group">
                             <div class="contact-form">
                                 <label for="name"></label>
-                                <input type="text" id="name" placeholder="Name" class="contact-input" value="${contacts[id].name}">
+                                <input oninput="validateForm()" type="text" id="name" placeholder="Name" class="contact-input" value="${contacts[id].name}">
                                 <img class="input-icon" src="./assets/img/contacts_imgs/person.png" alt="Name Icon">
 
                                 <label for="email"></label>
-                                <input type="email" id="email" placeholder="Email" class="contact-input" value="${contacts[id].email}">
+                                <input oninput="validateForm()" type="email" id="email" placeholder="Email" class="contact-input" value="${contacts[id].email}">
                                  <img class="input-icon" src="./assets/img/contacts_imgs/mail.png" alt="Email Icon">
 
                                 <label for="phone"></label>
-                                <input type="tel" id="phone" placeholder="Phone" class="contact-input" value="${contacts[id].phone}">
+                                <input oninput="validateForm()" type="tel" id="phone" placeholder="Phone" class="contact-input" value="${contacts[id].phone}">
                                  <img class="input-icon" src="./assets/img/contacts_imgs/call.png" alt="Phone Icon">
                             </div>
                         </div>
@@ -127,9 +127,12 @@ function getEditOverlayTemplate(id) {
  */
 function contactTemplate(contact) {
     return `<div id="contact-item-${currentId}" class="contact-item" onclick="renderContact(${currentId})">
-                                <div style="background-color:${contact.color};" id="contactProfilePicture${colorId}" class="contact-profile-picture">${contact.name.split(' ').map(word => word[0]).join('').toUpperCase()}</div>
-                                <div class="contact-details">
-                                    <p class="contact-name">${contact.name}</p>
-                                    <p class="contact-email">${contact.email}</p>
-                                </div>`
+                <div style="background-color:${contact.color};" id="contactProfilePicture${colorId}" class="contact-profile-picture">
+                    ${contact.name.split(' ').map(word => word[0]).join('').toUpperCase()}
+                </div>
+                <div class="contact-details">
+                    <p class="contact-name">${contact.name}</p>
+                    <p class="contact-email">${contact.email}</p>
+                </div>
+            </div>`
 }

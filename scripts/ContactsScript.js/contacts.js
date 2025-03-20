@@ -21,7 +21,6 @@ async function init() {
  */
 async function createContact() {
   if (!validateForm()) return;
-  
   let contactName = document.getElementById("name").value;
   let contactEmail = document.getElementById("email").value;
   let contactPhone = document.getElementById("phone").value;
@@ -45,6 +44,7 @@ async function createContact() {
  * @returns {Promise<void>}
  */
 async function editContact(id) {
+  if (!validateForm()) return;
   let contactName = document.getElementById("name").value;
   let contactEmail = document.getElementById("email").value;
   let contactPhone = document.getElementById("phone").value;
@@ -119,12 +119,7 @@ function addLetterDivider(firstLetter, contactsList) {
  */
 function hideOverlayOnOutsideClick(event) {
   let overlayWrapper = document.querySelector(".content-overlay-wrapper");
-  if (
-    overlayWrapper &&
-    !overlayWrapper.contains(event.target) &&
-    !event.target.closest(".add-new-contact") &&
-    !event.target.closest(".edit-btn")
-  ) {
+  if (overlayWrapper && !overlayWrapper.contains(event.target) && !event.target.closest(".add-new-contact") && !event.target.closest(".edit-btn")) {
     hideOverlay();
   }
 }
@@ -179,7 +174,6 @@ function showClickNotification() {
  * @returns {DocumentFragment} A cloned node of the overlay template.
  */
 function getOverlayTemplate() {
-
   let overlayTemplateRef = document.getElementById("overlayTemplate")
   return overlayTemplateRef.content.cloneNode(true);
 }
@@ -193,7 +187,6 @@ function renderContact(id) {
   let contactItem = document.getElementById("contact-information");
   contactItem.innerHTML = "";
   contactItem.innerHTML += getContactCardTemplate(id);
-
   if (window.innerWidth <= 1000) {
     let contactsLeft = document.querySelector('.contacts-content-left');
     let contactsRight = document.querySelector('.contacts-content-right');
@@ -212,7 +205,6 @@ function renderContact(id) {
  */
 function responsiveBackBtn() {
   if (window.innerWidth <= 1000) {
-
     let contactsLeft = document.querySelector('.contacts-content-left');
     let contactsRight = document.querySelector('.contacts-content-right');
     let responsiveEditBtnOne = document.querySelector('.add-contact-btn');
@@ -230,7 +222,6 @@ function responsiveBackBtn() {
 */
 function openResponsiveEdit() {
   let editDeleteMenu = document.querySelector('.edit-delete-btn-responsive');
-
   if (editDeleteMenu.classList.contains('slide-in-responsive')) {
     hideResponsiveEditMenu(editDeleteMenu);
   } else {
@@ -337,94 +328,3 @@ function updateSelectedContact(id) {
   selectedContactId = id;
 }
 
-/**
- * Validiert das Kontaktformular durch Überprüfung aller Eingabefelder.
- * Diese Funktion koordiniert den Validierungsprozess.
- * @returns {boolean} True wenn alle Felder gültig sind, sonst false
- */
-function validateForm() {
-  let name = document.getElementById("name");
-  let email = document.getElementById("email");
-  let phone = document.getElementById("phone");
-  resetValidation([name, email, phone]);
-  return checkFormFields(name, email, phone);
-}
-
-/**
- * Prüft die einzelnen Formularfelder auf Gültigkeit und zeigt Fehlermeldungen an.
- * Diese Funktion kümmert sich um die eigentliche Validierungslogik.
- * @param {HTMLElement} name - Das Name-Eingabefeld
- * @param {HTMLElement} email - Das Email-Eingabefeld
- * @param {HTMLElement} phone - Das Telefon-Eingabefeld
- * @returns {boolean} True wenn alle Felder gültig sind, sonst false
- */
-function checkFormFields(name, email, phone) {
-  let isValid = true;
-  if (!validateName(name.value)) {
-    showError(name, "Please enter a valid name");
-    isValid = false;
-  }
-  if (!validateEmail(email.value)) {
-    showError(email, "Please enter a valid email");
-    isValid = false;
-  }
-  if (!validatePhone(phone.value)) {
-    showError(phone, "Please enter a valid phone number");
-    isValid = false;
-  }
-  return isValid;
-}
-
-/**
- * Validates the name input field.
- * @param {string} name - The name value to validate.
- * @returns {boolean} True if the name is valid, false otherwise.
- */
-function validateName(name) {
-  return name.trim().length >= 2 && /^[a-zA-Z\s\-]+$/.test(name);
-}
-
-/**
- * Validates the email input field.
- * @param {string} email - The email value to validate.
- * @returns {boolean} True if the email is valid, false otherwise.
- */
-function validateEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-/**
- * Validates the phone input field.
- * @param {string} phone - The phone value to validate.
- * @returns {boolean} True if the phone number is valid, false otherwise.
- */
-function validatePhone(phone) {
-  return /^[\d\s\-\+\(\)]{6,}$/.test(phone);
-}
-
-/**
- * Displays an error message for an invalid input field.
- * @param {HTMLElement} input - The input element to show the error for.
- * @param {string} message - The error message to display.
- */
-function showError(input, message) {
-  input.classList.add('invalid');
-  let errorDiv = document.createElement('div');
-  errorDiv.className = 'error-message';
-  errorDiv.textContent = message;
-  input.parentNode.appendChild(errorDiv);
-}
-
-/**
- * Resets the validation state of input fields by removing error messages and invalid classes.
- * @param {HTMLElement[]} inputs - An array of input elements to reset validation for.
- */
-function resetValidation(inputs) {
-  inputs.forEach(input => {
-    input.classList.remove('invalid');
-    let existingError = input.parentNode.querySelector('.error-message');
-    if (existingError) {
-      existingError.remove();
-    }
-  });
-}

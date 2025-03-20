@@ -41,9 +41,9 @@ function renderAssignedContactsToBoardCard(assignedContact, index) {
     if (!assignedContact) {
         return "";
     }
-    return ` <div style="background-color:${assignedContact.color}; transform: translateX(-${index * 7}px);"  class="contact-profile-picture-board">
-                                    ${assignedContact.name.split(' ').map(word => word[0]).join('').toUpperCase()}
-                                    </div> `
+    return ` <div style="background-color:${assignedContact.color}; transform: translateX(-${index * 7}px);" class="contact-profile-picture-board">
+                ${assignedContact.name.split(' ').map(word => word[0]).join('').toUpperCase()}
+            </div> `
 }
 
 /**
@@ -52,9 +52,9 @@ function renderAssignedContactsToBoardCard(assignedContact, index) {
  * @returns {string} HTML string for the empty task placeholder
  */
 function noTasksTemplate(i) {
-  return `<div draggable="true" class="no-tasks">
-                            <span>No tasks ${taskStatus[i]}</span>
-                        </div>`;
+  return `  <div draggable="true" class="no-tasks">
+                <span>No tasks ${taskStatus[i]}</span>
+            </div>`;
 }
 
 /**
