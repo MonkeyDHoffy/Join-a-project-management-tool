@@ -126,7 +126,7 @@ function getEditOverlayTemplate(id) {
  * @returns {string} HTML string for the contact list item.
  */
 function contactTemplate(contact) {
-    return `<div class="contact-item" onclick="renderContact(${currentId})">
+    return `<div id="contact-item-${currentId}" class="contact-item" onclick="renderContact(${currentId})">
                                 <div style="background-color:${contact.color};" id="contactProfilePicture${colorId}" class="contact-profile-picture">${contact.name.split(' ').map(word => word[0]).join('').toUpperCase()}</div>
                                 <div class="contact-details">
                                     <p class="contact-name">${contact.name}</p>

@@ -1,6 +1,7 @@
 let currentId = 0;
 let colorId = 0;
 let currentLetter = "";
+let selectedContactId = null;
 
 /**
  * Initializes the contacts page by rendering user icon name, retrieving contacts data, and displaying contacts.
@@ -181,6 +182,7 @@ function getOverlayTemplate() {
 * @param {number} id - The index of the contact in the contacts array.
 */
 function renderContact(id) {
+  updateSelectedContact(id);
   let contactItem = document.getElementById("contact-information");
   contactItem.innerHTML = "";
   contactItem.innerHTML += getContactCardTemplate(id);
@@ -308,4 +310,22 @@ function renderEditOverlay(id) {
   let overlayContainer = document.getElementById("overlay-container");
   showOverlay();
   overlayContainer.innerHTML = getEditOverlayTemplate(id);
+}
+
+/**
+* Updates the selected contact by highlighting the selected contact item.
+* @param {number} id - The index of the contact in the contacts array.
+*/
+function updateSelectedContact(id) {
+  if (selectedContactId !== null) {
+    let previousContact = document.getElementById(`contact-item-${selectedContactId}`);
+    if (previousContact) {
+      previousContact.classList.remove('selected-contact');
+    }
+  }
+  let newContact = document.getElementById(`contact-item-${id}`);
+  if (newContact) {
+    newContact.classList.add('selected-contact');
+  }
+  selectedContactId = id;
 }
