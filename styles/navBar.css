@@ -211,27 +211,6 @@ span {
   display: none;
 }
 
-@media (max-width: 367px) {
-  .mobile-navBar {
-    gap: 10px;
-  }
-
-  .mobile_nav_btn {
-    height: 70px;
-    width: 70px;
-  }
-
-  .mobile_nav_btn span {
-    gap: 2px;
-    font-size: 12px;
-  }
-
-  .mobile_nav_btn img {
-    width: 20px;
-    height: 20px;
-  }
-}
-
 .menu {
   background-color: #2a3d59;
   display: none;
@@ -382,5 +361,26 @@ span {
 
   .menu {
     right: 0px;
+  }
+}
+
+@media (max-width: 367px) {
+  .mobile-navBar {
+    gap: 10px;
+  }
+
+  .mobile_nav_btn {
+    height: 70px;
+    width: 70px;
+  }
+
+  .mobile_nav_btn span {
+    gap: 2px;
+    font-size: 12px;
+  }
+
+  .mobile_nav_btn img {
+    width: 20px;
+    height: 20px;
   }
 }
