@@ -20,7 +20,7 @@ async function init() {
  * @returns {Promise<void>}
  */
 async function createContact() {
-  if (!validateForm()) return;
+  if (!validateForm());
   let contactName = document.getElementById("name").value;
   let contactEmail = document.getElementById("email").value;
   let contactPhone = document.getElementById("phone").value;
@@ -44,7 +44,7 @@ async function createContact() {
  * @returns {Promise<void>}
  */
 async function editContact(id) {
-  if (!validateForm()) return;
+  if (!validateForm());
   let contactName = document.getElementById("name").value;
   let contactEmail = document.getElementById("email").value;
   let contactPhone = document.getElementById("phone").value;

@@ -6,7 +6,7 @@ let isValid = true;
  * @returns {boolean} True wenn alle Felder gültig sind, sonst false
  */
 function validateForm() {
-    let createBtn = document.getElementById("createContactBtn");
+    let createBtn = document.getElementById("save-btn-overlay");
     let name = document.getElementById("name");
     let email = document.getElementById("email");
     let phone = document.getElementById("phone");
