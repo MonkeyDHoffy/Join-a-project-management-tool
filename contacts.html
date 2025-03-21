@@ -23,7 +23,7 @@
     <script src="./scripts/ContactsScript.js/contacts_template.js"></script>
 </head>
 
-<body onload="init()">
+<body onresize="resizeContactDetails()" onload="init()">
 
     <div class="content-width">
 
@@ -188,7 +188,8 @@
         <div class="content-overlay-wrapper">
 
             <div class="content-overlay-left">
-                <img onclick="hideOverlay()" class="close-mobile-overlay" src="./assets/img/contacts_imgs/close_mobile_overlay.png" alt="">
+                <img onclick="hideOverlay()" class="close-mobile-overlay"
+                    src="./assets/img/contacts_imgs/close_mobile_overlay.png" alt="">
                 <img src="./assets/img/Logo.png" alt="">
                 <div class="content-left-text">
                     <p>Add contact</p>
@@ -217,16 +218,19 @@
                     </svg>
                     <div class="input-group">
                         <div class="contact-form">
-                            
-                            <input oninput="validateForm()" type="text" id="name" placeholder="Name" class="contact-input">
+
+                            <input oninput="validateForm()" type="text" id="name" placeholder="Name"
+                                class="contact-input">
                             <img class="input-icon" src="./assets/img/contacts_imgs/person.png" alt="Name Icon">
 
-                           
-                            <input oninput="validateForm()" type="email" id="email" placeholder="Email" class="contact-input">
+
+                            <input oninput="validateForm()" type="email" id="email" placeholder="Email"
+                                class="contact-input">
                             <img class="input-icon" src="./assets/img/contacts_imgs/mail.png" alt="Email Icon">
 
-                            
-                            <input oninput="validateForm()" type="tel" id="phone" placeholder="Phone" class="contact-input">
+
+                            <input oninput="validateForm()" type="tel" id="phone" placeholder="Phone"
+                                class="contact-input">
                             <img class="input-icon" src="./assets/img/contacts_imgs/call.png" alt="Phone Icon">
                         </div>
 
@@ -238,7 +242,8 @@
                                     d="M7.06917 7.00008L12.3122 12.2431M1.82617 12.2431L7.06917 7.00008L1.82617 12.2431ZM12.3122 1.75708L7.06817 7.00008L12.3122 1.75708ZM7.06817 7.00008L1.82617 1.75708L7.06817 7.00008Z"
                                     stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                            <button id="save-btn-overlay" onclick="createContact()" class="create-btn-overlay" disabled>Create contact
+                            <button id="save-btn-overlay" onclick="createContact()" class="create-btn-overlay"
+                                disabled>Create contact
                                 ✓</button>
                     </div>
                 </div>

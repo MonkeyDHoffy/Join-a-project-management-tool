@@ -12,6 +12,7 @@ async function init() {
   renderUserIconName();
   await getContacts();
   displayContacts();
+  breakContactDetails(25);
 }
 
 /**
@@ -326,5 +327,37 @@ function updateSelectedContact(id) {
     newContact.classList.add('selected-contact');
   }
   selectedContactId = id;
+}
+
+function resizeContactDetails() {
+  if (innerWidth >= 423) {
+init();
+  }
+
+   else if (innerWidth <423 && innerWidth >= 340) {
+    breakContactDetails(15);
+    
+  }
+  else if(innerWidth < 340){
+    breakContactDetails(10);
+
+  }
+}
+
+function breakContactDetails(number) {
+  let emailContainers = document.getElementsByClassName("contact-email");
+  let nameContainer = document.getElementsByClassName("contact-name");
+  for (let i = 0; i < emailContainers.length; i++) {
+    let email = emailContainers[i].textContent;
+    let name = nameContainer[i].textContent
+    if(email.length > number){
+      email = email.slice(0, number) + "...";
+      emailContainers[i].textContent = email;
+    }
+    if(name.length > number){
+      name = name.slice(0, number) + "...";
+      nameContainer[i].textContent = name;
+      }
+  }
 }
 
