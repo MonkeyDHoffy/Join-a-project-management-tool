@@ -1,3 +1,8 @@
+.content-width {
+  display: flex;
+  height: calc(100vh - 80px);
+}
+
 .color-User-Story {
   background-color: #0038FF;
   font-size: 16px;
@@ -185,7 +190,7 @@ body {
   gap: 26px;
 }
 
-.board-wrapper > * {
+.board-wrapper>* {
   flex: 1 1 0;
   min-width: 0;
 }
@@ -233,7 +238,7 @@ body {
 
 .board-card-description {
   color: #A8A8A8;
-  
+
 }
 
 .board-card-priority {
@@ -255,8 +260,8 @@ body {
 }
 
 progress[value] {
-  -webkit-appearance:none;
-  -moz-appearance:none;        
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
 }
 
@@ -356,7 +361,7 @@ progress {
 }
 
 .assigned-to-input-field::placeholder {
-    color: black;
+  color: black;
 }
 
 .close-btn:hover {
@@ -380,6 +385,7 @@ progress {
   0% {
     transform: translateY(900%);
   }
+
   100% {
     transform: translateY(0);
   }
@@ -389,6 +395,7 @@ progress {
   0% {
     transform: translateY(0);
   }
+
   100% {
     transform: translateY(100%);
   }
@@ -489,7 +496,7 @@ progress {
 
   .board-wrapper {
     flex-direction: column;
-    padding: 0 16px 64px 16px ;
+    padding: 0 16px 64px 16px;
     height: fit-content;
   }
 
@@ -578,7 +585,7 @@ progress {
   .description-area {
     font-size: 14px !important;
     height: fit-content !important;
-    padding: 4px 8px  !important;
+    padding: 4px 8px !important;
     width: 99% !important;
   }
 
@@ -627,7 +634,7 @@ progress {
   }
 
   #medium-btn {
-    width: 90% !important; 
+    width: 90% !important;
   }
 
   #low-btn {
