@@ -1,8 +1,3 @@
-.content-width {
-  display: flex;
-  height: calc(100vh - 80px);
-}
-
 .color-User-Story {
   background-color: #0038FF;
   font-size: 16px;
@@ -481,6 +476,13 @@ progress {
 
 .edit-task-overlay-hight {
   height: 90vh !important;
+}
+
+@media (max-width: 1350px) {
+  .content-width {
+    display: flex;
+    height: calc(100vh - 80px);
+  }
 }
 
 @media (max-height: 870px) {
