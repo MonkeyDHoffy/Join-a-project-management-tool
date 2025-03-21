@@ -172,17 +172,15 @@
   color: #ff0000;
   font-size: 12px;
   margin-top: -15px;
-  margin-bottom: 10px;
   position: relative;
   right: 0;
-  top: -63%;
+  top: -71%;
 }
 
 .error-message-one {
   color: #ff0000;
   font-size: 12px;
   margin-top: -15px;
-  margin-bottom: 10px;
   position: relative;
   right: 0;
   top: -37%;
@@ -192,10 +190,9 @@
   color: #ff0000;
   font-size: 12px;
   margin-top: -15px;
-  margin-bottom: 10px;
   position: relative;
   right: 0;
-  top: -12%;
+  top: -4%;
 }
 
 button:hover {
