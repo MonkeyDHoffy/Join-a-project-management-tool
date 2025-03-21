@@ -260,6 +260,10 @@ span {
   gap: 128px;
 }
 
+.mobileNavLogin {
+  margin-right:10%;
+}
+
 @media (max-width: 1350px) {
   .content_left {
     display: none;
