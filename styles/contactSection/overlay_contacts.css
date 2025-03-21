@@ -160,7 +160,6 @@
 
 .contact-form input::placeholder {
   color: #D1D1D1;
-
 }
 
 .contact-form input.invalid {
@@ -202,11 +201,6 @@ button:hover {
 .delete-btn-overlay:hover {
   border: 1px solid #29ABE2;
   color: #29ABE2;
-}
-
-.create-btn-overlay:hover {
-  background-color: #29abe2;
-  box-shadow: 0px 4px 4px 0px #00000040;
 }
 
 .cancel-btn-overlay:hover {
@@ -282,6 +276,18 @@ button:hover {
   background: #1e2a3a;
   color: white;
   transition: all 100ms ease-in-out;
+}
+
+.create-btn-overlay:hover {
+  background-color: #29abe2;
+  box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.create-btn-overlay:disabled {
+  box-shadow: none;
+  background-color: #d3d3d3;
+  color: #a9a9a9;
+  cursor: not-allowed;
 }
 
 .avatar-circle {

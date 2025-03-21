@@ -1,39 +1,44 @@
+let isValid = true;
+
 /**
  * Validiert das Kontaktformular durch Überprüfung aller Eingabefelder.
  * Diese Funktion koordiniert den Validierungsprozess.
  * @returns {boolean} True wenn alle Felder gültig sind, sonst false
  */
 function validateForm() {
+    let createBtn = document.getElementById("createContactBtn");
     let name = document.getElementById("name");
     let email = document.getElementById("email");
     let phone = document.getElementById("phone");
     resetValidation([name, email, phone]);
-    return checkFormFields(name, email, phone);
+    checkFormFields(name, email, phone);
+    if (isValid == false) {
+        createBtn.disabled = true;
+    } else {
+        createBtn.disabled = false;
+    }
 }
 
 /**
- * Prüft die einzelnen Formularfelder auf Gültigkeit und zeigt Fehlermeldungen an.
- * Diese Funktion kümmert sich um die eigentliche Validierungslogik.
- * @param {HTMLElement} name - Das Name-Eingabefeld
- * @param {HTMLElement} email - Das Email-Eingabefeld
- * @param {HTMLElement} phone - Das Telefon-Eingabefeld
- * @returns {boolean} True wenn alle Felder gültig sind, sonst false
+ * Checks the individual form fields for validity and shows error messages.
+ * @param {HTMLInputElement} nameInput - The name input field
+ * @param {HTMLInputElement} emailInput - The email input field
+ * @param {HTMLInputElement} phoneInput - The phone input field
  */
-function checkFormFields(name, email, phone) {
-    let isValid = true;
-    if (!validateName(name.value)) {
-        showError(name, "Please enter a valid name");
+function checkFormFields(nameInput, emailInput, phoneInput) {
+    isValid = true;
+    if (!validateName(nameInput.value)) {
+        showError(nameInput, "Please enter a valid name");
         isValid = false;
     }
-    if (!validateEmail(email.value)) {
-        showErrorOne(email, "Please enter a valid email");
+    if (!validateEmail(emailInput.value)) {
+        showErrorOne(emailInput, "Please enter a valid email");
         isValid = false;
     }
-    if (!validatePhone(phone.value)) {
-        showErrorTwo(phone, "Please enter a valid phone number");
+    if (!validatePhone(phoneInput.value)) {
+        showErrorTwo(phoneInput, "Please enter a valid phone number");
         isValid = false;
     }
-    return isValid;
 }
 
 /**
