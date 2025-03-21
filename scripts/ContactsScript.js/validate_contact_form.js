@@ -26,11 +26,11 @@ function checkFormFields(name, email, phone) {
         isValid = false;
     }
     if (!validateEmail(email.value)) {
-        showError(email, "Please enter a valid email");
+        showErrorOne(email, "Please enter a valid email");
         isValid = false;
     }
     if (!validatePhone(phone.value)) {
-        showError(phone, "Please enter a valid phone number");
+        showErrorTwo(phone, "Please enter a valid phone number");
         isValid = false;
     }
     return isValid;
@@ -76,6 +76,21 @@ function showError(input, message) {
     input.parentNode.appendChild(errorDiv);
 }
 
+function showErrorOne(input, message) {
+    input.classList.add('invalid');
+    let errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message-one';
+    errorDiv.textContent = message;
+    input.parentNode.appendChild(errorDiv);
+}
+
+function showErrorTwo(input, message) {
+    input.classList.add('invalid');
+    let errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message-two';
+    errorDiv.textContent = message;
+    input.parentNode.appendChild(errorDiv);
+}
 /**
  * Resets the validation state of input fields by removing error messages and invalid classes.
  * @param {HTMLElement[]} inputs - An array of input elements to reset validation for.
