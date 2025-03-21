@@ -557,7 +557,7 @@ cursor: pointer;
   }
 
   .avatar-circle {
-    transform: translateY(-50%);
+    transform: translateY(-45%);
     width: 90px;
     height: 90px;
   }

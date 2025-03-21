@@ -392,6 +392,10 @@
     }
   }
 
+  .contact-information {
+    padding: 32px;
+  }
+
   .contacts-heading-right {
     flex-direction: column;
     gap: 0;
@@ -437,10 +441,6 @@
       padding-left: 32px;
     }
   }
-
-  .contact-information {
-    padding: 32px;
-  }
 }
 
 @media(max-width: 423px) {
@@ -452,16 +452,16 @@
     padding: 0 !important;
   }
 
+  .name-and-edit {
+    padding-left: 8px !important;
+  }
+
   .contacts-content-right h2 {
     font-size: 24px;
   }
 }
 
 @media(max-width: 350px) {
-  .name-and-edit {
-    padding-left: 8px !important;
-  }
-
   .avatar-circle {
     width: 60px !important;
     height: 60px !important;
