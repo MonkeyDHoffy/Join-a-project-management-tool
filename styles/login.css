@@ -529,8 +529,6 @@ body {
     #error {
         width: 72%;
     }
-
-
 }
 
 @media screen and (height <= 740px) {

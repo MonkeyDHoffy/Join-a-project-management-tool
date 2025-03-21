@@ -452,6 +452,11 @@ progress {
   align-items: center;
 }
 
+.subtask-add {
+  top: 32%;
+  right: 18px;
+}
+
 .close-edit-task-overlay-btn img {
   cursor: pointer;
   margin-right: 24px;
@@ -557,6 +562,10 @@ progress {
     gap: 0 !important;
   }
 
+  .input-icon-assign-to-container {
+    top: 22%;
+  }
+
   .addTask-section p {
     font-size: 16px !important;
   }
@@ -590,12 +599,9 @@ progress {
     gap: 0px;
   }
 
-  .subtask-add {
-    transform: translateY(40%);
-  }
-
   .cancel-check-btn {
-    transform: translateY(50%);
+    top: 30%;
+    right: 0px;
   }
 
   .cancel-check-btn img {
