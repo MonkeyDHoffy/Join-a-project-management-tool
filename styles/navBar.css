@@ -131,7 +131,6 @@ span {
 }
 
 .header {
-  padding: 20px 40px 20px 116px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -145,6 +144,15 @@ span {
     font-weight: 400;
     margin: 0;
   }
+}
+
+.header-width {
+  padding: 0 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: calc(1920px - 232px);
 }
 
 .question-mark {
@@ -346,6 +354,12 @@ span {
     span {
       transform: scale(1) !important;
     }
+  }
+}
+
+@media (max-width: 1280px) {
+  .header-width {
+    padding: 0 16px;
   }
 }
 
