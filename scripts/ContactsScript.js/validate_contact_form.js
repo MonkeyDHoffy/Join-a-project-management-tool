@@ -91,6 +91,7 @@ function showErrorTwo(input, message) {
     errorDiv.textContent = message;
     input.parentNode.appendChild(errorDiv);
 }
+
 /**
  * Resets the validation state of input fields by removing error messages and invalid classes.
  * @param {HTMLElement[]} inputs - An array of input elements to reset validation for.
@@ -98,9 +99,9 @@ function showErrorTwo(input, message) {
 function resetValidation(inputs) {
     inputs.forEach(input => {
         input.classList.remove('invalid');
-        let existingError = input.parentNode.querySelector('.error-message');
-        if (existingError) {
-            existingError.remove();
-        }
+        
+        // Entferne alle Fehlermeldungen, unabhängig von ihrer Klasse
+        let errorMessages = input.parentNode.querySelectorAll('.error-message, .error-message-one, .error-message-two');
+        errorMessages.forEach(error => error.remove());
     });
 }
