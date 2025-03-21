@@ -25,11 +25,11 @@ async function createContact() {
   let contactName = document.getElementById("name").value;
   let contactEmail = document.getElementById("email").value;
   let contactPhone = document.getElementById("phone").value;
-  let contact = { 
-      name: contactName, 
-      email: contactEmail, 
-      phone: contactPhone, 
-      color: `var(${colors[Math.floor(Math.random() * colors.length)]})` 
+  let contact = {
+    name: contactName,
+    email: contactEmail,
+    phone: contactPhone,
+    color: `var(${colors[Math.floor(Math.random() * colors.length)]})`
   };
   contacts.push(contact);
   await putData("contacts/", contacts);
@@ -215,6 +215,18 @@ function responsiveBackBtn() {
     responsiveEditBtnOne.style.display = 'flex';
     responsiveEditBtnTwo.style.display = 'none';
   }
+  resetSelectedContact();
+}
+
+/**
+ * Resets the visual state of all contacts in the contacts list to be unselected.
+ * @returns {void}
+ */
+function resetSelectedContact() {
+  let contactsRef = document.getElementsByClassName("contact-item");
+  for (let i = 0; i < contactsRef.length; i++) {
+    contactsRef[i].classList.remove("selected-contact");
+  }
 }
 
 /**
@@ -331,16 +343,13 @@ function updateSelectedContact(id) {
 
 function resizeContactDetails() {
   if (innerWidth >= 423) {
-init();
+    init();
   }
-
-   else if (innerWidth <423 && innerWidth >= 340) {
+  else if (innerWidth < 423 && innerWidth >= 340) {
+    breakContactDetails(18);
+  }
+  else if (innerWidth < 340) {
     breakContactDetails(15);
-    
-  }
-  else if(innerWidth < 340){
-    breakContactDetails(10);
-
   }
 }
 
@@ -350,14 +359,14 @@ function breakContactDetails(number) {
   for (let i = 0; i < emailContainers.length; i++) {
     let email = emailContainers[i].textContent;
     let name = nameContainer[i].textContent
-    if(email.length > number){
+    if (email.length > number) {
       email = email.slice(0, number) + "...";
       emailContainers[i].textContent = email;
     }
-    if(name.length > number){
+    if (name.length > number) {
       name = name.slice(0, number) + "...";
       nameContainer[i].textContent = name;
-      }
+    }
   }
 }
 

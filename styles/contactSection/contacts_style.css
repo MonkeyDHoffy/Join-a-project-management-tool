@@ -149,7 +149,7 @@
 
   .blue-mail {
     color: #007cee;
-
+    word-break: break-all;
     font-weight: 400;
     font-size: 20px;
     line-height: 24px;
@@ -440,6 +440,12 @@
 
   .contact-information {
     padding: 32px;
+  }
+}
+
+@media(max-width: 423px) {
+  .contacts-content-left {
+    padding: 0 22px;
   }
 }
 
