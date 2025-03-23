@@ -2,7 +2,7 @@ let currentId = 0;
 let colorId = 0;
 let currentLetter = "";
 let selectedContactId = null;
-
+let currentName = "";
 /**
  * Initializes the contacts page by rendering user icon name, retrieving contacts data, and displaying contacts.
  * @async
@@ -60,6 +60,21 @@ async function editContact(id) {
   hideOverlay();
   init();
   renderContact(id);
+  updateAssignedContacts(contactName);
+}
+
+async function updateAssignedContacts(contactName) {
+  await getTasks();
+  for (let index = 0; index < createdTasks.length; index++) {
+    createdTasks[index].selectedContacts = createdTasks[index].selectedContacts.map(contact => 
+        contact === currentName ? contactName : contact
+    );
+  }
+  await putTasks();
+}
+
+function name(params) {
+  
 }
 
 /**
@@ -321,6 +336,7 @@ function renderEditOverlay(id) {
   let overlayContainer = document.getElementById("overlay-container");
   showOverlay();
   overlayContainer.innerHTML = getEditOverlayTemplate(id);
+  currentName = document.getElementById("name").value;
 }
 
 /**

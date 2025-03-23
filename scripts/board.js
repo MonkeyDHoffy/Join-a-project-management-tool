@@ -43,14 +43,36 @@ function renderTasks(status, elementId) {
   }
   for (let i = 0; i < tasks.length; i++) {
     document.getElementById(elementId).innerHTML += taskCardTemplate(tasks[i]);
+    showAssignedContactsOnBoardCard(tasks, i);
+
+    cardIndex++;
+  }
+}
+
+/**
+ * Renders assigned contacts on a board card
+ * @param {Array<Object>} tasks - An array of task objects
+ * @param {number} i - The index of the task in the array
+ * If the task has more than 5 contacts, it will show the first 5 contacts and add a label with the number of remaining contacts
+ */
+function showAssignedContactsOnBoardCard(tasks, i) {
+  if (tasks[i].selectedContacts.length > 5) {
+    for (let index = 0; index < 5; index++) {
+      let assignedContact = contacts.find(
+        (contact) => contact.name === tasks[i].selectedContacts[index]
+      );
+      document.getElementsByClassName("board-card-assigned-contacts")[cardIndex].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
+    }
+    document.getElementsByClassName("board-card-assigned-contacts")[cardIndex].innerHTML += `<span style="transform: translateX(-24px)";>+${tasks[i].selectedContacts.length - 5}</span>`
+  } else {
     for (let index = 0; index < tasks[i].selectedContacts.length; index++) {
       let assignedContact = contacts.find(
         (contact) => contact.name === tasks[i].selectedContacts[index]
       );
       document.getElementsByClassName("board-card-assigned-contacts")[cardIndex].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
     }
-    cardIndex++;
   }
+
 }
 
 /**
@@ -66,14 +88,15 @@ function changeOnclickFunctionOnResize() {
         window.location.href = './add_task.html';
       };
     }
-  }else {
+  } else {
     for (let i = 0; i < buttons.length; i++) {
       buttons[i].onclick = function () {
-        renderTaskOverlayContent(); 
+        renderTaskOverlayContent();
         validateInputFields();
       }
     }
   }
+  changeTaskEditOverlayHight()
 }
 
 /**
@@ -126,18 +149,7 @@ async function drop(status) {
   if (currentDragedElement !== null) {
     let task = createdTasks.find((task) => task.id === currentDragedElement);
     task.status = status;
-    createdTasks.forEach((task) => {
-      if (task.selectedContacts.length == 0) {
-        task.selectedContacts = [""];
-      }
-      if (task.completedSubtasks.length == 0) {
-        task.completedSubtasks = [""];
-      }
-      if (task.subtasks.length == 0) {
-        task.subtasks = [""];
-      }
-    });
-    await putData("tasks", createdTasks);
+    await putTasks();
     await boardInit();
   }
   currentDragedElement = null;
@@ -173,7 +185,7 @@ function openAddTaskOverlay() {
   addTaskOverlayRef.style.pointerEvents = "all";
   setTimeout(() => {
     addTaskOverlayRef.classList.add("active");
-    addTaskOverlayContentRef.style.left = "calc(50% - 482px)";
+    addTaskOverlayContentRef.classList.add("overlay-position");
   }, 50);
   changeMediumBtn();
 }
@@ -205,7 +217,7 @@ function closeAddTaskOverlay() {
   let addTaskOverlayRef = document.getElementById("addTaskOverlay");
   let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
   addTaskOverlayRef.classList.remove("active");
-  addTaskOverlayContentRef.style.left = "-1000px";
+  addTaskOverlayContentRef.classList.remove("overlay-position");
   addTaskOverlayRef.style.pointerEvents = "none";
   editedSelectedContacts = [];
   selectedContacts = [];
@@ -225,7 +237,7 @@ function closeOverlayOutside(event) {
   if (event.target == addTaskOverlayRef) {
     addTaskOverlayRef.classList.remove("active");
     addTaskOverlayRef.style.pointerEvents = "none";
-    addTaskOverlayContentRef.style.left = "-1000px";
+    addTaskOverlayContentRef.classList.remove("overlay-position");
     editedSelectedContacts = [];
     selectedContacts = [];
     setTimeout(() => {
@@ -273,17 +285,6 @@ async function confirmTaskChanges(currentTitle) {
   await putTasks();
   await boardInit();
   closeTaskCardOverlay();
-}
-
-function checkTaskId(id) {
-  for (let index = 0; index < createdTasks.length; index++) {
-    createdTasks.forEach((task) => {
-      if (id == task.id) {
-        id++;
-      }
-    })
-  }
-  return id;
 }
 
 function createEditTask(id, taskToEdit) {

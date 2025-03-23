@@ -294,6 +294,7 @@ span {
   }
 
   .mobile-nav-section {
+    z-index: 100;
     display: block;
     position: fixed;
     bottom: 0;

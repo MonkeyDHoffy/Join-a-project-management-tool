@@ -30,6 +30,7 @@
 }
 
 .task-card {
+  overflow: auto;
   display: flex;
   flex-direction: column;
   background: white;

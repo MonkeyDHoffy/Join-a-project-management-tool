@@ -24,11 +24,11 @@ async function createTaskInit() {
  * @returns {void}
  */
 function getTaskInputs() {
-title = document.querySelector(".addTask-title input").value;
-description = document.querySelector(".addTask-description textarea").value;
-dueDate = document.querySelector(".task-date input").value;
-category = document.getElementById("category-field").value;
-items = Array.from(document.getElementsByClassName("subtask-item"));
+  title = document.querySelector(".addTask-title input").value;
+  description = document.querySelector(".addTask-description textarea").value;
+  dueDate = document.querySelector(".task-date input").value;
+  category = document.getElementById("category-field").value;
+  items = Array.from(document.getElementsByClassName("subtask-item"));
 }
 
 /**
@@ -39,11 +39,13 @@ items = Array.from(document.getElementsByClassName("subtask-item"));
  */
 async function createTask() {
   getTaskInputs();
+  let id = 0;
+  id = checkTaskId(id);
   items.forEach((item) => {
     selectedSubtasks.push(item.innerHTML);
   });
   let newTask = {
-    "id": createdTasks.length + 1, "status": createdTasksStatus == "" ? "toDo" : createdTasksStatus, "title": title,
+    "id": id, "status": createdTasksStatus == "" ? "toDo" : createdTasksStatus, "title": title,
     "description": description,
     "selectedContacts": selectedContacts.length > 0 ? selectedContacts.map((contact) => contact.name) : [""],
     "dueDate": dueDate, "priority": priority, "selectedCategory": category,
@@ -57,6 +59,17 @@ async function createTask() {
   showTaskNotification();
 }
 
+function checkTaskId(id) {
+  for (let index = 0; index <= createdTasks.length; index++) {
+    createdTasks.forEach((task) => {
+      if (id == task.id) {
+        id++;
+      }
+    })
+  }
+  return id;
+}
+
 /**
  * Creates a new task from an overlay form, adds it to the task list, and saves it to storage.
  * Displays a specific notification for task creation from overlay.
@@ -66,6 +79,8 @@ async function createTask() {
  */
 async function createTaskOverlay() {
   getTaskInputs();
+  let id = 0;
+  id = checkTaskId(id);
   items.forEach((item) => {
     selectedSubtasks.push(item.innerHTML);
   });
