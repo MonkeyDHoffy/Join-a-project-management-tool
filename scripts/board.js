@@ -43,14 +43,36 @@ function renderTasks(status, elementId) {
   }
   for (let i = 0; i < tasks.length; i++) {
     document.getElementById(elementId).innerHTML += taskCardTemplate(tasks[i]);
+    showAssignedContactsOnBoardCard(tasks, i);
+    
+    cardIndex++;
+  }
+}
+
+/**
+ * Renders assigned contacts on a board card
+ * @param {Array<Object>} tasks - An array of task objects
+ * @param {number} i - The index of the task in the array
+ * If the task has more than 5 contacts, it will show the first 5 contacts and add a label with the number of remaining contacts
+ */
+function showAssignedContactsOnBoardCard(tasks, i) {
+  if (tasks[i].selectedContacts.length > 5) {
+    for (let index = 0; index < 5; index++) {
+      let assignedContact = contacts.find(
+        (contact) => contact.name === tasks[i].selectedContacts[index]
+      );
+      document.getElementsByClassName("board-card-assigned-contacts")[cardIndex].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
+    }
+    document.getElementsByClassName("board-card-assigned-contacts")[cardIndex].innerHTML += `<span style="transform: translateX(-24px)";>+${tasks[i].selectedContacts.length - 5}</span>`
+  } else {
     for (let index = 0; index < tasks[i].selectedContacts.length; index++) {
       let assignedContact = contacts.find(
         (contact) => contact.name === tasks[i].selectedContacts[index]
       );
       document.getElementsByClassName("board-card-assigned-contacts")[cardIndex].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
     }
-    cardIndex++;
   }
+  
 }
 
 /**

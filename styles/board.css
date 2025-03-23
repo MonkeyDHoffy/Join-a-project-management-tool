@@ -80,6 +80,7 @@ body {
 
 .board-card-assigned-contacts {
   display: flex;
+  align-items: center;
 }
 
 .contact-profile-picture-board {

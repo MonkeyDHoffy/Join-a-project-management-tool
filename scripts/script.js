@@ -31,11 +31,30 @@ async function getData(path = "") {
   try {
     let response = await fetch(BASE_URL + path + ".json");
     let responseToJson = await response.json();
+
+    if (responseToJson && typeof responseToJson === "object") {
+      cleanNullValues(responseToJson); // Alle Arrays in den Daten bereinigen
+    }
+    
     return responseToJson;
   } catch (error) {
     console.error(error);
+    return [];
   }
 }
+
+// Rekursive Funktion, die alle Arrays in einem Objekt von `null`-Werten befreit
+function cleanNullValues(obj) {
+  for (let key in obj) {
+    if (Array.isArray(obj[key])) {
+      obj[key] = obj[key].filter(item => item !== null); // Entfernt `null` aus Arrays
+    } else if (typeof obj[key] === "object" && obj[key] !== null) {
+      cleanNullValues(obj[key]); // Falls es ein verschachteltes Objekt ist, weiter prüfen
+    }
+  }
+}
+
+
 
 /**
  * Updates data in the Firebase database.
