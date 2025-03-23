@@ -478,6 +478,15 @@ progress {
   height: 90vh !important;
 }
 
+.card-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  img{
+    display: none;
+  }
+}
+
 @media (max-width: 1350px) {
   .content-width {
     display: flex;
@@ -494,6 +503,15 @@ progress {
 @media(max-width: 1280px) {
   .content-right {
     height: calc(100% - 176px);
+  }
+
+  .card-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    img{
+      display: block;
+    }
   }
 
   .board-wrapper {

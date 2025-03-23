@@ -12,7 +12,7 @@
  */
 function taskCardTemplate(element) {
   return ` <div onclick="renderTaskCardOverlay(this)" ondragstart="startDrag(${element.id})" draggable="true" class="board-card">                              
-                                    <div class="color-${element.selectedCategory.replace(" ", "-")}">${element.selectedCategory}</div>
+                                    <div class="card-header"><div class="color-${element.selectedCategory.replace(" ", "-")}">${element.selectedCategory}</div><img onclick="openDragMenu()" src="./assets/img/res_drop_btn.png" alt=""></div>
   
                                     <h3>${element.title}</h3>                            
                                 <div class="board-card-description">
