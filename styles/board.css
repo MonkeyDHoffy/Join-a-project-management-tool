@@ -318,6 +318,7 @@ progress {
 }
 
 .add-task-overlay-content {
+  z-index: 1000;
   overflow: auto;
   position: absolute;
   top: calc(50% - 435px);
@@ -530,10 +531,6 @@ progress {
     height: fit-content;
   }
 
-  .addTask-subtasks {
-    padding: 10px !important;
-  }
-
   .board-card {
     min-width: 252px;
     max-width: 252px;
@@ -595,8 +592,22 @@ progress {
 }
 
 @media (max-width: 1000px) {
+  .add-task-overlay-content {
+    padding-bottom: 0;
+  }
   .overlay-position {
     left: calc(50% - 298px);
+  }
+
+  .addTask-footer {
+    position: sticky !important;
+    bottom: 0 !important;
+    background-color: white !important;
+    padding: 8px 0 !important;
+  }
+
+  .clear-create {
+    scale: unset !important;
   }
 }
 
@@ -679,11 +690,31 @@ progress {
     padding: 12px 12px;
     margin-top: 32px;
   }
+
+  .createTask-button {
+    font-size: 14px;
+    padding: 10px;
+    width: fit-content;
+    height: fit-content;
+    gap: 0;
+  }
+
+  .clear-btn {
+    font-size: 14px;
+    padding: 10px;
+    gap: 0;
+    height: fit-content;
+  }
 }
 
 @media (max-width: 490px) {
   .add-task-overlay-content {
     padding: 40px 34px;
+    padding-bottom: 0;
+  }
+
+  .clear-create {
+    gap: 4px !important;
   }
 
   .prio-buttons {

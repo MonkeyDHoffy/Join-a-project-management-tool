@@ -32,7 +32,7 @@
 
 </head>
 
-<body onresize="changeOnclickFunctionOnResize()" onload="boardInit()">
+<body onresize="resizeAndPositionOverlay()" onload="boardInit()">
 
     <div class="content-width">
 
@@ -102,7 +102,7 @@
                     <div class="board-header-title">
                         <div class="mobile-headline-wrapper">
                             <h2>Board</h2>
-                            <div onclick="window.location.href='./add_task.html'" class="add-task-mobile-btn">
+                            <div onclick="renderTaskOverlayContent(); validateInputFields();" class="add-task-mobile-btn">
                                 <img src="./assets/img/add_task_mobile.png" alt="">
                             </div>
                         </div>

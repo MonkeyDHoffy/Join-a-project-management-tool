@@ -207,16 +207,18 @@ function addTaskOverlayBoardTemplate() {
   
               </div>
   
-          </div>
-          <div class="addTask-footer">
+            </div>
+            <div class="requiredResponsiveSpan">
+                <span style="color:red">*</span><span>This field is required</span>
+            </div>
+            <div class="addTask-footer">
               <div><span style="color:red">*</span><span>This field is required</span></div>
               <div onclick="closeAddTaskOverlay(event)" class="display-flex clear-create"><button
                       onclick="clearInputFields()" class="clear-btn">Cancel
                       <img src="./assets/svg/addTasksSvg/clear.svg" alt=""></button><button onclick="createTaskOverlay()"
                       class="createTask-button">Create Task<img src="./assets/svg/addTasksSvg/cross.svg" alt="">
                   </button></div>
-  
-          </div>`;
+            </div>`;
 }
 
 

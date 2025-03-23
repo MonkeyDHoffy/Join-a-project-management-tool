@@ -90,6 +90,15 @@ function renderTaskEditOverlay(element) {
   }
 }
 
+function resizeAndPositionOverlay() {
+  let editField = document.getElementById("addTaskOverlayContent");
+  setTimeout(() => {
+    changeTaskEditOverlayHight(editField);
+    changeOverlayPosition(editField)
+  }, 200);
+  
+}
+
 function changeTaskEditOverlayHight() {
   let editField = document.getElementById("addTaskOverlayContent");
   if (editField !== null) {
@@ -98,7 +107,12 @@ function changeTaskEditOverlayHight() {
     }else {
       editField.classList.remove("edit-task-overlay-hight");
     }
-  } 
+  }
+}
+
+function changeOverlayPosition(editField) {
+  let overlayHeight = document.getElementById("addTaskOverlayContent").offsetHeight;
+  editField.style.top = `calc(50% - ${overlayHeight / 2}px)`;
 }
 
 /**

@@ -14,7 +14,6 @@ async function boardInit() {
   await getTasks();
   await getContacts();
   updateHTML();
-  changeOnclickFunctionOnResize();
 }
 
 /**
@@ -73,30 +72,6 @@ function showAssignedContactsOnBoardCard(tasks, i) {
     }
   }
 
-}
-
-/**
- * Changes the onclick function for task buttons based on window size.
- * On smaller screens (<1000px), redirects to add_task.html.
- * On larger screens, renders the task overlay.
- */
-function changeOnclickFunctionOnResize() {
-  let buttons = document.getElementsByClassName("btn-title");
-  if (window.innerWidth < 1000) {
-    for (let i = 0; i < buttons.length; i++) {
-      buttons[i].onclick = function () {
-        window.location.href = './add_task.html';
-      };
-    }
-  } else {
-    for (let i = 0; i < buttons.length; i++) {
-      buttons[i].onclick = function () {
-        renderTaskOverlayContent();
-        validateInputFields();
-      }
-    }
-  }
-  changeTaskEditOverlayHight()
 }
 
 /**
