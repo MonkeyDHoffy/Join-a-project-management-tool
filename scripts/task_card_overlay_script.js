@@ -90,6 +90,13 @@ function renderTaskEditOverlay(element) {
   }
 }
 
+/**
+ * Resizes and repositions the add task overlay based on window height.
+ * The overlay gets a smaller height on smaller screens and is positioned
+ * vertically centered on the screen.
+ * This function is called after the overlay is rendered and after the
+ * window is resized.
+ */
 function resizeAndPositionOverlay() {
   let editField = document.getElementById("addTaskOverlayContent");
   setTimeout(() => {
@@ -99,6 +106,11 @@ function resizeAndPositionOverlay() {
   
 }
 
+/**
+ * Changes the height of the task edit overlay based on the window height.
+ * If the window height is smaller than 970px, the overlay gets a smaller height.
+ * @function
+ */
 function changeTaskEditOverlayHight() {
   let editField = document.getElementById("addTaskOverlayContent");
   if (editField !== null) {
@@ -110,6 +122,11 @@ function changeTaskEditOverlayHight() {
   }
 }
 
+/**
+ * Calculates the vertical position of the task edit overlay so that it is centered vertically on the screen.
+ * The position is calculated by subtracting half of the overlay's height from 50% of the window's height.
+ * @param {HTMLElement} editField - The HTML element of the task edit overlay
+ */
 function changeOverlayPosition(editField) {
   let overlayHeight = document.getElementById("addTaskOverlayContent").offsetHeight;
   editField.style.top = `calc(50% - ${overlayHeight / 2}px)`;

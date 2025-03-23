@@ -1,4 +1,4 @@
-let taskStatus = ["to do", "in-progress", "await feedback", "done"];
+let taskStatus = ["to do", "in progress", "await feedback", "done"];
 let currentDragedElement = null;
 let cardIndex = 0;
 let editedSelectedContacts = [];
@@ -20,10 +20,10 @@ async function boardInit() {
  * Renders all tasks on the board based on their status and updates related UI elements.
  */
 function updateHTML() {
-  renderTasks("toDo", "toDo");
-  renderTasks("inProgress", "inProgress");
-  renderTasks("awaitFeedback", "awaitFeedback");
-  renderTasks("done", "done");
+  renderTasks("toDo", "toDo", 0);
+  renderTasks("inProgress", "inProgress", 1);
+  renderTasks("awaitFeedback", "awaitFeedback", 2);
+  renderTasks("done", "done", 3);
   hideSubtasksIfEmpty();
   breakDescriptions();
   cardIndex = 0;
@@ -34,11 +34,11 @@ function updateHTML() {
  * @param {string} status - The status of tasks to render ("toDo", "inProgress", "awaitFeedback", "done").
  * @param {string} elementId - The ID of the container element where tasks should be rendered.
  */
-function renderTasks(status, elementId) {
+function renderTasks(status, elementId, statusId) {
   let tasks = createdTasks.filter((task) => task.status === status);
   document.getElementById(elementId).innerHTML = "";
   if (tasks.length === 0) {
-    document.getElementById(elementId).innerHTML += noTasksTemplate(taskStatus.indexOf(status));
+    document.getElementById(elementId).innerHTML += noTasksTemplate(statusId);
   }
   for (let i = 0; i < tasks.length; i++) {
     document.getElementById(elementId).innerHTML += taskCardTemplate(tasks[i]);
@@ -147,6 +147,16 @@ function searchTask() {
   filteredCards.forEach((div) => {
     div.style.display = "block";
   });
+  checkIfBoardFieldIsEmpty();
+}
+
+function checkIfBoardFieldIsEmpty() {
+  let boardFields = document.getElementsByClassName("board-field");
+  console.log(boardFields);
+  
+  for (let i = 0; i < boardFields.length; i++) {
+
+  }
 }
 
 /**
