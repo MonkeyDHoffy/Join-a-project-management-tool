@@ -136,16 +136,17 @@ async function drop(status) {
  * whose titles include the search input text, ignoring case.
  */
 function searchTask() {
+  updateHTML();
   let searchInput = document.getElementById("findTaskInput").value.toLowerCase();
   let boardCards = Array.from(document.getElementsByClassName("board-card"));
   boardCards.forEach((div) => {
-    div.style.display = "none";
+    div.classList.add("d-none");
   });
   let filteredCards = boardCards.filter((div) =>
     div.querySelector("h3")?.textContent.toLowerCase().trim().includes(searchInput)
   );
   filteredCards.forEach((div) => {
-    div.style.display = "block";
+    div.classList.remove("d-none");
   });
   checkIfBoardFieldIsEmpty();
 }
@@ -153,9 +154,10 @@ function searchTask() {
 function checkIfBoardFieldIsEmpty() {
   let boardFields = document.getElementsByClassName("board-field");
   console.log(boardFields);
-  
   for (let i = 0; i < boardFields.length; i++) {
-
+      if ([...boardFields[i].children].every(child => child.classList.contains("d-none"))) {
+        boardFields[i].innerHTML = noTasksTemplate(i)
+      }
   }
 }
 
