@@ -592,6 +592,10 @@ progress {
 }
 
 @media (max-width: 1000px) {
+  .category-dropdown {
+    top: -60% !important;
+  }
+
   .add-task-overlay-content {
     padding-bottom: 0;
   }
@@ -618,6 +622,15 @@ progress {
 }
 
 @media (max-width: 570px) {
+  .category-dropdown {
+    width: 99% !important;
+    top: -38% !important;
+  }
+
+  .dropdown-content {
+    width: 99% !important;
+  }
+
   .addTask-header h1 {
     font-size: 48px;
   }
@@ -633,6 +646,7 @@ progress {
   .add-task-overlay-content {
     height: fit-content;
     padding: 40px 54px;
+    padding-bottom: 0;
   }
 
   .overlay-position {

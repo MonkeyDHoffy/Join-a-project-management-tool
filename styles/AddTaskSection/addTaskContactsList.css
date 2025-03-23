@@ -4,6 +4,8 @@
 }
 
 #assigned-to-field {
+  position: inherit;
+  z-index: 3;
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -21,7 +23,7 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  top: 100%;
+  top: 90%;
   left: 0;
   right: 0;
   max-height: 200px; /* Adjust the height as needed */
@@ -87,6 +89,7 @@
 }
 
 .input-icon-assign-to-container {
+  z-index: 4;
   width: 24px;
   height: 24px;
   border-radius: 50%;
