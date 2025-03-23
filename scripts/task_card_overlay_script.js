@@ -114,7 +114,7 @@ function resizeAndPositionOverlay() {
 function changeTaskEditOverlayHight() {
   let editField = document.getElementById("addTaskOverlayContent");
   if (editField !== null) {
-    if (window.innerHeight < 970) {
+    if (window.innerHeight < 1200) {
       editField.classList.add("edit-task-overlay-hight");
     }else {
       editField.classList.remove("edit-task-overlay-hight");

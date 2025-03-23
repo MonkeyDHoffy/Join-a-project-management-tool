@@ -85,7 +85,7 @@ async function createTaskOverlay() {
     selectedSubtasks.push(item.innerHTML);
   });
   let newTask = {
-    "id": createdTasks.length + 1, "status": "toDo", "title": title,
+    "id": createdTasks.length + 1, "status": createdTasksStatus == "" ? "toDo" : createdTasksStatus, "title": title,
     "description": description,
     "selectedContacts": selectedContacts.length > 0 ? selectedContacts.map((contact) => contact.name) : [""],
     "dueDate": dueDate, "priority": priority, "selectedCategory": category,

@@ -151,6 +151,11 @@ function searchTask() {
   checkIfBoardFieldIsEmpty();
 }
 
+/**
+ * Checks if any of the board fields are empty after filtering.
+ * If a board field is empty, it displays a placeholder message.
+ * @returns {void}
+ */
 function checkIfBoardFieldIsEmpty() {
   let boardFields = document.getElementsByClassName("board-field");
   console.log(boardFields);
@@ -180,13 +185,15 @@ function openAddTaskOverlay() {
 /**
  * Renders the content of the task overlay and initializes related UI elements.
  */
-function renderTaskOverlayContent() {
+function renderTaskOverlayContent(addTaskStatus) {
+  createdTasksStatus = addTaskStatus;
   let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
   addTaskOverlayContentRef.innerHTML = addTaskOverlayBoardTemplate();
   toggleSubtasks();
   renderAssignedContacts();
   renderContactsDropdown();
   openAddTaskOverlay();
+  resizeAndPositionOverlay();
 }
 
 /**
