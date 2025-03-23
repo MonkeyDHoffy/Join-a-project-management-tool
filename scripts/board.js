@@ -149,18 +149,7 @@ async function drop(status) {
   if (currentDragedElement !== null) {
     let task = createdTasks.find((task) => task.id === currentDragedElement);
     task.status = status;
-    createdTasks.forEach((task) => {
-      if (task.selectedContacts.length == 0) {
-        task.selectedContacts = [""];
-      }
-      if (task.completedSubtasks.length == 0) {
-        task.completedSubtasks = [""];
-      }
-      if (task.subtasks.length == 0) {
-        task.subtasks = [""];
-      }
-    });
-    await putData("tasks", createdTasks);
+    await putTasks();
     await boardInit();
   }
   currentDragedElement = null;
