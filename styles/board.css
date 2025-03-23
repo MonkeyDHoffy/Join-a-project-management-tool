@@ -317,6 +317,7 @@ progress {
 }
 
 .add-task-overlay-content {
+  overflow: auto;
   position: absolute;
   top: calc(50% - 435px);
   left: -1000px;
@@ -329,6 +330,10 @@ progress {
   box-shadow: 0px 0px 4px 0px #0000001a;
   padding: 64px 74px;
   transition: all 0.2s ease-in-out;
+}
+
+.add-task-overlay-content::-webkit-scrollbar {
+  display: none;
 }
 
 .addTask-header {
@@ -459,6 +464,10 @@ progress {
   right: 18px;
 }
 
+.overlay-position {
+  left: calc(50% - 482px);
+}
+
 .close-edit-task-overlay-btn img {
   cursor: pointer;
   margin-right: 24px;
@@ -566,9 +575,38 @@ progress {
   }
 }
 
+@media (max-width: 1000px) {
+  .overlay-position {
+    left: calc(50% - 298px);
+  }
+}
+
+@media (max-width: 625px) {
+  .overlay-position {
+    left: calc(50% - 258px);
+  }
+}
+
 @media (max-width: 570px) {
+  .addTask-header h1 {
+    font-size: 48px;
+  }
+
   .addTask-section {
     gap: 0 !important;
+  }
+
+  .addTask-subtasks {
+    padding: 0 !important;
+  }
+
+  .add-task-overlay-content {
+    height: fit-content;
+    padding: 40px 54px;
+  }
+
+  .overlay-position {
+    left: calc(50% - 238px);
   }
 
   .input-icon-assign-to-container {
@@ -624,7 +662,11 @@ progress {
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 490px) {
+  .add-task-overlay-content {
+    padding: 40px 34px;
+  }
+
   .prio-buttons {
     width: 100% !important;
     flex-direction: column !important;
@@ -641,5 +683,19 @@ progress {
 
   #low-btn {
     width: 90% !important;
+  }
+
+  .overlay-position {
+    left: calc(50% - 181px);
+  }
+}
+
+@media (max-width: 375px) {
+  .add-task-overlay-content {
+    width: 310px;
+  }
+
+  .overlay-position {
+    left: calc(50% - 155px);
   }
 }

@@ -74,6 +74,7 @@ function changeOnclickFunctionOnResize() {
       }
     }
   }
+  changeTaskEditOverlayHight()
 }
 
 /**
@@ -173,7 +174,7 @@ function openAddTaskOverlay() {
   addTaskOverlayRef.style.pointerEvents = "all";
   setTimeout(() => {
     addTaskOverlayRef.classList.add("active");
-    addTaskOverlayContentRef.style.left = "calc(50% - 482px)";
+    addTaskOverlayContentRef.classList.add("overlay-position");
   }, 50);
   changeMediumBtn();
 }
@@ -205,7 +206,7 @@ function closeAddTaskOverlay() {
   let addTaskOverlayRef = document.getElementById("addTaskOverlay");
   let addTaskOverlayContentRef = document.getElementById("addTaskOverlayContent");
   addTaskOverlayRef.classList.remove("active");
-  addTaskOverlayContentRef.style.left = "-1000px";
+  addTaskOverlayContentRef.classList.remove("overlay-position");
   addTaskOverlayRef.style.pointerEvents = "none";
   editedSelectedContacts = [];
   selectedContacts = [];
@@ -225,7 +226,7 @@ function closeOverlayOutside(event) {
   if (event.target == addTaskOverlayRef) {
     addTaskOverlayRef.classList.remove("active");
     addTaskOverlayRef.style.pointerEvents = "none";
-    addTaskOverlayContentRef.style.left = "-1000px";
+    addTaskOverlayContentRef.classList.remove("overlay-position");
     editedSelectedContacts = [];
     selectedContacts = [];
     setTimeout(() => {

@@ -81,19 +81,24 @@ async function deleteTaskCardOverlay(title) {
  */
 function renderTaskEditOverlay(element) {
   let editField = document.querySelector(".task-card");
-  if (window.innerHeight < 870) {
-    editField.classList.add("edit-task-overlay-hight");
-  }else {
-    editField.classList.remove("edit-task-overlay-hight");
-  }
   if (editField) {
-    editField.innerHTML = taskEditOverlayTemplateOne(element);
-            
+    editField.innerHTML = taskEditOverlayTemplateOne(element); 
     filterAndSortDropdown();
     toggleSubtasks();
     showAssignedContacts(element.selectedContacts);
     editedSelectedContacts = element.selectedContacts;
   }
+}
+
+function changeTaskEditOverlayHight() {
+  let editField = document.getElementById("addTaskOverlayContent");
+  if (editField !== null) {
+    if (window.innerHeight < 970) {
+      editField.classList.add("edit-task-overlay-hight");
+    }else {
+      editField.classList.remove("edit-task-overlay-hight");
+    }
+  } 
 }
 
 /**
