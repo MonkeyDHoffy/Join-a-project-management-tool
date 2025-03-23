@@ -22,34 +22,39 @@ const colors = [
   "--light-orange",
 ];
 
+
 /**
- * Fetches data from the Firebase database.
- * @param {string} path - The path to the data in the database.
- * @returns {Promise<Object|Array>} The requested data in JSON format.
+ * Retrieves data from the Firebase database.
+ * @param {string} [path=""] - The path to the data in the database.
+ * @returns {Promise<Object|Array>} The retrieved data. If the request was unsuccessful, an empty array is returned.
  */
+
 async function getData(path = "") {
   try {
     let response = await fetch(BASE_URL + path + ".json");
     let responseToJson = await response.json();
-
     if (responseToJson && typeof responseToJson === "object") {
-      cleanNullValues(responseToJson); // Alle Arrays in den Daten bereinigen
+      cleanNullValues(responseToJson);
     }
-    
-    return responseToJson;
+    return Object.values(responseToJson).filter(item => item !== null);;
   } catch (error) {
     console.error(error);
     return [];
   }
 }
 
-// Rekursive Funktion, die alle Arrays in einem Objekt von `null`-Werten befreit
+/**
+ * Recursively cleans null values from arrays within an object. 
+ * If a property is an array, removes all null elements from it.
+ * If a property is an object, recursively processes its properties.
+ * @param {Object} obj - The object to clean null values from.
+ */
 function cleanNullValues(obj) {
   for (let key in obj) {
     if (Array.isArray(obj[key])) {
-      obj[key] = obj[key].filter(item => item !== null); // Entfernt `null` aus Arrays
+      obj[key] = obj[key].filter(item => item !== null); 
     } else if (typeof obj[key] === "object" && obj[key] !== null) {
-      cleanNullValues(obj[key]); // Falls es ein verschachteltes Objekt ist, weiter prüfen
+      cleanNullValues(obj[key]);
     }
   }
 }

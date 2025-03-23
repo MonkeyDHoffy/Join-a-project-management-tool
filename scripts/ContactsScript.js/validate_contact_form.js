@@ -47,7 +47,7 @@ function checkFormFields(nameInput, emailInput, phoneInput) {
  * @returns {boolean} True if the name is valid, false otherwise.
  */
 function validateName(name) {
-    return name.trim().length >= 2 && /^[a-zA-Z\s\-]+$/.test(name);
+    return name.trim().length >= 2 && /^[\p{L}\s\-]+$/u.test(name);
 }
 
 /**

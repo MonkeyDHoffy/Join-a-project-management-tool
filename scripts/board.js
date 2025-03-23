@@ -44,7 +44,7 @@ function renderTasks(status, elementId) {
   for (let i = 0; i < tasks.length; i++) {
     document.getElementById(elementId).innerHTML += taskCardTemplate(tasks[i]);
     showAssignedContactsOnBoardCard(tasks, i);
-    
+
     cardIndex++;
   }
 }
@@ -72,7 +72,7 @@ function showAssignedContactsOnBoardCard(tasks, i) {
       document.getElementsByClassName("board-card-assigned-contacts")[cardIndex].innerHTML += renderAssignedContactsToBoardCard(assignedContact, index);
     }
   }
-  
+
 }
 
 /**
@@ -88,10 +88,10 @@ function changeOnclickFunctionOnResize() {
         window.location.href = './add_task.html';
       };
     }
-  }else {
+  } else {
     for (let i = 0; i < buttons.length; i++) {
       buttons[i].onclick = function () {
-        renderTaskOverlayContent(); 
+        renderTaskOverlayContent();
         validateInputFields();
       }
     }
@@ -296,17 +296,6 @@ async function confirmTaskChanges(currentTitle) {
   await putTasks();
   await boardInit();
   closeTaskCardOverlay();
-}
-
-function checkTaskId(id) {
-  for (let index = 0; index < createdTasks.length; index++) {
-    createdTasks.forEach((task) => {
-      if (id == task.id) {
-        id++;
-      }
-    })
-  }
-  return id;
 }
 
 function createEditTask(id, taskToEdit) {
