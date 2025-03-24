@@ -340,25 +340,22 @@ function openDragMenu(event, id, statusId) {
 }
 
 function closeDragMenu(event) {
+  event.stopPropagation();
   let dragmenus = document.getElementsByClassName('drag-menu');
+  let moveToMenus = document.getElementsByClassName('move-to');
   for (let index = 0; index < dragmenus.length; index++) {
-    if (event.target !== dragmenus[index]) {
+    if (event.target !== dragmenus[index] || event.target !== moveToMenus[index]) {
       dragmenus[index].style.display = 'none';
     }
   }
- 
 }
-
-// function moveTaskTo(status) {
-  
-// }
 
 /**
  * Bewegt einen Task in eine andere Statusspalte via Klick (für mobile Ansicht)
  * @param {string} status - Der Zielstatus des Tasks (toDo, inProgress, awaitFeedback, done)
  * @param {number} id - Die ID des zu bewegenden Tasks
  */
-async function moveTaskTo(status, id) {
+async function moveTaskTo(event, status, id) {
   event.stopPropagation();
   let taskToMove = createdTasks.find(task => task.id === id);
   if (taskToMove) {
@@ -505,7 +502,7 @@ function dragMenuTemplate(id) {
     if (option.id !== currentStatus) {
       let arrowIcon = getDirectionIcon(currentStatus, option.id);
       optionsHTML += `
-        <div class="option" onclick="moveTaskTo('${option.id}', ${id})">
+        <div class="option" onclick="moveTaskTo(event, '${option.id}', ${id})">
           <img src="./assets/img/${arrowIcon}" alt="${option.label}">
           <span>${option.label}</span>
         </div>
@@ -513,7 +510,7 @@ function dragMenuTemplate(id) {
     }
   }
   return `
-    <div class="move-to">
+    <div onclick="closeDragMenu(event)" class="move-to">
       <p>Move to</p>
       ${optionsHTML}
     </div>

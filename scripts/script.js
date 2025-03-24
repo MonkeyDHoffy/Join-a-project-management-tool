@@ -36,7 +36,7 @@ async function getData(path = "") {
     if (responseToJson && typeof responseToJson === "object") {
       cleanNullValues(responseToJson);
     }
-    return Object.values(responseToJson).filter(item => item !== null);;
+    return responseToJson;
   } catch (error) {
     console.error(error);
     return [];

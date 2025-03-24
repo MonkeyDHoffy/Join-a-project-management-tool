@@ -502,10 +502,8 @@ progress {
 .move-to {
   background-color: #2a3647;
   color: white;
-  padding: 10px;
   border-radius: 0px 20px 20px 20px;
   position: relative;
-  gap: 16px;
   padding: 12px 12px 20px 12px;
 }
 
@@ -513,13 +511,14 @@ progress {
   margin: 0;
   font-size: 16px;
   font-weight: bold;
+  margin-bottom: 8px;
 }
 
 .option {
   display: flex;
   align-items: center;
-  gap: 5px;
-  margin-top: 5px;
+  gap: 8px;
+  padding: 4px 5px 4px 2px;
 }
 
 .option:hover {
@@ -570,7 +569,7 @@ progress {
 
 .move-notification {
   position: fixed;
-  bottom: 80px;
+  bottom: 50%;
   left: 50%;
   transform: translateX(-50%);
   background-color: #2A3647;
