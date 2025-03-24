@@ -328,3 +328,11 @@ function showTaskNotification() {
     }, 2000);
   }
 }
+
+
+
+function openDragMenu(id) {
+  let dragMenu = document.getElementById(`drag-menu-${id}`);
+  dragMenu.innerHTML = dragMenuTemplate();
+  dragMenu.style.display = 'block';
+}

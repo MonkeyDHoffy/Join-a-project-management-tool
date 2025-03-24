@@ -219,6 +219,7 @@ body {
   flex-grow: 1;
   box-shadow: 0px 0px 10px 3px #00000014;
   transform-origin: bottom left;
+  position: relative;
 }
 
 .board-card:active {
@@ -540,6 +541,35 @@ progress {
 
 .option span {
   font-size: 14px;
+}
+
+.drag-menu {
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  background-color: #2a3647;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.move-to .option:hover {
+  background-color: #091931;
+  cursor: pointer;
+}
+
+.drag-btn {
+  cursor: pointer;
+}
+
+.drag-menu-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.drag-menu-btn:hover {
+  transform: scale(1.1);
 }
 
 @media (max-width: 1350px) {
