@@ -221,4 +221,18 @@ function addTaskOverlayBoardTemplate() {
             </div>`;
 }
 
+function renderResDropMenu() {
+    return `<div class="move-to">
+                    <p>Move to</p>
+                    <div class="option">
+                        <img src="./assets/img/arrow_upward.png" alt="Up Arrow">
+                        <span>To-do</span>
+                    </div>
+                    <div class="option">
+                        <img src="./assets/img/arrow_downward.png" alt="Down Arrow">
+                        <span>Review</span>
+                    </div>
+                </div>`;
+}
+
 

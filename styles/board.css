@@ -498,6 +498,50 @@ progress {
   }
 }
 
+.move-to {
+  background-color: #2a3647;
+  color: white;
+  padding: 10px;
+  border-radius: 0px 20px 20px 20px;
+  width: 106px;
+  height: 113px;
+  position: relative;
+  gap: 16px;
+  padding-top: 6px;
+  padding-right: 8px;
+  padding-bottom: 16px;
+  padding-left: 8px;
+}
+
+.move-to p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.option:hover {
+  background-color: #091931;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.option img {
+  width: 24px;
+  height: 24px;
+}
+
+.option span {
+  font-size: 14px;
+}
+
 @media (max-width: 1350px) {
   .content-width {
     display: flex;
