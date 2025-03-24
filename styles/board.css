@@ -506,10 +506,7 @@ progress {
   border-radius: 0px 20px 20px 20px;
   position: relative;
   gap: 16px;
-  padding-top: 60px;
-  padding-right: 8px;
-  padding-bottom: 16px;
-  padding-left: 8px;
+  padding: 12px 12px 20px 12px;
 }
 
 .move-to p {
@@ -543,6 +540,8 @@ progress {
 .drag-menu {
   display: none;
   position: absolute;
+  top: 0;
+  right: -95px;
   z-index: 1000;
   background-color: #2a3647;
   border-radius: 20px;
@@ -614,6 +613,7 @@ progress {
   }
 
   .card-header{
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
