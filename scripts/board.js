@@ -339,6 +339,16 @@ function openDragMenu(event, id, statusId) {
   dragMenu.style.display = 'block';
 }
 
+function closeDragMenu(event) {
+  let dragmenus = document.getElementsByClassName('drag-menu');
+  for (let index = 0; index < dragmenus.length; index++) {
+    if (event.target !== dragmenus[index]) {
+      dragmenus[index].style.display = 'none';
+    }
+  }
+ 
+}
+
 // function moveTaskTo(status) {
   
 // }
