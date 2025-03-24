@@ -336,3 +336,28 @@ function openDragMenu(id) {
   dragMenu.innerHTML = dragMenuTemplate();
   dragMenu.style.display = 'block';
 }
+
+function taskCardTemplate(element) {
+  return ` 
+  <div id="drag-menu-${element.id}" class="drag-menu"></div>
+  <div onclick="renderTaskCardOverlay(this)" ondragstart="startDrag(${element.id})" draggable="true" class="board-card">                              
+    <div class="card-header">
+      <div class="color-${element.selectedCategory.replace(" ", "-")}">${element.selectedCategory}</div>
+      <button class="drag-menu-btn drag-btn" onclick="openDragMenu(${element.id})">
+        <img class="drag-btn" src="./assets/img/res_drop_btn.png" alt="">
+      </button>
+    </div>
+    <h3>${element.title}</h3>                            
+    <div class="board-card-description">
+        <p>${element.description}</p>
+    </div>
+    <div class="board-card-subtasks">
+        <progress value="${element.completedSubtasks.length}" max="${element.subtasks.length}"></progress>
+        <span class="subtasks-progress">${element.completedSubtasks.length}/${element.subtasks.length} Subtasks</span>
+    </div>
+    <div class="board-contacts-and-priority">
+        <div class="board-card-assigned-contacts"></div>
+        <div class="board-card-priority"> <img src="./assets/svg/addTasksSvg/${element.priority}.svg" alt=""></div>
+    </div>
+  </div>`;
+}
