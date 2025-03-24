@@ -333,7 +333,7 @@ function showTaskNotification() {
 
 function openDragMenu(event, id, statusId) {
   event.stopPropagation();
-  taskStatus.splice(statusId, 1)
+  taskStatus.splice(statusId, 1);
   let dragMenu = document.getElementById(`drag-menu-${id}`);
   dragMenu.innerHTML = dragMenuTemplate(id, taskStatus);
   dragMenu.style.display = 'block';
