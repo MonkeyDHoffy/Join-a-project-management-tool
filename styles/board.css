@@ -586,6 +586,10 @@ progress {
 }
 
 @media(max-width: 1280px) {
+  .board-card:active {
+    transform: rotate(0deg);
+  }
+
   .content-right {
     height: calc(100% - 176px);
   }
