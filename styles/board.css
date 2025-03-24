@@ -612,10 +612,6 @@ progress {
     transform: rotate(0deg);
   }
 
-  .content-right {
-    height: calc(100% - 176px);
-  }
-
   .card-header{
     position: relative;
     display: flex;
