@@ -41,7 +41,7 @@ function renderTasks(status, elementId, statusId) {
     document.getElementById(elementId).innerHTML += noTasksTemplate(statusId);
   }
   for (let i = 0; i < tasks.length; i++) {
-    document.getElementById(elementId).innerHTML += taskCardTemplate(tasks[i]);
+    document.getElementById(elementId).innerHTML += taskCardTemplate(tasks[i], statusId);
     showAssignedContactsOnBoardCard(tasks, i);
 
     cardIndex++;
@@ -331,34 +331,32 @@ function showTaskNotification() {
 
 
 
-function openDragMenu(event, id) {
+function openDragMenu(event, id, statusId) {
   event.stopPropagation();
+  taskStatus.splice(statusId, 1)
   let dragMenu = document.getElementById(`drag-menu-${id}`);
-  dragMenu.innerHTML = dragMenuTemplate();
+  dragMenu.innerHTML = dragMenuTemplate(id, taskStatus);
   dragMenu.style.display = 'block';
 }
 
-function taskCardTemplate(element) {
-  return ` 
-  <div id="drag-menu-${element.id}" class="drag-menu"></div>
-  <div onclick="renderTaskCardOverlay(this)" ondragstart="startDrag(${element.id})" draggable="true" class="board-card">                              
-    <div class="card-header">
-      <div class="color-${element.selectedCategory.replace(" ", "-")}">${element.selectedCategory}</div>
-      <button class="drag-menu-btn drag-btn" onclick="openDragMenu(${element.id}, event)">
-        <img class="drag-btn" src="./assets/img/res_drop_btn.png" alt="">
-      </button>
-    </div>
-    <h3>${element.title}</h3>                            
-    <div class="board-card-description">
-        <p>${element.description}</p>
-    </div>
-    <div class="board-card-subtasks">
-        <progress value="${element.completedSubtasks.length}" max="${element.subtasks.length}"></progress>
-        <span class="subtasks-progress">${element.completedSubtasks.length}/${element.subtasks.length} Subtasks</span>
-    </div>
-    <div class="board-contacts-and-priority">
-        <div class="board-card-assigned-contacts"></div>
-        <div class="board-card-priority"> <img src="./assets/svg/addTasksSvg/${element.priority}.svg" alt=""></div>
-    </div>
-  </div>`;
+function moveTaskTo(status) {
+  
+}
+
+function dragMenuTemplate(id, taskStatus) {
+  return `<div class="move-to">
+                  <p>Move to</p>
+                  <div class="option" onclick="moveTaskTo('toDo', ${id})">
+                      <img src="./assets/img/arrow_upward.png" alt="Up Arrow">
+                      <span>${taskStatus[0]}</span>
+                  </div>
+                  <div class="option" onclick="moveTaskTo(', ${id}')">
+                      <img src="./assets/img/arrow_downward.png" alt="Down Arrow">
+                      <span>${taskStatus[1]}</span>
+                  </div>
+                  <div class="option" onclick="moveTaskTo(', ${id}')">
+                      <img src="./assets/img/arrow_downward.png" alt="Down Arrow">
+                      <span>${taskStatus[2]}</span>
+                  </div>
+              </div>`;
 }

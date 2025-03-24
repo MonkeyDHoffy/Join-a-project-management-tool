@@ -10,13 +10,13 @@
  * @param {string} element.priority - Priority level of the task
  * @returns {string} HTML string representing the task card
  */
-function taskCardTemplate(element) {
+function taskCardTemplate(element, statusId) {
   return ` 
-  <div id="drag-menu-${element.id}" class="drag-menu"></div>
   <div onclick="renderTaskCardOverlay(this)" ondragstart="startDrag(${element.id})" draggable="true" class="board-card">                              
     <div class="card-header">
+    <div id="drag-menu-${element.id}" class="drag-menu"></div>
       <div class="color-${element.selectedCategory.replace(" ", "-")}">${element.selectedCategory}</div>
-      <button class="drag-menu-btn drag-btn" onclick="openDragMenu(event, ${element.id})">
+      <button class="drag-menu-btn drag-btn" onclick="openDragMenu(event, ${element.id}, ${statusId})">
         <img class="drag-btn" src="./assets/img/res_drop_btn.png" alt="">
       </button>
     </div>
@@ -227,18 +227,6 @@ function addTaskOverlayBoardTemplate() {
             </div>`;
 }
 
-function dragMenuTemplate() {
-    return `<div class="move-to">
-                    <p>Move to</p>
-                    <div class="option" onclick="moveTaskTo('toDo')">
-                        <img src="./assets/img/arrow_upward.png" alt="Up Arrow">
-                        <span>To-do</span>
-                    </div>
-                    <div class="option" onclick="moveTaskTo('inProgress')">
-                        <img src="./assets/img/arrow_downward.png" alt="Down Arrow">
-                        <span>In Progress</span>
-                    </div>
-                </div>`;
-}
+
 
 
