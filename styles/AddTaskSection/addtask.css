@@ -453,7 +453,6 @@ textarea {
 .cancel-check-btn {
   display: none;
   width: 51px;
-  height: 14px;
   position: absolute;
   top: 27%;
   right: 10px;
