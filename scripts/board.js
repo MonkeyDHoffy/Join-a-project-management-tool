@@ -407,34 +407,96 @@ function showMoveNotification(status) {
 //               </div>`;
 // }
 
-let allStatusOptions = [
-  { id: 'toDo', label: 'To do', icon: 'arrow_upward.png' },
-  { id: 'inProgress', label: 'In progress', icon: 'arrow_downward.png' },
-  { id: 'awaitFeedback', label: 'Await feedback', icon: 'arrow_downward.png' },
-  { id: 'done', label: 'Done', icon: 'arrow_downward.png' }
-];
+// let allStatusOptions = [
+//   { id: 'toDo', label: 'To do', icon: 'arrow_upward.png' },
+//   { id: 'inProgress', label: 'In progress', icon: 'arrow_downward.png' },
+//   { id: 'awaitFeedback', label: 'Await feedback', icon: 'arrow_downward.png' },
+//   { id: 'done', label: 'Done', icon: 'arrow_downward.png' }
+// ];
 
-function findTaskById(id) {
-  let taskToMove;
-  for (let i = 0; i < createdTasks.length; i++) {
-    if (createdTasks[i].id === id) {
-      taskToMove = createdTasks[i];
-      break;
-    }
+// function findTaskById(id) {
+//   let taskToMove;
+//   for (let i = 0; i < createdTasks.length; i++) {
+//     if (createdTasks[i].id === id) {
+//       taskToMove = createdTasks[i];
+//       break;
+//     }
+//   }
+//   return taskToMove;
+// }
+
+// function dragMenuTemplate(id, statusId) {
+//   let taskToMove = findTaskById(id);
+//   let currentStatus = taskToMove.status; 
+//   let optionsHTML = '';
+//   for (let i = 0; i < allStatusOptions.length; i++) {
+//     let option = allStatusOptions[i];  
+//     if (option.id !== currentStatus) {
+//       optionsHTML += `
+//         <div class="option" onclick="moveTaskTo('${option.id}', ${id})">
+//           <img src="./assets/img/${option.icon}" alt="${option.label}">
+//           <span>${option.label}</span>
+//         </div>
+//       `;
+//     }
+//   }
+//   return `
+//     <div class="move-to">
+//       <p>Move to</p>
+//       ${optionsHTML}
+//     </div>
+//   `;
+// }
+
+ function findTaskById(id) {
+   let taskToMove;
+   for (let i = 0; i < createdTasks.length; i++) {
+     if (createdTasks[i].id === id) {
+       taskToMove = createdTasks[i];
+       break;
+     }
+   }
+   return taskToMove;
+ }
+
+ let allStatusOptions = [
+   { id: 'toDo', label: 'To do', icon: 'arrow_upward.png' },
+   { id: 'inProgress', label: 'In progress', icon: 'arrow_downward.png' },
+   { id: 'awaitFeedback', label: 'Await feedback', icon: 'arrow_downward.png' },
+   { id: 'done', label: 'Done', icon: 'arrow_downward.png' }
+ ];
+
+function getDirectionIcon(currentStatus, targetStatus) {
+  let statusOrder = ['toDo', 'inProgress', 'awaitFeedback', 'done'];
+  let currentIndex = statusOrder.indexOf(currentStatus);
+  let targetIndex = statusOrder.indexOf(targetStatus);
+  if (targetIndex < currentIndex) {
+    return 'arrow_upward.png';
+  } 
+  else {
+    return 'arrow_downward.png';
   }
-  return taskToMove;
 }
 
-function dragMenuTemplate(id, statusId) {
+/**
+ * Generiert das HTML-Template für das Drag-Menü mit korrekten Pfeilrichtungen
+ * @param {number} id - Die ID des Tasks
+ * @returns {string} HTML-Template für das Drag-Menü
+ */
+function dragMenuTemplate(id) {
   let taskToMove = findTaskById(id);
-  let currentStatus = taskToMove.status; 
+  if (!taskToMove) {
+    return '<div class="move-to"><p>Move to</p><p>No options available</p></div>';
+  }
+  let currentStatus = taskToMove.status;
   let optionsHTML = '';
   for (let i = 0; i < allStatusOptions.length; i++) {
-    let option = allStatusOptions[i];  
+    let option = allStatusOptions[i]; 
     if (option.id !== currentStatus) {
+      let arrowIcon = getDirectionIcon(currentStatus, option.id);
       optionsHTML += `
         <div class="option" onclick="moveTaskTo('${option.id}', ${id})">
-          <img src="./assets/img/${option.icon}" alt="${option.label}">
+          <img src="./assets/img/${arrowIcon}" alt="${option.label}">
           <span>${option.label}</span>
         </div>
       `;
