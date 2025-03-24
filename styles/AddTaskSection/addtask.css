@@ -597,6 +597,10 @@ textarea {
 }
 
 @media(max-width:999px) {
+  .content-right-wrapper {
+    padding-bottom: 1100px;
+  }
+
   .addTask-wrapper {
     flex-direction: column;
     gap: 0px;
@@ -660,7 +664,7 @@ textarea {
   .content-right-wrapper {
     height: 100%;
     padding: 16px;
-    padding-bottom: 0px;
+    padding-bottom: 1100px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -730,7 +734,7 @@ textarea {
 
 @media (max-width: 450px) {
   .content-right-wrapper {
-    padding-bottom: 1300px;
+    padding-bottom: 1250px;
   }
 
   .padding-right-68px {

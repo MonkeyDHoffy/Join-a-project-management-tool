@@ -100,7 +100,7 @@ function toggleSubtasks() {
         let cancelCheckBtn = document.querySelector(".cancel-check-btn");
         if (this.value.trim() !== "") {
             subtaskAdd.style.display = "none";
-            cancelCheckBtn.style.display = "block";
+            cancelCheckBtn.style.display = "flex";
         } else {
             subtaskAdd.style.display = "block";
             cancelCheckBtn.style.display = "none";
