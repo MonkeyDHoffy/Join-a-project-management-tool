@@ -165,7 +165,16 @@ function addTaskOverlayBoardTemplate() {
                                   <img id="input-icon-category" src="./assets/svg/addTasksSvg/arrow_drop_down.svg"
                                       alt="Icon" class="input-icon-category">
                               </div>
+                              <section id="category-dropdown" class="category-dropdown">
+                              <div onclick="setCategory(technicalTask)" class="technicalTask-btn category-btn ">
+                                  <p>Technical Task</p>
+                              </div>
+                              <div onclick="setCategory(UserStory)" class="userStory-btn category-btn">
+                                  <p>User Story</p>
+                              </div>
+                          </section>
                           </div>
+                           
                           <!-- </div> -->
   
                           <div class="addTask-subtasks">
@@ -198,15 +207,10 @@ function addTaskOverlayBoardTemplate() {
   
                           </div>
   
-                          <section id="category-dropdown" class="category-dropdown">
-                              <div onclick="setCategory(technicalTask)" class="technicalTask-btn category-btn ">
-                                  <p>Technical Task</p>
-                              </div>
-                              <div onclick="setCategory(UserStory)" class="userStory-btn category-btn">
-                                  <p>User Story</p>
-                              </div>
-                          </section>
-  
+                         
+                          <div class="requiredResponsiveSpan">
+                            <span style="color:red">*</span><span>This field is required</span>
+                          </div>
                       </div>
   
                   </div>
@@ -214,9 +218,7 @@ function addTaskOverlayBoardTemplate() {
               </div>
   
             </div>
-            <div class="requiredResponsiveSpan">
-                <span style="color:red">*</span><span>This field is required</span>
-            </div>
+           
             <div class="addTask-footer">
               <div><span style="color:red">*</span><span>This field is required</span></div>
               <div onclick="closeAddTaskOverlay(event)" class="display-flex clear-create"><button

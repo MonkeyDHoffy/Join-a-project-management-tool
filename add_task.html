@@ -200,6 +200,15 @@
                                                 src="./assets/svg/addTasksSvg/arrow_drop_down.svg" alt="Icon"
                                                 class="input-icon-category">
                                         </div>
+                                        <section id="category-dropdown" class="category-dropdown">
+                                            <div onclick="setCategory(technicalTask)"
+                                                class="technicalTask-btn category-btn ">
+                                                <p>Technical Task</p>
+                                            </div>
+                                            <div onclick="setCategory(UserStory)" class="userStory-btn category-btn">
+                                                <p>User Story</p>
+                                            </div>
+                                        </section>
                                     </div>
                                     <!-- </div> -->
 
@@ -207,17 +216,14 @@
                                         <label for="">
                                             <p>Subtasks</p>
                                         </label>
-                                        <div class="addTask-sectio subtask-section"><input
-                                                onclick="cancelEditSubtaskItem();" class="add-task-input-field padding-right-68px"
-                                                type="text" placeholder="Add new subtask"><img
-                                                class="subtask-add" src="./assets/img/addTask/add.svg" alt=""
-                                                onclick="focusSubtaskInput()">
-                                            <div class="cancel-check-btn"><img class="subtask-cancel" a
-                                                    onclick="cancelSubInput()" src="./assets/img/addTask/cross.svg"
-                                                    alt=""><img class="subtask-check"
-                                                    src="./assets/img/addTask/check.svg" alt=""
-                                                    onclick="renderSubtaskList()"></div>
+                                        <div class="addTask-sectio subtask-section">
+                                            <input onclick="cancelEditSubtaskItem();" class="add-task-input-field padding-right-68px" type="text" placeholder="Add new subtask">
+                                            <img class="subtask-add" src="./assets/img/addTask/add.svg" alt="" onclick="focusSubtaskInput()">
 
+                                            <div class="cancel-check-btn">
+                                                <img class="subtask-cancel" onclick="cancelSubInput()" src="./assets/img/addTask/cross.svg"alt="">
+                                                <img class="subtask-check" src="./assets/img/addTask/check.svg" alt="" onclick="renderSubtaskList()">
+                                            </div>
                                         </div>
 
 
@@ -243,15 +249,7 @@
 
                                     </div>
 
-                                    <section id="category-dropdown" class="category-dropdown">
-                                        <div onclick="setCategory(technicalTask)"
-                                            class="technicalTask-btn category-btn ">
-                                            <p>Technical Task</p>
-                                        </div>
-                                        <div onclick="setCategory(UserStory)" class="userStory-btn category-btn">
-                                            <p>User Story</p>
-                                        </div>
-                                    </section>
+                                    
 
 
 

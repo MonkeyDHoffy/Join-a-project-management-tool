@@ -345,9 +345,14 @@ progress {
 }
 
 .addTask-header-and-input {
+  overflow: auto;
   display: flex;
   flex-direction: column;
   gap: 32px;
+}
+
+.addTask-header-and-input::-webkit-scrollbar {
+  display: none;
 }
 
 .close-btn {
@@ -688,11 +693,8 @@ progress {
 }
 
 @media (max-width: 1000px) {
-  .category-dropdown {
-    top: -60% !important;
-  }
-
   .add-task-overlay-content {
+    height: 90vh;
     padding-bottom: 0;
   }
   .overlay-position {
@@ -720,7 +722,6 @@ progress {
 @media (max-width: 570px) {
   .category-dropdown {
     width: 99% !important;
-    top: -38% !important;
   }
 
   .dropdown-content {
