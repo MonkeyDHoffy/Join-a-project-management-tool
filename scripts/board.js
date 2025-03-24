@@ -339,24 +339,111 @@ function openDragMenu(event, id, statusId) {
   dragMenu.style.display = 'block';
 }
 
-function moveTaskTo(status) {
+// function moveTaskTo(status) {
   
+// }
+
+/**
+ * Bewegt einen Task in eine andere Statusspalte via Klick (für mobile Ansicht)
+ * @param {string} status - Der Zielstatus des Tasks (toDo, inProgress, awaitFeedback, done)
+ * @param {number} id - Die ID des zu bewegenden Tasks
+ */
+async function moveTaskTo(status, id) {
+  event.stopPropagation();
+  let taskToMove = createdTasks.find(task => task.id === id);
+  if (taskToMove) {
+    taskToMove.status = status;
+    let dragMenu = document.getElementById(`drag-menu-${id}`);
+    if (dragMenu) {
+      dragMenu.style.display = 'none';
+    }
+    await putTasks();
+    await boardInit();
+    showMoveNotification(status);
+  }
 }
 
-function dragMenuTemplate(id, taskStatus) {
-  return `<div class="move-to">
-                  <p>Move to</p>
-                  <div class="option" onclick="moveTaskTo('toDo', ${id})">
-                      <img src="./assets/img/arrow_upward.png" alt="Up Arrow">
-                      <span>${taskStatus[0]}</span>
-                  </div>
-                  <div class="option" onclick="moveTaskTo(', ${id}')">
-                      <img src="./assets/img/arrow_downward.png" alt="Down Arrow">
-                      <span>${taskStatus[1]}</span>
-                  </div>
-                  <div class="option" onclick="moveTaskTo(', ${id}')">
-                      <img src="./assets/img/arrow_downward.png" alt="Down Arrow">
-                      <span>${taskStatus[2]}</span>
-                  </div>
-              </div>`;
+/**
+ * Zeigt eine kleine Benachrichtigung an, wenn ein Task verschoben wurde
+ * @param {string} status - Der Zielstatus, in den der Task verschoben wurde
+ */
+let statusNames = {
+  'toDo': 'To do',
+  'inProgress': 'In progress',
+  'awaitFeedback': 'Await feedback',
+  'done': 'Done'
+};
+
+function showMoveNotification(status) {
+  let displayStatus = statusNames[status] || status;
+  let notification = document.createElement('div');
+  notification.className = 'move-notification';
+  notification.innerHTML = `Task moved to <strong>${displayStatus}</strong>`;
+  document.body.appendChild(notification);
+  setTimeout(() => {
+    notification.classList.add('fade-out');
+    setTimeout(() => {
+      document.body.removeChild(notification);
+    }, 500);
+  }, 2000);
+}
+// Optionaler notificationstext
+
+// function dragMenuTemplate(id, taskStatus) {
+//   return `<div class="move-to">
+//                   <p>Move to</p>
+//                   <div class="option" onclick="moveTaskTo('toDo', ${id})">
+//                       <img src="./assets/img/arrow_upward.png" alt="Up Arrow">
+//                       <span>${taskStatus[0]}</span>
+//                   </div>
+//                   <div class="option" onclick="moveTaskTo('inProgress', ${id})">
+//                       <img src="./assets/img/arrow_downward.png" alt="Down Arrow">
+//                       <span>${taskStatus[1]}</span>
+//                   </div>
+//                   <div class="option" onclick="moveTaskTo('awaitFeedback', ${id})">
+//                       <img src="./assets/img/arrow_downward.png" alt="Down Arrow">
+//                       <span>${taskStatus[2]}</span>
+//                   </div>
+//               </div>`;
+// }
+
+let allStatusOptions = [
+  { id: 'toDo', label: 'To do', icon: 'arrow_upward.png' },
+  { id: 'inProgress', label: 'In progress', icon: 'arrow_downward.png' },
+  { id: 'awaitFeedback', label: 'Await feedback', icon: 'arrow_downward.png' },
+  { id: 'done', label: 'Done', icon: 'arrow_downward.png' }
+];
+
+function findTaskById(id) {
+  let taskToMove;
+  for (let i = 0; i < createdTasks.length; i++) {
+    if (createdTasks[i].id === id) {
+      taskToMove = createdTasks[i];
+      break;
+    }
+  }
+  return taskToMove;
+}
+
+function dragMenuTemplate(id, statusId) {
+  let taskToMove = findTaskById(id);
+  let currentStatus = taskToMove.status; 
+  let optionsHTML = '';
+  for (let i = 0; i < allStatusOptions.length; i++) {
+    let option = allStatusOptions[i];  
+    if (option.id !== currentStatus) {
+      optionsHTML += `
+        <div class="option" onclick="moveTaskTo('${option.id}', ${id})">
+          <img src="./assets/img/${option.icon}" alt="${option.label}">
+          <span>${option.label}</span>
+        </div>
+      `;
+    }
+  }
+  return `
+    <div class="move-to">
+      <p>Move to</p>
+      ${optionsHTML}
+    </div>
+  `;
 }
