@@ -124,6 +124,7 @@ function toggleCategoryDropdown() {
     } else {
         categoryDropdown.classList.add("d-none");
     }
+    toggleCategoryIconSrc();
 }
 
 function toggleCategoryIconSrc() {
@@ -152,6 +153,6 @@ function closeCategoryDropdown(event) {
     let categoryDropdown = document.querySelector(".category-dropdown");
     let categoryField = document.getElementById("category-field");
     if (event.target !== categoryField && event.target !== categoryDropdown) {
-        categoryDropdown.style.display = "none";
+        categoryDropdown.classList.add("d-none");
     }
 }

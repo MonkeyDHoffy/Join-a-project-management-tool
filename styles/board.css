@@ -345,7 +345,6 @@ progress {
 }
 
 .addTask-header-and-input {
-  overflow: auto;
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -689,6 +688,10 @@ progress {
 }
 
 @media (max-width: 1000px) {
+  .addTask-header-and-input {
+    overflow: auto;
+  }
+  
   .add-task-overlay-content {
     height: 90vh;
     padding-bottom: 0;
