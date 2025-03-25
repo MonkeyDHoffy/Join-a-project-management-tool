@@ -142,6 +142,7 @@ function setCategory(category) {
     selectedCategory = category;
     document.getElementById("category-field").value = category;
     toggleCategoryDropdown();
+    toggleCategoryIconSrc();
     validateInputs();
 }
 

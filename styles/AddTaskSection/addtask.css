@@ -374,6 +374,14 @@ textarea {
   right: 10px;
 }
 
+.input-icon-category {
+  pointer-events: none;
+}
+
+.input-icon-category-container{
+  pointer-events: none;
+}
+
 .invalid:invalid {
   border-color: red;
 }

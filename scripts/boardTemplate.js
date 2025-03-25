@@ -165,7 +165,7 @@ function addTaskOverlayBoardTemplate() {
                                   <img id="input-icon-category" src="./assets/svg/addTasksSvg/arrow_drop_down.svg"
                                       alt="Icon" class="input-icon-category">
                               </div>
-                              <section id="category-dropdown" class="category-dropdown d-none">
+                              <section id="category-dropdown" class="category-dropdown close-dropdown d-none">
                               <div onclick="setCategory(technicalTask)" class="technicalTask-btn category-btn ">
                                   <p>Technical Task</p>
                               </div>
