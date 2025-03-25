@@ -286,15 +286,6 @@ function taskEditOverlayTemplateOne(element) {
                   </div>
                 </section>
               </div>
-  
-              <section id="category-dropdown" class="category-dropdown">
-                <div onclick="setCategory(technicalTask)" class="technicalTask-btn category-btn">
-                  <p>Technical Task</p>
-                </div>
-                <div onclick="setCategory(UserStory)" class="userStory-btn category-btn">
-                  <p>User Story</p>
-                </div>
-              </section>
             </div>
           </div>
           <div class="confirm-btn-wrapper">

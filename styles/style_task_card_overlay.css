@@ -39,13 +39,13 @@
   position: absolute;
   transform: translate(-50%, -50%);
   width: 525px;
-  height: auto;
+  height: fit-content;
+  max-height: 90vh;
   border-radius: 30px;
   padding-top: 48px;
   padding-right: 40px;
   padding-bottom: 48px;
   padding-left: 40px;
-  gap: 24px;
   animation: slideIn 0.3s ease forwards;
 
   strong {

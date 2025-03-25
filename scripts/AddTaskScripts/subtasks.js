@@ -132,7 +132,7 @@ function toggleCategoryIconSrc() {
     let src1 = "./assets/svg/addTasksSvg/arrow_drop_down.svg";
     let src2 = "./assets/svg/addTasksSvg/arrow_drop_up.svg";
     icon.src = icon.src.endsWith("arrow_drop_down.svg") ? src2 : src1;
-  }
+}
 
 /**
  * Set the selected category and update the UI
