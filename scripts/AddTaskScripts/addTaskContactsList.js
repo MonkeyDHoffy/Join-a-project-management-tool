@@ -49,6 +49,7 @@ function closeDropdowns() {
     let openDropdown = dropdowns[i];
     if (openDropdown.style.display === "block") {
       openDropdown.style.display = "none";
+      toggleAssignToIconSrc();
     }
   }
 }
@@ -57,10 +58,11 @@ function closeDropdowns() {
  * Toggles the dropdown arrow icon between pointing down and up
  */
 function toggleAssignToIconSrc() {
+  let dropdowns = document.getElementsByClassName("dropdown-content");
   let icon = document.getElementById("input-icon-assign-to");
   let src1 = "./assets/svg/addTasksSvg/arrow_drop_down.svg";
   let src2 = "./assets/svg/addTasksSvg/arrow_drop_up.svg";
-  icon.src = icon.src.endsWith("arrow_drop_down.svg") ? src2 : src1;
+  icon.src = dropdowns[0].style.display === "block" ? src2 : src1;
 }
 
 /**

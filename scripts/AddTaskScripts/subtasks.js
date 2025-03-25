@@ -128,10 +128,11 @@ function toggleCategoryDropdown() {
 }
 
 function toggleCategoryIconSrc() {
+    let categoryDropdown = document.querySelector(".category-dropdown");
     let icon = document.getElementById("input-icon-category");
     let src1 = "./assets/svg/addTasksSvg/arrow_drop_down.svg";
     let src2 = "./assets/svg/addTasksSvg/arrow_drop_up.svg";
-    icon.src = icon.src.endsWith("arrow_drop_down.svg") ? src2 : src1;
+    icon.src = categoryDropdown.classList.contains("d-none") ? src1 : src2;
 }
 
 /**
@@ -155,5 +156,6 @@ function closeCategoryDropdown(event) {
     let categoryField = document.getElementById("category-field");
     if (event.target !== categoryField && event.target !== categoryDropdown) {
         categoryDropdown.classList.add("d-none");
+        toggleCategoryIconSrc();
     }
 }
