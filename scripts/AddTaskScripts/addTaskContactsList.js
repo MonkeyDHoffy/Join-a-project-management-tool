@@ -11,9 +11,12 @@ let selectedContacts = [];
  */
 async function toggleDropdown() {
   await toggleCheckedBackground();
-  checkSelectedContacts();
+  if (window.location.pathname.includes('board.html')) {
+    if (typeof checkSelectedContacts === 'function') {
+      checkSelectedContacts();
+    }
+  }
 }
-
 /**
  * Toggles the visibility state of the dropdown content between visible and hidden
  * @async
