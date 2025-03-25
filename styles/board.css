@@ -750,6 +750,10 @@ progress {
     top: 22%;
   }
 
+  .input-icon-category-container {
+    top: 22%;
+  }
+
   .addTask-section p {
     font-size: 16px !important;
   }

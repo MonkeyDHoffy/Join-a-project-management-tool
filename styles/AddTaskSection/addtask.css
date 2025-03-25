@@ -560,7 +560,6 @@ textarea {
 
 .category-dropdown {
   z-index: -1;
-  display: none;
   height: 100px;
   width: 100%;
   position: absolute;

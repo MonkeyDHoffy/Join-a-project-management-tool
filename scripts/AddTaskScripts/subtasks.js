@@ -119,12 +119,19 @@ function toggleSubtasks() {
  */
 function toggleCategoryDropdown() {
     let categoryDropdown = document.querySelector(".category-dropdown");
-    if (categoryDropdown.style.display === "none") {
-        categoryDropdown.style.display = "block";
+    if (categoryDropdown.classList.contains("d-none")) {
+        categoryDropdown.classList.remove("d-none");
     } else {
-        categoryDropdown.style.display = "none";
+        categoryDropdown.classList.add("d-none");
     }
 }
+
+function toggleCategoryIconSrc() {
+    let icon = document.getElementById("input-icon-category");
+    let src1 = "./assets/svg/addTasksSvg/arrow_drop_down.svg";
+    let src2 = "./assets/svg/addTasksSvg/arrow_drop_up.svg";
+    icon.src = icon.src.endsWith("arrow_drop_down.svg") ? src2 : src1;
+  }
 
 /**
  * Set the selected category and update the UI

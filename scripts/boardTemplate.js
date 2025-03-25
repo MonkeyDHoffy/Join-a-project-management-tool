@@ -158,14 +158,14 @@ function addTaskOverlayBoardTemplate() {
                               <p>Category</p>
                               <p style="color: red;">*</p>
                           </label>
-                          <div class="category-input" onclick="toggleCategoryDropdown()">
+                          <div class="category-input" onclick="toggleCategoryDropdown(); toggleCategoryIconSrc()">
                               <input id="category-field" class="placeholder-color" value="Select task category"
                                   type="text" readonly>
                               <div class="input-icon-category-container">
                                   <img id="input-icon-category" src="./assets/svg/addTasksSvg/arrow_drop_down.svg"
                                       alt="Icon" class="input-icon-category">
                               </div>
-                              <section id="category-dropdown" class="category-dropdown">
+                              <section id="category-dropdown" class="category-dropdown d-none">
                               <div onclick="setCategory(technicalTask)" class="technicalTask-btn category-btn ">
                                   <p>Technical Task</p>
                               </div>
