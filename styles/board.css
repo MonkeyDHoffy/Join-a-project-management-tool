@@ -507,7 +507,7 @@ progress {
 .move-to {
   background-color: #2a3647;
   color: white;
-  border-radius: 0px 20px 20px 20px;
+  border-radius: 20px 0px 20px 20px;
   position: relative;
   padding: 12px 12px 20px 12px;
 }
@@ -545,11 +545,11 @@ progress {
   display: none;
   position: absolute;
   top: 0;
-  right: -95px;
+  right: -1px;
   z-index: 1000;
   background-color: #2a3647;
   border-radius: 20px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .move-to .option:hover {
