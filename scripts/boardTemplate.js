@@ -183,7 +183,7 @@ function addTaskOverlayBoardTemplate() {
                               </label>
                               <div class="addTask-sectio subtask-section"><input
                                                   onclick="cancelEditSubtaskItem();" class="add-task-input-field"
-                                                  type="text" placeholder="Add new subtask" maxlength="30"><img
+                                                  type="text" placeholder="Add new subtask"><img
                                                   class="subtask-add" src="./assets/img/addTask/add.svg" alt=""
                                                   onclick="focusSubtaskInput()">
                                               <div class="cancel-check-btn"><img class="subtask-cancel" a
@@ -198,7 +198,7 @@ function addTaskOverlayBoardTemplate() {
   
                               <section id="edit-subtask-item-field" class="edit-subtask-item">
                                   <input id="subtask-edit-input" class="subtask-edit-input" value="" type="text" name=""
-                                      id="" maxlength="30">
+                                      id="">
                                   <div class="edit-subtask-btns"><img onclick="deleteSubInputValue()"
                                           src="./assets/svg/contacts_svg/delete.svg" alt=""><img
                                           onclick="confirmSubEdit()" src="./assets/img/addTask/check.svg" alt="">

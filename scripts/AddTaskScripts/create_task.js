@@ -42,10 +42,10 @@ async function createTask() {
   let id = 0;
   id = checkTaskId(id);
   items.forEach((item) => {
-    selectedSubtasks.push(item.innerHTML);
+    selectedSubtasks.push(item.innerText);
   });
   let newTask = {
-    "id": id, "status": createdTasksStatus == "" ? "toDo" : createdTasksStatus, "title": title,
+    "id": id, "status": createdTasksStatus == undefined || "" ? "toDo" : createdTasksStatus, "title": title,
     "description": description,
     "selectedContacts": selectedContacts.length > 0 ? selectedContacts.map((contact) => contact.name) : [""],
     "dueDate": dueDate, "priority": priority, "selectedCategory": category,
@@ -82,10 +82,10 @@ async function createTaskOverlay() {
   let id = 0;
   id = checkTaskId(id);
   items.forEach((item) => {
-    selectedSubtasks.push(item.innerHTML);
+    selectedSubtasks.push(item.innerText);
   });
   let newTask = {
-    "id": createdTasks.length + 1, "status": createdTasksStatus == "" ? "toDo" : createdTasksStatus, "title": title,
+    "id": createdTasks.length + 1, "status": createdTasksStatus == undefined || "" ? "toDo" : createdTasksStatus, "title": title,
     "description": description,
     "selectedContacts": selectedContacts.length > 0 ? selectedContacts.map((contact) => contact.name) : [""],
     "dueDate": dueDate, "priority": priority, "selectedCategory": category,

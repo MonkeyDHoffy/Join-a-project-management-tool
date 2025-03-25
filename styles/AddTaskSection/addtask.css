@@ -203,6 +203,7 @@ textarea {
 .addTask-subtasks input {
   width: 100%;
   padding: 10px;
+  padding-right: 64px;
   border-radius: 10px;
   font-size: 20px;
   transition: border-color 0.3s, box-shadow 0.3s;
@@ -744,7 +745,12 @@ textarea {
     justify-content: flex-start;
     height: 100%;
   }
+}
 
+@media(max-width:570px) {
+  .required-text {
+    transform: translateY(0px);
+  }
 }
 
 @media(max-width:580px) {

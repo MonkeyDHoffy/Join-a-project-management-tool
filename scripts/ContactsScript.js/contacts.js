@@ -85,11 +85,23 @@ function name(params) {
  */
 async function deleteContact(id) {
   let contactItem = document.getElementById("contact-information");
+  let contactName = contacts[id].name;
   contacts.splice(id, 1);
   await putData("contacts/", contacts);
   hideOverlay();
   contactItem.innerHTML = "";
   await init();
+  deleteAssignedContacts(contactName)
+}
+
+async function deleteAssignedContacts(contactName) {
+  await getTasks();
+  for (let index = 0; index < createdTasks.length; index++) {
+    createdTasks[index].selectedContacts = createdTasks[index].selectedContacts.filter(contact => 
+        contact !== currentName
+    );
+  }
+  await putTasks();
 }
 
 /**
@@ -213,6 +225,7 @@ function renderContact(id) {
     responsiveEditBtnOne.style.display = 'none';
     responsiveEditBtnTwo.style.display = 'flex';
   }
+  currentName = document.getElementById("contactName").innerText;
 }
 
 /**

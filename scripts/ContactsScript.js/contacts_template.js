@@ -9,7 +9,7 @@ function getContactCardTemplate(id) {
                     <div style="background-color:${contacts[id].color};" class="avatar-circle">${contacts[id].name.split(' ').map(word => word[0]).join('').toUpperCase()}</div>
                 </div>
                 <div class="name-and-edit">
-                    <h2>${contacts[id].name}</h2>
+                    <h2 id="contactName">${contacts[id].name}</h2>
                     <div class="edit-delete-btn">
                         <div onclick="renderEditOverlay(${id})" class="edit-btn"><svg width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" xmlns="http://www.w3.org/2000/svg">

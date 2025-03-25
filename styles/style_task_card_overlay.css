@@ -284,6 +284,7 @@
 
 .task-card h2 {
   line-height: 73px;
+  min-height: fit-content;
   max-height: 219px;
   overflow: auto;
   word-break: break-word;

@@ -113,10 +113,9 @@ function renderSubtasks(element) {
     let isCompleted = element.completedSubtasks.includes(subtask);
     return `
       <div class="subtask-wrapper">
-          <input type="checkbox" class="sbtsk-chb" id="${subtask}"  onclick="toggleSubtaskCompleted('${subtask}', this)"  ${isCompleted ? 'checked' : ''}/>
-          <label  for="${subtask}" class="checkbox-label">${subtask}</label>
-          </div>
-          `;  
+          <input type="checkbox" class="sbtsk-chb" id="${subtask.trim()}"  onclick="toggleSubtaskCompleted('${subtask.trim()}', this)"  ${isCompleted ? 'checked' : ''}/>
+          <label  for="${subtask.trim()}" class="checkbox-label">${subtask.trim()}</label>
+      </div>`;  
         
   }).join('');
 }
@@ -260,7 +259,6 @@ function taskEditOverlayTemplateOne(element) {
                     class="add-task-input-field"
                     type="text"
                     placeholder="Add new subtask"
-                    maxlength="30"
                   /><img class="subtask-add" src="./assets/img/addTask/add.svg" alt="" onclick="focusSubtaskInput(this)" />
                   <div class="cancel-check-btn">
                     <img class="subtask-cancel" a onclick="cancelSubInput()" src="./assets/img/addTask/cross.svg" alt="" /><img

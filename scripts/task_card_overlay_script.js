@@ -19,7 +19,7 @@ async function toggleSubtaskCompleted(subtask, element) {
  * Displays the task card overlay with all task details
  * @param {HTMLElement} event - The HTML element that triggered the event
  */
-function renderTaskCardOverlay(event, ) {
+function renderTaskCardOverlay(event,) {
   let element = createdTasks.find((task) => task.title == event.querySelector("h3").textContent);
   let overlay = document.getElementById("task-card-overlay");
   overlay.innerHTML = taskCardOverlayTemplate(element);
@@ -82,7 +82,7 @@ async function deleteTaskCardOverlay(title) {
 function renderTaskEditOverlay(element) {
   let editField = document.querySelector(".task-card");
   if (editField) {
-    editField.innerHTML = taskEditOverlayTemplateOne(element); 
+    editField.innerHTML = taskEditOverlayTemplateOne(element);
     filterAndSortDropdown();
     toggleSubtasks();
     showAssignedContacts(element.selectedContacts);
@@ -103,7 +103,7 @@ function resizeAndPositionOverlay() {
     changeTaskEditOverlayHight(editField);
     changeOverlayPosition(editField)
   }, 200);
-  
+
 }
 
 /**
@@ -116,7 +116,7 @@ function changeTaskEditOverlayHight() {
   if (editField !== null) {
     if (window.innerHeight < 1200) {
       editField.classList.add("edit-task-overlay-hight");
-    }else {
+    } else {
       editField.classList.remove("edit-task-overlay-hight");
     }
   }
@@ -136,17 +136,23 @@ function changeOverlayPosition(editField) {
  * Checks which contacts are selected in the dropdown and updates their visual state
  */
 function checkSelectedContacts() {
-  let contactsContainer = document.getElementsByClassName("dropdown-item");
-  for (let i = 0; i < contactsContainer.length; i++) {
-    let contact = contactsContainer[i];
-    let contactName = contact.querySelector("p").textContent;
-    if (editedSelectedContacts.includes(contactName)) {
-      contact.classList.add("checked");
-      contact.querySelector(".cstm-checkbox").src = "./assets/svg/addTasksSvg/checked.svg";
-    } else {
-      contact.classList.remove("checked");
+  if (window.location.pathname.includes('board.html')) {
+    if (typeof checkSelectedContacts === 'function') {
+      let contactsContainer = document.getElementsByClassName("dropdown-item");
+      for (let i = 0; i < contactsContainer.length; i++) {
+        let contact = contactsContainer[i];
+        let contactName = contact.querySelector("p").textContent;
+        if (editedSelectedContacts.includes(contactName)) {
+          contact.classList.add("checked");
+          contact.querySelector(".cstm-checkbox").src = "./assets/svg/addTasksSvg/checked.svg";
+        } else {
+          contact.classList.remove("checked");
+        }
+      }
     }
   }
+  return;
+
 }
 
 /**
@@ -154,12 +160,15 @@ function checkSelectedContacts() {
  * @param {HTMLElement} element - The clicked contact element
  */
 function updateSelectedContacts(element) {
-  let contactName = element.querySelector("p").textContent;
-  if (editedSelectedContacts.includes(contactName)) {
-    let index = editedSelectedContacts.indexOf(contactName);
-    editedSelectedContacts.splice(index, 1);
-  } else {
-    editedSelectedContacts.push(contactName);
+  if (window.location.pathname.includes('board.html')) {
+    let contactName = element.querySelector("p").textContent;
+    if (editedSelectedContacts.includes(contactName)) {
+      let index = editedSelectedContacts.indexOf(contactName);
+      editedSelectedContacts.splice(index, 1);
+    } else {
+      editedSelectedContacts.push(contactName);
+    }
+    showAssignedContacts(editedSelectedContacts);
   }
-  showAssignedContacts(editedSelectedContacts);
+  return;
 }
