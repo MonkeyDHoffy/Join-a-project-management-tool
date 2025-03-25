@@ -854,6 +854,12 @@ progress {
   }
 }
 
+@media (max-width: 450px) {
+  .assigned-circles-section {
+    width: 85% !important ;
+  }
+}
+
 @media (max-width: 375px) {
   .add-task-overlay-content {
     width: 310px;
