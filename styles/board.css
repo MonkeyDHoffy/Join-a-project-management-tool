@@ -141,6 +141,7 @@ body {
 
 .find-task input {
   border: none;
+  width: 100%;
 }
 
 .find-task input::placeholder {

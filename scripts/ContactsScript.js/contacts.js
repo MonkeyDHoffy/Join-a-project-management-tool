@@ -3,6 +3,7 @@ let colorId = 0;
 let currentLetter = "";
 let selectedContactId = null;
 let currentName = "";
+let currentNameToDelete = "";
 /**
  * Initializes the contacts page by rendering user icon name, retrieving contacts data, and displaying contacts.
  * @async
@@ -98,7 +99,7 @@ async function deleteAssignedContacts(contactName) {
   await getTasks();
   for (let index = 0; index < createdTasks.length; index++) {
     createdTasks[index].selectedContacts = createdTasks[index].selectedContacts.filter(contact => 
-        contact !== currentName
+        contact !== currentNameToDelete
     );
   }
   await putTasks();
@@ -225,7 +226,7 @@ function renderContact(id) {
     responsiveEditBtnOne.style.display = 'none';
     responsiveEditBtnTwo.style.display = 'flex';
   }
-  currentName = document.getElementById("contactName").innerText;
+  currentNameToDelete = document.getElementById("contactName").innerText;
 }
 
 /**
