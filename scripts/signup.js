@@ -306,11 +306,11 @@ function setupPasswordField(passwordInputId, iconSelector, buttonSelector) {
 function reAppearLockIcon(passwordInput, iconPW, iconPWButton) {
     passwordInput.addEventListener('input', () => {
         if (passwordInput.value === '') {
-            iconPW.src = '../assets/svg/lock.svg';
+            iconPW.src = './assets/svg/lock.svg';
             iconPW.classList.remove('cursor-pointer');
             iconPWButton.disabled = true;
         } else {
-            iconPW.src = '../assets/svg/eye.svg';
+            iconPW.src = './assets/svg/eye.svg';
             iconPW.classList.add('cursor-pointer');
             iconPWButton.disabled = false;
         }
@@ -334,11 +334,11 @@ function togglePasswordVisibility(button) {
 
     if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
-        pwIcon.src = '../assets/svg/eye_slash.svg';
+        pwIcon.src = './assets/svg/eye_slash.svg';
         pwIcon.classList.add('cursor-pointer');
     } else {
         passwordInput.type = 'password';
-        pwIcon.src = '../assets/svg/eye.svg';
+        pwIcon.src = './assets/svg/eye.svg';
         pwIcon.classList.add('cursor-pointer');
     }
 }
