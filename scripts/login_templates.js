@@ -25,11 +25,6 @@ function renderLoginForm() {
                     </div>
                     <span id="error"></span>
 
-                    <div class="remember-me-wrapper">
-                        <input type="checkbox" class="rm-chb" id="rememberMe">
-                        <label for="rememberMe" class="checkbox-label">Remember me</label>
-                    </div>
-
                     <div class="login-button-box">
                         <button class="login" type="submit" id="login" disabled onclick="loginUser()">Login</button>
                         <button onclick="guestLogIn()" class="guest-login">Guest Login</button>
