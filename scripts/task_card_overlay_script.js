@@ -79,11 +79,11 @@ async function deleteTaskCardOverlay(title) {
  * Renders the edit overlay for a task
  * @param {Object} element - The task object to edit
  */
-function renderTaskEditOverlay(element) {
+async function renderTaskEditOverlay(element) {
   let editField = document.querySelector(".task-card");
   if (editField) {
     editField.innerHTML = taskEditOverlayTemplateOne(element);
-    filterAndSortDropdown();
+    await filterAndSortDropdown();
     toggleSubtasks();
     showAssignedContacts(element.selectedContacts);
     editedSelectedContacts = element.selectedContacts;
