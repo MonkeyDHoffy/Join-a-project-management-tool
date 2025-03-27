@@ -14,7 +14,6 @@ function loginInit() {
     handleAnimationBackdrop();
     animateLogo();
     renderPrivPol();
-    getRememberMeUser();
 };
 
 
@@ -64,7 +63,6 @@ function validateForm() {
         validateEmail(messages);
         validatePassword(messages);
         checkLoginFormValidity();
-        rememberMe();
 
         if (messages.length > 0) {
             e.preventDefault()
@@ -266,54 +264,6 @@ function checkLoginFormValidity() {
         loginBtn.disabled = true;
     }
 
-}
-
-
-/**
- * Listens for click events on the 'Remember me' checkbox in the login form. When
- * the checkbox is checked, saves the email and password input values to local
- * storage. When the checkbox is unchecked, removes the email and password values
- * from local storage.
- * @function rememberMe
- * @returns {undefined}
- */
-function rememberMe() {
-    const rememberMeChbx = document.getElementById('rememberMe');
-    const emailInput = document.getElementById('email');
-    const passwordInput = document.getElementById('password');
-
-    rememberMeChbx.addEventListener('click', () => {
-
-        if (rememberMeChbx.checked) {
-            localStorage.setItem('rmEmail', emailInput.value);
-            localStorage.setItem('rmPassword', passwordInput.value);
-        } else {
-            localStorage.removeItem('rmEmail');
-            localStorage.removeItem('rmPassword');
-        }
-    });
-}
-
-
-/**
- * Retrieves the saved email and password from local storage and populates the login form
- * fields. Checks the 'Remember me' checkbox if the email and password are found in local
- * storage.
- * @function getRememberMeUser
- * @returns {undefined}
- */
-function getRememberMeUser() {
-    const rmEmail = localStorage.getItem('rmEmail');
-    const rmPassword = localStorage.getItem('rmPassword');
-    const emailInput = document.getElementById('email');
-    const passwordInput = document.getElementById('password');
-    const rememberMeChbx = document.getElementById('rememberMe');
-
-    if (rmEmail && rmPassword) {
-        emailInput.value = rmEmail;
-        passwordInput.value = rmPassword;
-        rememberMeChbx.checked = true;
-    }
 }
 
 
