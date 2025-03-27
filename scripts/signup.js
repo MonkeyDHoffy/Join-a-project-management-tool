@@ -13,7 +13,7 @@ function signUpInit() {
     renderPrivPol();
     validateForm();
     passwordFocus();
-    checkFormValidity();
+    //checkFormValidity();
     getUsers();
 
 }
@@ -63,6 +63,7 @@ function toggleErrorPrivPol() {
         errorPrivPol.innerHTML = '';
         errorPrivPol.classList.add('d-none');
     }
+    checkFormValidity();
 }
 
 
@@ -76,13 +77,11 @@ function toggleErrorPrivPol() {
 function validateForm() {
     let errorElement = document.getElementById('error');
     let form = document.getElementById('signupForm');
-    //let messages = [];
 
     form.addEventListener('input', (e) => {
 
         messages.length = 0;
         errorElement.innerHTML = '';
-        //messages = [];
         let password = document.getElementById('password');
         let repeatPassword = document.getElementById('repeatPassword');
 
@@ -102,6 +101,7 @@ function validateForm() {
  */
 function callValidationFunctions(messages, password, repeatPassword) {
     validateName(messages);
+   // showErrorNameNotNumber (messages)
     validateEmail(messages);
     validatePassword(password, messages);
     validatePassword(repeatPassword, messages);
@@ -182,27 +182,38 @@ function removeErrorMessageAndHighlight(inputElement, messages, errorMessage) {
  */
 function validateName(messages) {
     let signupName = document.getElementById('signupName');
+    let nameRegex = /[0-9]/;
     if (signupName.value === '' || signupName.value == null) {
         messages.push('Please enter your name')
         signupName.parentNode.classList.add('error-highlight');
+    } else if (nameRegex.test(signupName.value)) {
+        messages.push('Name con not be or contain a number');
     } else {
         removeErrorMessageAndHighlight(signupName, messages, 'Please enter your name')
     }
 }
 
 
-
-// function validateEmail(messages) {
-//     let email = document.getElementById('email');
-//     if (email.value === '' || email.value == null || email.value.includes('@') === false) {
-//         messages.push('Please enter a valid Email')
-//         email.parentNode.classList.add('error-highlight');
+// function showErrorNameNotNumber (messages) {
+    
+//     let nameRegex = /[0-9]/;
+//     if (nameRegex.test(signupName.value)) {
+//         messages.push('Name con not be or contain a number');
 //     } else {
-//         removeErrorMessageAndHighlight(email, messages, 'Please enter a valid Email')
+//         removeErrorMessageAndHighlight(signupName, messages, 'Name con not be or contain a number');
 //     }
 // }
 
 
+/**
+ * Validates the 'email' field in the signup form. Checks if the field is empty, null or if
+ * its value does not match the email regex pattern. If the field is invalid, adds an error
+ * message to the 'messages' array and adds the 'error-highlight' class to the field's parent
+ * node for styling. If the field is valid, removes the error message and the 'error-highlight'
+ * class from the field's parent node.
+ * @param {Array<string>} messages - array to store validation error messages
+ * @returns {undefined}
+ */
 function validateEmail(messages) {
     let email = document.getElementById('email');
     let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -219,8 +230,6 @@ function validateEmail(messages) {
 }
 
 
-
-
 function showErrorEmailLength (messages, email) {
     if (email.value.length >= 56 ) {
         messages.push('Email length cannot be more than 55 characters');
@@ -234,7 +243,6 @@ function limitMaxChars(element) {
         element.value = element.value.substr(0, max_chars);
     }
 }
-
 
 
 /**
@@ -312,7 +320,6 @@ function setupPasswordField(passwordInputId, iconSelector, buttonSelector) {
     let passwordInput = document.getElementById(passwordInputId);
     let iconPW = document.querySelector(iconSelector);
     let iconPWButton = document.querySelector(buttonSelector);
-
     reAppearLockIcon(passwordInput, iconPW, iconPWButton);
 }
 
@@ -356,7 +363,6 @@ function reAppearLockIcon(passwordInput, iconPW, iconPWButton) {
 function togglePasswordVisibility(button) {
     let passwordInput = button.previousElementSibling;
     let pwIcon = button.querySelector('img');
-
     if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
         pwIcon.src = './assets/svg/eye_slash.svg';
@@ -377,39 +383,12 @@ function togglePasswordVisibility(button) {
  * @returns {undefined}
  */
 function checkFormValidity() {
-    const signupName = document.getElementById('signupName');
-    const email = document.getElementById('email');
-    const password = document.getElementById('password');
-    const repeatPassword = document.getElementById('repeatPassword');
-    const chbPrivPol = document.getElementById('chbPrivPol');
     const submitBtn = document.getElementById('submitBtn');
-    setFormValidityConditons(signupName, email, password, repeatPassword, chbPrivPol, submitBtn);
-}
-
-
-/**
- * Checks the validity of the signup form by verifying if the name, email, password,
- * repeat password fields are filled correctly, and if the privacy policy checkbox is
- * checked. If all conditions are met, enables the submit button; otherwise, disables it.
- * @function setFormValidityConditons
- * @param {HTMLInputElement} signupName - signup name field
- * @param {HTMLInputElement} email - email field
- * @param {HTMLInputElement} password - password field
- * @param {HTMLInputElement} repeatPassword - repeat password field
- * @param {HTMLInputElement} chbPrivPol - privacy policy checkbox
- * @param {HTMLButtonElement} submitBtn - submit button
- * @returns {undefined}
- */
-function setFormValidityConditons(signupName, email, password, repeatPassword, chbPrivPol, submitBtn) {
-    const signupNameIsValid = signupName.value !== '';
-    const emailIsValid = email.value !== '' && email.value.includes('@');
-    const passwordIsValid = password.value !== '' && password.value !== 'password';
-    const repeatPasswordIsValid = repeatPassword.value !== '' && repeatPassword.value !== 'password';
-    const privPolIsChecked = chbPrivPol.checked;
-    if (signupNameIsValid && emailIsValid && passwordIsValid && repeatPasswordIsValid && privPolIsChecked) {
-        submitBtn.disabled = false;
-    } else {
+    const chbPrivPol = document.getElementById('chbPrivPol');
+    if (messages.length > 0 || !chbPrivPol.checked) { 
         submitBtn.disabled = true;
+    } else {
+        submitBtn.disabled = false;
     }
 }
 
@@ -436,6 +415,7 @@ async function registerUser() {
         showSignUpMsg();
     }
 }
+
 
 function displayUserExists() {
     let errorElement = document.getElementById('error');
