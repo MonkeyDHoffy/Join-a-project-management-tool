@@ -158,7 +158,6 @@ function searchTask() {
  */
 function checkIfBoardFieldIsEmpty() {
   let boardFields = document.getElementsByClassName("board-field");
-  console.log(boardFields);
   for (let i = 0; i < boardFields.length; i++) {
       if ([...boardFields[i].children].every(child => child.classList.contains("d-none"))) {
         boardFields[i].innerHTML = noTasksTemplate(i)
