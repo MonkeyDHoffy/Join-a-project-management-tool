@@ -23,6 +23,7 @@ function renderLoginForm() {
                         <button type="button" disabled id="pw-icon" onclick="togglePassword()"><img
                                 src="./assets/svg/lock.svg" alt=""></button>
                     </div>
+
                     <span id="error"></span>
 
                     <div class="login-button-box">
