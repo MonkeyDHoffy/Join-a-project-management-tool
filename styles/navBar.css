@@ -131,6 +131,7 @@ span {
 }
 
 .header {
+  padding: 0 64px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -147,12 +148,11 @@ span {
 }
 
 .header-width {
-  padding: 0 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: calc(1920px - 232px);
+  max-width: calc(1920px - 360px);
 }
 
 .question-mark {
@@ -277,10 +277,6 @@ span {
     display: none;
   }
 
-  .header-width {
-    padding: 0 44px;
-  }
-
   .help-link {
     display: flex;
   }
@@ -364,7 +360,7 @@ span {
 
 @media (max-width: 423px) {
   .header {
-    padding: 0 35px 0 22px !important;
+    padding: 0 22px 0 22px !important;
   }
 }
 

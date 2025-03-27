@@ -27,3 +27,13 @@ span {
 ul {
     padding: 0 30px
 }
+
+.header {
+    padding-left: 64px;
+}
+
+@media (max-width: 1350px) {
+    .legal-notice-wrapper {
+        padding-bottom: 120px;
+    }
+}

@@ -1,3 +1,13 @@
 .content-datenschutz {
- padding: 32px;
+    padding: 64px;
+}
+
+.header {
+    padding-left: 64px;
+}
+
+@media (max-width: 1350px) {
+    .content-datenschutz {
+        padding-bottom: 120px;
+    }
 }
