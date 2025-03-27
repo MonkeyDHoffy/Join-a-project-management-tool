@@ -10,6 +10,7 @@ let messages = [];
 function signUpInit() {
     renderPrivPol();
     validateForm();
+    passwordFocus();
     getUsers();
 }
 
