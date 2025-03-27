@@ -191,25 +191,50 @@ function validateName(messages) {
 }
 
 
-/**
- * Validates the 'email' field in the signup form. Checks if the field is empty, null or 
- * if its value does not include '@'. If the field is invalid, adds an error message to the
- * 'messages' array and adds the 'error-highlight' class to the field's parent node for
- * styling. If the field is valid, removes the error message and the 'error-highlight' class
- * from the field's parent node.
- * @function validateEmail
- * @param {Array<string>} messages - array to store validation error messages
- * @returns {undefined}
- */
+
+// function validateEmail(messages) {
+//     let email = document.getElementById('email');
+//     if (email.value === '' || email.value == null || email.value.includes('@') === false) {
+//         messages.push('Please enter a valid Email')
+//         email.parentNode.classList.add('error-highlight');
+//     } else {
+//         removeErrorMessageAndHighlight(email, messages, 'Please enter a valid Email')
+//     }
+// }
+
+
 function validateEmail(messages) {
     let email = document.getElementById('email');
-    if (email.value === '' || email.value == null || email.value.includes('@') === false) {
-        messages.push('Please enter a valid Email')
+    let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    limitMaxChars(email);
+    if (email.value === '' || email.value == null || email.value.length >= 56 || !emailRegex.test(email.value)) {
+        if (!messages.includes('Please enter a valid Email')) {
+            messages.push('Please enter a valid Email');
+        }
+        showErrorEmailLength (messages, email);
         email.parentNode.classList.add('error-highlight');
     } else {
-        removeErrorMessageAndHighlight(email, messages, 'Please enter a valid Email')
+        removeErrorMessageAndHighlight(email, messages, 'Please enter a valid Email');
+    } 
+}
+
+
+
+
+function showErrorEmailLength (messages, email) {
+    if (email.value.length >= 56 ) {
+        messages.push('Email length cannot be more than 55 characters');
     }
 }
+
+
+function limitMaxChars(element) {
+    let max_chars = 56;
+    if(element.value.length > max_chars) {
+        element.value = element.value.substr(0, max_chars);
+    }
+}
+
 
 
 /**
