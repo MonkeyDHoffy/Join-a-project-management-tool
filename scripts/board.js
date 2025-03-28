@@ -130,24 +130,23 @@ async function drop(status) {
   currentDragedElement = null;
 }
 
+
 /**
- * Filters and displays task cards on the board based on user input.
- * Hides all board cards initially and then selectively shows cards
- * whose titles include the search input text, ignoring case.
+ * Filters the tasks on the board based on the search input value, and displays
+ * placeholder messages if any of the board fields are empty.
+ * @returns {void}
  */
 function searchTask() {
   updateHTML();
-  let searchInput = document.getElementById("findTaskInput").value.toLowerCase();
-  let boardCards = Array.from(document.getElementsByClassName("board-card"));
-  boardCards.forEach((div) => {
-    div.classList.add("d-none");
+  let searchInputValue = document.getElementById("findTaskInput").value.toLowerCase();
+  let allCards = Array.from(document.getElementsByClassName("board-card"));
+  let filteredCards = allCards.filter((card) => {
+    let title = card.querySelector("h3")?.textContent.toLowerCase().trim() || "";
+    let description = card.querySelector(".board-card-description")?.textContent.toLowerCase().trim() || "";
+    return title.includes(searchInputValue) || description.includes(searchInputValue);
   });
-  let filteredCards = boardCards.filter((div) =>
-    div.querySelector("h3")?.textContent.toLowerCase().trim().includes(searchInput)
-  );
-  filteredCards.forEach((div) => {
-    div.classList.remove("d-none");
-  });
+  allCards.forEach((card) => card.classList.add("d-none"));
+  filteredCards.forEach((card) => card.classList.remove("d-none"));
   checkIfBoardFieldIsEmpty();
 }
 
