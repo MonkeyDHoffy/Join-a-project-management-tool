@@ -21,7 +21,6 @@ function validateForm() {
     })
 }
 
-
 /**
  * Calls all the validation functions for the signup form.
  * @function callValidationFunctions
@@ -38,7 +37,6 @@ function callValidationFunctions(messages, password, repeatPassword) {
     comparePasswords(password, repeatPassword, messages)
     checkFormValidity();
 }
-
 
 /**
  * Validates the 'email' field in the signup form. Checks if the field is empty, null or if
@@ -64,7 +62,6 @@ function validateEmail(messages) {
     } 
 }
 
-
 /**
  * Checks if the email length exceeds the maximum allowed length.
  * If the email value is 56 characters or more, adds an error message 
@@ -81,7 +78,6 @@ function showErrorEmailLength (messages, email) {
     }
 }
 
-
 /**
  * Limits the maximum number of characters in an input field to a specified value.
  * @param {HTMLInputElement} element - input element to limit character count
@@ -93,7 +89,6 @@ function limitMaxChars(element) {
         element.value = element.value.substr(0, max_chars);
     }
 }
-
 
 /**
  * Validates the password field in the signup form by checking if it is empty or null.
@@ -117,7 +112,6 @@ function validatePassword(inputElementPW, messages) {
     }
     validatePassworAsPassword(inputElementPW, messages);
 }
-
 
 /**
  * Validates the password field in the signup form by checking if its value is 'password'.

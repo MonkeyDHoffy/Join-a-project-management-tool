@@ -1,6 +1,5 @@
 let messages = [];
 
-
 /**
  * Initializes all login functionality
  * @function loginInit
@@ -16,7 +15,6 @@ function loginInit() {
     renderPrivPol();
 };
 
-
 /**
  * Handles the animation end event for the backdrop element.
  * Adds the 'd-none' class to hide the element and then removes it from the DOM.
@@ -28,7 +26,6 @@ function handleAnimationBackdrop() {
         backdrop.remove();
     });
 }
-
 
 /**
  * Adds the 'animate' class to the '.p1-logo' element and
@@ -44,7 +41,6 @@ function animateLogo() {
         animationRun = true;
     }
 }
-
 
 /**
  * Listens for input events on the login form and validates its fields.
@@ -70,7 +66,6 @@ function validateForm() {
         }
     })
 }
-
 
 /**
  * Validates the 'email' field in the login form. Checks if the field is empty, 
@@ -98,8 +93,15 @@ function validateEmail(messages) {
     } 
 }
 
-
-
+/**
+ * Checks if the email input field's length exceeds the maximum allowed length.
+ * If the email length is 56 characters or more, adds an error message to the
+ * 'messages' array indicating the email length constraint.
+ * 
+ * @param {Array<string>} messages - Array to store validation error messages
+ * @param {HTMLInputElement} email - Email input field to check length
+ * @returns {undefined}
+ */
 
 function showErrorEmailLength (messages, email) {
     if (email.value.length >= 56 ) {
@@ -107,14 +109,17 @@ function showErrorEmailLength (messages, email) {
     }
 }
 
-
+/**
+ * Limits the maximum number of characters in an input field to a specified value.
+ * @param {HTMLInputElement} element - input element to limit character count
+ * @returns {undefined}
+ */
 function limitMaxChars(element) {
     let max_chars = 56;
     if(element.value.length > max_chars) {
         element.value = element.value.substr(0, max_chars);
     }
 }
-
 
 /**
  * Validates the 'password' field in the login form. Checks if the field is empty, null or if
@@ -171,7 +176,6 @@ function validatePasswordNotPassword(password, messages) {
     }
 }
 
-
 /**
  * Initializes the password input field and its toggle button in the login form. The lock
  * icon will be replaced with an eye icon when the password input field is not empty and
@@ -188,7 +192,6 @@ function passwordFocus() {
 
     reAppearLockIcon(passwordInput, iconPW, iconPWButton);
 }
-
 
 /**
  * Listens for input events on the password input field and updates the lock icon 
@@ -216,7 +219,6 @@ function reAppearLockIcon(passwordInput, iconPW, iconPWButton) {
     });
 }
 
-
 /**
  * Toggles the visibility of the password in the login form. When the password is 
  * hidden, it changes the input type to 'text' to show the password and updates 
@@ -241,7 +243,6 @@ function togglePassword() {
     }
 }
 
-
 /**
  * Removes a specific error message from the 'messages' array and removes the
  * 'error-highlight' class from the parent node of the input element.
@@ -259,7 +260,6 @@ function removeErrorMessageAndHighlight(inputElement, messages, errorMessage) {
     }
     inputElement.parentNode.classList.remove('error-highlight');
 }
-
 
 /**
  * Checks the validity of the login form by verifying if the email and password
@@ -284,7 +284,6 @@ function checkLoginFormValidity() {
 
 }
 
-
 /**
  * Handles the login process by checking the validity of the email and password
  * input and then redirects to the summary page if the credentials are valid.
@@ -307,7 +306,6 @@ async function loginUser() {
     }
 }
 
-
 /**
  * Displays an error message indicating that the user was not found.
  * If the message is not already present in the 'messages' array, it is added.
@@ -323,7 +321,6 @@ function userNotFoundMessage(errorElement) {
     return;
 }
 
-
 /**
  * Displays an error message indicating that the password is incorrect.
  * If the message is not already present in the 'messages' array, it is added.
@@ -338,7 +335,6 @@ function passwordIncorrectMessage(errorElement) {
     errorElement.innerHTML = messages.join(', ');
     return;
 }
-
 
 /**
  * Logs in as a guest user by clearing the 'loggedInUser' data and storing it,

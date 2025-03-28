@@ -130,7 +130,6 @@ async function drop(status) {
   currentDragedElement = null;
 }
 
-
 /**
  * Filters the tasks on the board based on the search input value, and displays
  * placeholder messages if any of the board fields are empty.
@@ -158,9 +157,9 @@ function searchTask() {
 function checkIfBoardFieldIsEmpty() {
   let boardFields = document.getElementsByClassName("board-field");
   for (let i = 0; i < boardFields.length; i++) {
-      if ([...boardFields[i].children].every(child => child.classList.contains("d-none"))) {
-        boardFields[i].innerHTML = noTasksTemplate(i)
-      }
+    if ([...boardFields[i].children].every(child => child.classList.contains("d-none"))) {
+      boardFields[i].innerHTML = noTasksTemplate(i)
+    }
   }
 }
 
@@ -327,29 +326,24 @@ function showTaskNotification() {
   }
 }
 
-
-  document.addEventListener('click', function(event) {
-    let categoryDropdown = document.getElementById('category-dropdown');
-    let categoryInput = document.querySelector('.category-input');
-    if (categoryDropdown && !categoryDropdown.classList.contains('d-none')) {
-      let clickedOnInputOrDropdown = false;
-      if (categoryInput && categoryInput.contains(event.target)) {
-        clickedOnInputOrDropdown = true;
-      }
-      if (event.target.closest('.category-btn')) {
-        clickedOnInputOrDropdown = false;
-      }
-      if (!clickedOnInputOrDropdown || event.target.closest('.category-btn')) {
-        categoryDropdown.classList.add('d-none');
-        categoryDropdown.classList.add('close-dropdown');
-        let categoryIcon = document.getElementById('input-icon-category');
-        if (categoryIcon) {
-          categoryIcon.src = './assets/svg/addTasksSvg/arrow_drop_up.svg';
-        }
+document.addEventListener('click', function (event) {
+  let categoryDropdown = document.getElementById('category-dropdown');
+  let categoryInput = document.querySelector('.category-input');
+  if (categoryDropdown && !categoryDropdown.classList.contains('d-none')) {
+    let clickedOnInputOrDropdown = false;
+    if (categoryInput && categoryInput.contains(event.target)) {
+      clickedOnInputOrDropdown = true;
+    }
+    if (event.target.closest('.category-btn')) {
+      clickedOnInputOrDropdown = false;
+    }
+    if (!clickedOnInputOrDropdown || event.target.closest('.category-btn')) {
+      categoryDropdown.classList.add('d-none');
+      categoryDropdown.classList.add('close-dropdown');
+      let categoryIcon = document.getElementById('input-icon-category');
+      if (categoryIcon) {
+        categoryIcon.src = './assets/svg/addTasksSvg/arrow_drop_up.svg';
       }
     }
-  });
-
-
-
-
+  }
+});

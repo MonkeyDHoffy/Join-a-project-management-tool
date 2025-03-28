@@ -265,8 +265,6 @@ button:hover {
   transition: all 100ms ease-in-out;
 }
 
-
-
 .create-btn-overlay {
   padding: 16px;
   border: none;
@@ -373,7 +371,6 @@ cursor: pointer;
     top: -25%;
 }
 
-
 @media (max-height: 550px) and (max-width: 1000px) {
   .content-overlay-left {
     padding: 25px 24px; 
@@ -396,8 +393,6 @@ cursor: pointer;
   height: 50px !important;
   font-size: 28px;
 }
-
-
 
   .close-mobile-overlay {
     cursor: pointer;
@@ -439,14 +434,10 @@ cursor: pointer;
   }
 }
 
-
-
 @media (max-width: 1350px) {
   .contacts-content-left {
     padding-bottom: 160px;
   }
-
-
 }
 
 @media (max-width: 1050px) {
@@ -456,8 +447,6 @@ cursor: pointer;
 }
 
 @media (max-width: 1000px) {
-
-
   .error-message {
     color: #ff0000;
     font-size: 12px;

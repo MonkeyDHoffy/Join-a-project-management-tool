@@ -3,7 +3,6 @@ let assignedContacts = [];
 let dropdownItems = [];
 let selectedContacts = [];
 
-
 /**
  * Toggles the dropdown menu visibility and updates the contact selection status
  * @async
