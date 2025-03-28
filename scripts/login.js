@@ -280,7 +280,6 @@ function checkLoginFormValidity() {
     } else {
         loginBtn.disabled = true;
     }
-
 }
 
 /**

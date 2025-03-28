@@ -282,6 +282,13 @@ function addRequiredDate(element) {
   checkIfDateIsInThePast(element, requiredTextDate);
 }
 
+/**
+ * Checks if the date entered in the input element is empty.
+ * If the date is empty, adds an 'invalid' class to the input element
+ * and displays an error message indicating that the date is required.
+ * @param {HTMLInputElement} element - The date input element to validate
+ * @param {HTMLElement} requiredTextDate - The element to display the validation error message
+ */
 function checkIfDateIsEmpty(element, requiredTextDate) {
   element.setAttribute("required", "true");
   if (element.value == "") {
@@ -291,6 +298,15 @@ function checkIfDateIsEmpty(element, requiredTextDate) {
     requiredTextDate.classList.add("d-none");
   }
 }
+
+/**
+ * Checks if the date entered in the input element is in the past.
+ * If the date is in the past, adds an 'invalid' class to the input element
+ * and displays an error message indicating that the date must be in the future.
+ * 
+ * @param {HTMLInputElement} element - The date input element to validate
+ * @param {HTMLElement} requiredTextDate - The element to display the validation error message
+ */
 
 function checkIfDateIsInThePast(element, requiredTextDate) {
   let dueDate = new Date(element.value).getTime();

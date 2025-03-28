@@ -64,6 +64,12 @@ async function editContact(id) {
   updateAssignedContacts(contactName);
 }
 
+/**
+ * Updates the selectedContacts array of all tasks to reflect the name change of an edited contact.
+ * @async
+ * @param {string} contactName - The new name of the edited contact.
+ * @returns {Promise<void>}
+ */
 async function updateAssignedContacts(contactName) {
   await getTasks();
   for (let index = 0; index < createdTasks.length; index++) {
@@ -72,10 +78,6 @@ async function updateAssignedContacts(contactName) {
     );
   }
   await putTasks();
-}
-
-function name(params) {
-  
 }
 
 /**
@@ -95,6 +97,12 @@ async function deleteContact(id) {
   deleteAssignedContacts(contactName)
 }
 
+/**
+ * Removes a contact from the selectedContacts array of all tasks when the contact is deleted.
+ * @async
+ * @param {string} contactName - The name of the contact to delete from selectedContacts of all tasks
+ * @returns {Promise<void>}
+ */
 async function deleteAssignedContacts(contactName) {
   await getTasks();
   for (let index = 0; index < createdTasks.length; index++) {
@@ -371,6 +379,13 @@ function updateSelectedContact(id) {
   selectedContactId = id;
 }
 
+/**
+ * Handles responsive layout of contact details when the window is resized.
+ * This function is called whenever the window is resized.
+ * Depending on the current window width, it either calls init() to reinitialize
+ * the contact details layout or calls breakContactDetails with a specific number
+ * of characters to set the contact name string length in the contact list.
+ */
 function resizeContactDetails() {
   if (innerWidth >= 423) {
     init();
@@ -383,6 +398,12 @@ function resizeContactDetails() {
   }
 }
 
+/**
+ * Breaks long contact names and emails in the contact list by truncating the
+ * strings and adding an ellipsis at the end. This function is called when the
+ * window is resized and the contact details layout is reinitialized.
+ * @param {number} number - The number of characters to truncate the strings to.
+ */
 function breakContactDetails(number) {
   let emailContainers = document.getElementsByClassName("contact-email");
   let nameContainer = document.getElementsByClassName("contact-name");
