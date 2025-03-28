@@ -35,7 +35,6 @@
                 <div class="logo"><img src="./assets/img/Logo.png" alt="">
                 </div>
 
-
                 <section class="navBar">
                     <a href="./summary.html"><button class="nav_btn nav_summary "><span><img
                                     src="./assets/img/navBar/summary.svg" alt="">Summary</span></button></a>
@@ -52,6 +51,7 @@
 
                 </section>
             </div>
+
             <div class="judicial-links">
                 <div class="judicial-links-container">
                     <a class="nav-link" href="./datenschutz.html">Privacy Policy</a>
@@ -60,21 +60,29 @@
                     <a class="nav-link" href="./legal_notice.html">Legal notice</a>
                 </div>
             </div>
-
         </div>
-
-
 
         <div class="content-wrapper">
 
             <div class="header">
+
                 <div class="header-width">
-                    <div class="responsive-logo"><img src="./assets/img/responsiveLogo.png" alt=""></div>
+
+                    <div class="responsive-logo">
+                        <img src="./assets/img/responsiveLogo.png" alt="">
+                    </div>
+
                     <p>Kanban Project Management Tool</p>
-                    <div class="header_btn_and_pic"> <a class="question-mark" href="./hilfe.html"><img
-                                class="question-mark-img" src="./assets/img/navBar/help.png" alt=""></a>
+
+                    <div class="header_btn_and_pic">
+                        <a class="question-mark" href="./hilfe.html">
+                            <img class="question-mark-img" src="./assets/img/navBar/help.png" alt="">
+                        </a>
+
                         <div style="position: relative;">
+
                             <div onclick="toggleMenu()" class="user-icon" id="userIcon"></div>
+
                             <section class="menu">
                                 <div class="menu-btns">
                                     <a href="./hilfe.html" class="menu-item help-link">Help</a>
@@ -82,9 +90,7 @@
                                     <a href="./datenschutz.html" class="menu-item">Privacy Policy</a>
                                     <a onclick="logOut(); return false" href="" class="menu-item">Log out</a>
                                 </div>
-
                             </section>
-
                         </div>
                     </div>
                 </div>
@@ -97,20 +103,16 @@
                             <h1>Add Task</h1>
                         </div>
 
-
-
-
-
                         <div class="addTask-wrapper">
 
                             <div class="addTask-left">
+
                                 <div class="addTask-section addTask-title">
                                     <label style="display: flex;" for="">
                                         <p>Title</p>
                                         <p style="color: red;">*</p>
                                     </label>
-                                    <input onclick="addRequiredTitle(this)" oninput="addRequiredTitle(this)"
-                                        class="add-task-input-field" placeholder="Enter a title" type="text">
+                                    <input onclick="addRequiredTitle(this)" oninput="addRequiredTitle(this)"class="add-task-input-field" placeholder="Enter a title" type="text">
                                     <div class="required-text">
                                         <span id="requiredTitle" class="d-none">This field is required</span>
                                     </div>
@@ -121,7 +123,6 @@
                                         <p>Description</p>
                                     </label>
                                     <textarea class="description-area add-task-input-field"></textarea>
-
                                 </div>
 
                                 <div class=" addTask-section addTask-assignedTo">
@@ -129,28 +130,15 @@
                                         <p>Assigned to</p>
                                     </label>
                                     <div id="assigned-to-input">
-                                        <input oninput="filterDropdownItems()"
-                                            class="add-task-input-field placeholder-color" type="text"
-                                            id="assigned-to-field" placeholder="Select contacts to assign"
-                                            onclick="toggleDropdown(); toggleAssignToIconSrc(); ">
-                                        <div onclick="toggleDropdown(); toggleAssignToIconSrc();"
-                                            class="input-icon-assign-to-container">
-                                            <img id="input-icon-assign-to"
-                                                src="./assets/svg/addTasksSvg/arrow_drop_down.svg" alt="Icon"
-                                                class="input-icon">
+                                        <input oninput="filterDropdownItems()" class="add-task-input-field placeholder-color" type="text" id="assigned-to-field" placeholder="Select contacts to assign"onclick="toggleDropdown(); toggleAssignToIconSrc(); ">
+                                        <div onclick="toggleDropdown(); toggleAssignToIconSrc();" class="input-icon-assign-to-container">
+                                            <img id="input-icon-assign-to" src="./assets/svg/addTasksSvg/arrow_drop_down.svg" alt="Icon" class="input-icon">
                                         </div>
-                                        <div class="dropdown-content" id="dropdown-content">
-
-                                        </div>
+                                        <div class="dropdown-content" id="dropdown-content"></div>
                                     </div>
 
-                                    <section id="assigned-circles-section" class="assigned-circles-section">
-
-                                    </section>
-
+                                    <section id="assigned-circles-section" class="assigned-circles-section"></section>
                                 </div>
-
-
                             </div>
 
                             <div class="add-task-vl"></div>
@@ -195,13 +183,10 @@
                                         <input id="category-field" class="placeholder-color"
                                             value="Select task category" type="text" readonly>
                                         <div class="input-icon-category-container">
-                                            <img id="input-icon-category"
-                                                src="./assets/svg/addTasksSvg/arrow_drop_down.svg" alt="Icon"
-                                                class="input-icon-category">
+                                            <img id="input-icon-category" src="./assets/svg/addTasksSvg/arrow_drop_down.svg" alt="Icon" class="input-icon-category">
                                         </div>
                                         <section id="category-dropdown" class="category-dropdown d-none">
-                                            <div onclick="setCategory(technicalTask)"
-                                                class="technicalTask-btn category-btn ">
+                                            <div onclick="setCategory(technicalTask)" class="technicalTask-btn category-btn ">
                                                 <p>Technical Task</p>
                                             </div>
                                             <div onclick="setCategory(UserStory)" class="userStory-btn category-btn">
@@ -209,24 +194,18 @@
                                             </div>
                                         </section>
                                     </div>
-                                    <!-- </div> -->
 
                                     <div class="addTask-subtasks">
                                         <label for="">
                                             <p>Subtasks</p>
                                         </label>
                                         <div class="addTask-sectio subtask-section">
-                                            <input onclick="cancelEditSubtaskItem();"
-                                                class="add-task-input-field padding-right-68px" type="text"
-                                                placeholder="Add new subtask">
-                                            <img class="subtask-add" src="./assets/img/addTask/add.svg" alt=""
-                                                onclick="focusSubtaskInput()">
+                                            <input onclick="cancelEditSubtaskItem();" class="add-task-input-field padding-right-68px" type="text" placeholder="Add new subtask">
+                                            <img class="subtask-add" src="./assets/img/addTask/add.svg" alt="" onclick="focusSubtaskInput()">
 
                                             <div class="cancel-check-btn">
-                                                <img class="subtask-cancel" onclick="cancelSubInput()"
-                                                    src="./assets/img/addTask/cross.svg" alt="">
-                                                <img class="subtask-check" src="./assets/img/addTask/check.svg" alt=""
-                                                    onclick="renderSubtaskList()">
+                                                <img class="subtask-cancel" onclick="cancelSubInput()" src="./assets/img/addTask/cross.svg" alt="">
+                                                <img class="subtask-check" src="./assets/img/addTask/check.svg" alt="" onclick="renderSubtaskList()">
                                             </div>
                                         </div>
 
@@ -238,36 +217,15 @@
                                         </div>
 
                                         <section id="edit-subtask-item-field" class="edit-subtask-item">
-                                            <input id="subtask-edit-input" class="subtask-edit-input" value=""
-                                                type="text" name="" id="">
-                                            <div class="edit-subtask-btns"><img onclick="deleteSubInputValue()"
-                                                    src="./assets/svg/contacts_svg/delete.svg" alt=""><img
-                                                    onclick="confirmSubEdit()" src="./assets/img/addTask/check.svg"
-                                                    alt="">
+                                            <input id="subtask-edit-input" class="subtask-edit-input" value="" type="text" name="" id="">
+                                            <div class="edit-subtask-btns">
+                                                <img onclick="deleteSubInputValue()" src="./assets/svg/contacts_svg/delete.svg" alt=""><img onclick="confirmSubEdit()" src="./assets/img/addTask/check.svg" alt="">
                                             </div>
-
-
                                         </section>
-
-
-
                                     </div>
-
-
-
-
-
                                 </div>
-
-
-
                             </div>
-
-
-
-
                         </div>
-
 
                         <div class="addTask-footer">
                             <div><span style="color:red">*</span><span>This field is required</span></div>
@@ -277,7 +235,6 @@
                                     onclick="createTask()" class="createTask-button">Create Task<img
                                         src="./assets/svg/addTasksSvg/cross.svg" alt="">
                                 </button></div>
-
                         </div>
                     </div>
                 </div>
@@ -302,12 +259,8 @@
 
                 <a href="./contacts.html"><button class="mobile_nav_btn nav_contacts"><span><img
                                 src="./assets/img/navBar/contacts.svg" alt="">Contacts</span></button></a>
-
             </section>
         </section>
-
-
-
 
 </body>
 
