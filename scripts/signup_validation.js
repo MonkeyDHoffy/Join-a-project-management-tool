@@ -85,7 +85,7 @@ function showErrorEmailLength (messages, email) {
 function limitMaxChars(element) {
     let max_chars = 56;
     if(element.value.length > max_chars) {
-        element.value = element.value.substr(0, max_chars);
+        element.value = element.value.slice(0, max_chars);
     }
 }
 
