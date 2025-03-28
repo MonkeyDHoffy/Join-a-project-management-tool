@@ -127,6 +127,10 @@ function toggleCategoryDropdown() {
     toggleCategoryIconSrc();
 }
 
+/**
+ * Toggle the dropdown arrow icon for the category selector between up and down arrows
+ * @see toggleCategoryDropdown
+ */
 function toggleCategoryIconSrc() {
     let categoryDropdown = document.querySelector(".category-dropdown");
     let icon = document.getElementById("input-icon-category");

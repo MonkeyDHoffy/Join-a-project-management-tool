@@ -71,7 +71,6 @@ function validateEmail(messages) {
  * @param {HTMLInputElement} email - email input field to check length
  * @returns {undefined}
  */
-
 function showErrorEmailLength (messages, email) {
     if (email.value.length >= 56 ) {
         messages.push('Email length cannot be more than 55 characters');

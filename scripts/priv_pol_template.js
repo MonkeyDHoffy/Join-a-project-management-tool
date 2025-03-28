@@ -1,5 +1,3 @@
-
-
 /**
  * Renders the Privacy Policy and Legal Notice at the bottom of the page.
  * 

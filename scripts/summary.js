@@ -108,6 +108,12 @@ function getActuellTime() {
     }
 }
 
+/**
+ * Displays the greeting background element based on the window size and referrer.
+ * If the window width is below 1350 and the referrer is 'index.html', the greeting
+ * background is shown briefly with a fade-out effect. Otherwise, it hides the greeting background.
+ * @returns {void}
+ */
 function showGreeting() {
     let greetingBackground = document.getElementById("greetingBackground");
     if (innerWidth < 1350) {

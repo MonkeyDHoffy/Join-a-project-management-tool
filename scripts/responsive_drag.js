@@ -1,3 +1,11 @@
+  /**
+   * Opens the drag menu for a task when the arrow button is clicked.
+   * Removes the current status from the list of available statuses and
+   * renders the drag menu with the remaining statuses.
+   * @param {Event} event - The event object of the click event.
+   * @param {number} id - The ID of the task for which the menu is opened.
+   * @param {number} statusId - The ID of the current status of the task.
+   */
 function openDragMenu(event, id, statusId) {
     event.stopPropagation();
     taskStatus.splice(statusId, 1);
@@ -6,6 +14,10 @@ function openDragMenu(event, id, statusId) {
     dragMenu.style.display = 'block';
   }
   
+  /**
+   * Closes all drag menus that are not the currently clicked element.
+   * @param {Event} event - The event object of the click event.
+   */
   function closeDragMenu(event) {
     event.stopPropagation();
     let dragmenus = document.getElementsByClassName('drag-menu');
@@ -18,9 +30,9 @@ function openDragMenu(event, id, statusId) {
   }
   
   /**
-   * Bewegt einen Task in eine andere Statusspalte via Klick (für mobile Ansicht)
-   * @param {string} status - Der Zielstatus des Tasks (toDo, inProgress, awaitFeedback, done)
-   * @param {number} id - Die ID des zu bewegenden Tasks
+   * Moves a task to a different status column via click (for mobile view)
+   * @param {string} status - The target status of the task (toDo, inProgress, awaitFeedback, done)
+   * @param {number} id - The ID of the task to be moved
    */
   async function moveTaskTo(event, status, id) {
     event.stopPropagation();
@@ -38,8 +50,8 @@ function openDragMenu(event, id, statusId) {
   }
   
   /**
-   * Zeigt eine kleine Benachrichtigung an, wenn ein Task verschoben wurde
-   * @param {string} status - Der Zielstatus, in den der Task verschoben wurde
+   * Shows a small notification when a task is moved
+   * @param {string} status - The target status the task is moved to
    */
   let statusNames = {
     'toDo': 'To do',
@@ -48,6 +60,13 @@ function openDragMenu(event, id, statusId) {
     'done': 'Done'
   };
   
+  /**
+   * Shows a small notification when a task is moved
+   * @param {string} status - The target status the task is moved to
+   * @description
+   * Creates a small notification div and appends it to the document body.
+   * After 2 seconds, the notification is removed.
+   */
   function showMoveNotification(status) {
     let displayStatus = statusNames[status] || status;
     let notification = document.createElement('div');
@@ -62,6 +81,12 @@ function openDragMenu(event, id, statusId) {
     }, 2000);
   }
   
+
+  /**
+   * Finds a task by its ID in the createdTasks array.
+   * @param {number} id - The ID of the task to find.
+   * @returns {Object} The task with the given ID if found, undefined otherwise.
+   */
    function findTaskById(id) {
      let taskToMove;
      for (let i = 0; i < createdTasks.length; i++) {
@@ -72,7 +97,6 @@ function openDragMenu(event, id, statusId) {
      }
      return taskToMove;
    }
-  
    let allStatusOptions = [
      { id: 'toDo', label: 'To do', icon: 'arrow_upward.png' },
      { id: 'inProgress', label: 'In progress', icon: 'arrow_downward.png' },
@@ -80,6 +104,16 @@ function openDragMenu(event, id, statusId) {
      { id: 'done', label: 'Done', icon: 'arrow_downward.png' }
    ];
   
+/**
+ * Determines the direction icon based on the relative position of the target status
+ * compared to the current status in the task workflow.
+ * 
+ * @param {string} currentStatus - The current status of the task (e.g., 'toDo', 'inProgress', etc.).
+ * @param {string} targetStatus - The target status to move the task to.
+ * @returns {string} The filename of the icon representing the direction of movement 
+ *                   ('arrow_upward.png' for moving to an earlier status, 
+ *                   'arrow_downward.png' for moving to a later status).
+ */
   function getDirectionIcon(currentStatus, targetStatus) {
     let statusOrder = ['toDo', 'inProgress', 'awaitFeedback', 'done'];
     let currentIndex = statusOrder.indexOf(currentStatus);
@@ -93,10 +127,10 @@ function openDragMenu(event, id, statusId) {
   }
   
   /**
-   * Generiert das HTML-Template für das Drag-Menü mit korrekten Pfeilrichtungen
-   * @param {number} id - Die ID des Tasks
-   * @returns {string} HTML-Template für das Drag-Menü
-   */
+ * Generates the HTML template for the drag menu with correct arrow directions
+ * @param {number} id - The ID of the task
+ * @returns {string} HTML template for the drag menu
+ */
   function dragMenuTemplate(id) {
     let taskToMove = findTaskById(id);
     if (!taskToMove) {

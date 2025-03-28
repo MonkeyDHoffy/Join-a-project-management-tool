@@ -81,6 +81,11 @@ function showError(input, message) {
     input.parentNode.appendChild(errorDiv);
 }
 
+/**
+ * Displays an error message for an invalid input field with class 'error-message-one'.
+ * @param {HTMLElement} input - The input element to show the error for.
+ * @param {string} message - The error message to display.
+ */
 function showErrorOne(input, message) {
     input.classList.add('invalid');
     let errorDiv = document.createElement('div');
@@ -88,6 +93,12 @@ function showErrorOne(input, message) {
     errorDiv.textContent = message;
     input.parentNode.appendChild(errorDiv);
 }
+
+/**
+ * Displays an error message for an invalid input field with class 'error-message-two'.
+ * @param {HTMLElement} input - The input element to show the error for.
+ * @param {string} message - The error message to display.
+ */
 
 function showErrorTwo(input, message) {
     input.classList.add('invalid');
