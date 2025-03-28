@@ -130,7 +130,6 @@ async function drop(status) {
   currentDragedElement = null;
 }
 
-
 /**
  * Filters the tasks on the board based on the search input value, and displays
  * placeholder messages if any of the board fields are empty.
@@ -158,9 +157,9 @@ function searchTask() {
 function checkIfBoardFieldIsEmpty() {
   let boardFields = document.getElementsByClassName("board-field");
   for (let i = 0; i < boardFields.length; i++) {
-      if ([...boardFields[i].children].every(child => child.classList.contains("d-none"))) {
-        boardFields[i].innerHTML = noTasksTemplate(i)
-      }
+    if ([...boardFields[i].children].every(child => child.classList.contains("d-none"))) {
+      boardFields[i].innerHTML = noTasksTemplate(i)
+    }
   }
 }
 
@@ -239,6 +238,12 @@ function closeOverlayOutside(event) {
   }
 }
 
+/**
+ * Disables the confirm button in the task edit overlay if any of the following conditions are met:
+ * - The title input field is empty.
+ * - The date input field is empty.
+ * - Any required field has a validation error.
+ */
 function validateEditInputs() {
   let requiredTexts = document.querySelectorAll(".required-text span");
   let titleInput = document.querySelector(".addTask-title input");
@@ -279,6 +284,20 @@ async function confirmTaskChanges(currentTitle) {
   closeTaskCardOverlay();
 }
 
+/**
+ * Creates a new task object for editing an existing task.
+ * 
+ * Utilizes the provided task ID and task details to generate an updated task object.
+ * Ensures that changes to task properties such as title, description, contacts,
+ * due date, priority, category, and subtasks are applied.
+ * 
+ * @param {number} id - The unique identifier of the task being edited.
+ * @param {Object} taskToEdit - The original task object to be edited.
+ * @param {string} taskToEdit.status - The current status of the task.
+ * @param {string} taskToEdit.selectedCategory - The category of the task.
+ * @param {Array} taskToEdit.completedSubtasks - Array of completed subtasks.
+ * @returns {Object} The updated task object with the new properties.
+ */
 function createEditTask(id, taskToEdit) {
   return {
     "id": id, "status": taskToEdit.status, "title": title,
@@ -327,29 +346,29 @@ function showTaskNotification() {
   }
 }
 
-
-  document.addEventListener('click', function(event) {
-    let categoryDropdown = document.getElementById('category-dropdown');
-    let categoryInput = document.querySelector('.category-input');
-    if (categoryDropdown && !categoryDropdown.classList.contains('d-none')) {
-      let clickedOnInputOrDropdown = false;
-      if (categoryInput && categoryInput.contains(event.target)) {
-        clickedOnInputOrDropdown = true;
-      }
-      if (event.target.closest('.category-btn')) {
-        clickedOnInputOrDropdown = false;
-      }
-      if (!clickedOnInputOrDropdown || event.target.closest('.category-btn')) {
-        categoryDropdown.classList.add('d-none');
-        categoryDropdown.classList.add('close-dropdown');
-        let categoryIcon = document.getElementById('input-icon-category');
-        if (categoryIcon) {
-          categoryIcon.src = './assets/svg/addTasksSvg/arrow_drop_up.svg';
-        }
+/**
+ * Adds event listener to document to listen for clicks on the category dropdown.
+ * If the category dropdown is not hidden and the click is not on the category
+ * input or dropdown, then the category dropdown is hidden and the icon is toggled.
+ */
+document.addEventListener('click', function (event) {
+  let categoryDropdown = document.getElementById('category-dropdown');
+  let categoryInput = document.querySelector('.category-input');
+  if (categoryDropdown && !categoryDropdown.classList.contains('d-none')) {
+    let clickedOnInputOrDropdown = false;
+    if (categoryInput && categoryInput.contains(event.target)) {
+      clickedOnInputOrDropdown = true;
+    }
+    if (event.target.closest('.category-btn')) {
+      clickedOnInputOrDropdown = false;
+    }
+    if (!clickedOnInputOrDropdown || event.target.closest('.category-btn')) {
+      categoryDropdown.classList.add('d-none');
+      categoryDropdown.classList.add('close-dropdown');
+      let categoryIcon = document.getElementById('input-icon-category');
+      if (categoryIcon) {
+        categoryIcon.src = './assets/svg/addTasksSvg/arrow_drop_up.svg';
       }
     }
-  });
-
-
-
-
+  }
+});

@@ -22,7 +22,6 @@ const colors = [
   "--light-orange",
 ];
 
-
 /**
  * Retrieves data from the Firebase database.
  * @param {string} [path=""] - The path to the data in the database.
@@ -58,8 +57,6 @@ function cleanNullValues(obj) {
     }
   }
 }
-
-
 
 /**
  * Updates data in the Firebase database.
@@ -204,5 +201,3 @@ function initMenuCloseHandling() {
   });
 }
 document.addEventListener('DOMContentLoaded', initMenuCloseHandling);
-
-

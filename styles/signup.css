@@ -244,7 +244,6 @@ body {
     border-color: red !important;
 }
 
-
 #errorPrivPol {
     display: flex;
     justify-content: center;
@@ -331,7 +330,6 @@ body {
     }
 }
 
-
 /*   :::::::   Privacy Policy and Legal notice  :::::::   */
 .priv-polce-legl-note-box {
     display: flex;
@@ -342,7 +340,6 @@ body {
     position: absolute;
     bottom: 8px;
 }
-
 
 .prvt-polce-legl-note {
     display: flex;
@@ -383,7 +380,6 @@ body {
 .d-none {
     display: none;
 }
-
 
 /*   :::::::   media query  :::::::   */
 @media screen and (width < 640px) {

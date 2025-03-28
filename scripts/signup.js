@@ -1,6 +1,5 @@
 let messages = [];
 
-
 /**
  * Initializes the signup page by calling the necessary functions to
  * render the signup form, render the privacy policy, validate the form,
@@ -13,7 +12,6 @@ function signUpInit() {
     passwordFocus();
     getUsers();
 }
-
 
 /**
  * Shows the success message after a user signs up and checks the
@@ -38,7 +36,6 @@ function showSignUpMsg() {
     }
 }
 
-
 /**
  * Toggles the error message when the privacy policy checkbox is
  * checked or unchecked.
@@ -61,7 +58,6 @@ function toggleErrorPrivPol() {
     checkFormValidity();
 }
 
-
 /**
  * Prevents the signup form from submitting if there are any validation
  * errors. If there are errors, displays them in the '.error' element.
@@ -79,7 +75,6 @@ function preventDefaultFormSubmit(e, messages, errorElement) {
         errorElement.innerHTML = '';
     }
 }
-
 
 /**
  * Compares the password and repeat password fields and checks if they are equal.
@@ -104,7 +99,6 @@ function comparePasswords(password, repeatPassword, messages) {
     }
 }
 
-
 /**
  * Removes a specific error message from the 'messages' array and removes the
  * 'error-highlight' class from the parent node of the input element.
@@ -122,7 +116,6 @@ function removeErrorMessageAndHighlight(inputElement, messages, errorMessage) {
     }
     inputElement.parentNode.classList.remove('error-highlight');
 }
-
 
 /**
  * Validates the 'name' field in the signup form. Checks if the field is empty or null.
@@ -145,7 +138,6 @@ function validateName(messages) {
     }
 }
 
-
 /**
  * Initializes the password and repeat password input fields and their toggle buttons
  * on the signup form. Sets up event listeners to update the icons and enable/disable
@@ -157,7 +149,6 @@ function passwordFocus() {
     setupPasswordField('password', '.pw-wrapper button img', '.pw-wrapper button');
     setupPasswordField('repeatPassword', '.rep-pw-wrapper button img', '.rep-pw-wrapper button');
 }
-
 
 /**
  * Sets up the password input field and its toggle button. The lock
@@ -177,7 +168,6 @@ function setupPasswordField(passwordInputId, iconSelector, buttonSelector) {
     let iconPWButton = document.querySelector(buttonSelector);
     reAppearLockIcon(passwordInput, iconPW, iconPWButton);
 }
-
 
 /**
  * Listens for input events on the password input field and updates the lock icon 
@@ -204,7 +194,6 @@ function reAppearLockIcon(passwordInput, iconPW, iconPWButton) {
     });
 }
 
-
 /**
  * Toggles the visibility of the password in the signup form. When the password is 
  * hidden, it changes the input type to 'text' to show the password and updates 
@@ -229,7 +218,6 @@ function togglePasswordVisibility(button) {
     }
 }
 
-
 /**
  * Registers a new user by creating a new user object with the values from the signup form,
  * adds the user to the users array and saves the users array to local storage. If the user
@@ -253,7 +241,10 @@ async function registerUser() {
     }
 }
 
-
+/**
+ * Displays the messages in the messages array in the element with the id "error", separated by commas.
+ * @returns {undefined}
+ */
 function displayUserExists() {
     let errorElement = document.getElementById('error');
     errorElement.innerHTML = messages.join(', ')

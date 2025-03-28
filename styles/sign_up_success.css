@@ -18,8 +18,6 @@ body {
     height: 100%;
     overflow: hidden;
     background-color: #d8eef8;
-
-
 }
 
 /*   :::::::   content wrapper   :::::::   */
@@ -33,7 +31,6 @@ body {
     max-width: 1440px;
     height: 100vh;
     min-height: 80vh;
-    /*background-color: #F6F7F8;*/
     padding: 48px 0;
     position: relative;
     overflow: hidden;
@@ -50,14 +47,12 @@ body {
     z-index: 1;*/
 }
 
-
 .nau-sign-up button:hover,
 .login:hover,
 .guest-login:hover {
 
     box-shadow: 0px 4px 4px 0px #00000040;
 }
-
 
 /*   :::::::   page 'Login'   :::::::   */
 .signup-content {
@@ -119,7 +114,6 @@ body {
     gap: 16px;
 }
 
-
 /**/
 .sgnp-form form input {
     width: 422px;
@@ -128,7 +122,6 @@ body {
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 6px;
 }
-
 
 input#signupName {
     background-image: url('../assets/svg/person.svg');
@@ -153,7 +146,6 @@ input#password {
     background-position: calc(100% - 20px) center;
     padding: 5px 16px;
 }
-
 
 input#signupName,
 input#email:hover,
@@ -280,13 +272,11 @@ input#password:hover {
     border: none;
 }
 
-
 .chb-priv-pol {
     width: 20px !important;
     height: 20px !important;
     margin-right: 10px !important;
 }
-
 
 /*   :::::::   Privacy Policy and Legal notice  :::::::   */
 .priv-polce-legl-note-box {
@@ -333,8 +323,6 @@ input#password:hover {
     background-color: rgba(0, 0, 0, 0.3);
     z-index: 0;
 }
-
-
 
 .d-none {
     display: none;

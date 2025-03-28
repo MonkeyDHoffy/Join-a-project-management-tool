@@ -228,7 +228,3 @@ function addTaskOverlayBoardTemplate() {
                   </button></div>
             </div>`;
 }
-
-
-
-

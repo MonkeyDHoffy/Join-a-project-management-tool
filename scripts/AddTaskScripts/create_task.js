@@ -44,14 +44,7 @@ async function createTask() {
   items.forEach((item) => {
     selectedSubtasks.push(item.innerText);
   });
-  let newTask = {
-    "id": id, "status": createdTasksStatus == undefined || "" ? "toDo" : createdTasksStatus, "title": title,
-    "description": description,
-    "selectedContacts": selectedContacts.length > 0 ? selectedContacts.map((contact) => contact.name) : [""],
-    "dueDate": dueDate, "priority": priority, "selectedCategory": category,
-    "subtasks": selectedSubtasks.length > 0 ? selectedSubtasks : [""],
-    "completedSubtasks": [""],
-  };
+  let newTask = createNewTask(id);
   createdTasks.push(newTask);
   selectedSubtasks = [];
   selectedContacts = [];
@@ -59,6 +52,30 @@ async function createTask() {
   showTaskNotification();
 }
 
+/**
+ * Creates a new task object with the given ID and input values.
+ * Sets default status to "toDo" and includes input values for title, description, contacts, due date, priority, category, and subtasks.
+ * Ensures that selected contacts and subtasks are set to empty arrays if none are provided.
+ * @param {number} id - The unique identifier for the new task.
+ * @returns {Object} The task object with all necessary properties.
+ */
+
+function createNewTask(id) {
+  return {
+    "id": id, "status": "toDo", "title": title,
+    "description": description,
+    "selectedContacts": selectedContacts.length > 0 ? selectedContacts.map((contact) => contact.name) : [""],
+    "dueDate": dueDate, "priority": priority, "selectedCategory": category,
+    "subtasks": selectedSubtasks.length > 0 ? selectedSubtasks : [""],
+    "completedSubtasks": [""],
+  };
+}
+
+/**
+ * Checks if a given task ID is already in use and increments it if it is.
+ * @param {number} id - The task ID to check
+ * @returns {number} The checked task ID, incremented if it was already in use
+ */
 function checkTaskId(id) {
   for (let index = 0; index <= createdTasks.length; index++) {
     createdTasks.forEach((task) => {
@@ -84,18 +101,28 @@ async function createTaskOverlay() {
   items.forEach((item) => {
     selectedSubtasks.push(item.innerText);
   });
-  let newTask = {
-    "id": createdTasks.length + 1, "status": createdTasksStatus == undefined || "" ? "toDo" : createdTasksStatus, "title": title,
-    "description": description,
-    "selectedContacts": selectedContacts.length > 0 ? selectedContacts.map((contact) => contact.name) : [""],
-    "dueDate": dueDate, "priority": priority, "selectedCategory": category,
-    "subtasks": selectedSubtasks.length > 0 ? selectedSubtasks : [""],
-    "completedSubtasks": [""],
-  };
+  let newTask = createNewTaskOverlay(id);
   createdTasks.push(newTask);
   selectedSubtasks = [];
   selectedContacts = [];
   editedSelectedContacts = [];
   await putTasks();
   showTaskNotificationOverlayAddTask();
+}
+
+/**
+ * Creates a new task object from form inputs to be added to the task list and saved to storage.
+ * If no status is provided, the task is set to "toDo" status.
+ * @param {number} id - The unique identifier of the new task
+ * @returns {Object} A task object with all required properties
+ */
+function createNewTaskOverlay(id) {
+  return {
+    "id": id, "status": createdTasksStatus == undefined || "" ? "toDo" : createdTasksStatus, "title": title,
+    "description": description,
+    "selectedContacts": selectedContacts.length > 0 ? selectedContacts.map((contact) => contact.name) : [""],
+    "dueDate": dueDate, "priority": priority, "selectedCategory": category,
+    "subtasks": selectedSubtasks.length > 0 ? selectedSubtasks : [""],
+    "completedSubtasks": [""],
+  };
 }
