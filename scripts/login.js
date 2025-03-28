@@ -93,13 +93,14 @@ function validateEmail(messages) {
     } 
 }
 
+
 /**
- * Checks if the email input field's length exceeds the maximum allowed length.
- * If the email length is 56 characters or more, adds an error message to the
- * 'messages' array indicating the email length constraint.
+ * Checks if the email length exceeds the maximum allowed length.
+ * If the email value is 56 characters or more, adds an error message 
+ * to the 'messages' array indicating the email length constraint.
  * 
- * @param {Array<string>} messages - Array to store validation error messages
- * @param {HTMLInputElement} email - Email input field to check length
+ * @param {Array<string>} messages - array to store validation error messages
+ * @param {HTMLInputElement} email - email input field to check length
  * @returns {undefined}
  */
 function showErrorEmailLength (messages, email) {
@@ -108,11 +109,14 @@ function showErrorEmailLength (messages, email) {
     }
 }
 
+
+/*************  ✨ Codeium Command ⭐  *************/
 /**
  * Limits the maximum number of characters in an input field to a specified value.
  * @param {HTMLInputElement} element - input element to limit character count
  * @returns {undefined}
  */
+/******  bd370b62-fd51-4c8f-9f7b-e1e2e418a47d  *******/
 function limitMaxChars(element) {
     let max_chars = 56;
     if(element.value.length > max_chars) {
@@ -135,6 +139,7 @@ function validatePassword(messages) {
     validatePasswordNotPassword(password, messages);
 }
 
+
 /**
  * Checks if the password field is empty or null. If the field is invalid, adds an error
  * message to the 'messages' array and adds the 'error-highlight' class to the field's
@@ -154,6 +159,7 @@ function validatePasswordEmpty(password, messages) {
         removeErrorMessageAndHighlight(password, messages, 'Please enter a password');
     }
 }
+
 
 /**
  * Checks if the password field value is equal to 'password'. If the field is invalid, adds
