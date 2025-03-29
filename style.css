@@ -60,3 +60,14 @@
 /* ::-webkit-scrollbar-button {
   display: block;
 } */
+
+.responsive-space {
+ display: none;
+}
+
+@media (max-width: 380px) {
+.responsive-space{
+  display: block;
+  height: 128px;
+}
+}
