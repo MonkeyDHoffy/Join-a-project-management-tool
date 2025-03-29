@@ -272,9 +272,6 @@ async function confirmTaskChanges(currentTitle) {
   items.forEach((item) => {
     selectedSubtasks.push(item.innerHTML);
   });
-  taskToEdit.completedSubtasks = taskToEdit.completedSubtasks.filter(subtask =>
-    selectedSubtasks.includes(subtask)
-  );
   let editedTask = createEditTask(id, taskToEdit);
   createdTasks[taskIndex] = editedTask;
   selectedSubtasks = [];
