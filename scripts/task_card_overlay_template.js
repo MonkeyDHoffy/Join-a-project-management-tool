@@ -110,7 +110,7 @@ function renderEditSubtasks(element) {
  */
 function renderSubtasks(element) {
   return element.subtasks.map((subtask) => {
-    let isCompleted = element.completedSubtasks.includes(subtask);
+    let isCompleted = element.completedSubtasks.includes(subtask.trim());
     return `
       <div class="subtask-wrapper">
           <input type="checkbox" class="sbtsk-chb" id="${subtask.trim()}"  onclick="toggleSubtaskCompleted('${subtask.trim()}', this)"  ${isCompleted ? 'checked' : ''}/>

@@ -5,8 +5,9 @@
  * @async
  */
 async function toggleSubtaskCompleted(subtask, element) {
-  let task = createdTasks.find((task) => task.subtasks.includes(subtask));
-  if (!task.completedSubtasks.includes(subtask)) {
+  let task = createdTasks.find((task) => 
+    task.subtasks.some(sub => sub.trim().includes(subtask))
+  );  if (!task.completedSubtasks.includes(subtask)) {
     task.completedSubtasks.push(subtask);
   } else {
     task.completedSubtasks.splice(task.completedSubtasks.indexOf(subtask), 1);
