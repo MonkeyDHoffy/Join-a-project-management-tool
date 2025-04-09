@@ -4,7 +4,7 @@
  * @returns {string} HTML template for the subtask item
  */
 function subtaskListTemplate(subtaskInput) {
-    return `<div class="subtask-item-field">
+    return `<div ondblclick="editSubtaskItem('${subtaskInput.value.replaceAll(" ", "-")}')" class="subtask-item-field">
                 <li class="item-${subtaskInput.value.replaceAll(" ", "-")} subtask-item">
                     ${subtaskInput.value}
                 </li>
