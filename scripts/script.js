@@ -1,4 +1,4 @@
-const BASE_URL = "https://remotestorage-9af61-default-rtdb.europe-west1.firebasedatabase.app/";
+const BASE_URL = "https://remotestorage-f4b14-default-rtdb.europe-west1.firebasedatabase.app/";
 let users = [];
 let createdTasks = [];
 let contacts = [];
